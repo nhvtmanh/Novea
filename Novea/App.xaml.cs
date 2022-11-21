@@ -13,5 +13,6 @@ namespace Novea
     /// </summary>
     public partial class App : Application
     {
+        MessageBox.Show("Hello baby");
     }
 }
