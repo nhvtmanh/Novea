@@ -5,8 +5,188 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Novea"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        AllowsTransparency="True"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Title="MainWindow"
+        Height="600" Width="1024" WindowStartupLocation="CenterScreen">
+
+    <Border CornerRadius="40" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="68"/>
+                <RowDefinition Height="348"/>
+                <RowDefinition Height="284"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="161"></ColumnDefinition>
+                <ColumnDefinition Width="639"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Grid.RowSpan="3" Margin="0,0,0,100" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="19*"></RowDefinition>
+                    <RowDefinition Height="81*"></RowDefinition>
+                    <RowDefinition Height="50*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="LightGreen" Height="600" VerticalAlignment="Top"/>
+                <Grid Grid.Row="0" Margin="0,0,0,10">
+                    <DockPanel Margin="10,10,10,0">
+                        <Border
+                            Height="40"
+                            Width="40"
+                            Background="White"
+                            CornerRadius="50"
+                            Margin="6">
+                            <Ellipse Height="40" Width="40" VerticalAlignment="Top">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="D:\Workspace\C#\WPF\Đồ Án Lập Trình Trực Quan\Đồ Án Lập Trình Trực Quan\anime_girl.jpg"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <TextBlock x:Name="TenDangNhap" Text="Vũ Đức Minh" FontSize="13" Foreground="Black" FontWeight="Medium"/>
+
+                            <TextBlock x:Name="Quyen" Text="Quản trị viên" FontSize="11" Foreground="Black">
+
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Grid>
+
+
+
+                <Grid Grid.Row="1">
+                    <StackPanel Margin="0,-15,0,-3">
+                        <Button Content="TRANG CHỦ"
+                                Style="{StaticResource btn_hover}">
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="12,12,12,12"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+
+                        <Button Content="TRANG CHỦ"
+                                Style="{StaticResource btn_hover}">
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="12,12,12,12"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button Content="TRANG CHỦ"
+                                Style="{StaticResource btn_hover}">
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="12,12,12,12"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button Content="TRANG CHỦ"
+                                Style="{StaticResource btn_hover}">
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="12,12,12,12"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button Content="TRANG CHỦ"
+                                Style="{StaticResource btn_hover}">
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="12,12,12,12"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button Content="TRANG CHỦ"
+                                Style="{StaticResource btn_hover}">
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="12,12,12,12"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button Content="TRANG CHỦ"
+                                Style="{StaticResource btn_hover}" Height="45">
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="12,12,12,12"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Margin="0,95,0,142">
+                <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" Width="auto" Margin="0,24,0,-19">
+                    <Button Content="CÀI ĐẶT"
+                            Margin="1"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource btn_hover}" Height="25" Width="60">
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border CornerRadius="12,12,12,12"
+                                            Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Content="THOÁT"
+                            Margin="1"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource btn_hover}" Height="25" Width="61">
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border CornerRadius="12,12,12,12"
+                                            Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+
+        </Grid>
+    </Border>
+
 </Window>
