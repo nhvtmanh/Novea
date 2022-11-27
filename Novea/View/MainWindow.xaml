@@ -14,8 +14,8 @@
     <Border CornerRadius="40">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="71"/>
-                <RowDefinition Height="345"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="341"/>
                 <RowDefinition Height="284"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -30,9 +30,9 @@
                     <RowDefinition Height="46*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="LightGreen" Height="600" VerticalAlignment="Top"/>
-                <Grid Grid.Row="0" Margin="0,0,0,10">
-                    <DockPanel Margin="10,10,10,0">
+                <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="LimeGreen" Height="600" VerticalAlignment="Top"/>
+                <Grid Grid.Row="0">
+                    <DockPanel Margin="0,0,0,-21">
                         <Border
                             Height="40"
                             Width="40"
@@ -55,77 +55,174 @@
                     </DockPanel>
                 </Grid>
                 <Grid Grid.Row="1" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
                     <StackPanel Margin="0,0,0,2">
-                        <RadioButton x:Name="btnHome"
-                                     Style="{StaticResource BtnHome}"
-                                     IsChecked="True"
-                                     FontFamily="{StaticResource Custom}"
-                                     Uid="0">
+
+                        <RadioButton
+                            x:Name="btnHome"
+                            Style="{StaticResource BtnHome}"
+                            FontFamily="{StaticResource Custom}"
+                            Uid="0">
+                            <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseMove">
+                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
                         </RadioButton>
 
+                        <RadioButton
+                            Style="{StaticResource BtnCreateBill}"
+                            Uid="1"
+                            FontFamily="{StaticResource Custom}"
+                            x:Name="btnOrder"
+                            >
+                            <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseMove">
+                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=btnOrder}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
+                        </RadioButton>
 
-                        <RadioButton Style="{StaticResource BtnHome}"
-                                     IsChecked="False"
-                                     FontFamily="{StaticResource Custom}"
-                                     Uid="1">
+                        <RadioButton
+                            Style="{StaticResource BtnProduct}"
+                            FontFamily="{StaticResource Custom}"
+                            Uid="2"
+                            x:Name="btnProducts"
+                            >
+                            <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseMove">
+                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                           CommandParameter="{Binding ElementName=btnProducts}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
                         </RadioButton>
-                        <RadioButton Style="{StaticResource BtnHome}"
-                                     IsChecked="False"
-                                     FontFamily="{StaticResource Custom}"
-                                     Uid="2">
+
+                        <RadioButton
+                            Style="{StaticResource BtnKH}"
+                            FontFamily="{StaticResource Custom}"
+                            Uid="3"
+                            x:Name="btnKH"
+                            >
+                            <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseMove">
+                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                           CommandParameter="{Binding ElementName=btnKH}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
                         </RadioButton>
-                        <RadioButton Style="{StaticResource BtnHome}"
-                                     IsChecked="False"
-                                     FontFamily="{StaticResource Custom}"
-                                     Uid="3">
+
+                        <RadioButton 
+                            Style="{StaticResource BtnWarehouse}"
+                            FontFamily="{StaticResource Custom}"
+                            Uid="4"
+                            x:Name="btnImport"
+                            >
+                            <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseMove">
+                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                           CommandParameter="{Binding ElementName=btnImport}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
                         </RadioButton>
-                        <RadioButton Style="{StaticResource BtnHome}"
-                                     IsChecked="False"
-                                     FontFamily="{StaticResource Custom}"
-                                     Uid="4">
+
+                        <RadioButton 
+                            Visibility="{Binding SetQuanLy}"
+                            Style="{StaticResource BtnStatistic}"
+                            FontFamily="{StaticResource Custom}"
+                            Uid="5"
+                            x:Name="btnReport"
+                            >
+                            <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseMove">
+                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                           CommandParameter="{Binding ElementName=btnReport}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
                         </RadioButton>
-                        <RadioButton Style="{StaticResource BtnHome}"
-                                     IsChecked="False"
-                                     FontFamily="{StaticResource Custom}"
-                                     Uid="5">
-                        </RadioButton>
-                        <RadioButton Style="{StaticResource BtnHome}"
-                                     IsChecked="False"
-                                     FontFamily="{StaticResource Custom}"
-                                     Uid="6">
+
+                        <RadioButton
+                            x:Name="btnQLNNV"
+                            Uid="6"
+                            Visibility="{Binding SetQuanLy}"
+                            Style="{StaticResource BtnManage}"
+                            FontFamily="{StaticResource Custom}"
+                            
+                            >
+                            <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseMove">
+                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                           CommandParameter="{Binding ElementName=btnQLNNV}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
                         </RadioButton>
                     </StackPanel>
                 </Grid>
             </Grid>
-            <Grid Grid.Row="2" Margin="0,95,0,142">
-                <StackPanel HorizontalAlignment="Center" Width="auto" Margin="0,-17,0,-19">
-                    <RadioButton Style="{StaticResource BtnHome}"
-                                 IsChecked="False"
-                                 FontFamily="{StaticResource Custom}"
-                                 Uid="0">
+            <Grid Grid.Row="2" Margin="0,95,0,100">
+                <StackPanel HorizontalAlignment="Center" Width="auto" Margin="0,0,0,-40">
+
+                    <RadioButton
+                            Foreground="Black"                        
+                            Style="{StaticResource BtnSetting}"
+                            FontFamily="{StaticResource Custom}"
+                            Uid="7"
+                            x:Name="btnSetting">
                     </RadioButton>
-                    <RadioButton Style="{StaticResource BtnHome}"
-                                 IsChecked="False"
-                                 FontFamily="{StaticResource Custom}"
-                                 Uid="0">
-                    </RadioButton>
+
+                    <Button Style="{StaticResource BtnLogOut}"
+                            FontFamily="{StaticResource Custom}">
+                    </Button>
                 </StackPanel>
 
             </Grid>
             <Grid Grid.Column="2">
                 <TextBlock
                         Text="NOVEA"
-                        FontSize="35"
+                        FontSize="40"
+                        FontWeight="Medium"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Style="{StaticResource NameApp}" RenderTransformOrigin="0.5,0.5"
                         >
                     <TextBlock.Foreground>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                            <GradientStop Color="#FFE5D8" Offset="0"/>
-                            <GradientStop Color="#FFCAD4" Offset="1"/>
+                            <GradientStop Color="Green" Offset="0"/>
+                            <GradientStop Color="Blue" Offset="1"/>
                         </LinearGradientBrush>
                     </TextBlock.Foreground>
+                    
                 </TextBlock>
             </Grid>
         </Grid>
