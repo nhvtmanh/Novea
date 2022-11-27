@@ -11,22 +11,23 @@
         Title="MainWindow"
         Height="600" Width="1024" WindowStartupLocation="CenterScreen">
 
-    <Border CornerRadius="40" >
+    <Border CornerRadius="40">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="68"/>
-                <RowDefinition Height="348"/>
+                <RowDefinition Height="71"/>
+                <RowDefinition Height="345"/>
                 <RowDefinition Height="284"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="161"></ColumnDefinition>
-                <ColumnDefinition Width="639"></ColumnDefinition>
+                <ColumnDefinition Width="674"></ColumnDefinition>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Grid.RowSpan="3" Margin="0,0,0,100" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="19*"></RowDefinition>
-                    <RowDefinition Height="81*"></RowDefinition>
-                    <RowDefinition Height="50*"></RowDefinition>
+                    <RowDefinition Height="85*"></RowDefinition>
+                    <RowDefinition Height="46*"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="LightGreen" Height="600" VerticalAlignment="Top"/>
@@ -53,139 +54,80 @@
                         </StackPanel>
                     </DockPanel>
                 </Grid>
+                <Grid Grid.Row="1" Margin="0,10,0,0">
+                    <StackPanel Margin="0,0,0,2">
+                        <RadioButton x:Name="btnHome"
+                                     Style="{StaticResource BtnHome}"
+                                     IsChecked="True"
+                                     FontFamily="{StaticResource Custom}"
+                                     Uid="0">
+                        </RadioButton>
 
 
-
-                <Grid Grid.Row="1">
-                    <StackPanel Margin="0,-15,0,-3">
-                        <Button Content="TRANG CHỦ"
-                                Style="{StaticResource btn_hover}">
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="12,12,12,12"
-                                            Background="{TemplateBinding Background}">
-                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-
-
-                        <Button Content="TRANG CHỦ"
-                                Style="{StaticResource btn_hover}">
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="12,12,12,12"
-                                            Background="{TemplateBinding Background}">
-                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-
-                        <Button Content="TRANG CHỦ"
-                                Style="{StaticResource btn_hover}">
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="12,12,12,12"
-                                            Background="{TemplateBinding Background}">
-                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-
-                        <Button Content="TRANG CHỦ"
-                                Style="{StaticResource btn_hover}">
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="12,12,12,12"
-                                            Background="{TemplateBinding Background}">
-                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-
-                        <Button Content="TRANG CHỦ"
-                                Style="{StaticResource btn_hover}">
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="12,12,12,12"
-                                            Background="{TemplateBinding Background}">
-                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-
-                        <Button Content="TRANG CHỦ"
-                                Style="{StaticResource btn_hover}">
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="12,12,12,12"
-                                            Background="{TemplateBinding Background}">
-                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-
-                        <Button Content="TRANG CHỦ"
-                                Style="{StaticResource btn_hover}" Height="45">
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="12,12,12,12"
-                                            Background="{TemplateBinding Background}">
-                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
+                        <RadioButton Style="{StaticResource BtnHome}"
+                                     IsChecked="False"
+                                     FontFamily="{StaticResource Custom}"
+                                     Uid="1">
+                        </RadioButton>
+                        <RadioButton Style="{StaticResource BtnHome}"
+                                     IsChecked="False"
+                                     FontFamily="{StaticResource Custom}"
+                                     Uid="2">
+                        </RadioButton>
+                        <RadioButton Style="{StaticResource BtnHome}"
+                                     IsChecked="False"
+                                     FontFamily="{StaticResource Custom}"
+                                     Uid="3">
+                        </RadioButton>
+                        <RadioButton Style="{StaticResource BtnHome}"
+                                     IsChecked="False"
+                                     FontFamily="{StaticResource Custom}"
+                                     Uid="4">
+                        </RadioButton>
+                        <RadioButton Style="{StaticResource BtnHome}"
+                                     IsChecked="False"
+                                     FontFamily="{StaticResource Custom}"
+                                     Uid="5">
+                        </RadioButton>
+                        <RadioButton Style="{StaticResource BtnHome}"
+                                     IsChecked="False"
+                                     FontFamily="{StaticResource Custom}"
+                                     Uid="6">
+                        </RadioButton>
                     </StackPanel>
                 </Grid>
             </Grid>
             <Grid Grid.Row="2" Margin="0,95,0,142">
-                <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" Width="auto" Margin="0,24,0,-19">
-                    <Button Content="CÀI ĐẶT"
-                            Margin="1"
-                            VerticalAlignment="Center"
-                            Style="{StaticResource btn_hover}" Height="25" Width="60">
-
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border CornerRadius="12,12,12,12"
-                                            Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                    <Button Content="THOÁT"
-                            Margin="1"
-                            VerticalAlignment="Center"
-                            Style="{StaticResource btn_hover}" Height="25" Width="61">
-
-                        <Button.Template>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border CornerRadius="12,12,12,12"
-                                            Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
+                <StackPanel HorizontalAlignment="Center" Width="auto" Margin="0,-17,0,-19">
+                    <RadioButton Style="{StaticResource BtnHome}"
+                                 IsChecked="False"
+                                 FontFamily="{StaticResource Custom}"
+                                 Uid="0">
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource BtnHome}"
+                                 IsChecked="False"
+                                 FontFamily="{StaticResource Custom}"
+                                 Uid="0">
+                    </RadioButton>
                 </StackPanel>
 
             </Grid>
-
+            <Grid Grid.Column="2">
+                <TextBlock
+                        Text="NOVEA"
+                        FontSize="35"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource NameApp}" RenderTransformOrigin="0.5,0.5"
+                        >
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                            <GradientStop Color="#FFE5D8" Offset="0"/>
+                            <GradientStop Color="#FFCAD4" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+            </Grid>
         </Grid>
     </Border>
 
