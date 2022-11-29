@@ -14,7 +14,7 @@
     <Border
                     Height="550"
                     Width="665"
-                    Background="LightGreen"
+                    Background="LightBlue"
                     CornerRadius="40"
                     >
         <Grid>
@@ -122,15 +122,12 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>-->
                     </TextBox>
-                    <Button
-                        Content="THÊM"
-                        Margin="40,0,0,0"
-                        Width="90"
-                        Height="40"
-                        FontFamily="{StaticResource Custom}"
-                        materialDesign:ButtonAssist.CornerRadius="6"
-                        BorderThickness="0"
-                        Background="LightBlue"
+                    <Button Style="{StaticResource MaterialDesignOutlinedLightButton}"                                               
+                            ToolTip="MaterialDesignOutlinedButton"                       
+                            Content="THÊM"                          
+                            Width="100"           
+                            Margin="20 0 0 0"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         >
                         <!--<i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">

@@ -8,64 +8,61 @@
         AllowsTransparency="True"
         WindowStyle="None"
         ResizeMode="NoResize"
+        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         Title="MainWindow"
-        Height="600" Width="1024" WindowStartupLocation="CenterScreen">
+        Height="600" Width="1024" WindowStartupLocation="CenterScreen"
+        Background="Transparent">
 
-    <Border CornerRadius="40">
+    <Border CornerRadius="30" Background="#EFF2F7">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
-                <RowDefinition Height="341"/>
-                <RowDefinition Height="284"/>
-            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="161"></ColumnDefinition>
                 <ColumnDefinition Width="674"></ColumnDefinition>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Grid.RowSpan="3" Margin="0,0,0,100" >
+            <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="19*"></RowDefinition>
-                    <RowDefinition Height="85*"></RowDefinition>
-                    <RowDefinition Height="46*"></RowDefinition>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="22*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="LimeGreen" Height="600" VerticalAlignment="Top"/>
-                <Grid Grid.Row="0">
-                    <DockPanel Margin="0,0,0,-21">
-                        <Border
-                            Height="40"
-                            Width="40"
-                            Background="White"
-                            CornerRadius="50"
-                            Margin="6">
-                            <Ellipse Height="40" Width="40" VerticalAlignment="Top">
+                <Border Grid.Row="1" Grid.Column="0" Background="#623ED0" CornerRadius="0 50 0 30">
+                    <DockPanel VerticalAlignment="Top">
+
+
+                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
+                            <Ellipse>
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="D:\Workspace\C#\WPF\Đồ Án Lập Trình Trực Quan\Đồ Án Lập Trình Trực Quan\anime_girl.jpg"/>
+                                    <ImageBrush ImageSource="/Resources/Images/anime.png"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
-                            <TextBlock x:Name="TenDangNhap" Text="Vũ Đức Minh" FontSize="13" Foreground="Black" FontWeight="Medium"/>
 
-                            <TextBlock x:Name="Quyen" Text="Quản trị viên" FontSize="11" Foreground="Black">
+                        <!--Menu Titles-->
+                        <TextBlock Text="VŨ ĐỨC MINH" 
+                                   Foreground="White" 
+                                   FontSize="21" 
+                                   FontWeight="SemiBold" 
+                                   DockPanel.Dock="Top" 
+                                   Margin="5" 
+                                   TextAlignment="Center"/>
+                        <TextBlock Text="Quản Trị Viên" 
+                                   Foreground="#D0BFFF" 
+                                   FontSize="14" 
+                                   FontWeight="SemiBold" 
+                                   DockPanel.Dock="Top" 
+                                   TextAlignment="Center"/>
 
-                            </TextBlock>
-                        </StackPanel>
-                    </DockPanel>
-                </Grid>
-                <Grid Grid.Row="1" Margin="0,10,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Margin="0,0,0,2">
+                        <Separator Margin="19" Background="#7E5FDC" DockPanel.Dock="Top" Height="1"/>
 
-                        <RadioButton
+                        <StackPanel>
+                            <RadioButton
                             x:Name="btnHome"
                             Style="{StaticResource BtnHome}"
                             FontFamily="{StaticResource Custom}"
-                            Uid="0">
-                            <!--<i:Interaction.Triggers>
+                            Uid="0" Width="161">
+                                <!--<i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                        CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
@@ -75,33 +72,33 @@
                                                        CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>-->
-                        </RadioButton>
+                            </RadioButton>
 
-                        <RadioButton
+                            <RadioButton
                             Style="{StaticResource BtnCreateBill}"
                             Uid="1"
                             FontFamily="{StaticResource Custom}"
-                            x:Name="btnOrder"
+                            x:Name="btnOrder" Width="161"
                             >
-                            <!--<i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                        CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                                <i:EventTrigger EventName="MouseMove">
-                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseMove">
+                                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
                                                        CommandParameter="{Binding ElementName=btnOrder}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>-->
-                        </RadioButton>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </RadioButton>
 
-                        <RadioButton
+                            <RadioButton
                             Style="{StaticResource BtnProduct}"
                             FontFamily="{StaticResource Custom}"
                             Uid="2"
                             x:Name="btnProducts"
                             >
-                            <!--<i:Interaction.Triggers>
+                                <!--<i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                            CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
@@ -111,15 +108,15 @@
                                                            CommandParameter="{Binding ElementName=btnProducts}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>-->
-                        </RadioButton>
+                            </RadioButton>
 
-                        <RadioButton
+                            <RadioButton
                             Style="{StaticResource BtnKH}"
                             FontFamily="{StaticResource Custom}"
                             Uid="3"
                             x:Name="btnKH"
                             >
-                            <!--<i:Interaction.Triggers>
+                                <!--<i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                            CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
@@ -129,15 +126,15 @@
                                                            CommandParameter="{Binding ElementName=btnKH}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>-->
-                        </RadioButton>
+                            </RadioButton>
 
-                        <RadioButton 
+                            <RadioButton 
                             Style="{StaticResource BtnWarehouse}"
                             FontFamily="{StaticResource Custom}"
                             Uid="4"
                             x:Name="btnImport"
                             >
-                            <!--<i:Interaction.Triggers>
+                                <!--<i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                            CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
@@ -147,16 +144,16 @@
                                                            CommandParameter="{Binding ElementName=btnImport}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>-->
-                        </RadioButton>
+                            </RadioButton>
 
-                        <RadioButton 
+                            <RadioButton 
                             Visibility="{Binding SetQuanLy}"
                             Style="{StaticResource BtnStatistic}"
                             FontFamily="{StaticResource Custom}"
                             Uid="5"
                             x:Name="btnReport"
                             >
-                            <!--<i:Interaction.Triggers>
+                                <!--<i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                            CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
@@ -166,9 +163,9 @@
                                                            CommandParameter="{Binding ElementName=btnReport}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>-->
-                        </RadioButton>
+                            </RadioButton>
 
-                        <RadioButton
+                            <RadioButton
                             x:Name="btnQLNNV"
                             Uid="6"
                             Visibility="{Binding SetQuanLy}"
@@ -176,7 +173,7 @@
                             FontFamily="{StaticResource Custom}"
                             
                             >
-                            <!--<i:Interaction.Triggers>
+                                <!--<i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                            CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
@@ -186,46 +183,42 @@
                                                            CommandParameter="{Binding ElementName=btnQLNNV}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>-->
-                        </RadioButton>
-                    </StackPanel>
-                </Grid>
-            </Grid>
-            <Grid Grid.Row="2" Margin="0,95,0,100">
-                <StackPanel HorizontalAlignment="Center" Width="auto" Margin="0,0,0,-40">
+                            </RadioButton>
 
-                    <RadioButton
-                            Foreground="Black"                        
+                            <RadioButton
                             Style="{StaticResource BtnSetting}"
                             FontFamily="{StaticResource Custom}"
                             Uid="7"
                             x:Name="btnSetting">
-                    </RadioButton>
+                            </RadioButton>
 
-                    <Button Style="{StaticResource BtnLogOut}"
-                            FontFamily="{StaticResource Custom}">
-                    </Button>
-                </StackPanel>
+                            <Button Style="{StaticResource BtnLogOut}"
+                                    FontFamily="{StaticResource Custom}" Height="41">
+                            </Button>
+                        </StackPanel>
+                    </DockPanel>
 
+                </Border>
+                <Grid Grid.Row="1" Margin="0,0,0,131"/>
             </Grid>
             <Grid Grid.Column="2">
-                <TextBlock
-                        Text="NOVEA"
-                        FontSize="40"
-                        FontWeight="Medium"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Style="{StaticResource NameApp}" RenderTransformOrigin="0.5,0.5"
-                        >
+                <TextBlock Text="NOVEA"                       
+                           FontSize="40"                    
+                           FontWeight="Medium"                     
+                           HorizontalAlignment="Center"                      
+                           VerticalAlignment="Top"                      
+                           Style="{StaticResource NameApp}"                      
+                           Margin="20">
                     <TextBlock.Foreground>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
                             <GradientStop Color="Green" Offset="0"/>
                             <GradientStop Color="Blue" Offset="1"/>
                         </LinearGradientBrush>
                     </TextBlock.Foreground>
-                    
+
                 </TextBlock>
             </Grid>
         </Grid>
-    </Border>
 
+    </Border>
 </Window>
