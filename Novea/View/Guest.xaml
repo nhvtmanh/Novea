@@ -1,0 +1,129 @@
+﻿<Window x:Class="Novea.View.Guest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Novea.View"
+        mc:Ignorable="d"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Guest" Height="600" Width="1024">
+    <Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"></RowDefinition>
+                <RowDefinition Height="341"></RowDefinition>
+                <RowDefinition Height="284"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="161"></ColumnDefinition>
+                <ColumnDefinition Width="674"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Grid.RowSpan="3" Margin="0,0,0,100" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="19*"></RowDefinition>
+                    <RowDefinition Height="85*"></RowDefinition>
+                    <RowDefinition Height="46*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Background="LimeGreen" Height="600" VerticalAlignment="Top"/>
+                <Grid Grid.Row="0">
+                    <DockPanel Margin="0,0,0,-21">
+                        <Border
+                            Height="40"
+                            Width="40"
+                            Background="White"
+                            CornerRadius="50"
+                            Margin="6">
+                            <Ellipse Height="40" Width="40" VerticalAlignment="Top">
+                                <Ellipse.Fill>
+                                    <ImageBrush />
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <TextBlock x:Name="TenDangNhap" Text="nhvtmanh" FontSize="13" Foreground="Black" FontWeight="Medium"/>
+                            <TextBlock x:Name="Quyen" Text="Khách hàng" FontSize="11" Foreground="Black"/>
+                        </StackPanel>
+                    </DockPanel>
+                </Grid>
+                <Grid Grid.Row="1" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="0,0,0,2">
+                        <RadioButton
+                            x:Name="btnHome"
+                            Style="{StaticResource BtnHome}"
+                            FontFamily="{StaticResource Custom}"
+                            Uid="0">
+                            <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseMove">
+                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
+                        </RadioButton>
+
+                        <RadioButton
+                            x:Name="btnCart"
+                            Style="{StaticResource BtnCart}"
+                            FontFamily="{StaticResource Custom}"
+                            Uid="1">
+                            <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseMove">
+                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=btnOrder}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
+                        </RadioButton>
+
+                        <RadioButton
+                            x:Name="btnLSDH"
+                            Style="{StaticResource BtnLSDH}"
+                            FontFamily="{StaticResource Custom}"
+                            Uid="2">
+                            <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseMove">
+                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=btnOrder}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
+                        </RadioButton>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Margin="0,95,0,100">
+                <StackPanel HorizontalAlignment="Center" Width="auto" Margin="0,0,0,-40">
+                    <RadioButton
+                        x:Name="btnSetting"                                                
+                        Style="{StaticResource BtnSetting}"
+                        FontFamily="{StaticResource Custom}"
+                        Uid="3"
+                        Foreground="Black">
+                    </RadioButton>
+
+                    <Button 
+                        Style="{StaticResource BtnLogOut}"
+                        FontFamily="{StaticResource Custom}">
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
