@@ -48,6 +48,96 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style BasedOn="{StaticResource {x:Type RadioButton}}"
+           TargetType="RadioButton"
+           x:Key="BtnCart">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border
+                            Width="155"
+                            Height="40"
+                            CornerRadius="12"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding Background}"
+                            Margin="0,0,0,6"
+                            >
+                            <DockPanel>
+                                <materialDesign:PackIcon 
+                                    Kind="Cart"
+                                    Width="25"
+                                    Height="25"
+                                    VerticalAlignment="Center"
+                                    Margin="6"/>
+                                <TextBlock 
+                                    Text="GIỎ HÀNG"
+                                    FontSize="13"                                
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"/>
+                            </DockPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="Green"></Setter>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Red"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style BasedOn="{StaticResource {x:Type RadioButton}}"
+           TargetType="RadioButton"
+           x:Key="BtnLSDH">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border
+                            Width="155"
+                            Height="40"
+                            CornerRadius="12"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding Background}"
+                            Margin="0,0,0,6"
+                            >
+                            <DockPanel>
+                                <materialDesign:PackIcon 
+                                    Kind="History"
+                                    Width="25"
+                                    Height="25"
+                                    VerticalAlignment="Center"
+                                    Margin="6"/>
+                                <TextBlock 
+                                    Text="LỊCH SỬ ĐẶT HÀNG"
+                                    FontSize="13"                                
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"/>
+                            </DockPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="Green"></Setter>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Red"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
            TargetType="RadioButton"
            x:Key="BtnKH">
