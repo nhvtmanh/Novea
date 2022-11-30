@@ -7,38 +7,50 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="665"
+      d:DesignHeight="600" d:DesignWidth="863"
       Title="Product">
     <!--DataContext="{StaticResource ProductsVM}"-->
 
     <Border
-                    Height="550"
-                    Width="665"
-                    Background="LightBlue"
+                    Height="600"
+                    Width="863"
+                    Background="WhiteSmoke"
                     CornerRadius="40"
                     >
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="65"/>
-                <RowDefinition Height="80"/>
+                <RowDefinition Height="72"/>
+                <RowDefinition Height="73"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <TextBlock VerticalAlignment="Center" 
-                           FontSize="30" Margin="20,0,0,0" 
-                           FontFamily="{StaticResource Custom}" Foreground="White" 
+                <StackPanel Orientation="Horizontal" Margin="36,11,11,0">
+                    <TextBlock VerticalAlignment="Center"
+                               FontSize="35"                           
+                               FontFamily="{StaticResource Custom}"
+                               Width="177" 
+                               Foreground="#7B5CD6" Height="42"
                            >SẢN PHẨM</TextBlock>
+                    <Label Margin="40 0 0 0"
+                           FontSize="18"
+                           VerticalAlignment="Center"
+                           Foreground="#7B5CD6" Height="39"
+                        >TIMEKEEPING</Label>
+                </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
                 <StackPanel Orientation="Horizontal">
-                    <Border
-                        Margin="8,0,0,0"
-                        Height="40"
-                        Width="120"
-                        CornerRadius="10"
-                        Background="White"
-                        >
-                        <ComboBox
+                    <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"                         
+                              materialDesign:HintAssist.Hint="Sắp xếp theo"            
+                              materialDesign:HintAssist.Foreground="#000"
+                              Width="253" Height="46"
+                              Margin="30 0 0 0">
+                        <ComboBoxItem                     
+                            Content="Tăng dần"/>
+                        <ComboBoxItem
+                            Content="Giảm dần"/>
+                    </ComboBox>
+                    <!--<ComboBox
                         x:Name="cbxChon1"
                         Style="{StaticResource MaterialDesignFilledComboBox}"                            
                         materialDesign:TextFieldAssist.TextBoxViewMargin="8,-11,0,0"
@@ -59,15 +71,15 @@
                             <ComboBoxItem Content="Áo tay dài"/>
                             <ComboBoxItem Content="Quần"/>
                             <ComboBoxItem Content="Phụ kiện"/>
-                            <!--<i:Interaction.Triggers>
+                            <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
                                     <i:InvokeCommandAction Command="{Binding Filter}"
                                                        CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
-                            </i:Interaction.Triggers>-->
-                        </ComboBox>
-                    </Border>
-                    <Border
+                            </i:Interaction.Triggers>
+                        </ComboBox>-->
+
+                    <!--<Border
                         Margin="8,0,0,0"
                         Height="40"
                         Width="120"
@@ -97,45 +109,87 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                    </Border>
-                    <TextBox
-                                x:Name="txbSearch"
-                                Width="200"
-                                Height="40"
-                                Margin="10,0,0,0"
-                                BorderBrush="White"
-                                Foreground="White"
-                                FontSize="16"
-                                FontWeight="SemiBold"
-                                materialDesign:HintAssist.Hint="Tìm Kiếm"
-                                materialDesign:HintAssist.FontFamily="{StaticResource Custom}"
-                                materialDesign:HintAssist.Foreground="White"
-                                materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                materialDesign:TextFieldAssist.TextBoxViewMargin="10,3,0,0"
-                                BorderThickness="2"
-                                VerticalAlignment="Center" CaretBrush="White" >
-                        <!--<i:Interaction.Triggers>
+                    </Border>-->
+
+                    <StackPanel Orientation="Horizontal"
+                                Margin="145 0 0 0">
+                        <materialDesign:ColorZone Mode="Standard"                                               
+                                              Padding="8 4 8 4"                                               
+                                              CornerRadius="2"                                                
+                                              Panel.ZIndex="1"                                                
+                                              Margin="16 0 0 0"                                               
+                                              materialDesign:ElevationAssist.Elevation="Dp2"
+                                              VerticalAlignment="Center">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition                                
+                                    Width="*" />
+                                    <ColumnDefinition                                
+                                    Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button Style="{StaticResource MaterialDesignToolButton}">
+                                    <materialDesign:PackIcon Kind="Search"                                                                 
+                                                         Opacity=".56" />
+                                </Button>
+                                <TextBox x:Name="txbSearch"
+                                     Grid.Column="1"                                                  
+                                     Margin="8 0 0 0"                                                 
+                                     materialDesign:HintAssist.Hint="Tìm mã sản phẩm"                                                
+                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"                                                 
+                                     BorderThickness="0"                                                  
+                                     MinWidth="200"                                                  
+                                     VerticalAlignment="Center" >
+                                    <!--<i:Interaction.Triggers>
                             <i:EventTrigger EventName="TextChanged">
                                 <i:InvokeCommandAction Command="{Binding SearchCommand}"
                                                        CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>-->
-                    </TextBox>
-                    <Button Style="{StaticResource MaterialDesignOutlinedLightButton}"                                               
-                            ToolTip="MaterialDesignOutlinedButton"                       
-                            Content="THÊM"                          
-                            Width="100"           
-                            Margin="20 0 0 0"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        >
-                        <!--<i:Interaction.Triggers>
+                                </TextBox>
+                                <Button Style="{StaticResource MaterialDesignToolButton}"                                                    
+                                    Grid.Column="2">
+                                    <materialDesign:PackIcon Kind="Microphone"                                                     
+                                                         Opacity=".56"                                                   
+                                                         Margin="8 0 0 0" />
+                                </Button>
+                            </Grid>
+                        </materialDesign:ColorZone>
+
+                        <Button Style="{StaticResource MaterialDesignOutlinedLightButton}"                                                                        
+                                Width="90"                                     
+                                Margin="20 0 0 0"                           
+                                Background="#6741D9"
+                                Foreground="#fff"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"                                       
+                            >
+                            <StackPanel Orientation="Horizontal" 
+                                        Width="58" 
+                                        Height="22"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Plus" 
+                                                         Margin="0 0 1 0" 
+                                                         Width="11" 
+                                                         Height="11"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"/>
+                                <TextBlock Text="Thêm" 
+                                           Width="51"
+                                           FontSize="15"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <!--<i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding AddPdPdCommand}"
                                                        CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>-->
-                    </Button>
+                        </Button>
+                    </StackPanel>
+
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="2">
