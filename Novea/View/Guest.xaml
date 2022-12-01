@@ -3,25 +3,39 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
+        Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Title="Guest" Height="600" Width="1024"
         DataContext="{StaticResource GuestVM}">
-    <Border>
+    <Border CornerRadius="30" Background="#EFF2F7">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="75"></RowDefinition>
-                <RowDefinition Height="341"></RowDefinition>
-                <RowDefinition Height="284"></RowDefinition>
-            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="161"></ColumnDefinition>
                 <ColumnDefinition Width="674"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="22*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="1" Background="#623DE0" CornerRadius="0 50 0 30">
+                    <DockPanel VerticalAlignment="Top">
+                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="20 -30 35 0">
+                            <Ellipse>
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/Resources/Images/cheems.jpeg"></ImageBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                    </DockPanel>
+                </Border>  
+            </Grid>
             <Grid Grid.Column="0" Grid.RowSpan="3" Margin="0,0,0,100" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="19*"></RowDefinition>
