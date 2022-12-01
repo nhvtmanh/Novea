@@ -23,7 +23,7 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="1.2*"></RowDefinition>
                     <RowDefinition Height="22*"></RowDefinition>
                 </Grid.RowDefinitions>
 
