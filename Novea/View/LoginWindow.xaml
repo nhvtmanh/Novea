@@ -23,7 +23,7 @@
                 <ColumnDefinition Width="289*"/>
             </Grid.ColumnDefinitions>
             <Rectangle RadiusY="8" RadiusX="8" Fill="White" Grid.ColumnSpan="2"/>
-            <Image Source="G:\Downloads\dangnhap.jpg" Grid.Column="1" RenderTransformOrigin="0.5,0.5">
+            <Image Source="G:\Downloads\login.jpg" Grid.Column="1" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
