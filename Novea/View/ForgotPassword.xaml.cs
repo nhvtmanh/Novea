@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Novea.View
 {
     /// <summary>
-    /// Interaction logic for SignUp.xaml
+    /// Interaction logic for ForgotPassword.xaml
     /// </summary>
-    public partial class SignUp : Window
+    public partial class ForgotPassword : Window
     {
-        public SignUp()
+        public ForgotPassword()
         {
             InitializeComponent();
         }
