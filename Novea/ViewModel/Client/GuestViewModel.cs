@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Novea.ViewModel
+namespace Novea.ViewModel.Client
 {
     public class GuestViewModel : BaseViewModel
     {
