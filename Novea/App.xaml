@@ -3,7 +3,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:local="clr-namespace:Novea"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
-             StartupUri="/View/Admin/HomeView.xaml">
+             StartupUri="/View/Login/SignUp.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
