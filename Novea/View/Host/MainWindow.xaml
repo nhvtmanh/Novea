@@ -63,6 +63,7 @@
 
                         <StackPanel>
                             <RadioButton
+                                IsChecked="True"
                             x:Name="btnHome"
                             Style="{StaticResource BtnHome}"
                             FontFamily="{StaticResource Custom}"
