@@ -8,26 +8,23 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
-                        <Border
-                            Width="130"
-                            Height="35"
+                        <Border Width="140"
+                            Height="40"
                             CornerRadius="12"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
-                            Margin="0,0,0,6"
-                            Background="{TemplateBinding Background}"     
-                            >
+                            Background="{TemplateBinding Background}"
+                            Margin="0,0,0,6">
                             <DockPanel>
                                 <materialDesign:PackIcon Kind="Home"
-                                                         Width="19"
-                                                         Height="19"
-                                                         VerticalAlignment="Center"
+                                                         Width="22"                            
+                                                         Height="22"                            
+                                                         VerticalAlignment="Center"                             
                                                          Margin="6"/>
-                                <TextBlock 
-                                Text="TRANG CHỦ"
-                                FontSize="12"                                    
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"/>
+                                <TextBlock Text="TRANG CHỦ"                                
+                                           FontSize="15"                                                               
+                                           HorizontalAlignment="Left"                               
+                                           VerticalAlignment="Center"/>
                             </DockPanel>
                         </Border>
                     </ControlTemplate>
@@ -40,7 +37,7 @@
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="Green"></Setter>
+                <Setter Property="Background" Value="Purple"></Setter>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#7B5CD6" />
@@ -56,7 +53,7 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                            Width="130"
+                            Width="140"
                             Height="35"
                             CornerRadius="12"
                             HorizontalAlignment="Stretch"
@@ -67,14 +64,14 @@
                             <DockPanel>
                                 <materialDesign:PackIcon 
                                     Kind="Cart"
-                                    Width="19"
-                                    Height="19"
+                                    Width="22"
+                                    Height="22"
                                     VerticalAlignment="Center"
                                     Margin="6"/>
                                 <TextBlock 
                                     Text="GIỎ HÀNG"
-                                    FontSize="12"                                
-                                    HorizontalAlignment="Left"
+                                    FontSize="15"                                
+                                    HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
                             </DockPanel>
                         </Border>
@@ -88,7 +85,7 @@
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="Green"></Setter>
+                <Setter Property="Background" Value="Purple"></Setter>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#7B5CD6"/>
@@ -104,7 +101,7 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                            Width="130"
+                            Width="140"
                             Height="35"
                             CornerRadius="12"
                             HorizontalAlignment="Stretch"
@@ -115,13 +112,13 @@
                             <DockPanel>
                                 <materialDesign:PackIcon 
                                     Kind="History"
-                                    Width="19"
-                                    Height="19"
+                                    Width="22"
+                                    Height="22"
                                     VerticalAlignment="Center"
                                     Margin="6"/>
                                 <TextBlock 
                                     Text="LỊCH SỬ ĐẶT HÀNG"
-                                    FontSize="12"                                
+                                    FontSize="15"                                
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"/>
                             </DockPanel>
@@ -136,7 +133,7 @@
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="Green"></Setter>
+                <Setter Property="Background" Value="Purple"></Setter>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#7B5CD6"/>
@@ -144,6 +141,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
     <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
            TargetType="RadioButton"
            x:Key="BtnKH">
@@ -152,8 +150,8 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                            Width="130"
-                            Height="35"
+                            Width="140"
+                            Height="40"
                             CornerRadius="12"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
@@ -163,14 +161,14 @@
                             <DockPanel>
                                 <materialDesign:PackIcon
                                 Kind="AccountGroup"
-                                Width="19"
-                                Height="19"
+                                Width="22"
+                                Height="22"
                                 VerticalAlignment="Center"
                                 Margin="6"
                                 />
                                 <TextBlock 
                                 Text="KHÁCH HÀNG"
-                                FontSize="12"                                
+                                FontSize="15"                                
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                        />
@@ -186,7 +184,7 @@
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="Green"></Setter>
+                <Setter Property="Background" Value="Purple"></Setter>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#7B5CD6" />
@@ -202,8 +200,8 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                            Width="130"
-                            Height="35"
+                            Width="140"
+                            Height="40"
                             CornerRadius="12"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
@@ -213,14 +211,14 @@
                             <DockPanel>
                                 <materialDesign:PackIcon
                                 Kind="Cart"
-                                Width="19"
-                                Height="19"
+                                Width="22"
+                                Height="22"
                                 VerticalAlignment="Center"
                                 Margin="6"
                                 />
                                 <TextBlock 
                                 Text="ĐƠN HÀNG"
-                                FontSize="13"
+                                FontSize="15"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                        />
@@ -236,7 +234,7 @@
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="Green"></Setter>
+                <Setter Property="Background" Value="Purple"></Setter>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#7B5CD6" />
@@ -252,8 +250,8 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                            Width="130"
-                            Height="35"
+                            Width="140"
+                            Height="40"
                             CornerRadius="12"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
@@ -263,14 +261,14 @@
                             <DockPanel>
                                 <materialDesign:PackIcon
                                 Kind="Cog"
-                                Width="19"
-                                Height="19"
+                                Width="22"
+                                Height="22"
                                 VerticalAlignment="Center"
                                 Margin="6"
                                 />
                                 <TextBlock 
                                 Text="CÀI ĐẶT"
-                                FontSize="13"
+                                FontSize="15"                                
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                        />
@@ -286,7 +284,7 @@
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="Green"></Setter>
+                <Setter Property="Background" Value="Purple"></Setter>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#7B5CD6" />
@@ -302,8 +300,8 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                            Width="130"
-                            Height="35"
+                            Width="140"
+                            Height="40"
                             CornerRadius="12"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
@@ -313,14 +311,14 @@
                             <DockPanel>
                                 <materialDesign:PackIcon
                                 Kind="Beer"
-                                Width="19"
-                                Height="19"
+                                Width="22"
+                                Height="22"
                                 VerticalAlignment="Center"
                                 Margin="6"
                                 />
                                 <TextBlock 
                                 Text="SẢN PHẨM"
-                                FontSize="13"
+                                FontSize="15"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                        />
@@ -336,57 +334,7 @@
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="Green"></Setter>
-            </Trigger>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#7B5CD6" />
-                <Setter Property="Foreground" Value="#ffffff" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
-           TargetType="RadioButton"
-           x:Key="BtnWarehouse">
-        <Style.Setters>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Border
-                            Width="130"
-                            Height="35"
-                            CornerRadius="12"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Background="{TemplateBinding Background}"
-                            Margin="0,0,0,6"
-                            >
-                            <DockPanel>
-                                <materialDesign:PackIcon
-                                Kind="Warehouse"
-                                Width="19"
-                                Height="19"
-                                VerticalAlignment="Center"
-                                Margin="6"
-                                />
-                                <TextBlock 
-                                Text="NHẬP HÀNG"
-                                FontSize="13"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                       />
-                            </DockPanel>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Foreground" Value="#D0C0FF" />
-            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderThickness" Value="0"/>
-        </Style.Setters>
-        <Style.Triggers>
-            <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="Green"></Setter>
+                <Setter Property="Background" Value="Purple"></Setter>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#7B5CD6" />
@@ -402,8 +350,8 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                            Width="130"
-                            Height="35"
+                            Width="140"
+                            Height="40"
                             CornerRadius="12"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
@@ -413,14 +361,14 @@
                             <DockPanel>
                                 <materialDesign:PackIcon
                                 Kind="ChartAreaspline"
-                                Width="19"
-                                Height="19"
+                                Width="22"
+                                Height="22"
                                 VerticalAlignment="Center"
                                 Margin="6"
                                 />
                                 <TextBlock 
                                 Text="THỐNG KÊ"
-                                FontSize="13"
+                                FontSize="15"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                        />
@@ -436,7 +384,7 @@
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="Green"></Setter>
+                <Setter Property="Background" Value="Purple"></Setter>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#7B5CD6" />
@@ -452,8 +400,8 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Border
-                            Width="130"
-                            Height="35"
+                            Width="140"
+                            Height="40"
                             CornerRadius="12"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
@@ -463,14 +411,14 @@
                             <DockPanel>
                                 <materialDesign:PackIcon
                                 Kind="AccountCog"
-                                Width="19"
-                                Height="19"
+                                Width="22"
+                                Height="22"
                                 VerticalAlignment="Center"
                                 Margin="6"
                                 />
                                 <TextBlock 
                                 Text="QUẢN LÝ"
-                                FontSize="13"
+                                FontSize="15"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                        />
@@ -486,7 +434,7 @@
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="Green"></Setter>
+                <Setter Property="Background" Value="Purple"></Setter>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#7B5CD6" />
@@ -503,8 +451,8 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Border               
-                            Width="130"
-                            Height="35"
+                            Width="140"
+                            Height="40"
                             CornerRadius="12"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
@@ -513,14 +461,14 @@
                             <DockPanel>
                                 <materialDesign:PackIcon
                                 Kind="Logout"
-                                Width="19"
-                                Height="19"
+                                Width="22"
+                                Height="22"
                                 VerticalAlignment="Center"
                                 Margin="6"
                                 />
                                 <TextBlock 
                                 Text="ĐĂNG XUẤT"
-                                FontSize="13"
+                                FontSize="15"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                        />
@@ -536,7 +484,7 @@
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="Green"/>
+                <Setter Property="Background" Value="Purple"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#7B5CD6" />
