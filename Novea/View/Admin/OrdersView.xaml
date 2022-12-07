@@ -7,14 +7,14 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"      
       xmlns:local="clr-namespace:Novea.View.Admin"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="863"
+      d:DesignHeight="600" d:DesignWidth="820"
       Title="OrdersView">
 
     <Border
                     Height="600"
-                    Width="863"
+                    Width="820"
                     Background="WhiteSmoke"
-                    CornerRadius="40"
+                    CornerRadius="0 40 40 0"
                     >
         <Grid>
             <Grid.RowDefinitions>
@@ -28,6 +28,7 @@
                                FontSize="35"                           
                                FontFamily="{StaticResource Custom}"
                                Width="193" 
+                               FontWeight="Medium"
                                Foreground="#7B5CD6" Height="42"
                            >ĐƠN HÀNG</TextBlock>
                     <Label Margin="40 0 0 0"
@@ -38,7 +39,7 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="0,0,14,0">
                     <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"                         
                               materialDesign:HintAssist.Hint="Sắp xếp theo"            
                               materialDesign:HintAssist.Foreground="#000"
@@ -111,12 +112,11 @@
                     </Border>-->
 
                     <StackPanel Orientation="Horizontal"
-                                Margin="145 0 0 0">
+                                Margin="124 0 0 0">
                         <materialDesign:ColorZone Mode="Standard"                                               
                                               Padding="8 4 8 4"                                               
                                               CornerRadius="2"                                                
                                               Panel.ZIndex="1"                                                
-                                              Margin="16 0 0 0"                                               
                                               materialDesign:ElevationAssist.Elevation="Dp2"
                                               VerticalAlignment="Center">
                             <Grid>
