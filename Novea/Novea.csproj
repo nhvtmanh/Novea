@@ -80,6 +80,9 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\Client\GuestViewModel.cs" />
     <Compile Include="ViewModel\Admin\HomeViewModel.cs" />
+    <Compile Include="View\Admin\AddProducts.xaml.cs">
+      <DependentUpon>AddProducts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\CustomerView.xaml.cs">
       <DependentUpon>CustomerView.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,10 @@
       <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\Reusable Code\MainResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\AddProducts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

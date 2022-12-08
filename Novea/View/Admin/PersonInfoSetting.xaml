@@ -15,7 +15,8 @@
             <RowDefinition Height="26*"/>
             <RowDefinition Height="199*"/>
         </Grid.RowDefinitions>
-        <Button Width="100" 
+        <Button Style="{StaticResource MaterialDesignOutlinedDarkButton}"
+                Width="100" 
                 Grid.Row="0"
                 HorizontalAlignment="Left"
                 Margin="10,10,0,10"
@@ -107,15 +108,6 @@
                 <Grid Grid.Column="2" Margin="0,0,0,140" Grid.RowSpan="2">
                     <StackPanel>
 
-                        <TextBox Foreground="Black" 
-                                 Margin="0 20 50 0"
-                            Style="{StaticResource MaterialDesignFilledTextBox}"
-                            AcceptsReturn="True"
-                            TextWrapping="Wrap"
-                            MaxWidth="190"
-                            FontFamily="{StaticResource Custom}"
-                            materialDesign:HintAssist.Hint="Tên đăng nhập" Text="{Binding Name}" Width="190"/>
-
                         <TextBox Foreground="Black"
                                  Margin="0 20 50 0"
                             Style="{StaticResource MaterialDesignFilledTextBox}"
@@ -152,7 +144,9 @@
         </Border>
         <Button Grid.Row="1"                                        
                 Style="{StaticResource MaterialDesignRaisedButton}"                       
-                Width="390" Margin="310,277,120,160"                       
+                Width="390" 
+                Margin="310,277,120,110"  
+                Height="45"
                 Content="CẬP NHẬT THÔNG TIN" FontFamily="{StaticResource Custom}"                       
                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" >
             <i:Interaction.Triggers>

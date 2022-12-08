@@ -153,7 +153,9 @@
                             </Grid>
                         </materialDesign:ColorZone>
 
-                        <Button Style="{StaticResource MaterialDesignOutlinedLightButton}"                                                                        
+                        <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                ToolTip="Thêm"                                                                         
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"                                                               
                                 Width="90"                                     
                                 Margin="20 0 0 0"                           
                                 Background="#6741D9"
@@ -216,7 +218,7 @@
                             </Grid>
                             <Grid Grid.Column="1">
                                 <TextBlock
-                                HorizontalAlignment="Left"
+                                HorizontalAlignment="Center"
                                 Text="TÊN SẢN PHẨM"
                                 VerticalAlignment="Center"
                                 FontFamily="{StaticResource Custom}"
@@ -225,7 +227,7 @@
                             </Grid>
                             <Grid Grid.Column="2">
                                 <TextBlock
-                                Text="MÔ TẢ"
+                                Text="THỂ LOẠI"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 FontFamily="{StaticResource Custom}"

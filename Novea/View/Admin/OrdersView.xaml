@@ -120,7 +120,7 @@
                                               Panel.ZIndex="1"                                                
                                               materialDesign:ElevationAssist.Elevation="Dp2"
                                               VerticalAlignment="Center">
-                            <Grid>
+                            <Grid Width="372">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition                                
@@ -155,39 +155,6 @@
                                 </Button>
                             </Grid>
                         </materialDesign:ColorZone>
-
-                        <Button Style="{StaticResource MaterialDesignOutlinedLightButton}"                                                                        
-                                Width="90"                                     
-                                Margin="20 0 0 0"                           
-                                Background="#6741D9"
-                                Foreground="#fff"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"                                       
-                            >
-                            <StackPanel Orientation="Horizontal" 
-                                        Width="58" 
-                                        Height="22"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center">
-                                <materialDesign:PackIcon Kind="Plus" 
-                                                         Margin="0 0 1 0" 
-                                                         Width="11" 
-                                                         Height="11"
-                                                         HorizontalAlignment="Center"
-                                                         VerticalAlignment="Center"/>
-                                <TextBlock Text="Thêm" 
-                                           Width="51"
-                                           FontSize="15"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
-                            </StackPanel>
-                            <!--<i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding AddPdPdCommand}"
-                                                       CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>-->
-                        </Button>
                     </StackPanel>
 
                 </StackPanel>
@@ -219,8 +186,8 @@
                             </Grid>
                             <Grid Grid.Column="1">
                                 <TextBlock
-                                HorizontalAlignment="Left"
-                                Text="KHÁCH HÀNG"
+                                HorizontalAlignment="Center"
+                                Text="NGƯỜI MUA"
                                 VerticalAlignment="Center"
                                 FontFamily="{StaticResource Custom}"
                                 FontSize="12"
@@ -228,11 +195,11 @@
                             </Grid>
                             <Grid Grid.Column="2">
                                 <TextBlock
-                                Text="NGÀY"
-                                HorizontalAlignment="Center"
+                                Text="THỜI GIAN"
+                                HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 FontFamily="{StaticResource Custom}"
-                                FontSize="12"
+                                FontSize="12" Margin="65,0,0,0"
                                 />
                             </Grid>
                             <Grid Grid.Column="3">
