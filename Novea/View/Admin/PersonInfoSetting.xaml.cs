@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Novea.View.Login
+namespace Novea.View.Admin
 {
     /// <summary>
-    /// Interaction logic for SignUp.xaml
+    /// Interaction logic for PersonInfoSetting.xaml
     /// </summary>
-    public partial class SignUp : Window
+    public partial class PersonInfoSetting : Page
     {
-        public SignUp()
+        public PersonInfoSetting()
         {
             InitializeComponent();
         }

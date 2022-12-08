@@ -25,18 +25,15 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <StackPanel Orientation="Horizontal" Margin="36,11,11,0">
-                    <TextBlock VerticalAlignment="Center"
-                               FontSize="35"                           
-                               FontFamily="{StaticResource Custom}"
-                               Width="185" 
-                               FontWeight="Medium"
-                               Foreground="#7B5CD6" Height="42"
-                           >SẢN PHẨM</TextBlock>
-                    <Label Margin="40 0 0 0"
-                           FontSize="18"
-                           VerticalAlignment="Center"
-                           Foreground="#7B5CD6" Height="39"
-                        >TIMEKEEPING</Label>
+                    <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
+                        <Ellipse Width="45" Height="45">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/Resources/Images/q1.png"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Border>
+
+                    <TextBlock Text="SẢN PHẨM" Foreground="#6741D9" FontSize="28" Margin="15 0 0 0" VerticalAlignment="Center"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">

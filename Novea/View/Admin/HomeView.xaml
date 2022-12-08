@@ -20,7 +20,7 @@
 
         <TextBlock Text="TRANG CHỦ"
                    Foreground="White"
-                   FontSize="50"
+                   FontSize="45"
                    FontWeight="Medium"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
