@@ -12,17 +12,16 @@
         ResizeMode="NoResize"
         Title="Guest" Height="600" Width="1024"
         DataContext="{StaticResource GuestVM}">
-    <Border CornerRadius="30" Background="#EFF2F7">
+    <Border CornerRadius="40" Background="#EFF2F7">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="161"></ColumnDefinition>
-                <ColumnDefinition Width="674"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="204"></ColumnDefinition>
+                <ColumnDefinition Width="820"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1.2*"></RowDefinition>
-                    <RowDefinition Height="22*"></RowDefinition>
+                    <RowDefinition Height="19*"></RowDefinition>
+                    <RowDefinition Height="131*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Border Grid.Row="1" Grid.Column="0" Background="#623DE0" CornerRadius="0 50 0 30">
                     <DockPanel VerticalAlignment="Top">

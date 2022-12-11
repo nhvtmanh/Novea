@@ -54,7 +54,7 @@
                     <ControlTemplate>
                         <Border
                             Width="140"
-                            Height="35"
+                            Height="40"
                             CornerRadius="12"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
@@ -71,7 +71,7 @@
                                 <TextBlock 
                                     Text="GIỎ HÀNG"
                                     FontSize="15"                                
-                                    HorizontalAlignment="Center"
+                                    HorizontalAlignment="Left"
                                     VerticalAlignment="Center"/>
                             </DockPanel>
                         </Border>
@@ -102,7 +102,7 @@
                     <ControlTemplate>
                         <Border
                             Width="140"
-                            Height="35"
+                            Height="40"
                             CornerRadius="12"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
