@@ -23,9 +23,29 @@
                     <RowDefinition Height="19*"></RowDefinition>
                     <RowDefinition Height="131*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border Grid.Row="1" Grid.Column="0" Background="#623DE0" CornerRadius="0 50 0 30">
-                    <DockPanel VerticalAlignment="Top">
-                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="20 -30 35 0">
+                <TextBlock Text="NOVEA"                       
+                           FontSize="40"                    
+                           FontWeight="Medium"                     
+                           HorizontalAlignment="Center"                      
+                           VerticalAlignment="Center"                      
+                           Style="{StaticResource NameApp}"                      
+                           Width="134"
+                           Height="48">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                            <GradientStop Color="Purple" Offset="0"/>
+                            <GradientStop Color="Blue" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <Border Grid.Row="1" Background="#623DE0" CornerRadius="0 50 0 40">
+                    <DockPanel VerticalAlignment="Center" Height="498">
+                        <Border Width="80" 
+                                Height="80"                                
+                                CornerRadius="100" 
+                                DockPanel.Dock="Top" 
+                                HorizontalAlignment="Center" 
+                                Margin="20 -30 35 0">
                             <Ellipse>
                                 <Ellipse.Fill>
                                     <ImageBrush ImageSource="/Resources/Images/cheems.jpeg"></ImageBrush>
@@ -47,14 +67,18 @@
                             FontWeight="SemiBold" 
                             DockPanel.Dock="Top" 
                             TextAlignment="Center"/>
-                        <Separator Margin="19" Background="#7E5FDC" DockPanel.Dock="Top" Height="1"/>
-                        <StackPanel>
+                        <Separator Margin="15" 
+                                   Background="#7E5FDC" 
+                                   DockPanel.Dock="Top" 
+                                   Height="1"/>
+                        <StackPanel Height="373">
                             <RadioButton
                                 x:Name="btnHome"
                                 Style="{StaticResource BtnHome}"
                                 FontFamily="{StaticResource Custom}"
-                                Uid="0" Width="161">
-                                    <!--<i:Interaction.Triggers>
+                                Uid="0" 
+                                IsChecked="True">
+                                <!--<i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                            CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
@@ -65,13 +89,13 @@
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>-->
                             </RadioButton>
-                            
+
                             <RadioButton
                                 x:Name="btnCart"
                                 Style="{StaticResource BtnCart}"
                                 FontFamily="{StaticResource Custom}"
                                 Uid="1">
-                                    <!--<i:Interaction.Triggers>
+                                <!--<i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                            CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
@@ -88,7 +112,7 @@
                                 Style="{StaticResource BtnLSDH}"
                                 FontFamily="{StaticResource Custom}"
                                 Uid="2">
-                                    <!--<i:Interaction.Triggers>
+                                <!--<i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                            CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
@@ -99,39 +123,26 @@
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>-->
                             </RadioButton>
-                            
+
                             <RadioButton
                                 x:Name="btnSetting"                                                
                                 Style="{StaticResource BtnSetting}"
                                 FontFamily="{StaticResource Custom}"
-                                Uid="3"
-                                > 
+                                Uid="3">
                             </RadioButton>
 
                             <Button 
                                 Style="{StaticResource BtnLogOut}"
-                                FontFamily="{StaticResource Custom}">   
+                                FontFamily="{StaticResource Custom}"
+                                Height="41"
+                                Margin="0 140 0 0">
                             </Button>
                         </StackPanel>
                     </DockPanel>
                 </Border>
-                <Grid Grid.Row="1" Margin="0,0,0,131"/>
             </Grid>
-            <Grid Grid.Column="2">
-                <TextBlock Text="NOVEA"                       
-                           FontSize="40"                    
-                           FontWeight="Medium"                     
-                           HorizontalAlignment="Center"                      
-                           VerticalAlignment="Top"                      
-                           Style="{StaticResource NameApp}"                      
-                           Margin="20">
-                    <TextBlock.Foreground>
-                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                            <GradientStop Color="Green" Offset="0"/>
-                            <GradientStop Color="Blue" Offset="1"/>
-                        </LinearGradientBrush>
-                    </TextBlock.Foreground>
-                </TextBlock>
+            <Grid Grid.Column="1">
+                
             </Grid>
         </Grid>
     </Border>
