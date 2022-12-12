@@ -7,31 +7,41 @@ using System.Windows.Input;
 
 namespace Novea.ViewModel
 {
-    public class RelayCommand : ICommand
+    public class RelayCommand<T> : ICommand
     {
-        private readonly Predicate<object> _canExecute;
-        private readonly Action<object> _execute;
+        private readonly Predicate<T> _canExecute;
+        private readonly Action<T> _execute;
 
-        public RelayCommand(Predicate<object> canExecute, Action<object> execute)
+        public RelayCommand(Predicate<T> canExecute, Action<T> execute)
         {
             if (execute == null)
                 throw new ArgumentNullException("execute");
             _canExecute = canExecute;
             _execute = execute;
         }
+
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
+
         public bool CanExecute(object parameter)
         {
-            return _canExecute == null ? true : _canExecute(parameter);
-           
+            try
+            {
+                return _canExecute == null ? true : _canExecute((T)parameter);
+            }
+            catch
+            {
+                return true;
+            }
         }
+
         public void Execute(object parameter)
         {
-            _execute(parameter);
+            _execute((T)parameter);
         }
+
     }
 }

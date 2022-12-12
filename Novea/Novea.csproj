@@ -119,7 +119,11 @@
     <Compile Include="View\Login\SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resources\Reusable Code\MainResources.xaml">
+    <Page Include="Resources\Reusable Code\AdminMainResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Reusable Code\ClientMainResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

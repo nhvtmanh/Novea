@@ -3,16 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"         
         xmlns:local="clr-namespace:Novea"
-        mc:Ignorable="d"
         AllowsTransparency="True"
         WindowStyle="None"
         ResizeMode="NoResize"
-        
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         Title="MainWindow"
         Height="600" Width="1024" WindowStartupLocation="CenterScreen"
-        Background="Transparent">
+        Background="Transparent"
+        DataContext="{StaticResource MainVM}">
 
     <Border CornerRadius="40" Background="#EFF2F7">
         <Grid>
@@ -41,7 +40,7 @@
                 </TextBlock>
 
                 <Border Grid.Row="1" Grid.Column="0" Background="#623ED0" CornerRadius="0 50 0 40">
-                    <DockPanel VerticalAlignment="Center" Height="498">
+                    <DockPanel VerticalAlignment="Center" Height="504">
 
                         <Border Width="80" 
                                 Height="80" 
@@ -49,7 +48,8 @@
                                 Background="White" 
                                 CornerRadius="100" 
                                 DockPanel.Dock="Top" 
-                                HorizontalAlignment="Left" Margin="20 -30 35 0">
+                                HorizontalAlignment="Center"                                
+                                Margin="20 -30 35 0">
                             <Ellipse >
                                 <Ellipse.Fill>
                                     <ImageBrush ImageSource="/Resources/Images/images.png"/>
@@ -81,7 +81,7 @@
                                          FontFamily="{StaticResource Custom}"                           
                                          Uid="0" 
                                          Width="161">
-                                <!--<i:Interaction.Triggers>
+                                <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                        CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
@@ -90,7 +90,7 @@
                                     <i:InvokeCommandAction Command="{Binding GetIdTab}"
                                                        CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
-                            </i:Interaction.Triggers>-->
+                            </i:Interaction.Triggers>
                             </RadioButton>
 
                             <RadioButton
@@ -183,9 +183,12 @@
                 </Border>
                 <Grid Grid.Row="1" Margin="0,0,0,131"/>
             </Grid>
-            <Grid Grid.Column="1" Margin="631,0,0,0">
-
-            </Grid>
+            <Frame x:Name="Main" 
+                   Grid.Column="1" 
+                   Source="/View/Admin/HomeView.xaml" 
+                   NavigationUIVisibility="Hidden" 
+                   DataContext="{StaticResource MainVM}">
+            </Frame>
         </Grid>
 
     </Border>
