@@ -20,7 +20,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <StackPanel Orientation="Horizontal" Margin="28,11,11,0">
+                <StackPanel Orientation="Horizontal" Margin="28 11 11 0">
                     <Border>
                         <Image Source="/Resources/Images/orderhistory.png"/>
                     </Border>
