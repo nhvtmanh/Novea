@@ -2,13 +2,14 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"         
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"     
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"     
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"        
         xmlns:local="clr-namespace:Novea"
         AllowsTransparency="True"
         WindowStyle="None"
         ResizeMode="NoResize"
-        Title="MainWindow"
+        x:Name="Mainwd"
         Height="600" Width="1024" WindowStartupLocation="CenterScreen"
         Background="Transparent"
         DataContext="{StaticResource MainVM}">
@@ -21,23 +22,35 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="19*"></RowDefinition>
-                    <RowDefinition Height="131*"></RowDefinition>
+                    <RowDefinition Height="47*"></RowDefinition>
+                    <RowDefinition Height="253*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="NOVEA"                       
-                           FontSize="40"                    
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="15 0 0 0"
+                            Grid.Row="0">
+                    <TextBlock Text="NOVEA"                       
+                           FontSize="30"                    
                            FontWeight="Medium"                     
                            HorizontalAlignment="Center"                      
-                           VerticalAlignment="Center"                      
-                           Style="{StaticResource NameApp}" Height="48" Width="134">
-                    <TextBlock.Foreground>
-                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                            <GradientStop Color="Purple" Offset="0"/>
-                            <GradientStop Color="Blue" Offset="1"/>
-                        </LinearGradientBrush>
-                    </TextBlock.Foreground>
-                </TextBlock>
+                           VerticalAlignment="Top"         
+                           Style="{StaticResource NameApp}" Height="36" Width="131">
+
+                        <TextBlock.Foreground>
+                            <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                <GradientStop Color="Purple" Offset="0"/>
+                                <GradientStop Color="Blue" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TextBlock.Foreground>
+                                       
+                    <materialDesign:PackIcon Kind="Dog" 
+                                             Height="23"
+                                             Width="25" VerticalAlignment="Bottom"/>
+                    </TextBlock>
+                </StackPanel>
+                
 
                 <Border Grid.Row="1" Grid.Column="0" Background="#623ED0" CornerRadius="0 50 0 40">
                     <DockPanel VerticalAlignment="Center" Height="504">
@@ -82,15 +95,15 @@
                                          Uid="0" 
                                          Width="161">
                                 <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                        CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                                <i:EventTrigger EventName="MouseMove">
-                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseMove">
+                                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
                                                        CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                             </RadioButton>
 
                             <RadioButton
@@ -117,7 +130,7 @@
                             Uid="2"
                             x:Name="btnProducts"
                             >
-                                <!--<i:Interaction.Triggers>
+                                <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                            CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
@@ -126,7 +139,7 @@
                                     <i:InvokeCommandAction Command="{Binding GetIdTab}"
                                                            CommandParameter="{Binding ElementName=btnProducts}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
-                            </i:Interaction.Triggers>-->
+                            </i:Interaction.Triggers>
                             </RadioButton>
 
                             <RadioButton
@@ -135,7 +148,7 @@
                             Uid="3"
                             x:Name="btnKH"
                             >
-                                <!--<i:Interaction.Triggers>
+                                <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                            CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
@@ -144,18 +157,18 @@
                                     <i:InvokeCommandAction Command="{Binding GetIdTab}"
                                                            CommandParameter="{Binding ElementName=btnKH}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
-                            </i:Interaction.Triggers>-->
+                            </i:Interaction.Triggers>
                             </RadioButton>
 
                             <RadioButton
                             x:Name="btnQLNNV"
-                            Uid="6"
+                            Uid="4"
                             Visibility="{Binding SetQuanLy}"
                             Style="{StaticResource BtnManage}"
                             FontFamily="{StaticResource Custom}"
                             
                             >
-                                <!--<i:Interaction.Triggers>
+                                <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                            CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
@@ -164,32 +177,98 @@
                                     <i:InvokeCommandAction Command="{Binding GetIdTab}"
                                                            CommandParameter="{Binding ElementName=btnQLNNV}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
-                            </i:Interaction.Triggers>-->
+                            </i:Interaction.Triggers>
                             </RadioButton>
 
                             <RadioButton
                             Style="{StaticResource BtnSetting}"
                             FontFamily="{StaticResource Custom}"
-                            Uid="7"
+                            Uid="5"
                             x:Name="btnSetting">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseMove">
+                                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                           CommandParameter="{Binding ElementName=btnSetting}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                             </RadioButton>
                             <Button Style="{StaticResource BtnLogOut}"
                                     FontFamily="{StaticResource Custom}"
                                     Height="41"
                                     Margin="0 43 0 0" Width="134"/>
+                            
                         </StackPanel>
                     </DockPanel>
 
                 </Border>
-                <Grid Grid.Row="1" Margin="0,0,0,131"/>
             </Grid>
-            <Frame x:Name="Main" 
-                   Grid.Column="1" 
-                   Source="/View/Admin/HomeView.xaml" 
-                   NavigationUIVisibility="Hidden" 
-                   DataContext="{StaticResource MainVM}">
-            </Frame>
+            <Grid Grid.Column="1">
+                <Border>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <!--Control bar-->
+                            <RowDefinition Height="25"/>
+                            <!--Header / Caption-->
+                            <RowDefinition Height="35"/>
+                            <!--Content section / Child views-->
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!--Control bar-->
+                        <StackPanel x:Name="pnlControlBar"
+                                Grid.Row="0"
+                                Orientation="Horizontal"
+                                FlowDirection="RightToLeft"
+                                Background="Transparent"
+                                Margin="0,0,5,0"
+                                MouseLeftButtonDown="pnlControlBar_MouseLeftButtonDown"
+                                MouseEnter="pnlControlBar_MouseEnter">
+
+                            <materialDesign:PackIcon Kind="CloseThick" Foreground="Black" Height="24" Width="24" Margin="23 5 0 0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding CloseLogin}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </materialDesign:PackIcon>
+
+                            <materialDesign:PackIcon Kind="WindowMaximize" Foreground="Black" Height="24" Width="24" Margin="5 5 0 0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding MaximizeLogin}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </materialDesign:PackIcon>
+
+                            <materialDesign:PackIcon Kind="WindowMinimize" Foreground="Black" Height="24" Width="24" Margin="5 5 0 0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding MinimizeLogin}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </materialDesign:PackIcon>
+                            
+                            
+                            
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Frame x:Name="Main" 
+                       Source="/view/Admin/HomeView.xaml"
+                       NavigationUIVisibility="Hidden"
+                       DataContext="{StaticResource MainVM}">
+                </Frame>
+            </Grid>
+            
         </Grid>
 
     </Border>
+    
 </Window>
