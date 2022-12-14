@@ -85,9 +85,153 @@
                                    DockPanel.Dock="Top" 
                                    TextAlignment="Center"/>
 
-                        <Separator Margin="15" Background="#7E5FDC" DockPanel.Dock="Top" Height="1"/>
+                        <Separator Margin="15" Background="#7E5FDC" DockPanel.Dock="Top" Height="5"/>
 
-                        <StackPanel Height="373">
+                        <StackPanel>
+                            
+                            <RadioButton Style="{StaticResource menuButton}"                                
+                                         Tag="{StaticResource color1}"                                
+                                         IsChecked="True"
+                                         x:Name="btnHome"                                                                   
+                                         Uid="0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseMove">
+                                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Home" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="TRANG CHỦ" Style="{StaticResource menuButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+                            
+                            <RadioButton Style="{StaticResource menuButton}"                              
+                                         Tag="{StaticResource color2}"
+                                         Uid="1"
+                                         x:Name="btnOrder">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseMove">
+                                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=btnOrder}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Cart" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="ĐƠN HÀNG" Style="{StaticResource menuButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+                            
+                            <RadioButton Style="{StaticResource menuButton}"                                 
+                                         Tag="{StaticResource color3}"
+                                         Uid="2"
+                                         x:Name="btnProduct">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseMove">
+                                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=btnProduct}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Drink" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="SẢN PHẨM" Style="{StaticResource menuButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+                            
+                            <RadioButton Style="{StaticResource menuButton}"                                 
+                                         Tag="{StaticResource color4}"
+                                         Uid="3"
+                                         x:Name="btnCustomer">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseMove">
+                                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=btnCustomer}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="AccountMultiple" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="KHÁCH HÀNG" Style="{StaticResource menuButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+                            
+                            <RadioButton Style="{StaticResource menuButton}"                                 
+                                         Tag="{StaticResource color5}"
+                                         Uid="4"
+                                         x:Name="btnManagement">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseMove">
+                                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=btnManagement}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="FaceAgent" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="QUẢN LÝ" Style="{StaticResource menuButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+                            
+                            <RadioButton Style="{StaticResource menuButton}"                                
+                                         Tag="{StaticResource color6}"
+                                         Uid="5"
+                                         x:Name="btnSetting">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseMove">
+                                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=btnSetting}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Cog" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="CÀI ĐẶT" Style="{StaticResource menuButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+
+                            <RadioButton Style="{StaticResource menuButton}"                                
+                                         Tag="{StaticResource color7}"
+                                         Uid="6"
+                                         x:Name="btnLogout">
+                                
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding LogOutCommand}"
+                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="ĐĂNG XUẤT" Style="{StaticResource menuButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+
+                        </StackPanel>
+                        
+                        
+                        
+                        <!--<StackPanel Height="373">
                             <RadioButton IsChecked="True"                           
                                          x:Name="btnHome"                          
                                          Style="{StaticResource BtnHome}"                           
@@ -201,7 +345,7 @@
                                     Height="41"
                                     Margin="0 43 0 0" Width="134"/>
                             
-                        </StackPanel>
+                        </StackPanel>-->
                     </DockPanel>
 
                 </Border>

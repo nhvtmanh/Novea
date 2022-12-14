@@ -1,4 +1,5 @@
 ﻿//using Novea.Model;
+using Novea.View;
 using Novea.View.Admin;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace Novea.ViewModel.Admin
         public ICommand MinimizeLogin { get; set; }
         public ICommand GetIdTab { get; set; }
         public ICommand SwitchTab { get; set; }
+        public ICommand LogOutCommand { get; set; }
+
         public string Name;
 
         public MainViewModel()
@@ -28,6 +31,14 @@ namespace Novea.ViewModel.Admin
             MinimizeLogin = new RelayCommand<MainWindow>((p) => true, (p) => Minimize(p));
             GetIdTab = new RelayCommand<RadioButton>((p) => true, (p) => Name = p.Uid);
             SwitchTab = new RelayCommand<MainWindow>((p) => true, (p) => switchtab(p));
+            LogOutCommand = new RelayCommand<MainWindow>((p) => { return true; }, (p) => LogOut(p));
+
+        }
+        void LogOut(MainWindow p)
+        {
+            LoginWindow login = new LoginWindow();
+            login.Show();
+            p.Close();
         }
 
         void switchtab(MainWindow p)

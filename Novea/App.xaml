@@ -14,6 +14,7 @@
                 <ResourceDictionary Source="/Resources/Reusable Code/StylesResources.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Resources/Reusable Code/ClientMainResources.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Resources/Reusable Code/AdminMainResources.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Resources/Reusable Code/ColorPallete.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
