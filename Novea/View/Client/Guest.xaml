@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Background="Transparent"
         AllowsTransparency="True"
@@ -70,12 +71,12 @@
                         <Separator Margin="15" 
                                    Background="#7E5FDC" 
                                    DockPanel.Dock="Top" 
-                                   Height="1"/>
-                        <StackPanel Height="373">
+                                   Height="5"/>
+                        <StackPanel>
                             <RadioButton
                                 x:Name="btnHome"
-                                Style="{StaticResource BtnHome}"
-                                FontFamily="{StaticResource Custom}"
+                                Style="{StaticResource menuButton}"
+                                Tag="{StaticResource color1}"
                                 Uid="0" 
                                 IsChecked="True">
                                 <i:Interaction.Triggers>
@@ -88,12 +89,16 @@
                                                            CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Home" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="TRANG CHỦ" Style="{StaticResource menuButtonText}"/>
+                                </StackPanel>
                             </RadioButton>
 
                             <RadioButton
                                 x:Name="btnCart"
-                                Style="{StaticResource BtnCart}"
-                                FontFamily="{StaticResource Custom}"
+                                Style="{StaticResource menuButton}"
+                                Tag="{StaticResource color2}"
                                 Uid="1">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
@@ -105,12 +110,16 @@
                                                            CommandParameter="{Binding ElementName=btnCart}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Cart" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="GIỎ HÀNG" Style="{StaticResource menuButtonText}"/>
+                                </StackPanel>
                             </RadioButton>
 
                             <RadioButton
                                 x:Name="btnLSDH"
-                                Style="{StaticResource BtnLSDH}"
-                                FontFamily="{StaticResource Custom}"
+                                Style="{StaticResource menuButton}"
+                                Tag="{StaticResource color3}"
                                 Uid="2">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
@@ -122,12 +131,16 @@
                                                            CommandParameter="{Binding ElementName=btnLSDH}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="History" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="LỊCH SỬ ĐẶT HÀNG" Style="{StaticResource menuButtonText}"/>
+                                </StackPanel>
                             </RadioButton>
 
                             <RadioButton
                                 x:Name="btnSetting"                                                
-                                Style="{StaticResource BtnSetting}"
-                                FontFamily="{StaticResource Custom}"
+                                Style="{StaticResource menuButton}"
+                                Tag="{StaticResource color4}"
                                 Uid="3">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
@@ -139,14 +152,29 @@
                                                            CommandParameter="{Binding ElementName=btnSetting}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Settings" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="CÀI ĐẶT" Style="{StaticResource menuButtonText}"/>
+                                </StackPanel>
                             </RadioButton>
 
-                            <Button 
-                                Style="{StaticResource BtnLogOut}"
-                                FontFamily="{StaticResource Custom}"
-                                Height="41"
-                                Margin="0 140 0 0">
-                            </Button>
+                            <RadioButton 
+                                x:Name="btnLogout"
+                                Style="{StaticResource menuButton}"                                
+                                Tag="{StaticResource color5}"
+                                Uid="4">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding LogOutCommand}"
+                                                           CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="ĐĂNG XUẤT" Style="{StaticResource menuButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+
                         </StackPanel>
                     </DockPanel>
                 </Border>
