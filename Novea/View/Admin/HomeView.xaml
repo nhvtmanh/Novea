@@ -7,15 +7,15 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Novea.View.Admin"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="820"
+      d:DesignHeight="565" d:DesignWidth="820"
       Title="HomeView">
 
     <Border Background="#223266" CornerRadius="0 40 40 0">
         <Grid  >
             <Grid.RowDefinitions>
-                <RowDefinition Height="87*"/>
-                <RowDefinition Height="155*"/>
-                <RowDefinition Height="358*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="146*"/>
+                <RowDefinition Height="337*"/>
             </Grid.RowDefinitions>
 
 

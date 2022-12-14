@@ -16,6 +16,9 @@
 
     <Border CornerRadius="40" Background="#EFF2F7">
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="204"></ColumnDefinition>
                 <ColumnDefinition Width="820"></ColumnDefinition>
@@ -33,24 +36,22 @@
                             Grid.Row="0">
                     <TextBlock Text="NOVEA"                       
                            FontSize="30"                    
-                           FontWeight="Medium"                     
-                           HorizontalAlignment="Center"                      
-                           VerticalAlignment="Top"         
+                           FontWeight="Medium"         
                            Style="{StaticResource NameApp}" Height="36" Width="131">
-
                         <TextBlock.Foreground>
                             <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
                                 <GradientStop Color="Purple" Offset="0"/>
                                 <GradientStop Color="Blue" Offset="1"/>
                             </LinearGradientBrush>
-                        </TextBlock.Foreground>
+                        </TextBlock.Foreground><InlineUIContainer>
                                        
-                    <materialDesign:PackIcon Kind="Dog" 
-                                             Height="23"
-                                             Width="25" VerticalAlignment="Bottom"/>
-                    </TextBlock>
+                            <materialDesign:PackIcon Kind="Dog" 
+                                Height="23"
+                                Width="25" 
+                                VerticalAlignment="Bottom"/>
+                        </InlineUIContainer></TextBlock>
                 </StackPanel>
-                
+
 
                 <Border Grid.Row="1" Grid.Column="0" Background="#623ED0" CornerRadius="0 50 0 40">
                     <DockPanel VerticalAlignment="Center" Height="504">
@@ -88,7 +89,7 @@
                         <Separator Margin="15" Background="#7E5FDC" DockPanel.Dock="Top" Height="5"/>
 
                         <StackPanel>
-                            
+
                             <RadioButton Style="{StaticResource menuButton}"                                
                                          Tag="{StaticResource color1}"                                
                                          IsChecked="True"
@@ -109,7 +110,7 @@
                                     <TextBlock Text="TRANG CHỦ" Style="{StaticResource menuButtonText}"/>
                                 </StackPanel>
                             </RadioButton>
-                            
+
                             <RadioButton Style="{StaticResource menuButton}"                              
                                          Tag="{StaticResource color2}"
                                          Uid="1"
@@ -129,7 +130,7 @@
                                     <TextBlock Text="ĐƠN HÀNG" Style="{StaticResource menuButtonText}"/>
                                 </StackPanel>
                             </RadioButton>
-                            
+
                             <RadioButton Style="{StaticResource menuButton}"                                 
                                          Tag="{StaticResource color3}"
                                          Uid="2"
@@ -149,7 +150,7 @@
                                     <TextBlock Text="SẢN PHẨM" Style="{StaticResource menuButtonText}"/>
                                 </StackPanel>
                             </RadioButton>
-                            
+
                             <RadioButton Style="{StaticResource menuButton}"                                 
                                          Tag="{StaticResource color4}"
                                          Uid="3"
@@ -169,7 +170,7 @@
                                     <TextBlock Text="KHÁCH HÀNG" Style="{StaticResource menuButtonText}"/>
                                 </StackPanel>
                             </RadioButton>
-                            
+
                             <RadioButton Style="{StaticResource menuButton}"                                 
                                          Tag="{StaticResource color5}"
                                          Uid="4"
@@ -189,7 +190,7 @@
                                     <TextBlock Text="QUẢN LÝ" Style="{StaticResource menuButtonText}"/>
                                 </StackPanel>
                             </RadioButton>
-                            
+
                             <RadioButton Style="{StaticResource menuButton}"                                
                                          Tag="{StaticResource color6}"
                                          Uid="5"
@@ -214,7 +215,7 @@
                                          Tag="{StaticResource color7}"
                                          Uid="6"
                                          x:Name="btnLogout">
-                                
+
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding LogOutCommand}"
@@ -228,9 +229,9 @@
                             </RadioButton>
 
                         </StackPanel>
-                        
-                        
-                        
+
+
+
                         <!--<StackPanel Height="373">
                             <RadioButton IsChecked="True"                           
                                          x:Name="btnHome"                          
@@ -351,18 +352,15 @@
                 </Border>
             </Grid>
             <Grid Grid.Column="1">
-                <Border>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <!--Control bar-->
-                            <RowDefinition Height="25"/>
-                            <!--Header / Caption-->
-                            <RowDefinition Height="35"/>
-                            <!--Content section / Child views-->
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <!--Control bar-->
-                        <StackPanel x:Name="pnlControlBar"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0">
+                    <!--Control bar-->
+
+                    <StackPanel x:Name="pnlControlBar"
                                 Grid.Row="0"
                                 Orientation="Horizontal"
                                 FlowDirection="RightToLeft"
@@ -371,48 +369,51 @@
                                 MouseLeftButtonDown="pnlControlBar_MouseLeftButtonDown"
                                 MouseEnter="pnlControlBar_MouseEnter">
 
-                            <materialDesign:PackIcon Kind="CloseThick" Foreground="Black" Height="24" Width="24" Margin="23 5 0 0">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseLeftButtonDown">
-                                        <i:InvokeCommandAction Command="{Binding CloseLogin}"
-                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </materialDesign:PackIcon>
 
-                            <materialDesign:PackIcon Kind="WindowMaximize" Foreground="Black" Height="24" Width="24" Margin="5 5 0 0">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseLeftButtonDown">
-                                        <i:InvokeCommandAction Command="{Binding MaximizeLogin}"
-                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </materialDesign:PackIcon>
+                        <materialDesign:PackIcon Kind="CloseThick" Foreground="Black" Height="24" Width="24" Margin="23 5 0 0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding CloseLogin}"                                               
+                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </materialDesign:PackIcon>
 
-                            <materialDesign:PackIcon Kind="WindowMinimize" Foreground="Black" Height="24" Width="24" Margin="5 5 0 0">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseLeftButtonDown">
-                                        <i:InvokeCommandAction Command="{Binding MinimizeLogin}"
-                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </materialDesign:PackIcon>
-                            
-                            
-                            
-                        </StackPanel>
-                    </Grid>
+                        <materialDesign:PackIcon Kind="WindowMaximize" Foreground="Black" Height="24" Width="24" Margin="5 5 0 0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding MaximizeLogin}"                                                                                                                                                      
+                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </materialDesign:PackIcon>
+
+                        <materialDesign:PackIcon Kind="WindowMinimize" Foreground="Black" Height="24" Width="24" Margin="5 5 0 0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding MinimizeLogin}"                                    
+                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </materialDesign:PackIcon>
+
+
+
+                    </StackPanel>
                 </Border>
 
-                <Frame x:Name="Main" 
-                       Source="/view/Admin/HomeView.xaml"
-                       NavigationUIVisibility="Hidden"
-                       DataContext="{StaticResource MainVM}">
-                </Frame>
+                <Grid Grid.Row="1">
+                    <Frame x:Name="Main" 
+                           Source="/view/Admin/HomeView.xaml" 
+                           NavigationUIVisibility="Hidden"
+                           DataContext="{StaticResource MainVM}"
+                           Navigated="Main_Navigated">
+                    </Frame>
+                </Grid>
             </Grid>
-            
+
         </Grid>
 
     </Border>
-    
+
 </Window>
