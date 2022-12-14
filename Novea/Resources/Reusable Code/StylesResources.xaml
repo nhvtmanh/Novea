@@ -104,15 +104,17 @@
                             Background="{TemplateBinding Background}"
                             Margin="0,0,0,6">
                             <DockPanel>
-                                <materialDesign:PackIcon Kind="Home"
-                                                         Width="22"                            
-                                                         Height="22"                            
-                                                         VerticalAlignment="Center"                             
-                                                         Margin="6"/>
-                                <TextBlock Text="TRANG CHỦ"                                
-                                           FontSize="15"                                                               
-                                           HorizontalAlignment="Left"                               
-                                           VerticalAlignment="Center"/>
+                                <materialDesign:PackIcon 
+                                    Kind="History"
+                                    Width="22"
+                                    Height="22"
+                                    VerticalAlignment="Center"
+                                    Margin="6"/>
+                                <TextBlock 
+                                    Text="LỊCH SỬ ĐẶT HÀNG"
+                                    FontSize="15"                                
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"/>
                             </DockPanel>
                         </Border>
                     </ControlTemplate>

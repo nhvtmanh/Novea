@@ -10,7 +10,7 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="Guest" Height="600" Width="1024"
+        x:Name="Guestwd" Height="600" Width="1024"
         DataContext="{StaticResource GuestVM}">
     <Border CornerRadius="40" Background="#EFF2F7">
         <Grid>
@@ -78,16 +78,16 @@
                                 FontFamily="{StaticResource Custom}"
                                 Uid="0" 
                                 IsChecked="True">
-                                <!--<i:Interaction.Triggers>
+                                <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                                           CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                     <i:EventTrigger EventName="MouseMove">
                                         <i:InvokeCommandAction Command="{Binding GetIdTab}"
                                                            CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
-                                </i:Interaction.Triggers>-->
+                                </i:Interaction.Triggers>
                             </RadioButton>
 
                             <RadioButton
@@ -95,16 +95,16 @@
                                 Style="{StaticResource BtnCart}"
                                 FontFamily="{StaticResource Custom}"
                                 Uid="1">
-                                <!--<i:Interaction.Triggers>
+                                <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                                           CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                     <i:EventTrigger EventName="MouseMove">
                                         <i:InvokeCommandAction Command="{Binding GetIdTab}"
-                                                           CommandParameter="{Binding ElementName=btnOrder}"></i:InvokeCommandAction>
+                                                           CommandParameter="{Binding ElementName=btnCart}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
-                                </i:Interaction.Triggers>-->
+                                </i:Interaction.Triggers>
                             </RadioButton>
 
                             <RadioButton
@@ -112,16 +112,16 @@
                                 Style="{StaticResource BtnLSDH}"
                                 FontFamily="{StaticResource Custom}"
                                 Uid="2">
-                                <!--<i:Interaction.Triggers>
+                                <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                                           CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                     <i:EventTrigger EventName="MouseMove">
                                         <i:InvokeCommandAction Command="{Binding GetIdTab}"
-                                                           CommandParameter="{Binding ElementName=btnOrder}"></i:InvokeCommandAction>
+                                                           CommandParameter="{Binding ElementName=btnLSDH}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
-                                </i:Interaction.Triggers>-->
+                                </i:Interaction.Triggers>
                             </RadioButton>
 
                             <RadioButton
@@ -129,6 +129,16 @@
                                 Style="{StaticResource BtnSetting}"
                                 FontFamily="{StaticResource Custom}"
                                 Uid="3">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseMove">
+                                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                           CommandParameter="{Binding ElementName=btnSetting}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                             </RadioButton>
 
                             <Button 
@@ -142,7 +152,12 @@
                 </Border>
             </Grid>
             <Grid Grid.Column="1">
-                
+                <Frame x:Name="Main" 
+                       Source="/View/Client/Home.xaml"
+                       NavigationUIVisibility="Hidden"
+                       DataContext="{StaticResource GuestVM}">
+                    
+                </Frame>
             </Grid>
         </Grid>
     </Border>
