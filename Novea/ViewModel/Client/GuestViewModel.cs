@@ -13,11 +13,13 @@ namespace Novea.ViewModel.Client
     {
         public ICommand SwitchTab { get; set; }
         public ICommand GetIdTab { get; set; }
+        public ICommand LogOutCommand { get; set; }
         public string name;
         public GuestViewModel()
         {
             SwitchTab = new RelayCommand<Guest>((p) => true, (p) => switchTab(p));
             GetIdTab = new RelayCommand<RadioButton>((p) => true, (p) => name = p.Uid);
+            LogOutCommand = new RelayCommand<Guest>((p) => { return true; }, (p) => logOut(p));
         }
         void switchTab(Guest p)
         {
@@ -39,6 +41,12 @@ namespace Novea.ViewModel.Client
                 default:
                     break;
             }
+        }
+        void logOut(Guest p)
+        {
+            LoginWindow login = new LoginWindow();
+            login.Show();
+            p.Close();
         }
     }
 }
