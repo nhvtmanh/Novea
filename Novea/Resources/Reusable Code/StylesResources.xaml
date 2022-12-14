@@ -117,7 +117,7 @@
                                     VerticalAlignment="Center"
                                     Margin="6"/>
                                 <TextBlock 
-                                    Text="LỊCH SỬ ĐẶT HÀNG"
+                                    Text="LỊCH SỬ"
                                     FontSize="15"                                
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"/>
