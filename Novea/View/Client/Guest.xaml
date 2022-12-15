@@ -180,12 +180,63 @@
                 </Border>
             </Grid>
             <Grid Grid.Column="1">
-                <Frame x:Name="Main" 
-                       Source="/View/Client/Home.xaml"
-                       NavigationUIVisibility="Hidden"
-                       DataContext="{StaticResource GuestVM}">
-                    
-                </Frame>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0">
+                    <StackPanel x:Name="pnlControlBar"
+                                Orientation="Horizontal"
+                                FlowDirection="RightToLeft"
+                                Background="Transparent"
+                                Margin="0,0,5,0">
+                        <materialDesign:PackIcon Kind="CloseThick" 
+                                                 Foreground="Black" 
+                                                 Width="24" 
+                                                 Height="24" 
+                                                 Margin="23 5 0 0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding CloseGuestwd}"                                               
+                                                           CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </materialDesign:PackIcon>
+
+                        <materialDesign:PackIcon Kind="WindowMaximize" 
+                                                 Foreground="Black" 
+                                                 Width="24" 
+                                                 Height="24"
+                                                 Margin="5 5 0 0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding MaximizeGuestwd}"                                                                                                                                                      
+                                                           CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </materialDesign:PackIcon>
+
+                        <materialDesign:PackIcon Kind="WindowMinimize" 
+                                                 Foreground="Black" 
+                                                 Width="24" 
+                                                 Height="24" 
+                                                 Margin="5 5 0 0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding MinimizeGuestwd}"                                    
+                                                           CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </materialDesign:PackIcon>
+                    </StackPanel>
+                </Border>
+                <Grid Grid.Row="1">
+                    <Frame x:Name="Main" 
+                           Source="/View/Client/Home.xaml"
+                           NavigationUIVisibility="Hidden"
+                           DataContext="{StaticResource GuestVM}">
+                    </Frame>
+                </Grid>
             </Grid>
         </Grid>
     </Border>
