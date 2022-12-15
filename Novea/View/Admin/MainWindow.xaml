@@ -14,7 +14,17 @@
         Background="Transparent"
         DataContext="{StaticResource MainVM}">
 
-    <Border CornerRadius="40" Background="#EFF2F7">
+    <Border CornerRadius="40"
+            BorderThickness="1">
+
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource winBorderColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource winBorderColor2}" Offset="0.5"/>
+                <GradientStop Color="{StaticResource winBorderColor3}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -31,29 +41,37 @@
 
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="15 0 0 0"
-                            Grid.Row="0">
-                    <TextBlock Text="NOVEA"                       
+                            VerticalAlignment="Center" Margin="10,0,0,0">
+                    <TextBlock Text="NOVEA"    
                            FontSize="30"                    
                            FontWeight="Medium"         
-                           Style="{StaticResource NameApp}" Height="36" Width="131">
+                           Style="{StaticResource NameApp}" Height="36" >
                         <TextBlock.Foreground>
                             <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
                                 <GradientStop Color="Purple" Offset="0"/>
                                 <GradientStop Color="Blue" Offset="1"/>
                             </LinearGradientBrush>
                         </TextBlock.Foreground><InlineUIContainer>
-                                       
                             <materialDesign:PackIcon Kind="Dog" 
                                 Height="23"
+                                                     Margin="0 0 5 0"
                                 Width="25" 
                                 VerticalAlignment="Bottom"/>
                         </InlineUIContainer></TextBlock>
                 </StackPanel>
 
 
-                <Border Grid.Row="1" Grid.Column="0" Background="#623ED0" CornerRadius="0 50 0 40">
+                <Border Grid.Row="1" 
+                        Grid.Column="0"
+                        CornerRadius="0 50 0 40">
+
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
+                            <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                            <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+
                     <DockPanel VerticalAlignment="Center" Height="504">
 
                         <Border Width="80" 
@@ -62,7 +80,7 @@
                                 Background="White" 
                                 CornerRadius="100" 
                                 DockPanel.Dock="Top" 
-                                HorizontalAlignment="Center"                                
+                                HorizontalAlignment="Left"                                
                                 Margin="20 -30 35 0">
                             <Ellipse >
                                 <Ellipse.Fill>
@@ -351,16 +369,28 @@
 
                 </Border>
             </Grid>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+            <Border Grid.Column="1"
+                    CornerRadius="0 40 40 0">
+                
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                        <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
+                        <GradientStop Color="{StaticResource primaryBackColor2}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
 
-                <Border Grid.Row="0">
-                    <!--Control bar-->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                    <StackPanel x:Name="pnlControlBar"
+
+
+                    <Border Grid.Row="0">
+                        <!--Control bar-->
+
+                        <StackPanel x:Name="pnlControlBar"
                                 Grid.Row="0"
                                 Orientation="Horizontal"
                                 FlowDirection="RightToLeft"
@@ -370,47 +400,49 @@
                                 MouseEnter="pnlControlBar_MouseEnter">
 
 
-                        <materialDesign:PackIcon Kind="CloseThick" Foreground="Black" Height="24" Width="24" Margin="23 5 0 0">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="MouseLeftButtonDown">
-                                    <i:InvokeCommandAction Command="{Binding CloseLogin}"                                               
+                            <materialDesign:PackIcon Kind="CloseThick" Foreground="Black" Height="24" Width="24" Margin="23 5 0 0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding CloseLogin}"                                               
                                                            CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </materialDesign:PackIcon>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </materialDesign:PackIcon>
 
-                        <materialDesign:PackIcon Kind="WindowMaximize" Foreground="Black" Height="24" Width="24" Margin="5 5 0 0">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="MouseLeftButtonDown">
-                                    <i:InvokeCommandAction Command="{Binding MaximizeLogin}"                                                                                                                                                      
+                            <materialDesign:PackIcon Kind="WindowMaximize" Foreground="Black" Height="24" Width="24" Margin="5 5 0 0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding MaximizeLogin}"                                                                                                                                                      
                                                            CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </materialDesign:PackIcon>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </materialDesign:PackIcon>
 
-                        <materialDesign:PackIcon Kind="WindowMinimize" Foreground="Black" Height="24" Width="24" Margin="5 5 0 0">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="MouseLeftButtonDown">
-                                    <i:InvokeCommandAction Command="{Binding MinimizeLogin}"                                    
+                            <materialDesign:PackIcon Kind="WindowMinimize" Foreground="Black" Height="24" Width="24" Margin="5 5 0 0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding MinimizeLogin}"                                    
                                                            CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </materialDesign:PackIcon>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </materialDesign:PackIcon>
 
 
 
-                    </StackPanel>
-                </Border>
+                        </StackPanel>
+                    </Border>
 
-                <Grid Grid.Row="1">
-                    <Frame x:Name="Main" 
+                    <Grid Grid.Row="1">
+                        <Frame x:Name="Main" 
                            Source="/view/Admin/HomeView.xaml" 
                            NavigationUIVisibility="Hidden"
                            DataContext="{StaticResource MainVM}"
                            Navigated="Main_Navigated">
-                    </Frame>
+                        </Frame>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </Border>
+            
 
         </Grid>
 

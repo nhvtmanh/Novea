@@ -7,10 +7,10 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"      
       xmlns:local="clr-namespace:Novea.View.Admin"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="820"
+      d:DesignHeight="565" d:DesignWidth="820"
       Title="OrdersView">
 
-    <Border Height="600"                                
+    <Border Height="565"                                
             Width="820"                               
             Background="WhiteSmoke"                    
             CornerRadius="0 40 40 0"

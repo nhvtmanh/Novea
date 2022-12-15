@@ -7,14 +7,14 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="820"
+      d:DesignHeight="565" d:DesignWidth="820"
       Title="SettingView">
 
     <Border
-                    Height="600"
+                    Height="565"
                     Width="820"
                     Background="WhiteSmoke"
-                    CornerRadius="0 40 40 0"
+                    CornerRadius="0 0 40 0"
                     >
         <Grid>
             <Grid.RowDefinitions>
