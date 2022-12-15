@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -14,12 +15,18 @@ namespace Novea.ViewModel.Client
         public ICommand SwitchTab { get; set; }
         public ICommand GetIdTab { get; set; }
         public ICommand LogOutCommand { get; set; }
+        public ICommand CloseGuestwd { get; set; }
+        public ICommand MaximizeGuestwd { get; set; }
+        public ICommand MinimizeGuestwd { get; set; }
         public string name;
         public GuestViewModel()
         {
             SwitchTab = new RelayCommand<Guest>((p) => true, (p) => switchTab(p));
             GetIdTab = new RelayCommand<RadioButton>((p) => true, (p) => name = p.Uid);
             LogOutCommand = new RelayCommand<Guest>((p) => { return true; }, (p) => logOut(p));
+            CloseGuestwd = new RelayCommand<Guest>((p) => true, (p) => Close());
+            MaximizeGuestwd = new RelayCommand<Guest>((p) => true, (p) => Maximize(p));
+            MinimizeGuestwd = new RelayCommand<Guest>((p) => true, (p) => Minimize(p));
         }
         void switchTab(Guest p)
         {
@@ -48,5 +55,17 @@ namespace Novea.ViewModel.Client
             login.Show();
             p.Close();
         }
+        public void Close()
+        {
+            Application.Current.Shutdown();
+        }
+        public void Maximize(Guest p)
+        {
+            p.WindowState = WindowState.Maximized;
+        }
+        public void Minimize(Guest p)
+        {
+            p.WindowState = WindowState.Minimized;
+        }       
     }
 }
