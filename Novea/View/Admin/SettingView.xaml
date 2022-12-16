@@ -10,33 +10,34 @@
       d:DesignHeight="565" d:DesignWidth="820"
       Title="SettingView">
 
-    <Border
-                    Height="565"
-                    Width="820"
-                    Background="WhiteSmoke"
-                    CornerRadius="0 0 40 0"
-                    >
+    <Border Height="565"
+            Width="820"
+            CornerRadius="0 0 40 0">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <StackPanel Orientation="Horizontal" Margin="28,11,11,0">
-                    <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
-                        <Ellipse Width="60" Height="60">
-                            <Ellipse.Fill>
-                                <ImageBrush ImageSource="/Resources/Images/q1.png"/>
-                            </Ellipse.Fill>
-                        </Ellipse>
-                    </Border>
-
-                    <TextBlock Text="CÀI ĐẶT" 
-                               Foreground="#6741D9"
-                               FontSize="45" 
-                               Margin="10 0 0 0"
-                               VerticalAlignment="Center"
-                               FontWeight="Medium"/>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Cog" 
+                                         Foreground="#FFCF99"
+                                         Margin="25 0 10 0"
+                                         Width="30"
+                                         Height="32"
+                                         VerticalAlignment="Center"/>
+                    <TextBlock Text="CÀI ĐẶT"
+                   Foreground="#fff8f0"
+                   FontSize="30"
+                   FontWeight="Medium"
+                   VerticalAlignment="Center"
+                           FontFamily="{StaticResource Custom1}"/>
                 </StackPanel>
             </Grid>
 
@@ -53,9 +54,9 @@
 
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <GradientStop Color="#464F78"/>
-                                        <GradientStop Color="#323F6C" Offset="0.9"/>
+                                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                        <GradientStop Color="#FFA033" Offset="0"/>
+                                        <GradientStop Color="#fff8f0" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Setter.Value>
                             </Setter>
@@ -87,13 +88,16 @@
                     <StackPanel VerticalAlignment="Center">
                         <materialDesign:PackIcon Kind="AccountCog" 
                                                  Width="50" 
-                                                 Height="50"                                    
+                                                 Height="50"                       
+                                                 Foreground="{StaticResource plainTextColor2}"
                                                  VerticalAlignment="Center"
                                                  HorizontalAlignment="Center"/>
                         <!--<icon:PackIconMaterial Kind="{Binding ElementName=element,Path=Icon}" Width="50" Height="50" 
                                    VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
 
                         <TextBlock Text="THÔNG TIN CÁ NHÂN" FontSize="18" FontWeight="SemiBold" 
+                                                 Foreground="{StaticResource plainTextColor2}"
+                                   
                        TextAlignment="Center" Margin="0 30 0 0"/>
                     </StackPanel>
                 </Button>
@@ -110,9 +114,9 @@
 
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <GradientStop Color="#464F78"/>
-                                        <GradientStop Color="#323F6C" Offset="0.9"/>
+                                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                        <GradientStop Color="#FFA033" Offset="0"/>
+                                        <GradientStop Color="#fff8f0" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Setter.Value>
                             </Setter>
@@ -146,11 +150,14 @@
                                    VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
                         <materialDesign:PackIcon Kind="ShopCogOutline" 
                                                  Width="50" 
-                                                 Height="50"                                 
+                                                 Height="50"                       
+                                                 Foreground="{StaticResource plainTextColor2}"                                                 
                                                  VerticalAlignment="Center" 
                                                  HorizontalAlignment="Center"/>
 
                         <TextBlock Text="THÔNG TIN CỬA HÀNG" FontSize="18" FontWeight="SemiBold" 
+                                                 Foreground="{StaticResource plainTextColor2}"
+                                   
                        TextAlignment="Center" Margin="0 30 0 0"/>
                     </StackPanel>
                 </Button>
