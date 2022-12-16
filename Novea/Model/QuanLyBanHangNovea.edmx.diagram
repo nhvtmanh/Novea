@@ -4,19 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="70ef2626ee914649b533a5758a49096f" Name="Diagram1">
-        <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.CHU" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.CTHD" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.CUAHANG" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.HOADON" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.KHACH" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.SANPHAM" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
-        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CHU__MACH__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CTHD__MASP__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__46E78A0C" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__HOADON__MACH__440B1D61" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__HOADON__MAKH__4316F928" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyBanHangNoveaModel.CUAHANG_BAN_SANPHAM" ManuallyRouted="false" />
+      <Diagram DiagramId="70ef2626ee914649b533a5758a49096f" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.CHU" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.CTHD" Width="1.5" PointX="8.25" PointY="6.125" />
+        <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.CUAHANG" Width="1.5" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.CUAHANG_BAN_SANPHAM" Width="1.5" PointX="6" PointY="6.5" />
+        <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.HOADON" Width="1.5" PointX="3" PointY="6" />
+        <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.KHACH" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.SANPHAM" Width="1.5" PointX="3.75" PointY="2" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CHU__MACH__33D4B598" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CHU__MACH__52593CB8" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CTHD__MASP__300424B4" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CTHD__MASP__4E88ABD4" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__30F848ED" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__4F7CD00D" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MACH__31EC6D26" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MACH__5070F446" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__HOADON__MACH__34C8D9D1" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__HOADON__MACH__534D60F1" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MASP__32E0915F" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MASP__5165187F" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__HOADON__MAKH__35BCFE0A" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__HOADON__MAKH__5441852A" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

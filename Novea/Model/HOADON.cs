@@ -18,6 +18,7 @@ namespace Novea.Model
         public HOADON()
         {
             this.CTHDs = new HashSet<CTHD>();
+            this.CTHDs1 = new HashSet<CTHD>();
         }
     
         public int SOHD { get; set; }
@@ -28,7 +29,11 @@ namespace Novea.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD> CTHDs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CTHD> CTHDs1 { get; set; }
         public virtual CUAHANG CUAHANG { get; set; }
+        public virtual CUAHANG CUAHANG1 { get; set; }
         public virtual KHACH KHACH { get; set; }
+        public virtual KHACH KHACH1 { get; set; }
     }
 }

@@ -18,8 +18,11 @@ namespace Novea.Model
         public CUAHANG()
         {
             this.CHUs = new HashSet<CHU>();
+            this.CHUs1 = new HashSet<CHU>();
+            this.CUAHANG_BAN_SANPHAM = new HashSet<CUAHANG_BAN_SANPHAM>();
+            this.CUAHANG_BAN_SANPHAM1 = new HashSet<CUAHANG_BAN_SANPHAM>();
             this.HOADONs = new HashSet<HOADON>();
-            this.SANPHAMs = new HashSet<SANPHAM>();
+            this.HOADONs1 = new HashSet<HOADON>();
         }
     
         public string MACH { get; set; }
@@ -30,8 +33,14 @@ namespace Novea.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHU> CHUs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CHU> CHUs1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CUAHANG_BAN_SANPHAM> CUAHANG_BAN_SANPHAM { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CUAHANG_BAN_SANPHAM> CUAHANG_BAN_SANPHAM1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOADON> HOADONs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SANPHAM> SANPHAMs { get; set; }
+        public virtual ICollection<HOADON> HOADONs1 { get; set; }
     }
 }

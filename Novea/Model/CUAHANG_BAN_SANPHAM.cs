@@ -12,22 +12,14 @@ namespace Novea.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class CHU
+    public partial class CUAHANG_BAN_SANPHAM
     {
-        public string MACHU { get; set; }
-        public string HOTEN { get; set; }
-        public Nullable<System.DateTime> NGSINH { get; set; }
-        public string GIOITINH { get; set; }
-        public string SDT { get; set; }
-        public string EMAIL { get; set; }
-        public string DIACHI { get; set; }
-        public Nullable<System.DateTime> NGDK { get; set; }
-        public string MATKHAU { get; set; }
-        public string VAITRO { get; set; }
-        public byte[] AVATAR { get; set; }
         public string MACH { get; set; }
+        public string MASP { get; set; }
     
         public virtual CUAHANG CUAHANG { get; set; }
         public virtual CUAHANG CUAHANG1 { get; set; }
+        public virtual SANPHAM SANPHAM { get; set; }
+        public virtual SANPHAM SANPHAM1 { get; set; }
     }
 }

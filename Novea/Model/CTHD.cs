@@ -22,6 +22,8 @@ namespace Novea.Model
         public string LuongDuong { get; set; }
     
         public virtual SANPHAM SANPHAM { get; set; }
+        public virtual SANPHAM SANPHAM1 { get; set; }
         public virtual HOADON HOADON { get; set; }
+        public virtual HOADON HOADON1 { get; set; }
     }
 }

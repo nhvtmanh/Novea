@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QuanLyBanHangNoveaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QuanLyBanHangNoveaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CHU">
           <Key>
             <PropertyRef Name="MACHU" />
@@ -19,6 +19,7 @@
           <Property Name="NGDK" Type="smalldatetime" />
           <Property Name="MATKHAU" Type="varchar(max)" />
           <Property Name="VAITRO" Type="varchar" MaxLength="5" />
+          <Property Name="AVATAR" Type="image" />
           <Property Name="MACH" Type="varchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="CTHD">
@@ -75,6 +76,7 @@
           <Property Name="DOANHSO" Type="money" />
           <Property Name="MATKHAU" Type="varchar(max)" />
           <Property Name="VAITRO" Type="varchar" MaxLength="5" />
+          <Property Name="AVATAR" Type="image" />
         </EntityType>
         <EntityType Name="SANPHAM">
           <Key>
@@ -86,8 +88,10 @@
           <Property Name="DONVI" Type="nvarchar(max)" />
           <Property Name="DONGIA" Type="money" />
           <Property Name="KICHTHUOC" Type="varchar" MaxLength="10" />
+          <Property Name="MOTA" Type="nvarchar(max)" />
+          <Property Name="HINHSP" Type="image" />
         </EntityType>
-        <Association Name="FK__CHU__MACH__3A81B327">
+        <Association Name="FK__CHU__MACH__33D4B598">
           <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="0..1" />
           <End Role="CHU" Type="Self.CHU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -99,7 +103,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTHD__MASP__47DBAE45">
+        <Association Name="FK__CHU__MACH__52593CB8">
+          <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="0..1" />
+          <End Role="CHU" Type="Self.CHU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUAHANG">
+              <PropertyRef Name="MACH" />
+            </Principal>
+            <Dependent Role="CHU">
+              <PropertyRef Name="MACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTHD__MASP__300424B4">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
           <ReferentialConstraint>
@@ -111,7 +127,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTHD__SOHD__46E78A0C">
+        <Association Name="FK__CTHD__MASP__4E88ABD4">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTHD__SOHD__30F848ED">
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
           <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
           <ReferentialConstraint>
@@ -123,7 +151,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CUAHANG_BA__MACH__3F466844">
+        <Association Name="FK__CTHD__SOHD__4F7CD00D">
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADON">
+              <PropertyRef Name="SOHD" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="SOHD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CUAHANG_BA__MACH__31EC6D26">
           <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="1" />
           <End Role="CUAHANG_BAN_SANPHAM" Type="Self.CUAHANG_BAN_SANPHAM" Multiplicity="*" />
           <ReferentialConstraint>
@@ -135,7 +175,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CUAHANG_BA__MASP__403A8C7D">
+        <Association Name="FK__CUAHANG_BA__MACH__5070F446">
+          <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="1" />
+          <End Role="CUAHANG_BAN_SANPHAM" Type="Self.CUAHANG_BAN_SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUAHANG">
+              <PropertyRef Name="MACH" />
+            </Principal>
+            <Dependent Role="CUAHANG_BAN_SANPHAM">
+              <PropertyRef Name="MACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CUAHANG_BA__MASP__32E0915F">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CUAHANG_BAN_SANPHAM" Type="Self.CUAHANG_BAN_SANPHAM" Multiplicity="*" />
           <ReferentialConstraint>
@@ -147,7 +199,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__MACH__440B1D61">
+        <Association Name="FK__CUAHANG_BA__MASP__5165187F">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+          <End Role="CUAHANG_BAN_SANPHAM" Type="Self.CUAHANG_BAN_SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="CUAHANG_BAN_SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOADON__MACH__34C8D9D1">
           <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="0..1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -159,7 +223,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__MAKH__4316F928">
+        <Association Name="FK__HOADON__MACH__534D60F1">
+          <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUAHANG">
+              <PropertyRef Name="MACH" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="MACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOADON__MAKH__35BCFE0A">
+          <End Role="KHACH" Type="Self.KHACH" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACH">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOADON__MAKH__5441852A">
           <End Role="KHACH" Type="Self.KHACH" Multiplicity="0..1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -179,45 +267,137 @@
           <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KHACH" EntityType="Self.KHACH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__CHU__MACH__3A81B327" Association="Self.FK__CHU__MACH__3A81B327">
+          <AssociationSet Name="FK__CHU__MACH__33D4B598" Association="Self.FK__CHU__MACH__33D4B598">
             <End Role="CUAHANG" EntitySet="CUAHANG" />
             <End Role="CHU" EntitySet="CHU" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTHD__MASP__47DBAE45" Association="Self.FK__CTHD__MASP__47DBAE45">
+          <AssociationSet Name="FK__CHU__MACH__52593CB8" Association="Self.FK__CHU__MACH__52593CB8">
+            <End Role="CUAHANG" EntitySet="CUAHANG" />
+            <End Role="CHU" EntitySet="CHU" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHD__MASP__300424B4" Association="Self.FK__CTHD__MASP__300424B4">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CTHD" EntitySet="CTHD" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTHD__SOHD__46E78A0C" Association="Self.FK__CTHD__SOHD__46E78A0C">
+          <AssociationSet Name="FK__CTHD__MASP__4E88ABD4" Association="Self.FK__CTHD__MASP__4E88ABD4">
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+            <End Role="CTHD" EntitySet="CTHD" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHD__SOHD__30F848ED" Association="Self.FK__CTHD__SOHD__30F848ED">
             <End Role="HOADON" EntitySet="HOADON" />
             <End Role="CTHD" EntitySet="CTHD" />
           </AssociationSet>
-          <AssociationSet Name="FK__CUAHANG_BA__MACH__3F466844" Association="Self.FK__CUAHANG_BA__MACH__3F466844">
+          <AssociationSet Name="FK__CTHD__SOHD__4F7CD00D" Association="Self.FK__CTHD__SOHD__4F7CD00D">
+            <End Role="HOADON" EntitySet="HOADON" />
+            <End Role="CTHD" EntitySet="CTHD" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CUAHANG_BA__MACH__31EC6D26" Association="Self.FK__CUAHANG_BA__MACH__31EC6D26">
             <End Role="CUAHANG" EntitySet="CUAHANG" />
             <End Role="CUAHANG_BAN_SANPHAM" EntitySet="CUAHANG_BAN_SANPHAM" />
           </AssociationSet>
-          <AssociationSet Name="FK__CUAHANG_BA__MASP__403A8C7D" Association="Self.FK__CUAHANG_BA__MASP__403A8C7D">
+          <AssociationSet Name="FK__CUAHANG_BA__MACH__5070F446" Association="Self.FK__CUAHANG_BA__MACH__5070F446">
+            <End Role="CUAHANG" EntitySet="CUAHANG" />
+            <End Role="CUAHANG_BAN_SANPHAM" EntitySet="CUAHANG_BAN_SANPHAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CUAHANG_BA__MASP__32E0915F" Association="Self.FK__CUAHANG_BA__MASP__32E0915F">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CUAHANG_BAN_SANPHAM" EntitySet="CUAHANG_BAN_SANPHAM" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MACH__440B1D61" Association="Self.FK__HOADON__MACH__440B1D61">
+          <AssociationSet Name="FK__CUAHANG_BA__MASP__5165187F" Association="Self.FK__CUAHANG_BA__MASP__5165187F">
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+            <End Role="CUAHANG_BAN_SANPHAM" EntitySet="CUAHANG_BAN_SANPHAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOADON__MACH__34C8D9D1" Association="Self.FK__HOADON__MACH__34C8D9D1">
             <End Role="CUAHANG" EntitySet="CUAHANG" />
             <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MAKH__4316F928" Association="Self.FK__HOADON__MAKH__4316F928">
+          <AssociationSet Name="FK__HOADON__MACH__534D60F1" Association="Self.FK__HOADON__MACH__534D60F1">
+            <End Role="CUAHANG" EntitySet="CUAHANG" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOADON__MAKH__35BCFE0A" Association="Self.FK__HOADON__MAKH__35BCFE0A">
+            <End Role="KHACH" EntitySet="KHACH" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOADON__MAKH__5441852A" Association="Self.FK__HOADON__MAKH__5441852A">
             <End Role="KHACH" EntitySet="KHACH" />
             <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QuanLyBanHangNoveaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QuanLyBanHangNoveaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CHUs" EntityType="QuanLyBanHangNoveaModel.CHU" />
+          <EntitySet Name="CTHDs" EntityType="QuanLyBanHangNoveaModel.CTHD" />
+          <EntitySet Name="CUAHANGs" EntityType="QuanLyBanHangNoveaModel.CUAHANG" />
+          <EntitySet Name="CUAHANG_BAN_SANPHAM" EntityType="QuanLyBanHangNoveaModel.CUAHANG_BAN_SANPHAM" />
+          <EntitySet Name="HOADONs" EntityType="QuanLyBanHangNoveaModel.HOADON" />
+          <EntitySet Name="KHACHes" EntityType="QuanLyBanHangNoveaModel.KHACH" />
+          <EntitySet Name="SANPHAMs" EntityType="QuanLyBanHangNoveaModel.SANPHAM" />
+          <AssociationSet Name="FK__CHU__MACH__33D4B598" Association="QuanLyBanHangNoveaModel.FK__CHU__MACH__33D4B598">
+            <End Role="CUAHANG" EntitySet="CUAHANGs" />
+            <End Role="CHU" EntitySet="CHUs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHU__MACH__52593CB8" Association="QuanLyBanHangNoveaModel.FK__CHU__MACH__52593CB8">
+            <End Role="CUAHANG" EntitySet="CUAHANGs" />
+            <End Role="CHU" EntitySet="CHUs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHD__MASP__300424B4" Association="QuanLyBanHangNoveaModel.FK__CTHD__MASP__300424B4">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="CTHD" EntitySet="CTHDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHD__MASP__4E88ABD4" Association="QuanLyBanHangNoveaModel.FK__CTHD__MASP__4E88ABD4">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="CTHD" EntitySet="CTHDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHD__SOHD__30F848ED" Association="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__30F848ED">
+            <End Role="HOADON" EntitySet="HOADONs" />
+            <End Role="CTHD" EntitySet="CTHDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHD__SOHD__4F7CD00D" Association="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__4F7CD00D">
+            <End Role="HOADON" EntitySet="HOADONs" />
+            <End Role="CTHD" EntitySet="CTHDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CUAHANG_BA__MACH__31EC6D26" Association="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MACH__31EC6D26">
+            <End Role="CUAHANG" EntitySet="CUAHANGs" />
+            <End Role="CUAHANG_BAN_SANPHAM" EntitySet="CUAHANG_BAN_SANPHAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CUAHANG_BA__MACH__5070F446" Association="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MACH__5070F446">
+            <End Role="CUAHANG" EntitySet="CUAHANGs" />
+            <End Role="CUAHANG_BAN_SANPHAM" EntitySet="CUAHANG_BAN_SANPHAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOADON__MACH__34C8D9D1" Association="QuanLyBanHangNoveaModel.FK__HOADON__MACH__34C8D9D1">
+            <End Role="CUAHANG" EntitySet="CUAHANGs" />
+            <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOADON__MACH__534D60F1" Association="QuanLyBanHangNoveaModel.FK__HOADON__MACH__534D60F1">
+            <End Role="CUAHANG" EntitySet="CUAHANGs" />
+            <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CUAHANG_BA__MASP__32E0915F" Association="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MASP__32E0915F">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="CUAHANG_BAN_SANPHAM" EntitySet="CUAHANG_BAN_SANPHAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CUAHANG_BA__MASP__5165187F" Association="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MASP__5165187F">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="CUAHANG_BAN_SANPHAM" EntitySet="CUAHANG_BAN_SANPHAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOADON__MAKH__35BCFE0A" Association="QuanLyBanHangNoveaModel.FK__HOADON__MAKH__35BCFE0A">
+            <End Role="KHACH" EntitySet="KHACHes" />
+            <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOADON__MAKH__5441852A" Association="QuanLyBanHangNoveaModel.FK__HOADON__MAKH__5441852A">
+            <End Role="KHACH" EntitySet="KHACHes" />
+            <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="CHU">
           <Key>
             <PropertyRef Name="MACHU" />
           </Key>
-          <Property Name="MACHU" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MACHU" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="HOTEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NGSINH" Type="DateTime" Precision="0" />
           <Property Name="GIOITINH" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
@@ -227,8 +407,10 @@
           <Property Name="NGDK" Type="DateTime" Precision="0" />
           <Property Name="MATKHAU" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="VAITRO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="AVATAR" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="MACH" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CUAHANG" Relationship="Self.FK__CHU__MACH__3A81B327" FromRole="CHU" ToRole="CUAHANG" />
+          <NavigationProperty Name="CUAHANG" Relationship="QuanLyBanHangNoveaModel.FK__CHU__MACH__33D4B598" FromRole="CHU" ToRole="CUAHANG" />
+          <NavigationProperty Name="CUAHANG1" Relationship="QuanLyBanHangNoveaModel.FK__CHU__MACH__52593CB8" FromRole="CHU" ToRole="CUAHANG" />
         </EntityType>
         <EntityType Name="CTHD">
           <Key>
@@ -236,25 +418,42 @@
             <PropertyRef Name="MASP" />
           </Key>
           <Property Name="SOHD" Type="Int32" Nullable="false" />
-          <Property Name="MASP" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MASP" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="SOLUONG" Type="Int32" />
           <Property Name="TRIGIA" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="LuongDa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="LuongDuong" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTHD__MASP__47DBAE45" FromRole="CTHD" ToRole="SANPHAM" />
-          <NavigationProperty Name="HOADON" Relationship="Self.FK__CTHD__SOHD__46E78A0C" FromRole="CTHD" ToRole="HOADON" />
+          <NavigationProperty Name="SANPHAM" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__MASP__300424B4" FromRole="CTHD" ToRole="SANPHAM" />
+          <NavigationProperty Name="SANPHAM1" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__MASP__4E88ABD4" FromRole="CTHD" ToRole="SANPHAM" />
+          <NavigationProperty Name="HOADON" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__30F848ED" FromRole="CTHD" ToRole="HOADON" />
+          <NavigationProperty Name="HOADON1" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__4F7CD00D" FromRole="CTHD" ToRole="HOADON" />
         </EntityType>
         <EntityType Name="CUAHANG">
           <Key>
             <PropertyRef Name="MACH" />
           </Key>
-          <Property Name="MACH" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MACH" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="TENCH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DIADIEM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DOANHTHU" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="CHUs" Relationship="Self.FK__CHU__MACH__3A81B327" FromRole="CUAHANG" ToRole="CHU" />
-          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__MACH__440B1D61" FromRole="CUAHANG" ToRole="HOADON" />
-          <NavigationProperty Name="SANPHAMs" Relationship="Self.CUAHANG_BAN_SANPHAM" FromRole="CUAHANG" ToRole="SANPHAM" />
+          <NavigationProperty Name="CHUs" Relationship="QuanLyBanHangNoveaModel.FK__CHU__MACH__33D4B598" FromRole="CUAHANG" ToRole="CHU" />
+          <NavigationProperty Name="CHUs1" Relationship="QuanLyBanHangNoveaModel.FK__CHU__MACH__52593CB8" FromRole="CUAHANG" ToRole="CHU" />
+          <NavigationProperty Name="CUAHANG_BAN_SANPHAM" Relationship="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MACH__31EC6D26" FromRole="CUAHANG" ToRole="CUAHANG_BAN_SANPHAM" />
+          <NavigationProperty Name="CUAHANG_BAN_SANPHAM1" Relationship="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MACH__5070F446" FromRole="CUAHANG" ToRole="CUAHANG_BAN_SANPHAM" />
+          <NavigationProperty Name="HOADONs" Relationship="QuanLyBanHangNoveaModel.FK__HOADON__MACH__34C8D9D1" FromRole="CUAHANG" ToRole="HOADON" />
+          <NavigationProperty Name="HOADONs1" Relationship="QuanLyBanHangNoveaModel.FK__HOADON__MACH__534D60F1" FromRole="CUAHANG" ToRole="HOADON" />
+        </EntityType>
+        <EntityType Name="CUAHANG_BAN_SANPHAM">
+          <Key>
+            <PropertyRef Name="MACH" />
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MACH" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="MASP" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CUAHANG" Relationship="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MACH__31EC6D26" FromRole="CUAHANG_BAN_SANPHAM" ToRole="CUAHANG" />
+          <NavigationProperty Name="CUAHANG1" Relationship="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MACH__5070F446" FromRole="CUAHANG_BAN_SANPHAM" ToRole="CUAHANG" />
+          <NavigationProperty Name="SANPHAM" Relationship="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MASP__32E0915F" FromRole="CUAHANG_BAN_SANPHAM" ToRole="SANPHAM" />
+          <NavigationProperty Name="SANPHAM1" Relationship="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MASP__5165187F" FromRole="CUAHANG_BAN_SANPHAM" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="HOADON">
           <Key>
@@ -265,15 +464,18 @@
           <Property Name="TONGTIEN" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="MAKH" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="MACH" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__SOHD__46E78A0C" FromRole="HOADON" ToRole="CTHD" />
-          <NavigationProperty Name="CUAHANG" Relationship="Self.FK__HOADON__MACH__440B1D61" FromRole="HOADON" ToRole="CUAHANG" />
-          <NavigationProperty Name="KHACH" Relationship="Self.FK__HOADON__MAKH__4316F928" FromRole="HOADON" ToRole="KHACH" />
+          <NavigationProperty Name="CTHDs" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__30F848ED" FromRole="HOADON" ToRole="CTHD" />
+          <NavigationProperty Name="CTHDs1" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__4F7CD00D" FromRole="HOADON" ToRole="CTHD" />
+          <NavigationProperty Name="CUAHANG" Relationship="QuanLyBanHangNoveaModel.FK__HOADON__MACH__34C8D9D1" FromRole="HOADON" ToRole="CUAHANG" />
+          <NavigationProperty Name="CUAHANG1" Relationship="QuanLyBanHangNoveaModel.FK__HOADON__MACH__534D60F1" FromRole="HOADON" ToRole="CUAHANG" />
+          <NavigationProperty Name="KHACH" Relationship="QuanLyBanHangNoveaModel.FK__HOADON__MAKH__35BCFE0A" FromRole="HOADON" ToRole="KHACH" />
+          <NavigationProperty Name="KHACH1" Relationship="QuanLyBanHangNoveaModel.FK__HOADON__MAKH__5441852A" FromRole="HOADON" ToRole="KHACH" />
         </EntityType>
         <EntityType Name="KHACH">
           <Key>
             <PropertyRef Name="MAKH" />
           </Key>
-          <Property Name="MAKH" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MAKH" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="HOTEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NGSINH" Type="DateTime" Precision="0" />
           <Property Name="GIOITINH" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
@@ -284,24 +486,30 @@
           <Property Name="DOANHSO" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="MATKHAU" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="VAITRO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__MAKH__4316F928" FromRole="KHACH" ToRole="HOADON" />
+          <Property Name="AVATAR" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="HOADONs" Relationship="QuanLyBanHangNoveaModel.FK__HOADON__MAKH__35BCFE0A" FromRole="KHACH" ToRole="HOADON" />
+          <NavigationProperty Name="HOADONs1" Relationship="QuanLyBanHangNoveaModel.FK__HOADON__MAKH__5441852A" FromRole="KHACH" ToRole="HOADON" />
         </EntityType>
         <EntityType Name="SANPHAM">
           <Key>
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MASP" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MASP" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="TENSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="THELOAI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DONVI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DONGIA" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="KICHTHUOC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MASP__47DBAE45" FromRole="SANPHAM" ToRole="CTHD" />
-          <NavigationProperty Name="CUAHANGs" Relationship="Self.CUAHANG_BAN_SANPHAM" FromRole="SANPHAM" ToRole="CUAHANG" />
+          <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HINHSP" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="CTHDs" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__MASP__300424B4" FromRole="SANPHAM" ToRole="CTHD" />
+          <NavigationProperty Name="CTHDs1" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__MASP__4E88ABD4" FromRole="SANPHAM" ToRole="CTHD" />
+          <NavigationProperty Name="CUAHANG_BAN_SANPHAM" Relationship="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MASP__32E0915F" FromRole="SANPHAM" ToRole="CUAHANG_BAN_SANPHAM" />
+          <NavigationProperty Name="CUAHANG_BAN_SANPHAM1" Relationship="QuanLyBanHangNoveaModel.FK__CUAHANG_BA__MASP__5165187F" FromRole="SANPHAM" ToRole="CUAHANG_BAN_SANPHAM" />
         </EntityType>
-        <Association Name="FK__CHU__MACH__3A81B327">
-          <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="0..1" />
-          <End Role="CHU" Type="Self.CHU" Multiplicity="*" />
+        <Association Name="FK__CHU__MACH__33D4B598">
+          <End Type="QuanLyBanHangNoveaModel.CUAHANG" Role="CUAHANG" Multiplicity="0..1" />
+          <End Type="QuanLyBanHangNoveaModel.CHU" Role="CHU" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CUAHANG">
               <PropertyRef Name="MACH" />
@@ -311,9 +519,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTHD__MASP__47DBAE45">
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
-          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+        <Association Name="FK__CHU__MACH__52593CB8">
+          <End Type="QuanLyBanHangNoveaModel.CUAHANG" Role="CUAHANG" Multiplicity="0..1" />
+          <End Type="QuanLyBanHangNoveaModel.CHU" Role="CHU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUAHANG">
+              <PropertyRef Name="MACH" />
+            </Principal>
+            <Dependent Role="CHU">
+              <PropertyRef Name="MACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTHD__MASP__300424B4">
+          <End Type="QuanLyBanHangNoveaModel.SANPHAM" Role="SANPHAM" Multiplicity="1" />
+          <End Type="QuanLyBanHangNoveaModel.CTHD" Role="CTHD" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SANPHAM">
               <PropertyRef Name="MASP" />
@@ -323,9 +543,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTHD__SOHD__46E78A0C">
-          <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
-          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+        <Association Name="FK__CTHD__MASP__4E88ABD4">
+          <End Type="QuanLyBanHangNoveaModel.SANPHAM" Role="SANPHAM" Multiplicity="1" />
+          <End Type="QuanLyBanHangNoveaModel.CTHD" Role="CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTHD__SOHD__30F848ED">
+          <End Type="QuanLyBanHangNoveaModel.HOADON" Role="HOADON" Multiplicity="1" />
+          <End Type="QuanLyBanHangNoveaModel.CTHD" Role="CTHD" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HOADON">
               <PropertyRef Name="SOHD" />
@@ -335,9 +567,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__MACH__440B1D61">
-          <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="0..1" />
-          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+        <Association Name="FK__CTHD__SOHD__4F7CD00D">
+          <End Type="QuanLyBanHangNoveaModel.HOADON" Role="HOADON" Multiplicity="1" />
+          <End Type="QuanLyBanHangNoveaModel.CTHD" Role="CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADON">
+              <PropertyRef Name="SOHD" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="SOHD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CUAHANG_BA__MACH__31EC6D26">
+          <End Type="QuanLyBanHangNoveaModel.CUAHANG" Role="CUAHANG" Multiplicity="1" />
+          <End Type="QuanLyBanHangNoveaModel.CUAHANG_BAN_SANPHAM" Role="CUAHANG_BAN_SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUAHANG">
+              <PropertyRef Name="MACH" />
+            </Principal>
+            <Dependent Role="CUAHANG_BAN_SANPHAM">
+              <PropertyRef Name="MACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CUAHANG_BA__MACH__5070F446">
+          <End Type="QuanLyBanHangNoveaModel.CUAHANG" Role="CUAHANG" Multiplicity="1" />
+          <End Type="QuanLyBanHangNoveaModel.CUAHANG_BAN_SANPHAM" Role="CUAHANG_BAN_SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUAHANG">
+              <PropertyRef Name="MACH" />
+            </Principal>
+            <Dependent Role="CUAHANG_BAN_SANPHAM">
+              <PropertyRef Name="MACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOADON__MACH__34C8D9D1">
+          <End Type="QuanLyBanHangNoveaModel.CUAHANG" Role="CUAHANG" Multiplicity="0..1" />
+          <End Type="QuanLyBanHangNoveaModel.HOADON" Role="HOADON" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CUAHANG">
               <PropertyRef Name="MACH" />
@@ -347,9 +615,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__MAKH__4316F928">
-          <End Role="KHACH" Type="Self.KHACH" Multiplicity="0..1" />
-          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+        <Association Name="FK__HOADON__MACH__534D60F1">
+          <End Type="QuanLyBanHangNoveaModel.CUAHANG" Role="CUAHANG" Multiplicity="0..1" />
+          <End Type="QuanLyBanHangNoveaModel.HOADON" Role="HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUAHANG">
+              <PropertyRef Name="MACH" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="MACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CUAHANG_BA__MASP__32E0915F">
+          <End Type="QuanLyBanHangNoveaModel.SANPHAM" Role="SANPHAM" Multiplicity="1" />
+          <End Type="QuanLyBanHangNoveaModel.CUAHANG_BAN_SANPHAM" Role="CUAHANG_BAN_SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="CUAHANG_BAN_SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CUAHANG_BA__MASP__5165187F">
+          <End Type="QuanLyBanHangNoveaModel.SANPHAM" Role="SANPHAM" Multiplicity="1" />
+          <End Type="QuanLyBanHangNoveaModel.CUAHANG_BAN_SANPHAM" Role="CUAHANG_BAN_SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="CUAHANG_BAN_SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOADON__MAKH__35BCFE0A">
+          <End Type="QuanLyBanHangNoveaModel.KHACH" Role="KHACH" Multiplicity="0..1" />
+          <End Type="QuanLyBanHangNoveaModel.HOADON" Role="HOADON" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="KHACH">
               <PropertyRef Name="MAKH" />
@@ -359,42 +663,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="CUAHANG_BAN_SANPHAM">
-          <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="*" />
-          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+        <Association Name="FK__HOADON__MAKH__5441852A">
+          <End Type="QuanLyBanHangNoveaModel.KHACH" Role="KHACH" Multiplicity="0..1" />
+          <End Type="QuanLyBanHangNoveaModel.HOADON" Role="HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACH">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QuanLyBanHangNoveaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CHUs" EntityType="Self.CHU" />
-          <EntitySet Name="CTHDs" EntityType="Self.CTHD" />
-          <EntitySet Name="CUAHANGs" EntityType="Self.CUAHANG" />
-          <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
-          <EntitySet Name="KHACHes" EntityType="Self.KHACH" />
-          <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
-          <AssociationSet Name="FK__CHU__MACH__3A81B327" Association="Self.FK__CHU__MACH__3A81B327">
-            <End Role="CUAHANG" EntitySet="CUAHANGs" />
-            <End Role="CHU" EntitySet="CHUs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CTHD__MASP__47DBAE45" Association="Self.FK__CTHD__MASP__47DBAE45">
-            <End Role="SANPHAM" EntitySet="SANPHAMs" />
-            <End Role="CTHD" EntitySet="CTHDs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CTHD__SOHD__46E78A0C" Association="Self.FK__CTHD__SOHD__46E78A0C">
-            <End Role="HOADON" EntitySet="HOADONs" />
-            <End Role="CTHD" EntitySet="CTHDs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MACH__440B1D61" Association="Self.FK__HOADON__MACH__440B1D61">
-            <End Role="CUAHANG" EntitySet="CUAHANGs" />
-            <End Role="HOADON" EntitySet="HOADONs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MAKH__4316F928" Association="Self.FK__HOADON__MAKH__4316F928">
-            <End Role="KHACH" EntitySet="KHACHes" />
-            <End Role="HOADON" EntitySet="HOADONs" />
-          </AssociationSet>
-          <AssociationSet Name="CUAHANG_BAN_SANPHAM" Association="Self.CUAHANG_BAN_SANPHAM">
-            <End Role="CUAHANG" EntitySet="CUAHANGs" />
-            <End Role="SANPHAM" EntitySet="SANPHAMs" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -404,90 +684,94 @@
           <EntitySetMapping Name="CHUs">
             <EntityTypeMapping TypeName="QuanLyBanHangNoveaModel.CHU">
               <MappingFragment StoreEntitySet="CHU">
-                <ScalarProperty Name="MACHU" ColumnName="MACHU" />
-                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
-                <ScalarProperty Name="NGSINH" ColumnName="NGSINH" />
-                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
-                <ScalarProperty Name="NGDK" ColumnName="NGDK" />
-                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
-                <ScalarProperty Name="VAITRO" ColumnName="VAITRO" />
                 <ScalarProperty Name="MACH" ColumnName="MACH" />
+                <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+                <ScalarProperty Name="VAITRO" ColumnName="VAITRO" />
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+                <ScalarProperty Name="NGDK" ColumnName="NGDK" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+                <ScalarProperty Name="NGSINH" ColumnName="NGSINH" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="MACHU" ColumnName="MACHU" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CTHDs">
             <EntityTypeMapping TypeName="QuanLyBanHangNoveaModel.CTHD">
               <MappingFragment StoreEntitySet="CTHD">
-                <ScalarProperty Name="SOHD" ColumnName="SOHD" />
-                <ScalarProperty Name="MASP" ColumnName="MASP" />
-                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
-                <ScalarProperty Name="TRIGIA" ColumnName="TRIGIA" />
-                <ScalarProperty Name="LuongDa" ColumnName="LuongDa" />
                 <ScalarProperty Name="LuongDuong" ColumnName="LuongDuong" />
+                <ScalarProperty Name="LuongDa" ColumnName="LuongDa" />
+                <ScalarProperty Name="TRIGIA" ColumnName="TRIGIA" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="SOHD" ColumnName="SOHD" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CUAHANGs">
             <EntityTypeMapping TypeName="QuanLyBanHangNoveaModel.CUAHANG">
               <MappingFragment StoreEntitySet="CUAHANG">
-                <ScalarProperty Name="MACH" ColumnName="MACH" />
-                <ScalarProperty Name="TENCH" ColumnName="TENCH" />
-                <ScalarProperty Name="DIADIEM" ColumnName="DIADIEM" />
                 <ScalarProperty Name="DOANHTHU" ColumnName="DOANHTHU" />
+                <ScalarProperty Name="DIADIEM" ColumnName="DIADIEM" />
+                <ScalarProperty Name="TENCH" ColumnName="TENCH" />
+                <ScalarProperty Name="MACH" ColumnName="MACH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUAHANG_BAN_SANPHAM">
+            <EntityTypeMapping TypeName="QuanLyBanHangNoveaModel.CUAHANG_BAN_SANPHAM">
+              <MappingFragment StoreEntitySet="CUAHANG_BAN_SANPHAM">
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="MACH" ColumnName="MACH" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HOADONs">
             <EntityTypeMapping TypeName="QuanLyBanHangNoveaModel.HOADON">
               <MappingFragment StoreEntitySet="HOADON">
-                <ScalarProperty Name="SOHD" ColumnName="SOHD" />
-                <ScalarProperty Name="NGMH" ColumnName="NGMH" />
-                <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
-                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
                 <ScalarProperty Name="MACH" ColumnName="MACH" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+                <ScalarProperty Name="NGMH" ColumnName="NGMH" />
+                <ScalarProperty Name="SOHD" ColumnName="SOHD" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KHACHes">
             <EntityTypeMapping TypeName="QuanLyBanHangNoveaModel.KHACH">
               <MappingFragment StoreEntitySet="KHACH">
-                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
-                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
-                <ScalarProperty Name="NGSINH" ColumnName="NGSINH" />
-                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
-                <ScalarProperty Name="NGDK" ColumnName="NGDK" />
-                <ScalarProperty Name="DOANHSO" ColumnName="DOANHSO" />
-                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+                <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
                 <ScalarProperty Name="VAITRO" ColumnName="VAITRO" />
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+                <ScalarProperty Name="DOANHSO" ColumnName="DOANHSO" />
+                <ScalarProperty Name="NGDK" ColumnName="NGDK" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+                <ScalarProperty Name="NGSINH" ColumnName="NGSINH" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SANPHAMs">
             <EntityTypeMapping TypeName="QuanLyBanHangNoveaModel.SANPHAM">
               <MappingFragment StoreEntitySet="SANPHAM">
-                <ScalarProperty Name="MASP" ColumnName="MASP" />
-                <ScalarProperty Name="TENSP" ColumnName="TENSP" />
-                <ScalarProperty Name="THELOAI" ColumnName="THELOAI" />
-                <ScalarProperty Name="DONVI" ColumnName="DONVI" />
-                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+                <ScalarProperty Name="HINHSP" ColumnName="HINHSP" />
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
                 <ScalarProperty Name="KICHTHUOC" ColumnName="KICHTHUOC" />
+                <ScalarProperty Name="DONGIA" ColumnName="DONGIA" />
+                <ScalarProperty Name="DONVI" ColumnName="DONVI" />
+                <ScalarProperty Name="THELOAI" ColumnName="THELOAI" />
+                <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="CUAHANG_BAN_SANPHAM" TypeName="QuanLyBanHangNoveaModel.CUAHANG_BAN_SANPHAM" StoreEntitySet="CUAHANG_BAN_SANPHAM">
-            <EndProperty Name="CUAHANG">
-              <ScalarProperty Name="MACH" ColumnName="MACH" />
-            </EndProperty>
-            <EndProperty Name="SANPHAM">
-              <ScalarProperty Name="MASP" ColumnName="MASP" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
