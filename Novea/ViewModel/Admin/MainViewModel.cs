@@ -16,7 +16,6 @@ namespace Novea.ViewModel.Admin
     public class MainViewModel : BaseViewModel
     {
         public ICommand CloseLogin { get; set; }
-        public ICommand MaximizeLogin { get; set; }
         public ICommand MinimizeLogin { get; set; }
         public ICommand GetIdTab { get; set; }
         public ICommand SwitchTab { get; set; }
@@ -26,7 +25,6 @@ namespace Novea.ViewModel.Admin
 
         public MainViewModel()
         {
-            MaximizeLogin = new RelayCommand<MainWindow>((p) => true, (p) => Maximize(p));
             CloseLogin = new RelayCommand<MainWindow>((p) => true, (p) => Close());
             MinimizeLogin = new RelayCommand<MainWindow>((p) => true, (p) => Minimize(p));
             GetIdTab = new RelayCommand<RadioButton>((p) => true, (p) => Name = p.Uid);
@@ -89,10 +87,6 @@ namespace Novea.ViewModel.Admin
         public void Minimize(MainWindow p)
         {
             p.WindowState = WindowState.Minimized;
-        }
-        public void Maximize(MainWindow p)
-        {
-            p.WindowState = WindowState.Maximized;
         }
     }
 }

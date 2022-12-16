@@ -50,8 +50,8 @@
 
                     <Border.Background>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                            <GradientStop Color="#5bc3ff" Offset="0"/>
-                            <GradientStop Color="#3aa0ff" Offset="1"/>
+                            <GradientStop Color="#FFA033" Offset="0"/>
+                            <GradientStop Color="#fff8f0" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.Background>
 
@@ -62,24 +62,21 @@
                     </Border.Clip>
 
                     <Grid>
-                        <Ellipse Width="150" Height="150" Margin="145,-64,0,34" HorizontalAlignment="Left">
-                            <Ellipse.Fill>
-                                <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
-                                    <GradientStop Color="red" Offset="0" />
-                                    <GradientStop Color="Blue" Offset="1" />
-                                </LinearGradientBrush>
-                            </Ellipse.Fill>
-                        </Ellipse>
-                        <materialDesign:PackIcon Kind="Eye" Margin="0,10,10,0" Width="40" Height="40" Foreground="#ffffff" HorizontalAlignment="Right" />
+                        <materialDesign:PackIcon Kind="Eye" 
+                                                 Margin="0,10,10,0" 
+                                                 Width="40" 
+                                                 Height="40" 
+                                                 Foreground="{StaticResource plainTextColor2}"
+                                                 HorizontalAlignment="Right" />
                         <StackPanel Margin="5">
                             <TextBlock Text="Total Views"
                                    FontSize="20"
-                                   Foreground="White"
+                                   Foreground="{StaticResource plainTextColor2}"
                                    Margin="20 10 10 0"/>
 
                             <TextBlock Text="123456"
                                    FontSize="35"
-                                   Foreground="White"
+                                   Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
                                    Margin="20 10 10 0" Width="135"/>
                         </StackPanel>
@@ -93,12 +90,12 @@
                 <Border Width="220"
                     Height="120"
                     CornerRadius="40"
-                    Margin="10 0 40 0">
+                    Margin="10 0 50 0">
 
                     <Border.Background>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                            <GradientStop Color="#5bc3ff" Offset="0"/>
-                            <GradientStop Color="#3aa0ff" Offset="1"/>
+                            <GradientStop Color="#FFA033" Offset="0"/>
+                            <GradientStop Color="#fff8f0" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.Background>
 
@@ -109,24 +106,20 @@
                     </Border.Clip>
 
                     <Grid>
-                        <Ellipse Width="150" Height="150" Margin="172,-82,0,32" HorizontalAlignment="Left">
-                            <Ellipse.Fill>
-                                <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
-                                    <GradientStop Color="red" Offset="0" />
-                                    <GradientStop Color="Blue" Offset="1" />
-                                </LinearGradientBrush>
-                            </Ellipse.Fill>
-                        </Ellipse>
-                        <materialDesign:PackIcon Kind="CartOutline" Margin="0,10,10,0" Width="40" Height="40" Foreground="#ffffff" HorizontalAlignment="Right" />
+                        <materialDesign:PackIcon Kind="CartOutline" 
+                                                 Margin="0,10,10,0" 
+                                                 Width="40" 
+                                                 Height="40" 
+                                                 Foreground="{StaticResource plainTextColor2}" HorizontalAlignment="Right" />
                         <StackPanel Margin="5">
                             <TextBlock Text="Total Orders"
                                    FontSize="20"
-                                   Foreground="White"
+                                   Foreground="{StaticResource plainTextColor2}"
                                    Margin="20 10 10 0"/>
 
                             <TextBlock Text="696969"
                                    FontSize="35"
-                                   Foreground="White"
+                                   Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
                                    Margin="20 10 10 0" Width="135"/>
                         </StackPanel>
@@ -144,8 +137,8 @@
 
                     <Border.Background>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                            <GradientStop Color="#5bc3ff" Offset="0"/>
-                            <GradientStop Color="#3aa0ff" Offset="1"/>
+                            <GradientStop Color="#FFA033" Offset="0"/>
+                            <GradientStop Color="#fff8f0" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.Background>
 
@@ -156,24 +149,29 @@
                     </Border.Clip>
 
                     <Grid>
-                        <Ellipse Width="150" Height="150" Margin="172,-82,0,32" HorizontalAlignment="Left">
+                        <!--<Ellipse Width="150" Height="150" Margin="145,-75,0,45" HorizontalAlignment="Left">
                             <Ellipse.Fill>
                                 <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
                                     <GradientStop Color="red" Offset="0" />
                                     <GradientStop Color="Blue" Offset="1" />
                                 </LinearGradientBrush>
                             </Ellipse.Fill>
-                        </Ellipse>
-                        <materialDesign:PackIcon Kind="Cash" Margin="0,10,10,0" Width="40" Height="40" Foreground="#ffffff" HorizontalAlignment="Right" />
+                        </Ellipse>-->
+                        <materialDesign:PackIcon Kind="Cash"
+                                                 Margin="0,10,10,0" 
+                                                 Width="40" 
+                                                 Height="40" 
+                                                 Foreground="{StaticResource plainTextColor2}" 
+                                                 HorizontalAlignment="Right" />
                         <StackPanel Margin="5">
                             <TextBlock Text="Total Revenue"
                                    FontSize="20"
-                                   Foreground="White"
+                                   Foreground="{StaticResource plainTextColor2}"
                                    Margin="20 10 10 0"/>
 
                             <TextBlock Text="13579"
                                    FontSize="35"
-                                   Foreground="White"
+                                   Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
                                    Margin="20 10 10 0" Width="135"/>
                         </StackPanel>
@@ -193,7 +191,8 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Chart-->
-                <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40">
+                <Border CornerRadius="20" Padding="35 25" Background="#243771"
+                        Margin="20 0 0 0">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
@@ -285,7 +284,7 @@
                 </Border>
 
                 <!--Orders-->
-                <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15 0 47 40">
+                <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15 0 20 40">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
