@@ -11,7 +11,7 @@
         ResizeMode="NoResize"
         x:Name="Mainwd"
         Height="600" Width="1024" WindowStartupLocation="CenterScreen"
-        Background="Transparent"
+        Background="Transparent"        
         DataContext="{StaticResource MainVM}">
 
     <Border CornerRadius="40"
@@ -24,6 +24,13 @@
                 <GradientStop Color="{StaticResource winBorderColor3}" Offset="1"/>
             </LinearGradientBrush>
         </Border.BorderBrush>
+        
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
 
         <Grid>
             <Grid.RowDefinitions>
@@ -40,24 +47,27 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center" Margin="10,0,0,0">
-                    <TextBlock Text="NOVEA"    
-                           FontSize="30"                    
-                           FontWeight="Medium"         
-                           Style="{StaticResource NameApp}" Height="36" >
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Dog" 
+                                             Foreground="#FFCF99"                                                 
+                                             Margin="0 0 5 0"                                                    
+                                             Height="36"                                                                                                                            Width="30"                                                                               
+                                             VerticalAlignment="Center">
+                    </materialDesign:PackIcon>
+                    <TextBlock Text="NOVEA"                              
+                               FontSize="30"                                              
+                               FontWeight="Medium"                                   
+                               Style="{StaticResource NameApp}" 
+                               Height="36" 
+                               HorizontalAlignment="Center">
                         <TextBlock.Foreground>
                             <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                                <GradientStop Color="Purple" Offset="0"/>
-                                <GradientStop Color="Blue" Offset="1"/>
+                                <GradientStop Color="#FFCF99" Offset="0"/>
+                                <GradientStop Color="#92140c" Offset="1"/>
                             </LinearGradientBrush>
-                        </TextBlock.Foreground><InlineUIContainer>
-                            <materialDesign:PackIcon Kind="Dog" 
-                                Height="23"
-                                                     Margin="0 0 5 0"
-                                Width="25" 
-                                VerticalAlignment="Bottom"/>
-                        </InlineUIContainer></TextBlock>
+                        </TextBlock.Foreground>
+                    </TextBlock>
                 </StackPanel>
 
 
@@ -67,8 +77,8 @@
 
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
-                            <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
-                            <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+                            <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
+                            <GradientStop Color="{StaticResource primaryBackColor2}" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.Background>
 
@@ -80,7 +90,7 @@
                                 Background="White" 
                                 CornerRadius="100" 
                                 DockPanel.Dock="Top" 
-                                HorizontalAlignment="Left"                                
+                                HorizontalAlignment="Center"                                
                                 Margin="20 -30 35 0">
                             <Ellipse >
                                 <Ellipse.Fill>
@@ -91,14 +101,14 @@
 
                         <!--Menu Titles-->
                         <TextBlock Text="VŨ ĐỨC MINH" 
-                                   Foreground="White" 
+                                   Foreground="#fff8f0" 
                                    FontSize="21" 
                                    FontWeight="SemiBold" 
                                    DockPanel.Dock="Top" 
                                    Margin="5" 
                                    TextAlignment="Center"/>
                         <TextBlock Text="Quản Trị Viên" 
-                                   Foreground="#D0BFFF" 
+                                   Foreground="#fff8f0" 
                                    FontSize="14" 
                                    FontWeight="SemiBold" 
                                    DockPanel.Dock="Top" 
@@ -130,7 +140,7 @@
                             </RadioButton>
 
                             <RadioButton Style="{StaticResource menuButton}"                              
-                                         Tag="{StaticResource color2}"
+                                         Tag="{StaticResource color1}"
                                          Uid="1"
                                          x:Name="btnOrder">
                                 <i:Interaction.Triggers>
@@ -150,7 +160,7 @@
                             </RadioButton>
 
                             <RadioButton Style="{StaticResource menuButton}"                                 
-                                         Tag="{StaticResource color3}"
+                                         Tag="{StaticResource color1}"
                                          Uid="2"
                                          x:Name="btnProduct">
                                 <i:Interaction.Triggers>
@@ -170,7 +180,7 @@
                             </RadioButton>
 
                             <RadioButton Style="{StaticResource menuButton}"                                 
-                                         Tag="{StaticResource color4}"
+                                         Tag="{StaticResource color1}"
                                          Uid="3"
                                          x:Name="btnCustomer">
                                 <i:Interaction.Triggers>
@@ -190,7 +200,7 @@
                             </RadioButton>
 
                             <RadioButton Style="{StaticResource menuButton}"                                 
-                                         Tag="{StaticResource color5}"
+                                         Tag="{StaticResource color1}"
                                          Uid="4"
                                          x:Name="btnManagement">
                                 <i:Interaction.Triggers>
@@ -210,7 +220,7 @@
                             </RadioButton>
 
                             <RadioButton Style="{StaticResource menuButton}"                                
-                                         Tag="{StaticResource color6}"
+                                         Tag="{StaticResource color1}"
                                          Uid="5"
                                          x:Name="btnSetting">
                                 <i:Interaction.Triggers>
@@ -230,7 +240,7 @@
                             </RadioButton>
 
                             <RadioButton Style="{StaticResource menuButton}"                                
-                                         Tag="{StaticResource color7}"
+                                         Tag="{StaticResource color1}"
                                          Uid="6"
                                          x:Name="btnLogout">
 
@@ -248,123 +258,6 @@
 
                         </StackPanel>
 
-
-
-                        <!--<StackPanel Height="373">
-                            <RadioButton IsChecked="True"                           
-                                         x:Name="btnHome"                          
-                                         Style="{StaticResource BtnHome}"                           
-                                         FontFamily="{StaticResource Custom}"                           
-                                         Uid="0" 
-                                         Width="161">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                    <i:EventTrigger EventName="MouseMove">
-                                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
-                                                       CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </RadioButton>
-
-                            <RadioButton
-                            Style="{StaticResource BtnCreateBill}"
-                            Uid="1"
-                            FontFamily="{StaticResource Custom}"
-                            x:Name="btnOrder" Width="161"
-                            >
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                    <i:EventTrigger EventName="MouseMove">
-                                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
-                                                       CommandParameter="{Binding ElementName=btnOrder}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </RadioButton>
-
-                            <RadioButton
-                            Style="{StaticResource BtnProduct}"
-                            FontFamily="{StaticResource Custom}"
-                            Uid="2"
-                            x:Name="btnProducts"
-                            >
-                                <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                                <i:EventTrigger EventName="MouseMove">
-                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
-                                                           CommandParameter="{Binding ElementName=btnProducts}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                            </RadioButton>
-
-                            <RadioButton
-                            Style="{StaticResource BtnKH}"
-                            FontFamily="{StaticResource Custom}"
-                            Uid="3"
-                            x:Name="btnKH"
-                            >
-                                <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                                <i:EventTrigger EventName="MouseMove">
-                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
-                                                           CommandParameter="{Binding ElementName=btnKH}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                            </RadioButton>
-
-                            <RadioButton
-                            x:Name="btnQLNNV"
-                            Uid="4"
-                            Visibility="{Binding SetQuanLy}"
-                            Style="{StaticResource BtnManage}"
-                            FontFamily="{StaticResource Custom}"
-                            
-                            >
-                                <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                                <i:EventTrigger EventName="MouseMove">
-                                    <i:InvokeCommandAction Command="{Binding GetIdTab}"
-                                                           CommandParameter="{Binding ElementName=btnQLNNV}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                            </RadioButton>
-
-                            <RadioButton
-                            Style="{StaticResource BtnSetting}"
-                            FontFamily="{StaticResource Custom}"
-                            Uid="5"
-                            x:Name="btnSetting">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                    <i:EventTrigger EventName="MouseMove">
-                                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
-                                                           CommandParameter="{Binding ElementName=btnSetting}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </RadioButton>
-                            <Button Style="{StaticResource BtnLogOut}"
-                                    FontFamily="{StaticResource Custom}"
-                                    Height="41"
-                                    Margin="0 43 0 0" Width="134"/>
-                            
-                        </StackPanel>-->
                     </DockPanel>
 
                 </Border>
@@ -374,8 +267,8 @@
                 
                 <Border.Background>
                     <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
-                        <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
-                        <GradientStop Color="{StaticResource primaryBackColor2}" Offset="1"/>
+                        <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                        <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
 

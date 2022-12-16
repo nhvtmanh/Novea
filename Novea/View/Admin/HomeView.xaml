@@ -10,7 +10,13 @@
       d:DesignHeight="565" d:DesignWidth="820"
       Title="HomeView">
 
-    <Border Background="#223266" CornerRadius="0 0 40 0">
+    <Border CornerRadius="0 0 40 0">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
         <Grid  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -18,25 +24,29 @@
                 <RowDefinition Height="337*"/>
             </Grid.RowDefinitions>
 
-
-            <TextBlock Text="TRANG CHỦ"
-                   Foreground="White"
-                   FontSize="45"
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Home" 
+                                         Foreground="#FFCF99"
+                                         Margin="25 0 10 0"
+                                         Width="30"
+                                         Height="35"
+                                         VerticalAlignment="Center"/>
+                <TextBlock Text="TRANG CHỦ"
+                   Foreground="#fff8f0"
+                   FontSize="30"
                    FontWeight="Medium"
-                   HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   Margin="15,0,0,0" 
-                   Width="293" Height="60"/>
-
+                           FontFamily="{StaticResource Custom1}"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal"
                     Grid.Row="1"
                     VerticalAlignment="Center" 
                     Height="250">
 
-                <Border Width="250"
+                <Border Width="220"
                     Height="120"
                     CornerRadius="40"
-                    Margin="10">
+                    Margin="20 0 50 0">
 
                     <Border.Background>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
@@ -52,7 +62,7 @@
                     </Border.Clip>
 
                     <Grid>
-                        <Ellipse Width="150" Height="150" Margin="172,-82,0,32" HorizontalAlignment="Left">
+                        <Ellipse Width="150" Height="150" Margin="145,-64,0,34" HorizontalAlignment="Left">
                             <Ellipse.Fill>
                                 <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
                                     <GradientStop Color="red" Offset="0" />
@@ -80,10 +90,10 @@
                     </Grid>
                 </Border>
 
-                <Border Width="250"
+                <Border Width="220"
                     Height="120"
                     CornerRadius="40"
-                    Margin="10">
+                    Margin="10 0 40 0">
 
                     <Border.Background>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
@@ -127,10 +137,10 @@
                     </Grid>
                 </Border>
 
-                <Border Width="250"
-                    Height="120"
-                    CornerRadius="40"
-                    Margin="10">
+                <Border Width="220"                   
+                        Height="120"                   
+                        CornerRadius="40"                    
+                        Margin="10">
 
                     <Border.Background>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
@@ -190,9 +200,16 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <StackPanel Orientation="Horizontal" Margin="0 0 0 25">
-                            <materialDesign:PackIcon Kind="AccountChildCircle" />
-                            <TextBlock Text="Profit"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <materialDesign:PackIcon Kind="AccountChildCircle" 
+                                                     Foreground="#1e1e24"
+                                                     VerticalAlignment="Center"
+                                                     Width="20"
+                                                     Margin="0 0 5 0"
+                                                     Height="20"/>
+                            <TextBlock Text="Profit"
+                                       FontSize="20"
+                                       Foreground="#1e1e24"/>
                         </StackPanel>
 
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0 0 0 25" Grid.Row="1">
@@ -206,22 +223,25 @@
                             <TextBlock Text="0" Foreground="#717EB2" HorizontalAlignment="Right"/>
                         </StackPanel>
 
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="1" Orientation="Horizontal" Margin="50 0 0 0">
+                        <StackPanel VerticalAlignment="Top"
+                                    Grid.Row="1" 
+                                    Orientation="Horizontal" 
+                                    Margin="77,230,1,0">
                             <TextBlock Text="1" Foreground="#717EB2"/>
-                            <TextBlock Text="2" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="3" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="4" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="5" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="6" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="7" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="8" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="9" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="10" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="11" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="12" Foreground="#717EB2" Margin="41 0 0 0"/>
+                            <TextBlock Text="2" Foreground="#717EB2" Margin="30 0 0 0"/>
+                            <TextBlock Text="3" Foreground="#717EB2" Margin="30 0 0 0"/>
+                            <TextBlock Text="4" Foreground="#717EB2" Margin="30 0 0 0"/>
+                            <TextBlock Text="5" Foreground="#717EB2" Margin="30 0 0 0"/>
+                            <TextBlock Text="6" Foreground="#717EB2" Margin="30 0 0 0"/>
+                            <TextBlock Text="7" Foreground="#717EB2" Margin="30 0 0 0"/>
+                            <TextBlock Text="8" Foreground="#717EB2" Margin="30 0 0 0"/>
+                            <TextBlock Text="9" Foreground="#717EB2" Margin="30 0 0 0"/>
+                            <TextBlock Text="10" Foreground="#717EB2" Margin="30 0 0 0"/>
+                            <TextBlock Text="11" Foreground="#717EB2" Margin="30 0 0 0"/>
+                            <TextBlock Text="12" Foreground="#717EB2" Margin="30 0 0 0"/>
                         </StackPanel>
 
-                        <lvc:CartesianChart Grid.Row="1" Margin="45 0 0 25">
+                        <lvc:CartesianChart Grid.Row="1" Margin="45,10,0,25">
                             <lvc:CartesianChart.Background>
                                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                     <GradientStop Color="#26376F" Offset="0"/>
@@ -273,8 +293,13 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Orientation="Horizontal" Margin="28 0 0 15">
-                            <materialDesign:PackIcon Kind="AccountChildCircle" />
-                            <TextBlock Text="Last Orders"/>
+                            <materialDesign:PackIcon Kind="AccountChildCircle" 
+                                                     VerticalAlignment="Center"
+                                                     Width="20"
+                                                     Margin="0 0 5 0"                                                     
+                                                     Height="20"/>
+                            <TextBlock Text="Last Orders"
+                                       FontSize="20"/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="1">
