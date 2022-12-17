@@ -75,6 +75,7 @@
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="#5F76F6" />
                                     <Setter Property="Foreground" Value="#ffffff" />
+                                    <Setter Property="Cursor" Value="Hand"/>
                                 </Trigger>
 
                                 <DataTrigger Binding="{Binding ElementName=element,Path=IsActive}" Value="True">
@@ -135,6 +136,7 @@
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="#5F76F6" />
                                     <Setter Property="Foreground" Value="#ffffff" />
+                                    <Setter Property="Cursor" Value="Hand"/>
                                 </Trigger>
 
                                 <DataTrigger Binding="{Binding ElementName=element,Path=IsActive}" Value="True">
