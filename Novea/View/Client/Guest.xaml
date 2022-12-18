@@ -13,7 +13,20 @@
         ResizeMode="NoResize"
         x:Name="Guestwd" Height="600" Width="1024"
         DataContext="{StaticResource GuestVM}">
-    <Border CornerRadius="40" Background="#EFF2F7">
+    <Border CornerRadius="40" BorderThickness="1">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource winBorderColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource winBorderColor2}" Offset="0.5"/>
+                <GradientStop Color="{StaticResource winBorderColor3}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="204"></ColumnDefinition>
@@ -21,8 +34,8 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="19*"></RowDefinition>
-                    <RowDefinition Height="131*"></RowDefinition>
+                    <RowDefinition Height="47*"></RowDefinition>
+                    <RowDefinition Height="253*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <TextBlock Text="NOVEA"                       
                            FontSize="40"                    
@@ -34,12 +47,19 @@
                            Height="48">
                     <TextBlock.Foreground>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                            <GradientStop Color="Purple" Offset="0"/>
-                            <GradientStop Color="Blue" Offset="1"/>
+                            <GradientStop Color="#f04e42" Offset="0"/>
+                            <GradientStop Color="#92140c" Offset="1"/>
                         </LinearGradientBrush>
                     </TextBlock.Foreground>
                 </TextBlock>
-                <Border Grid.Row="1" Background="#623DE0" CornerRadius="0 50 0 40">
+                <Border Grid.Row="1" 
+                        CornerRadius="0 50 0 40">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
+                            <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
+                            <GradientStop Color="{StaticResource primaryBackColor2}" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
                     <DockPanel VerticalAlignment="Center" Height="498">
                         <Border Width="80" 
                                 Height="80"                                
@@ -55,7 +75,7 @@
                         </Border>
                         <TextBlock 
                             Text="nhvtmanh" 
-                            Foreground="White" 
+                            Foreground="#fff8f0" 
                             FontSize="21" 
                             FontWeight="SemiBold" 
                             DockPanel.Dock="Top" 
@@ -63,7 +83,7 @@
                             TextAlignment="Center"/>
                         <TextBlock 
                             Text="Khách hàng" 
-                            Foreground="#D0BFFF" 
+                            Foreground="#fff8f0" 
                             FontSize="14" 
                             FontWeight="SemiBold" 
                             DockPanel.Dock="Top" 
@@ -98,7 +118,7 @@
                             <RadioButton
                                 x:Name="btnCart"
                                 Style="{StaticResource menuButton}"
-                                Tag="{StaticResource color2}"
+                                Tag="{StaticResource color1}"
                                 Uid="1">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
@@ -119,7 +139,7 @@
                             <RadioButton
                                 x:Name="btnLSDH"
                                 Style="{StaticResource menuButton}"
-                                Tag="{StaticResource color3}"
+                                Tag="{StaticResource color1}"
                                 Uid="2">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
@@ -140,7 +160,7 @@
                             <RadioButton
                                 x:Name="btnSetting"                                                
                                 Style="{StaticResource menuButton}"
-                                Tag="{StaticResource color4}"
+                                Tag="{StaticResource color1}"
                                 Uid="3">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
@@ -161,7 +181,7 @@
                             <RadioButton 
                                 x:Name="btnLogout"
                                 Style="{StaticResource menuButton}"                                
-                                Tag="{StaticResource color5}"
+                                Tag="{StaticResource color1}"
                                 Uid="4">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
@@ -179,57 +199,66 @@
                     </DockPanel>
                 </Border>
             </Grid>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="35"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Border Grid.Row="0">
-                    <StackPanel x:Name="pnlControlBar"
-                                Orientation="Horizontal"
-                                FlowDirection="RightToLeft"
-                                Background="Transparent"
-                                Margin="0,0,22,0">
-                        <Button Style="{StaticResource controlButton}"
-                                Tag="{StaticResource plainTextColor1}"
-                                Width="35"
-                                x:Name="clostBt">
-                            <materialDesign:PackIcon Kind="CloseThick" 
-                                                     Width="{Binding Width, ElementName=clostBt}" 
-                                                     Height="{Binding Width, ElementName=clostBt}" 
-                                                 Margin="23 5 0 0">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseLeftButtonDown">
-                                        <i:InvokeCommandAction Command="{Binding CloseGuestwd}"                                               
-                                                           CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </materialDesign:PackIcon>
-                        </Button>
-                        <Button Style="{StaticResource controlButton}"
-                                Tag="{StaticResource plainTextColor1}"
-                                Width="35">
-                            <materialDesign:PackIcon Kind="WindowMinimize" 
-                                                     Width="{Binding Width, ElementName=clostBt}"
-                                                     Height="{Binding Width, ElementName=clostBt}">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseLeftButtonDown">
-                                        <i:InvokeCommandAction Command="{Binding MinimizeGuestwd}"                                    
-                                                           CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </materialDesign:PackIcon>
-                        </Button>
-                    </StackPanel>
-                </Border>
-                <Grid Grid.Row="1">
-                    <Frame x:Name="Main" 
-                           Source="/View/Client/Home.xaml"
-                           NavigationUIVisibility="Hidden"
-                           DataContext="{StaticResource GuestVM}">
-                    </Frame>
+            <Border Grid.Column="1"
+                    CornerRadius="0 40 40 0"
+                    BorderThickness="2">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                        <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                        <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0">
+                        <StackPanel x:Name="pnlControlBar"
+                                    Orientation="Horizontal"
+                                    FlowDirection="RightToLeft"
+                                    Background="Transparent"
+                                    Margin="0,0,22,0">
+                            <Button Style="{StaticResource controlButton}"
+                                    Tag="{StaticResource plainTextColor1}"
+                                    Width="35"
+                                    x:Name="clostBt">
+                                <materialDesign:PackIcon Kind="CloseThick" 
+                                                         Width="{Binding Width, ElementName=clostBt}" 
+                                                         Height="{Binding Width, ElementName=clostBt}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding CloseGuestwd}"                                               
+                                                                   CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </materialDesign:PackIcon>
+                            </Button>
+                            <Button Style="{StaticResource controlButton}"
+                                    Tag="{StaticResource plainTextColor1}"
+                                    Width="35">
+                                <materialDesign:PackIcon Kind="WindowMinimize" 
+                                                         Width="{Binding Width, ElementName=clostBt}"
+                                                         Height="{Binding Width, ElementName=clostBt}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding MinimizeGuestwd}"                                    
+                                                                   CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </materialDesign:PackIcon>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <Grid Grid.Row="1">
+                        <Frame x:Name="Main" 
+                               Source="/View/Client/Home.xaml"
+                               NavigationUIVisibility="Hidden"
+                               DataContext="{StaticResource GuestVM}">
+                        </Frame>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </Border>
         </Grid>
     </Border>
 </Window>
