@@ -28,7 +28,6 @@ namespace Novea.Model
         public virtual DbSet<CHU> CHUs { get; set; }
         public virtual DbSet<CTHD> CTHDs { get; set; }
         public virtual DbSet<CUAHANG> CUAHANGs { get; set; }
-        public virtual DbSet<CUAHANG_BAN_SANPHAM> CUAHANG_BAN_SANPHAM { get; set; }
         public virtual DbSet<HOADON> HOADONs { get; set; }
         public virtual DbSet<KHACH> KHACHes { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }

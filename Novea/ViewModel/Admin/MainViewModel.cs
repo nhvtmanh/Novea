@@ -1,4 +1,4 @@
-﻿//using Novea.Model;
+﻿using Novea.Model;
 using Novea.View;
 using Novea.View.Admin;
 using System;
@@ -15,6 +15,20 @@ namespace Novea.ViewModel.Admin
 {
     public class MainViewModel : BaseViewModel
     {
+        //Start
+        public ICommand MoveWindow { get; set; }
+        public ICommand TenDangNhap_Loaded { get; set; }
+        public ICommand Quyen_Loaded { get; set; }
+        private CHU _User;
+        public CHU User { get => _User; set { _User = value; OnPropertyChanged(); } }
+        private Visibility _SetQuanLy;
+        public Visibility SetQuanLy { get => _SetQuanLy; set { _SetQuanLy = value; OnPropertyChanged(); } }
+
+        private string _Ava;
+        public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
+        public ICommand Loadwd { get; set; }
+        //End
+
         public ICommand CloseLogin { get; set; }
         public ICommand MinimizeLogin { get; set; }
         public ICommand GetIdTab { get; set; }
@@ -31,6 +45,13 @@ namespace Novea.ViewModel.Admin
             SwitchTab = new RelayCommand<MainWindow>((p) => true, (p) => switchtab(p));
             LogOutCommand = new RelayCommand<MainWindow>((p) => { return true; }, (p) => LogOut(p));
 
+            //Start
+            Loadwd = new RelayCommand<MainWindow>((p) => true, (p) => _Loadwd(p));
+            MoveWindow = new RelayCommand<MainWindow>((p) => true, (p) => moveWindow(p));
+            TenDangNhap_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadTenND(p));
+            Quyen_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadQuyen(p));
+            //End
+
         }
         void LogOut(MainWindow p)
         {
@@ -46,31 +67,37 @@ namespace Novea.ViewModel.Admin
             {
                 case 0:
                     {
+                        _Loadwd(p);
                         p.Main.NavigationService.Navigate(new View.Admin.HomeView());
                         break;
                     }
                 case 1:
                     {
+                        _Loadwd(p);
                         p.Main.NavigationService.Navigate(new View.Admin.OrdersView());
                         break;
                     }
                 case 2:
                     {
+                        _Loadwd(p);
                         p.Main.NavigationService.Navigate(new View.Admin.Product());
                         break;
                     }
                 case 3:
                     {
+                        _Loadwd(p);
                         p.Main.NavigationService.Navigate(new View.Admin.CustomerView());
                         break;
                     }
                 case 4:
                     {
+                        _Loadwd(p);
                         p.Main.NavigationService.Navigate(new View.Admin.ManagerView());
                         break;
                     }
                 case 5:
                     {
+                        _Loadwd(p);
                         p.Main.NavigationService.Navigate(new View.Admin.SettingView());
                         break;
                     }
@@ -88,5 +115,33 @@ namespace Novea.ViewModel.Admin
         {
             p.WindowState = WindowState.Minimized;
         }
+        //Start Ham
+        void _Loadwd(MainWindow p)
+        {
+            if (LoginViewModel.IsLogin)
+            {
+                string a = Const.TenDangNhap;
+                User = DataProvider.Ins.DB.CHUs.Where(x => x.MACHU == a).FirstOrDefault();
+                Const.ND = User;
+                SetQuanLy = (bool)User.VAITRO ? Visibility.Visible : Visibility.Collapsed;
+                Const.Admin = (bool)User.VAITRO;
+                Ava = User.AVATAR;
+                LoadTenND(p);
+            }
+        }
+        public void LoadTenND(MainWindow p)
+        {
+            //p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
+        }
+        public void LoadQuyen(MainWindow p)
+        {
+            //p.Quyen.Text = (bool)User.VAITRO ? "Chủ" : "khách";
+        }
+        public void moveWindow(MainWindow p)
+        {
+            p.DragMove();
+        }
+        //End Ham
+
     }
 }

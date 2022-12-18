@@ -18,7 +18,6 @@ namespace Novea.Model
         public KHACH()
         {
             this.HOADONs = new HashSet<HOADON>();
-            this.HOADONs1 = new HashSet<HOADON>();
         }
     
         public string MAKH { get; set; }
@@ -31,12 +30,10 @@ namespace Novea.Model
         public Nullable<System.DateTime> NGDK { get; set; }
         public Nullable<decimal> DOANHSO { get; set; }
         public string MATKHAU { get; set; }
-        public string VAITRO { get; set; }
-        public byte[] AVATAR { get; set; }
+        public Nullable<bool> VAITRO { get; set; }
+        public string AVATAR { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOADON> HOADONs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOADON> HOADONs1 { get; set; }
     }
 }
