@@ -87,13 +87,11 @@
     <Compile Include="Model\CHU.cs">
       <DependentUpon>QuanLyBanHangNovea.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Const.cs" />
     <Compile Include="Model\CTHD.cs">
       <DependentUpon>QuanLyBanHangNovea.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CUAHANG.cs">
-      <DependentUpon>QuanLyBanHangNovea.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CUAHANG_BAN_SANPHAM.cs">
       <DependentUpon>QuanLyBanHangNovea.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataProvider.cs" />

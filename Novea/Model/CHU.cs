@@ -23,11 +23,10 @@ namespace Novea.Model
         public string DIACHI { get; set; }
         public Nullable<System.DateTime> NGDK { get; set; }
         public string MATKHAU { get; set; }
-        public string VAITRO { get; set; }
-        public byte[] AVATAR { get; set; }
+        public Nullable<bool> VAITRO { get; set; }
+        public string AVATAR { get; set; }
         public string MACH { get; set; }
     
         public virtual CUAHANG CUAHANG { get; set; }
-        public virtual CUAHANG CUAHANG1 { get; set; }
     }
 }

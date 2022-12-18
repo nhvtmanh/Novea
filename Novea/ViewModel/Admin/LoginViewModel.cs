@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Novea.ViewModel.Admin
 {
-    public  class LoginViewModel
+    public  class LoginViewModel : BaseViewModel
     {
-
+        public static bool IsLogin { get; set; }
     }
 }
