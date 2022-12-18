@@ -6,13 +6,15 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Novea.View.Client"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="820"
+      d:DesignHeight="565" d:DesignWidth="820"
       Title="OrderHistory">
-
-    <Border Height="600"                                
-            Width="820"                               
-            Background="WhiteSmoke"                    
-            CornerRadius="0 40 40 0">
+    <Border CornerRadius="0 0 40 0">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="72"/>
@@ -26,8 +28,9 @@
                     </Border>
 
                     <TextBlock Text="LỊCH SỬ ĐẶT HÀNG" 
-                               Foreground="#6741D9" 
-                               FontSize="45"
+                               Foreground="#fff8f0" 
+                               FontSize="35"
+                               FontFamily="{StaticResource Custom1}"
                                Margin="10 0 0 0"
                                VerticalAlignment="Center"
                                FontWeight="Medium"/>
@@ -36,8 +39,11 @@
             <Grid Grid.Row="1">
                 <StackPanel Orientation="Horizontal" Margin="0,0,14,0">
                     <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"                         
+                              Padding="5"
+                              Foreground="{StaticResource plainTextColor2}"
                               materialDesign:HintAssist.Hint="Sắp xếp theo"            
                               materialDesign:HintAssist.Foreground="#000"
+                              Background="{StaticResource plainTextColor3}"
                               Width="253" Height="46"
                               Margin="30 0 0 0">
                         <ComboBoxItem                     
@@ -51,7 +57,8 @@
                         <materialDesign:ColorZone Mode="Standard"                                               
                                                   Padding="8 4 8 4"                                               
                                                   CornerRadius="2"                                                
-                                                  Panel.ZIndex="1"                                                
+                                                  Panel.ZIndex="1"
+                                                  Background="{StaticResource plainTextColor3}"
                                                   materialDesign:ElevationAssist.Elevation="Dp2"
                                                   VerticalAlignment="Center">
                             <Grid Width="372">
@@ -60,13 +67,15 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Button Style="{StaticResource MaterialDesignToolButton}">
+                                <Button Style="{StaticResource MaterialDesignToolButton}"
+                                        Foreground="{StaticResource plainTextColor2}">
                                     <materialDesign:PackIcon Kind="Search"                                                                 
                                                              Opacity=".56" />
                                 </Button>
                                 <TextBox x:Name="txbSearch"
                                          Grid.Column="1"                                                  
-                                         Margin="8 0 0 0"                                                 
+                                         Margin="8 0 0 0"
+                                         Foreground="{StaticResource plainTextColor2}"
                                          materialDesign:HintAssist.Hint="Tìm mã"                                                
                                          materialDesign:TextFieldAssist.DecorationVisibility="Hidden"                                                 
                                          BorderThickness="0"                                                  
@@ -89,28 +98,39 @@
             <Grid Grid.Row="2">
                 <StackPanel>
                     <Border Margin="-33,0,0,0"
-                            Width="300"
+                            Width="600"
                             Height="40"
                             CornerRadius="10"
-                            Background="#6741D9">
+                            Background="{StaticResource color1}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
-                                <TextBlock Text="NGÀY MUA"
+                                <TextBlock Text="SỐ HÓA ĐƠN"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            FontFamily="{StaticResource Custom}"
-                                           FontSize="12"/>
+                                           FontSize="15"
+                                           Foreground="{StaticResource plainTextColor2}"/>
                             </Grid>
                             <Grid Grid.Column="1">
-                                <TextBlock Text="TRỊ GIÁ"
+                                <TextBlock Text="TỔNG TIỀN"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            FontFamily="{StaticResource Custom}"
-                                           FontSize="12"/>
+                                           FontSize="15"
+                                           Foreground="{StaticResource plainTextColor2}"/>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <TextBlock Text="NGÀY MUA HÀNG"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource Custom}"
+                                           FontSize="15"
+                                           Foreground="{StaticResource plainTextColor2}"/>
                             </Grid>
                         </Grid>
                     </Border>

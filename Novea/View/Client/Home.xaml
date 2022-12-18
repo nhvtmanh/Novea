@@ -6,13 +6,15 @@
       xmlns:local="clr-namespace:Novea.View.Client"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="820"
+      d:DesignHeight="565" d:DesignWidth="820"
       Title="Home">
-
-    <Border Height="600"                                
-            Width="820"                               
-            Background="WhiteSmoke"                    
-            CornerRadius="0 40 40 0">
+    <Border CornerRadius="0 0 40 0">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="72"/>
@@ -26,8 +28,9 @@
                     </Border>
 
                     <TextBlock Text="DANH SÁCH CỬA HÀNG" 
-                               Foreground="#6741D9" 
-                               FontSize="45"
+                               Foreground="#fff8f0" 
+                               FontSize="35"
+                               FontFamily="{StaticResource Custom1}"
                                Margin="10 0 0 0"
                                VerticalAlignment="Center"
                                FontWeight="Medium"/>
@@ -35,9 +38,12 @@
             </Grid>
             <Grid Grid.Row="1">
                 <StackPanel Orientation="Horizontal" Margin="0,0,14,0">
-                    <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"                         
+                    <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                              Padding="5"
+                              Foreground="{StaticResource plainTextColor2}"
                               materialDesign:HintAssist.Hint="Sắp xếp theo"            
                               materialDesign:HintAssist.Foreground="#000"
+                              Background="{StaticResource plainTextColor3}"
                               Width="253" Height="46"
                               Margin="30 0 0 0">
                         <ComboBoxItem                     
@@ -51,7 +57,8 @@
                         <materialDesign:ColorZone Mode="Standard"                                               
                                                   Padding="8 4 8 4"                                               
                                                   CornerRadius="2"                                                
-                                                  Panel.ZIndex="1"                                                
+                                                  Panel.ZIndex="1" 
+                                                  Background="{StaticResource plainTextColor3}"
                                                   materialDesign:ElevationAssist.Elevation="Dp2"
                                                   VerticalAlignment="Center">
                             <Grid Width="372">
@@ -60,13 +67,15 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Button Style="{StaticResource MaterialDesignToolButton}">
+                                <Button Style="{StaticResource MaterialDesignToolButton}"
+                                        Foreground="{StaticResource plainTextColor2}">
                                     <materialDesign:PackIcon Kind="Search"                                                                 
                                                              Opacity=".56" />
                                 </Button>
                                 <TextBox x:Name="txbSearch"
                                          Grid.Column="1"                                                  
-                                         Margin="8 0 0 0"                                                 
+                                         Margin="8 0 0 0"
+                                         Foreground="{StaticResource plainTextColor2}"
                                          materialDesign:HintAssist.Hint="Tìm cửa hàng"                                                
                                          materialDesign:TextFieldAssist.DecorationVisibility="Hidden"                                                 
                                          BorderThickness="0"                                                  

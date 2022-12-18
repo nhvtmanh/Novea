@@ -6,13 +6,15 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Novea.View.Client"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="820"
+      d:DesignHeight="565" d:DesignWidth="820"
       Title="Cart">
-
-    <Border Height="600"                                
-            Width="820"                               
-            Background="WhiteSmoke"                    
-            CornerRadius="0 40 40 0">
+    <Border CornerRadius="0 0 40 0">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="72"/>
@@ -24,8 +26,9 @@
                         <Image Source="/Resources/Images/cart.png"/>
                     </Border>
                     <TextBlock Text="GIỎ HÀNG" 
-                               Foreground="#6741D9" 
-                               FontSize="45"
+                               Foreground="#fff8f0" 
+                               FontSize="35"
+                               FontFamily="{StaticResource Custom1}"
                                Margin="10 0 0 0"
                                VerticalAlignment="Center"
                                FontWeight="Medium"/>
