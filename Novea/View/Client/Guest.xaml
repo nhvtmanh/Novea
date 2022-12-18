@@ -200,14 +200,7 @@
                 </Border>
             </Grid>
             <Border Grid.Column="1"
-                    CornerRadius="0 40 40 0"
-                    BorderThickness="2">
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
-                        <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
-                        <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
+                    CornerRadius="0 40 40 0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"></RowDefinition>
