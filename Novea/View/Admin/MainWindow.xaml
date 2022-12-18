@@ -14,7 +14,7 @@
         Background="Transparent"        
         DataContext="{StaticResource MainVM}">
 
-    <Border CornerRadius="40"
+    <Border CornerRadius="30"
             BorderThickness="1">
 
         <Border.BorderBrush>
@@ -74,12 +74,12 @@
 
                 <Border Grid.Row="1" 
                         Grid.Column="0"
-                        CornerRadius="0 50 0 40">
+                        CornerRadius="0 50 0 30">
 
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
                             <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
-                            <GradientStop Color="{StaticResource primaryBackColor2}" Offset="1"/>
+                            <GradientStop Color="{StaticResource primaryBackColor1}" Offset="1"/>
                         </LinearGradientBrush>
                     </Border.Background>
 
@@ -115,7 +115,7 @@
                                    DockPanel.Dock="Top" 
                                    TextAlignment="Center"/>
 
-                        <Separator Margin="15" Background="#7E5FDC" DockPanel.Dock="Top" Height="5"/>
+                        <Separator Margin="15" Background="{StaticResource color1}" DockPanel.Dock="Top" Height="1"/>
 
                         <StackPanel>
 
@@ -295,8 +295,9 @@
 
                             <Button Style="{StaticResource controlButton}"
                                     Tag="{StaticResource plainTextColor1}"
-                                    Width="35"
-                                    x:Name="a">
+                                    Width="20"
+                                    x:Name="a"
+                                    Margin="5 0 0 0">
                                 <materialDesign:PackIcon Kind="CloseThick"
                                                          Width="{Binding Width,ElementName=a}"
                                                          Height="{Binding Width,ElementName=a}">
@@ -312,7 +313,8 @@
 
                             <Button Style="{StaticResource controlButton}"
                                     Tag="{StaticResource plainTextColor1}"
-                                    Width="35">
+                                    Width="20"
+                                    Margin="10 0 0 0">
                                 <materialDesign:PackIcon Kind="WindowMinimize"
                                                          Width="{Binding Width,ElementName=a}"
                                                          Height="{Binding Width,ElementName=a}">
