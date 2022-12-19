@@ -8,13 +8,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="565" d:DesignWidth="820"
       Title="Cart">
-    <Border CornerRadius="0 0 40 0">
-        <Border.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
-                <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
-            </LinearGradientBrush>
-        </Border.Background>
+    <Border CornerRadius="0 0 40 0"
+            Background="Transparent">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="72"/>
