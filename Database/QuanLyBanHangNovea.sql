@@ -34,6 +34,7 @@ CREATE TABLE CUAHANG
 ------ ------
 INSERT INTO CUAHANG(MACH, TENCH, DIADIEM) VALUES ('CH01', N'Hai Lần Coffee', N'số 5 Võ Văn Tần, Thủ Đức')
 INSERT INTO CUAHANG(MACH, TENCH, DIADIEM) VALUES ('CH02', N'Mini NonStop', N'số 7 Hàn Thuyên, Thủ Đức')
+INSERT INTO CUAHANG(MACH, TENCH, DIADIEM) VALUES ('CH03', N'Độc lạ Bình Dương', N'số 10 Nguyễn An Ninh, Dĩ An')
 ------ ------
 
 

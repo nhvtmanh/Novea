@@ -105,25 +105,43 @@
                           ScrollViewer.VerticalScrollBarVisibility="Hidden">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Border Margin="10"
-                                    Width="170"
-                                    Height="210"
-                                    Background="White"
-                                    CornerRadius="15">
-                                <StackPanel>
-                                    <Image Margin="0,10,0,0"
-                                           Source="{Binding HINHSP}"    
-                                           Width="140"
-                                           Height="154"/>
-                                    <TextBlock FontFamily="{StaticResource Custom1}"
-                                               FontSize="14"
-                                               HorizontalAlignment="Center"
-                                               Text="{Binding TENCH}"/>
-                                    <TextBlock FontFamily="{StaticResource Custom1}"
-                                               FontSize="14"
-                                               HorizontalAlignment="Center"
-                                               Text="{Binding DIADIEM}"/>
-                                </StackPanel>
+                            <Border Margin="20"
+                                    Width="770"
+                                    Height="150"
+                                    Background="{StaticResource plainTextColor3}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Border>
+                                            <Image Source="/Resources/Images/cheems.jpeg"/>
+                                        </Border>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="80"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock FontFamily="{StaticResource Custom1}"
+                                                       FontSize="30"
+                                                       HorizontalAlignment="Left"
+                                                       VerticalAlignment="Center"
+                                                       Margin="25"
+                                                       Text="{Binding TENCH}"/>
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <TextBlock FontFamily="{StaticResource Custom1}"
+                                                       FontSize="20"
+                                                       HorizontalAlignment="Left"
+                                                       VerticalAlignment="Center"
+                                                       Margin="25"
+                                                       Text="{Binding DIADIEM}"/>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
                             </Border>
                         </DataTemplate>
                     </ListView.ItemTemplate>
