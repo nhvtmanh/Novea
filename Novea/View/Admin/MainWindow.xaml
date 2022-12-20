@@ -16,7 +16,7 @@
 
     <Border CornerRadius="30"
             BorderThickness="1">
-
+      
         <Border.BorderBrush>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="{StaticResource winBorderColor1}" Offset="0"/>
@@ -236,7 +236,13 @@
                                 </i:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Cog" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="CÀI ĐẶT" Style="{StaticResource menuButtonText}"/>
+                                    <TextBlock Text="CÀI ĐẶT"
+                                               Style="{StaticResource menuButtonText}"
+                                               Margin="0 0 16 0"/>
+                                    <materialDesign:PackIcon Kind="Play" Style="{StaticResource menuButtonIcon}" 
+                                                             Height="20"
+                                                             Width="20"
+                                                             VerticalAlignment="Center"/>
                                 </StackPanel>
                             </RadioButton>
 

@@ -48,7 +48,7 @@ namespace Novea.ViewModel.Admin
             //Start
             Loadwd = new RelayCommand<MainWindow>((p) => true, (p) => _Loadwd(p));
             MoveWindow = new RelayCommand<MainWindow>((p) => true, (p) => moveWindow(p));
-            TenDangNhap_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadTenND(p));
+            TenDangNhap_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadTenAD(p));
             Quyen_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadQuyen(p));
             //End
 
@@ -126,10 +126,10 @@ namespace Novea.ViewModel.Admin
                 SetQuanLy = (bool)User.VAITRO ? Visibility.Visible : Visibility.Collapsed;
                 Const.Admin = (bool)User.VAITRO;
                 Ava = User.AVATAR;
-                LoadTenND(p);
+                LoadTenAD(p);
             }
         }
-        public void LoadTenND(MainWindow p)
+        public void LoadTenAD(MainWindow p)
         {
             //p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
         }
