@@ -15,10 +15,19 @@ namespace Novea.ViewModel.Admin
 {
     public class MainViewModel : BaseViewModel
     {
-        //Start
+        public ICommand CloseLogin { get; set; }
+        public ICommand MinimizeLogin { get; set; }
+        public ICommand GetIdTab { get; set; }
+        public ICommand SwitchTab { get; set; }
+        public ICommand LogOutCommand { get; set; }
+        
+
+        public ICommand Loadwd { get; set; }
         public ICommand MoveWindow { get; set; }
         public ICommand TenDangNhap_Loaded { get; set; }
         public ICommand Quyen_Loaded { get; set; }
+
+
         private CHU _User;
         public CHU User { get => _User; set { _User = value; OnPropertyChanged(); } }
         private Visibility _SetQuanLy;
@@ -26,14 +35,6 @@ namespace Novea.ViewModel.Admin
 
         private string _Ava;
         public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
-        public ICommand Loadwd { get; set; }
-        //End
-
-        public ICommand CloseLogin { get; set; }
-        public ICommand MinimizeLogin { get; set; }
-        public ICommand GetIdTab { get; set; }
-        public ICommand SwitchTab { get; set; }
-        public ICommand LogOutCommand { get; set; }
 
         public string Name;
 
@@ -45,13 +46,11 @@ namespace Novea.ViewModel.Admin
             SwitchTab = new RelayCommand<MainWindow>((p) => true, (p) => switchtab(p));
             LogOutCommand = new RelayCommand<MainWindow>((p) => { return true; }, (p) => LogOut(p));
 
-            //Start
+
             Loadwd = new RelayCommand<MainWindow>((p) => true, (p) => _Loadwd(p));
             MoveWindow = new RelayCommand<MainWindow>((p) => true, (p) => moveWindow(p));
             TenDangNhap_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadTenAD(p));
             Quyen_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadQuyen(p));
-            //End
-
         }
         void LogOut(MainWindow p)
         {
@@ -131,7 +130,15 @@ namespace Novea.ViewModel.Admin
         }
         public void LoadTenAD(MainWindow p)
         {
-            //p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
+            //try 
+            //{
+            //    p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
+            //}
+            //catch (Exception ex) 
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
+            
         }
         public void LoadQuyen(MainWindow p)
         {

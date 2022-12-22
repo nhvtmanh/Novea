@@ -13,10 +13,24 @@
         Height="600" Width="1024" WindowStartupLocation="CenterScreen"
         Background="Transparent"        
         DataContext="{StaticResource MainVM}">
-
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loadwd}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
     <Border CornerRadius="30"
             BorderThickness="1">
-      
+        
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseLeftButtonDown">
+                <i:InvokeCommandAction Command="{Binding MoveWindow}"
+                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        
         <Border.BorderBrush>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="{StaticResource winBorderColor1}" Offset="0"/>
@@ -95,26 +109,46 @@
                                 Margin="20 -30 35 0">
                             <Ellipse >
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="/Resources/Images/images.png"/>
+                                    <!--<ImageBrush ImageSource="/Resources/Images/images.png"/>-->
+                                    <ImageBrush ImageSource="{Binding Ava}"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>
 
                         <!--Menu Titles-->
-                        <TextBlock Text="VŨ ĐỨC MINH" 
+                            <TextBlock x:Name="TenDangNhap"
+                                   Text="VŨ ĐỨC MINH" 
                                    Foreground="#fff8f0" 
                                    FontSize="21" 
                                    FontWeight="SemiBold" 
                                    DockPanel.Dock="Top" 
                                    Margin="5" 
-                                   TextAlignment="Center"/>
-                        <TextBlock Text="Quản Trị Viên" 
+                                   TextAlignment="Center">
+
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding TenDangNhap_Loaded}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>/>
+                        </TextBlock>
+
+                            <TextBlock x:Name="Quyen"
+                                   Text="Quản Trị Viên" 
                                    Foreground="#fff8f0" 
                                    FontSize="14" 
                                    FontWeight="SemiBold" 
                                    DockPanel.Dock="Top" 
-                                   TextAlignment="Center"/>
-
+                                   TextAlignment="Center">
+                                    
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding Quyen_Loaded}"
+                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>/>
+                        </TextBlock>
+                        
                         <Separator Margin="15" Background="{StaticResource color1}" DockPanel.Dock="Top" Height="1"/>
 
                         <StackPanel>
@@ -203,6 +237,7 @@
                             <RadioButton Style="{StaticResource menuButton}"                                 
                                          Tag="{StaticResource color1}"
                                          Uid="4"
+                                         Visibility="{Binding SetQuanLy}"
                                          x:Name="btnManagement">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">

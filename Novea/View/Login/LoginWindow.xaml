@@ -20,6 +20,14 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
     
     <Border CornerRadius="12">
+        
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseLeftButtonDown">
+                <i:InvokeCommandAction Command="{Binding MoveLogin}"
+                                                       CommandParameter="{Binding ElementName=LoginWd}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="223*"/>
@@ -74,12 +82,12 @@
                                 BorderBrush="Transparent"     
                         HorizontalAlignment="Center" FontSize="22" FontWeight="Bold"
                                 >
-                    <!--i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding Login}"
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding Login}"
                                                        CommandParameter="{Binding ElementName=LoginWd}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>-->
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </Button>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Width="300" Height="40">
                     <TextBlock
