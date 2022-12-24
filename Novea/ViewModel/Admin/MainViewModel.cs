@@ -130,15 +130,15 @@ namespace Novea.ViewModel.Admin
         }
         public void LoadTenAD(MainWindow p)
         {
-            //try 
-            //{
-            //    p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
-            //}
-            //catch (Exception ex) 
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //}
-            
+            try
+            {
+                p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
         public void LoadQuyen(MainWindow p)
         {

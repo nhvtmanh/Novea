@@ -117,13 +117,13 @@
 
                         <!--Menu Titles-->
                             <TextBlock x:Name="TenDangNhap"
-                                   Text="VŨ ĐỨC MINH" 
-                                   Foreground="#fff8f0" 
-                                   FontSize="21" 
-                                   FontWeight="SemiBold" 
-                                   DockPanel.Dock="Top" 
-                                   Margin="5" 
-                                   TextAlignment="Center">
+                                       Text="VŨ ĐỨC MINH" 
+                                       Foreground="#fff8f0" 
+                                       FontSize="21" 
+                                       FontWeight="SemiBold" 
+                                       DockPanel.Dock="Top" 
+                                       Margin="5" 
+                                       TextAlignment="Center">
 
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
