@@ -54,6 +54,7 @@
                 <ColumnDefinition Width="204"></ColumnDefinition>
                 <ColumnDefinition Width="820"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="47*"></RowDefinition>
@@ -322,7 +323,7 @@
 
 
 
-                    <Border Grid.Row="0">
+                    <Border Grid.Row="0" HorizontalAlignment="Left" Width="820">
                         <!--Control bar-->
 
                         <StackPanel x:Name="pnlControlBar"

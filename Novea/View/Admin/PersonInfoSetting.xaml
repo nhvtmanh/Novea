@@ -10,69 +10,77 @@
       d:DesignHeight="530" d:DesignWidth="820"
       Title="PersonInfoSetting">
 
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="26*"/>
-            <RowDefinition Height="199*"/>
-        </Grid.RowDefinitions>
-        <Button Style="{StaticResource MaterialDesignOutlinedDarkButton}"
-                Width="100" 
-                Grid.Row="0"
-                HorizontalAlignment="Left"
-                Margin="10,10,0,10"
-                Background="Transparent">
-            <materialDesign:PackIcon Kind="ArrowLeft" 
-                                     Foreground="Purple"/>
-        </Button>
-        <Label HorizontalAlignment="Center"
+    <Border>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="26*"/>
+                <RowDefinition Height="199*"/>
+            </Grid.RowDefinitions>
+
+            <Label HorizontalAlignment="Center"
                VerticalAlignment="Center"
+                   FontWeight="Medium"
+                   Foreground="{StaticResource plainTextColor3}"
                FontFamily="{StaticResource Custom}"
                FontSize="28"
                Grid.Row="0">
-            THÔNG TIN CÁ NHÂN
-        </Label>
+                THÔNG TIN CÁ NHÂN
+            </Label>
 
-        <Border CornerRadius="10" Background="White" Grid.Row="1">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="202*"/>
-                    <RowDefinition Height="267*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="226"/>
-                    <ColumnDefinition Width="311"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Border Margin="0,0,0,1" Grid.RowSpan="2">
-                    <Ellipse Height="170" Width="170" 
-                             VerticalAlignment="Top" HorizontalAlignment="Center"
-                             Margin="30" StrokeThickness="5">
-                        <Ellipse.Effect>
-                            <DropShadowEffect ShadowDepth="0"
+            <Border CornerRadius="10" Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="202*"/>
+                        <RowDefinition Height="267*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="226"/>
+                        <ColumnDefinition Width="311"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Border Margin="0,0,0,1" Grid.RowSpan="2">
+                        <Ellipse Height="170" Width="170"                             
+                                 VerticalAlignment="Top" 
+                                 HorizontalAlignment="Center"
+                                 Margin="30" StrokeThickness="5">
+                            <Ellipse.Effect>
+                                <DropShadowEffect ShadowDepth="0"
                                         Color="Black"
                                         Opacity="10"
                                         BlurRadius="10"/>
-                        </Ellipse.Effect>
-                        <Ellipse.Fill>
-                            <ImageBrush x:Name="img" ImageSource="{Binding Ava}"/>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                </Border>
-                <Button HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top"
-                                Style="{StaticResource MaterialDesignFlatMidBgButton}"
-                                Content="Thay đổi ảnh" FontFamily="{StaticResource Custom}"
-                                Width="150" Height="40" Background="Transparent" Foreground="Black"
-                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Row="1">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding AddImage}"
+                            </Ellipse.Effect>
+                            <Ellipse.Fill>
+                                <ImageBrush x:Name="img" ImageSource="{Binding Ava}"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Border>
+                    <Button HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top"                             
+                            Style="{StaticResource MaterialDesignFlatMidBgButton}"                              
+                            Content="Thay đổi ảnh" FontFamily="{StaticResource Custom}"                              
+                            Width="150" Height="40" Background="Transparent" Foreground="{StaticResource color1}"                               
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Row="1"
+                            BorderBrush="{StaticResource color1}">
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding AddImage}"
                                                        CommandParameter="{Binding ElementName=img}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
-                <Grid Grid.Column="1" Margin="0,0,0,1" Grid.RowSpan="2">
-                    <StackPanel Margin="10">
-                        <TextBox Margin="0,10,0,0" Foreground="Black" 
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                    <Grid Grid.Column="1" Margin="0,0,0,1" Grid.RowSpan="2">
+                        <StackPanel Margin="10">
+                            <TextBox Margin="0,10,0,0" 
+                                     Foreground="{StaticResource plainTextColor1}" 
+                                     FontSize="15"
+                                     Background="{StaticResource color1}"
                                     Style="{StaticResource MaterialDesignFilledTextBox}"
                                     VerticalAlignment="Top"
                                     AcceptsReturn="True"
@@ -80,13 +88,21 @@
                                     MaxWidth="400" x:Name="NameBox"
                                     FontFamily="{StaticResource Custom}"
                                     materialDesign:HintAssist.Hint="Họ tên" Text="{Binding Name}"/>
-                        <DatePicker Margin="0,20,0,0" Foreground="Black" x:Name="DateBox"
-                                            Text="{Binding DoB}" FontFamily="{StaticResource Custom}"
+                            <DatePicker Margin="0,20,0,0"  x:Name="DateBox"                                            
+                                        Text="{Binding DoB}"
+                                        FontFamily="{StaticResource Custom}"
+                                        Foreground="{StaticResource plainTextColor1}"                                     
+                                        FontSize="15"                                    
+                                        Background="{StaticResource color1}"
                                             Focusable="False"
-                                            materialDesign:HintAssist.Hint="Ngày sinh" Style="{StaticResource MaterialDesignFilledDatePicker}" HorizontalAlignment="Left" Width="291">
-                        </DatePicker>
+                                            materialDesign:HintAssist.Hint="Ngày sinh" 
+                                        Style="{StaticResource MaterialDesignFilledDatePicker}" HorizontalAlignment="Left" Width="291">
+                            </DatePicker>
 
-                        <TextBox Margin="0,20,-200,0" Foreground="Black" 
+                            <TextBox Margin="0,20,-200,0" 
+                                     Foreground="{StaticResource plainTextColor1}" 
+                                     FontSize="15"
+                                     Background="{StaticResource color1}"
                                  HorizontalAlignment="Left"
                                     Style="{StaticResource MaterialDesignFilledTextBox}"
                                     AcceptsReturn="True"
@@ -94,67 +110,82 @@
                                     MaxWidth="400" x:Name="AddressBox"
                                     FontFamily="{StaticResource Custom}"
                                     materialDesign:HintAssist.Hint="Địa chỉ" Text="{Binding DiaChi}" Width="291"/>
-                        <TextBox HorizontalAlignment="Left"
+                            <TextBox HorizontalAlignment="Left"
+                                     Foreground="{StaticResource plainTextColor1}" 
+                                     FontSize="15"
+                                     Background="{StaticResource color1}"
                                     Margin="0,20,-200,0"
-                                    Foreground="Black" 
                                     Style="{StaticResource MaterialDesignFilledTextBox}"
                                     AcceptsReturn="True"
                                     TextWrapping="Wrap"
                                     MaxWidth="400" x:Name="Mail"
                                     FontFamily="{StaticResource Custom}"
                                     materialDesign:HintAssist.Hint="Email" Text="{Binding Mail}" Width="291"/>
-                    </StackPanel>
-                </Grid>
-                <Grid Grid.Column="2" Margin="0,0,0,140" Grid.RowSpan="2">
-                    <StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="2" Margin="0,0,0,140" Grid.RowSpan="2">
+                        <StackPanel>
 
-                        <TextBox Foreground="Black"
-                                 Margin="0 20 50 0"
-                            Style="{StaticResource MaterialDesignFilledTextBox}"
+                            <TextBox Foreground="{StaticResource plainTextColor1}" 
+                                     FontSize="15"
+                                     Background="{StaticResource color1}"
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                 Margin="20 20 50 0"
                             AcceptsReturn="True"
                             TextWrapping="Wrap"
-                            MaxWidth="190"
                             FontFamily="{StaticResource Custom}"
-                            materialDesign:HintAssist.Hint="Mật khẩu" Text="{Binding Name}" Width="190"/>
+                            materialDesign:HintAssist.Hint="Mật khẩu" Text="{Binding Name}" Width="209"/>
 
-                        <ComboBox Margin="20,20,0,0"
-                                  HorizontalAlignment="Left"
+                            <ComboBox Margin="20,20,0,0"
+                                      Foreground="{StaticResource plainTextColor1}"
+                                      FontSize="15"                                   
+                                      Background="{StaticResource color1}"                                                            
+                                      Style="{StaticResource MaterialDesignFilledComboBox}" 
+                                      HorizontalAlignment="Left"
                                     x:Name="GTBox" FontFamily="{StaticResource Custom}"
-                                    Style="{StaticResource MaterialDesignFilledComboBox}"
                                     IsEnabled="{Binding IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
                                     materialDesign:HintAssist.Hint="Giới tính"
-                                    Width="190" SelectedIndex="{Binding GioiTinh}">
-                            <ComboBoxItem
+                                    Width="211" SelectedIndex="{Binding GioiTinh}" Height="47">
+                                <ComboBoxItem
                                         Content="Nam" />
-                            <ComboBoxItem
+                                <ComboBoxItem
                                         Content="Nữ" />
-                        </ComboBox>
-                        <TextBox Margin="20,20,0,0"  Width="190"
-                            Style="{StaticResource MaterialDesignFilledTextBox}"
-                            VerticalAlignment="Top"
+                            </ComboBox>
+                            <TextBox Margin="20,20,0,0"  Width="209"
+                                     Foreground="{StaticResource plainTextColor1}" 
+                                     FontSize="15"
+                                     Background="{StaticResource color1}"
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
                             AcceptsReturn="True"
                             TextWrapping="Wrap"
                             HorizontalAlignment="Left" x:Name="SDTBox"
                             FontFamily="{StaticResource Custom}"
                             materialDesign:HintAssist.Hint="Số điện thoại" Text="{Binding SDT}" />
 
-                    </StackPanel>
+                        </StackPanel>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </Border>
-        <Button Grid.Row="1"                                        
+            </Border>
+            <Button Grid.Row="1"                                
+                    BorderThickness="2"
                 Style="{StaticResource MaterialDesignRaisedButton}"                       
                 Width="390" 
                 Margin="310,277,120,110"  
                 Height="45"
                 Content="CẬP NHẬT THÔNG TIN" FontFamily="{StaticResource Custom}"                       
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" >
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Click">
-                    <i:InvokeCommandAction Command="{Binding UpdateInfo}"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
+                    Background="Transparent"
+                    BorderBrush="{StaticResource color1}"
+                    Foreground="{StaticResource color1}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding UpdateInfo}"
                                                        CommandParameter="{Binding ElementName=Settingwd}"></i:InvokeCommandAction>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Button>
-    </Grid>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </Grid>
+
+    </Border>
+
 </Page>

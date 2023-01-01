@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="ViewModel\Admin\LoginViewModel.cs" />
     <Compile Include="ViewModel\Admin\MainViewModel.cs" />
+    <Compile Include="ViewModel\Admin\SettingViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\Client\GuestViewModel.cs" />
     <Compile Include="ViewModel\Admin\HomeViewModel.cs" />

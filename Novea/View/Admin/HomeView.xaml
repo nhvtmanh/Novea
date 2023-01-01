@@ -29,7 +29,7 @@
                                          Foreground="#FFCF99"
                                          Margin="25 0 10 0"
                                          Width="30"
-                                         Height="35"
+                                         Height="32"
                                          VerticalAlignment="Center"/>
                 <TextBlock Text="TRANG CHỦ"
                    Foreground="#fff8f0"

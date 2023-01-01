@@ -62,7 +62,7 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <!--<Grid Grid.Row="0" Background="Transparent">
+                <Grid Grid.Row="0" Background="Transparent">
                     <StackPanel 
                                 Orientation="Horizontal" 
                                 HorizontalAlignment="Right" 
@@ -86,7 +86,7 @@
                             </i:Interaction.Triggers>
                         </materialDesign:PackIcon>
                     </StackPanel>
-                </Grid>-->
+                </Grid>
                 <Grid Grid.Row="1">
                     <StackPanel Orientation="Vertical"
                                 Margin="15,20,0,0">

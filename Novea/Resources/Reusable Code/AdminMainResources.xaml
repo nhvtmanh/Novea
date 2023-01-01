@@ -3,6 +3,6 @@
                     xmlns:viewmodel="clr-namespace:Novea.ViewModel.Admin">
     
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
-
+    <viewmodel:SettingViewModel x:Key="SettingVM"></viewmodel:SettingViewModel>
 
 </ResourceDictionary>

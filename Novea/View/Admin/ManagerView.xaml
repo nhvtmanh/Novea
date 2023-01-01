@@ -29,7 +29,7 @@
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="CustomerService" 
                                          Foreground="#FFCF99"
-                                         Margin="25 0 10 0"
+                                         Margin="25 0 10 4"
                                          Width="30"
                                          Height="32"
                                          VerticalAlignment="Center"/>

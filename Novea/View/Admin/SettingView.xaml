@@ -8,7 +8,7 @@
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
       d:DesignHeight="565" d:DesignWidth="820"
-      Title="SettingView">
+      DataContext="{StaticResource MainVM}">
 
     <Border Height="565"
             Width="820"
@@ -24,6 +24,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+
             <Grid Grid.Row="0">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Cog" 
@@ -42,128 +43,165 @@
             </Grid>
 
             <Grid Grid.Row="1">
-                <Button Padding="20"
+                <StackPanel Orientation="Horizontal">
+
+                    <!--<Button Padding="20"
+                            Height="auto"
+                            Margin="100 0 0 0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
                         Width="230"
-                        Margin="128,78,0,77"
-                        FocusVisualStyle="{x:Null}" 
-                        HorizontalAlignment="Left">
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Height" Value="300" />
-                            <Setter Property="Foreground" Value="#E2E2E4" />
+                        FocusVisualStyle="{x:Null}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Height" Value="300" />
+                                <Setter Property="Foreground" Value="#E2E2E4" />
 
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                                        <GradientStop Color="#FFA033" Offset="0"/>
-                                        <GradientStop Color="#fff8f0" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Setter.Value>
-                            </Setter>
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                            <GradientStop Color="#FFA033" Offset="0"/>
+                                            <GradientStop Color="#fff8f0" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
 
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
-                                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
 
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#5F76F6" />
-                                    <Setter Property="Foreground" Value="#ffffff" />
-                                    <Setter Property="Cursor" Value="Hand"/>
-                                </Trigger>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#5F76F6" />
+                                        <Setter Property="Foreground" Value="#ffffff" />
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
 
-                                <DataTrigger Binding="{Binding ElementName=element,Path=IsActive}" Value="True">
-                                    <Setter Property="Background" Value="#5F76F6" />
-                                    <Setter Property="Foreground" Value="#ffffff" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
+                                    <DataTrigger Binding="{Binding ElementName=element,Path=IsActive}" Value="True">
+                                        <Setter Property="Background" Value="#5F76F6" />
+                                        <Setter Property="Foreground" Value="#ffffff" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
 
-                    <StackPanel VerticalAlignment="Center">
-                        <materialDesign:PackIcon Kind="AccountCog" 
+                        <StackPanel VerticalAlignment="Center">
+                            <materialDesign:PackIcon Kind="AccountCog" 
                                                  Width="50" 
                                                  Height="50"                       
                                                  Foreground="{StaticResource plainTextColor2}"
                                                  VerticalAlignment="Center"
                                                  HorizontalAlignment="Center"/>
-                        <!--<icon:PackIconMaterial Kind="{Binding ElementName=element,Path=Icon}" Width="50" Height="50" 
-                                   VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
+                            <TextBlock Text="THÔNG TIN CÁ NHÂN" 
+                                       FontSize="18" 
+                                       FontWeight="SemiBold"    
+                                       Foreground="{StaticResource plainTextColor2}"
+                                       TextAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
 
-                        <TextBlock Text="THÔNG TIN CÁ NHÂN" FontSize="18" FontWeight="SemiBold" 
-                                                 Foreground="{StaticResource plainTextColor2}"
-                                   
-                       TextAlignment="Center" Margin="0 30 0 0"/>
-                    </StackPanel>
-                </Button>
+                    <Button Padding="20" 
+                            Margin="142 0 0 0"
+                            Width="230" 
+                            Height="auto"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                        FocusVisualStyle="{x:Null}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Height" Value="300" />
+                                <Setter Property="Foreground" Value="#E2E2E4" />
 
-                <Button Padding="20" 
-                        Width="230" 
-                        Margin="469,78,0,77"
-                        FocusVisualStyle="{x:Null}"
-                        HorizontalAlignment="Left">
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Height" Value="300" />
-                            <Setter Property="Foreground" Value="#E2E2E4" />
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                            <GradientStop Color="#FFA033" Offset="0"/>
+                                            <GradientStop Color="#fff8f0" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
 
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                                        <GradientStop Color="#FFA033" Offset="0"/>
-                                        <GradientStop Color="#fff8f0" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Setter.Value>
-                            </Setter>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
 
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
-                                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#5F76F6" />
+                                        <Setter Property="Foreground" Value="#ffffff" />
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
 
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#5F76F6" />
-                                    <Setter Property="Foreground" Value="#ffffff" />
-                                    <Setter Property="Cursor" Value="Hand"/>
-                                </Trigger>
+                                    <DataTrigger Binding="{Binding ElementName=element,Path=IsActive}" Value="True">
+                                        <Setter Property="Background" Value="#5F76F6" />
+                                        <Setter Property="Foreground" Value="#ffffff" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
 
-                                <DataTrigger Binding="{Binding ElementName=element,Path=IsActive}" Value="True">
-                                    <Setter Property="Background" Value="#5F76F6" />
-                                    <Setter Property="Foreground" Value="#ffffff" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-
-                    <StackPanel VerticalAlignment="Center">
-                        <!--<icon:PackIconMaterial Kind="{Binding ElementName=element,Path=Icon}" Width="50" Height="50" 
-                                   VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
-                        <materialDesign:PackIcon Kind="ShopCogOutline" 
+                        <StackPanel VerticalAlignment="Center">
+                            <materialDesign:PackIcon Kind="ShopCogOutline" 
                                                  Width="50" 
                                                  Height="50"                       
                                                  Foreground="{StaticResource plainTextColor2}"                                                 
                                                  VerticalAlignment="Center" 
                                                  HorizontalAlignment="Center"/>
+                            <TextBlock Text="THÔNG TIN CỬA HÀNG" 
+                                       FontSize="18" 
+                                       FontWeight="SemiBold"   
+                                       Foreground="{StaticResource plainTextColor2}"
+                                       TextAlignment="Center"/>
+                        </StackPanel>
+                    </Button>-->
+                    
+                    
 
-                        <TextBlock Text="THÔNG TIN CỬA HÀNG" FontSize="18" FontWeight="SemiBold" 
-                                                 Foreground="{StaticResource plainTextColor2}"
-                                   
-                       TextAlignment="Center" Margin="0 30 0 0"/>
-                    </StackPanel>
-                </Button>
+                    <TabControl Width="819"
+                                Style="{StaticResource MaterialDesignFilledTabControl}"                                 
+                                materialDesign:ColorZoneAssist.Mode="Custom"                                 
+                                materialDesign:ColorZoneAssist.Foreground="{StaticResource plainTextColor1}"                                
+                                materialDesign:ColorZoneAssist.Background="{StaticResource color1}">
+                        <TabItem Header="Thông Tin Cá Nhân" 
+                                 Height="52">
+                            <Frame Source="/view/Admin/PersonInfoSetting.xaml"                                                   
+                                   NavigationUIVisibility="Hidden"                                                 
+                                   DataContext="{StaticResource SettingVM}">
+                            </Frame>
+                        </TabItem>
+                        <TabItem Header="Thông Tin Cửa Hàng">
+
+                            <Frame Source="/view/Admin/ShopInfoSetting.xaml"                                                   
+                                   NavigationUIVisibility="Hidden"                                                 
+                                   DataContext="{StaticResource SettingVM}">
+                            </Frame>
+
+                        </TabItem>
+                    </TabControl>
+                </StackPanel>
+
+
+
             </Grid>
+            <!--<Grid Grid.Row="2">
+                <Frame x:Name="Main"                           
+                       Source="/view/Admin/PersonInfoSetting.xaml"                            
+                       NavigationUIVisibility="Hidden"                          
+                       DataContext="{StaticResource SettingVM}">
+                </Frame>
+            </Grid>-->
         </Grid>
     </Border>
 </Page>
