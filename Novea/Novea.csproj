@@ -126,6 +126,9 @@
     <Compile Include="ViewModel\Client\GuestViewModel.cs" />
     <Compile Include="ViewModel\Admin\HomeViewModel.cs" />
     <Compile Include="ViewModel\Client\StoreViewModel.cs" />
+    <Compile Include="ViewModel\Login\ForgotPasswordViewModel.cs" />
+    <Compile Include="ViewModel\Login\LoginViewModel.cs" />
+    <Compile Include="ViewModel\Login\SignUpViewModel.cs" />
     <Compile Include="View\Admin\AddProducts.xaml.cs">
       <DependentUpon>AddProducts.xaml</DependentUpon>
     </Compile>
