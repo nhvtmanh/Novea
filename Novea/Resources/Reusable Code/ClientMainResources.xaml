@@ -3,4 +3,5 @@
                     xmlns:viewmodel="clr-namespace:Novea.ViewModel.Client">
     <viewmodel:GuestViewModel x:Key="GuestVM"></viewmodel:GuestViewModel>
     <viewmodel:StoreViewModel x:Key="StoreVM"></viewmodel:StoreViewModel>
+    <viewmodel:StoreDetailViewModel x:Key="StoreDetailVM"></viewmodel:StoreDetailViewModel>
 </ResourceDictionary>

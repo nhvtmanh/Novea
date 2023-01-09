@@ -125,6 +125,7 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\Client\GuestViewModel.cs" />
     <Compile Include="ViewModel\Admin\HomeViewModel.cs" />
+    <Compile Include="ViewModel\Client\StoreDetailViewModel.cs" />
     <Compile Include="ViewModel\Client\StoreViewModel.cs" />
     <Compile Include="ViewModel\Login\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModel\Login\LoginViewModel.cs" />
@@ -161,6 +162,9 @@
     </Compile>
     <Compile Include="View\Client\Setting.xaml.cs">
       <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Client\StoreDetail.xaml.cs">
+      <DependentUpon>StoreDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Login\ForgotPassword.xaml.cs">
       <DependentUpon>ForgotPassword.xaml</DependentUpon>
@@ -230,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Client\Setting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Client\StoreDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
