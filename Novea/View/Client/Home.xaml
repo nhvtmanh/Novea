@@ -99,7 +99,7 @@
             </Grid>
             <Grid Grid.Row="2">
                 <ListView x:Name="ListViewStore" 
-                          ItemsSource="{Binding listStore}"
+                          ItemsSource="{Binding ListStore}"
                           SelectionMode="Single"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           ScrollViewer.VerticalScrollBarVisibility="Hidden">

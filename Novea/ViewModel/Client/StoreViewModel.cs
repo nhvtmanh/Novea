@@ -13,29 +13,29 @@ namespace Novea.ViewModel.Client
 {
     public class StoreViewModel : BaseViewModel
     {
-        private ObservableCollection<CUAHANG> _listStore;
-        public ObservableCollection<CUAHANG> listStore
+        private ObservableCollection<CUAHANG> listStore;
+        public ObservableCollection<CUAHANG> ListStore
         {
-            get => _listStore;
-            set { _listStore = value; }
+            get => listStore;
+            set { listStore = value; }
         }
-        private ObservableCollection<CUAHANG> _listStore1;
-        public ObservableCollection<CUAHANG> listStore1
+        private ObservableCollection<CUAHANG> listStore1;
+        public ObservableCollection<CUAHANG> ListStore1
         {
-            get => _listStore1;
-            set { _listStore1 = value; }
+            get => listStore1;
+            set { listStore1 = value; }
         }
         public ICommand LoadStoreCommand { get; set; }
         public StoreViewModel()
         {
-            listStore1 = new ObservableCollection<CUAHANG>(DataProvider.Ins.DB.CUAHANGs);
-            listStore = new ObservableCollection<CUAHANG>(listStore1.GroupBy(p => p.TENCH).Select(grp => grp.FirstOrDefault()));
+            ListStore1 = new ObservableCollection<CUAHANG>(DataProvider.Ins.DB.CUAHANGs);
+            ListStore = new ObservableCollection<CUAHANG>(ListStore1.GroupBy(p => p.TENCH).Select(grp => grp.FirstOrDefault()));
             LoadStoreCommand = new RelayCommand<HomeView>((p) => true, (p) => loadStore(p));
         }
         void loadStore(HomeView parameter)
         {
-            listStore1 = new ObservableCollection<CUAHANG>(DataProvider.Ins.DB.CUAHANGs);
-            listStore = new ObservableCollection<CUAHANG>(listStore1.GroupBy(p => p.TENCH).Select(grp => grp.FirstOrDefault()));
+            ListStore1 = new ObservableCollection<CUAHANG>(DataProvider.Ins.DB.CUAHANGs);
+            ListStore = new ObservableCollection<CUAHANG>(ListStore1.GroupBy(p => p.TENCH).Select(grp => grp.FirstOrDefault()));
         }
     }
 }
