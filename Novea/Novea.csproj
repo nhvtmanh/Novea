@@ -119,7 +119,6 @@
     <Compile Include="Model\SANPHAM.cs">
       <DependentUpon>QuanLyBanHangNovea.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\Admin\LoginViewModel.cs" />
     <Compile Include="ViewModel\Admin\MainViewModel.cs" />
     <Compile Include="ViewModel\Admin\SettingViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />

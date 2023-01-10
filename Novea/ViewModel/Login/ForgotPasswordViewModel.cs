@@ -1,6 +1,5 @@
 ﻿using Novea.Model;
 using Novea.View;
-using Novea.Model;
 using Novea.ViewModel;
 using System;
 using System.Collections.Generic;
