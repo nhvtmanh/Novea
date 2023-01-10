@@ -21,7 +21,6 @@ namespace Novea.ViewModel.Admin
         public ICommand SwitchTab { get; set; }
         public ICommand LogOutCommand { get; set; }
         
-
         public ICommand Loadwd { get; set; }
         public ICommand MoveWindow { get; set; }
         public ICommand TenDangNhap_Loaded { get; set; }
@@ -30,12 +29,10 @@ namespace Novea.ViewModel.Admin
 
         private CHU _User;
         public CHU User { get => _User; set { _User = value; OnPropertyChanged(); } }
-        private Visibility _SetQuanLy;
-        public Visibility SetQuanLy { get => _SetQuanLy; set { _SetQuanLy = value; OnPropertyChanged(); } }
-
+        //private Visibility _SetQuanLy;
+        //public Visibility SetQuanLy { get => _SetQuanLy; set { _SetQuanLy = value; OnPropertyChanged(); } }
         private string _Ava;
         public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
-
         public string Name;
 
         public MainViewModel()
@@ -45,7 +42,6 @@ namespace Novea.ViewModel.Admin
             GetIdTab = new RelayCommand<RadioButton>((p) => true, (p) => Name = p.Uid);
             SwitchTab = new RelayCommand<MainWindow>((p) => true, (p) => switchtab(p));
             LogOutCommand = new RelayCommand<MainWindow>((p) => { return true; }, (p) => LogOut(p));
-
 
             Loadwd = new RelayCommand<MainWindow>((p) => true, (p) => _Loadwd(p));
             MoveWindow = new RelayCommand<MainWindow>((p) => true, (p) => moveWindow(p));
@@ -122,7 +118,7 @@ namespace Novea.ViewModel.Admin
                 string a = Const.TenDangNhap;
                 User = DataProvider.Ins.DB.CHUs.Where(x => x.MACHU == a).FirstOrDefault();
                 Const.ND = User;
-                SetQuanLy = (bool)User.VAITRO ? Visibility.Visible : Visibility.Collapsed;
+                //SetQuanLy = (bool)User.VAITRO ? Visibility.Visible : Visibility.Collapsed;
                 Const.Admin = (bool)User.VAITRO;
                 Ava = User.AVATAR;
                 LoadTenAD(p);
@@ -132,7 +128,7 @@ namespace Novea.ViewModel.Admin
         {
             //try
             //{
-            //    p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
+            p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
             //}
             //catch (Exception ex)
             //{
@@ -142,7 +138,7 @@ namespace Novea.ViewModel.Admin
         }
         public void LoadQuyen(MainWindow p)
         {
-            //p.Quyen.Text = (bool)User.VAITRO ? "Chủ" : "khách";
+            p.Quyen.Text = (bool)User.VAITRO ? "Chủ" : "Khách";
         }
         public void moveWindow(MainWindow p)
         {

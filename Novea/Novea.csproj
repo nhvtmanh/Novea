@@ -192,6 +192,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Reusable Code\LoginMainResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Admin\AddProducts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

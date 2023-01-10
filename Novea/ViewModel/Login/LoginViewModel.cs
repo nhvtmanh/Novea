@@ -101,8 +101,8 @@ namespace Novea.ViewModel
         }
         void _RegisterCommand(LoginWindow parameter)
         {
-            LoginWindow registerView = new LoginWindow();
-            registerView.ShowDialog();
+            SignUp signUp = new SignUp();
+            signUp.ShowDialog();
         }
         void _ForgetPassCommand(LoginWindow parameter)
         {

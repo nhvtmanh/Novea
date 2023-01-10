@@ -238,7 +238,6 @@
                             <RadioButton Style="{StaticResource menuButton}"                                 
                                          Tag="{StaticResource color1}"
                                          Uid="4"
-                                         Visibility="{Binding SetQuanLy}"
                                          x:Name="btnManagement">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">

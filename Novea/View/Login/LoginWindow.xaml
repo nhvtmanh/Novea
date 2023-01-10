@@ -16,6 +16,7 @@
         x:Name="LoginWd"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
+        DataContext="{StaticResource LoginVM}"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
     
