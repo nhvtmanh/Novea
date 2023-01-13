@@ -9,7 +9,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="565" d:DesignWidth="820"
       Title="OrdersView"
-      DataContext="{StaticResource OrdersVM}"
+      
       x:Name="Orderwd">
 
     <Border Height="565"
