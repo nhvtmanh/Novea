@@ -61,31 +61,39 @@
                     <RowDefinition Height="253*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <StackPanel Orientation="Horizontal"
+                <Border CornerRadius="20"
+                        Background="{StaticResource plainTextColor3}"
+                        Width="154"
+                        Height="40"
+                        BorderThickness="1.5">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="{StaticResource winBorderColor1}" Offset="0"/>
+                            <GradientStop Color="{StaticResource winBorderColor2}" Offset="0.5"/>
+                            <GradientStop Color="{StaticResource winBorderColor3}" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Margin="0 5 0 0">
-                    <materialDesign:PackIcon Kind="Dog" 
-                                             Foreground="#f04e42"                                                 
-                                             Margin="0 0 5 0"                                                    
+                            Margin="0 0 0 0">
+                        <materialDesign:PackIcon Kind="W3c" 
+                                             Foreground="{StaticResource plainTextColor2}"                                                
+                                             Margin="0 0 3 3"                                                    
                                              Height="36"                                                                                                                            Width="30"                                                                               
                                              VerticalAlignment="Center">
-                    </materialDesign:PackIcon>
-                    <TextBlock Text="NOVEA"                              
+                        </materialDesign:PackIcon>
+                        <TextBlock Text="NOVEA"                              
                                FontSize="30"                                              
                                FontWeight="Medium"                                   
                                Style="{StaticResource NameApp}" 
                                Height="36" 
-                               HorizontalAlignment="Center">
-                        <TextBlock.Foreground>
-                            <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                                <GradientStop Color="#f04e42" Offset="0"/>
-                                <GradientStop Color="#92140c" Offset="1"/>
-                            </LinearGradientBrush>
-                        </TextBlock.Foreground>
-                    </TextBlock>
-                </StackPanel>
+                               HorizontalAlignment="Center"
+                               Foreground="{StaticResource plainTextColor2}">
 
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
 
                 <Border Grid.Row="1" 
                         Grid.Column="0"
@@ -107,8 +115,8 @@
                                 CornerRadius="100" 
                                 DockPanel.Dock="Top" 
                                 HorizontalAlignment="Center"                                
-                                Margin="20 -30 35 0">
-                            <Ellipse >
+                                Margin="20 -25 35 0">
+                            <Ellipse>
                                 <Ellipse.Fill>
                                     <!--<ImageBrush ImageSource="/Resources/Images/images.png"/>-->
                                     <ImageBrush ImageSource="{Binding Ava}"/>
@@ -274,10 +282,6 @@
                                     <TextBlock Text="CÀI ĐẶT"
                                                Style="{StaticResource menuButtonText}"
                                                Margin="0 0 16 0"/>
-                                    <materialDesign:PackIcon Kind="Play" Style="{StaticResource menuButtonIcon}" 
-                                                             Height="20"
-                                                             Width="20"
-                                                             VerticalAlignment="Center"/>
                                 </StackPanel>
                             </RadioButton>
 
@@ -330,7 +334,7 @@
                                 Orientation="Horizontal"
                                 FlowDirection="RightToLeft"
                                 Background="Transparent"
-                                Margin="0,0,22,0"
+                                Margin="-205,0,22,0"
                                 MouseLeftButtonDown="pnlControlBar_MouseLeftButtonDown"
                                 MouseEnter="pnlControlBar_MouseEnter">
 

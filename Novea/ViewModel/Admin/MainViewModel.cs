@@ -128,7 +128,7 @@ namespace Novea.ViewModel.Admin
         {
             //try
             //{
-            p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
+            //p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
             //}
             //catch (Exception ex)
             //{
@@ -138,7 +138,7 @@ namespace Novea.ViewModel.Admin
         }
         public void LoadQuyen(MainWindow p)
         {
-            p.Quyen.Text = (bool)User.VAITRO ? "Chủ" : "Khách";
+            //p.Quyen.Text = (bool)User.VAITRO ? "Chủ" : "Khách";
         }
         public void moveWindow(MainWindow p)
         {
