@@ -16,7 +16,8 @@ CREATE TABLE KHACH
 	NGDK smalldatetime,
 	DOANHSO money,
 	MATKHAU varchar(max),
-	VAITRO varchar(5)
+	VAITRO bit,
+	AVATAR varchar(max)
 )
 ------ ------
 INSERT INTO KHACH(MAKH,HOTEN,NGSINH,NGDK) VALUES ('KH01',N'Nguyễn Tuân','20/10/1980','13/12/2022')
@@ -49,7 +50,8 @@ CREATE TABLE CHU
 	DIACHI nvarchar(max),
 	NGDK smalldatetime,
 	MATKHAU varchar(max),
-	VAITRO varchar(5),
+	VAITRO bit,
+	AVATAR varchar(max),
 	MACH varchar(128) FOREIGN KEY REFERENCES CUAHANG(MACH)
 )
 ------ ------
@@ -65,7 +67,9 @@ CREATE TABLE SANPHAM
 	THELOAI nvarchar(max),
 	DONVI nvarchar(max),
 	DONGIA money,
-	KICHTHUOC varchar(10)
+	KICHTHUOC varchar(10),
+	MOTA nvarchar(max),
+	HINHSP varchar(max)
 )
 ------ ------
 INSERT INTO SANPHAM(MASP, TENSP, DONGIA) VALUES ('SP001', N'Sữa Milo', 8000)

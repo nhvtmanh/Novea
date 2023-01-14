@@ -11,11 +11,11 @@
         <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.HOADON" Width="1.5" PointX="6" PointY="5.375" />
         <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.KHACH" Width="1.5" PointX="3.75" PointY="14.875" />
         <EntityTypeShape EntityType="QuanLyBanHangNoveaModel.SANPHAM" Width="1.5" PointX="3" PointY="3" />
-        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CHU__MACH__33D4B598" />
-        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CTHD__MASP__300424B4" />
-        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__30F848ED" />
-        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__HOADON__MACH__34C8D9D1" />
-        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__HOADON__MAKH__35BCFE0A" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CHU__MACH__60A75C0F" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CTHD__MASP__6E01572D" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__6D0D32F4" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__HOADON__MACH__6A30C649" />
+        <AssociationConnector Association="QuanLyBanHangNoveaModel.FK__HOADON__MAKH__693CA210" />
         <AssociationConnector Association="QuanLyBanHangNoveaModel.CUAHANG_BAN_SANPHAM" />
       </Diagram>
     </edmx:Diagrams>
