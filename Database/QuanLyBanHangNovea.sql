@@ -7,15 +7,15 @@ USE QuanLyBanHangNovea
 CREATE TABLE KHACH
 (
 	MAKH varchar(128) primary key,
+	MATKHAU varchar(max),
 	HOTEN nvarchar(max),
-	NGSINH smalldatetime,
+	NGSINH datetime,
 	GIOITINH nvarchar(3),
 	SDT varchar(15),
 	EMAIL varchar(max),
 	DIACHI nvarchar(max),
-	NGDK smalldatetime,
+	NGDK datetime,
 	DOANHSO money,
-	MATKHAU varchar(max),
 	VAITRO bit,
 	AVATAR varchar(max)
 )
@@ -23,40 +23,33 @@ CREATE TABLE KHACH
 INSERT INTO KHACH(MAKH,HOTEN,NGSINH,NGDK) VALUES ('KH01',N'Nguyễn Tuân','20/10/1980','13/12/2022')
 INSERT INTO KHACH(MAKH,HOTEN,NGSINH,NGDK) VALUES ('KH02',N'Nguyễn Minh Đức','20/10/2002','13/12/2022')
 UPDATE KHACH SET NGDK = '15/12/2022' WHERE MAKH = 'KH01'
------- ------
 
-CREATE TABLE CUAHANG
-(
-	MACH varchar(128) primary key,
-	TENCH nvarchar(max),
-	DIADIEM nvarchar(max),
-	DOANHTHU money
-)
------- ------
 INSERT INTO CUAHANG(MACH, TENCH, DIADIEM) VALUES ('CH01', N'Hai Lần Coffee', N'số 5 Võ Văn Tần, Thủ Đức')
 INSERT INTO CUAHANG(MACH, TENCH, DIADIEM) VALUES ('CH02', N'Mini NonStop', N'số 7 Hàn Thuyên, Thủ Đức')
 INSERT INTO CUAHANG(MACH, TENCH, DIADIEM) VALUES ('CH03', N'Độc lạ Bình Dương', N'số 10 Nguyễn An Ninh, Dĩ An')
 ------ ------
 
 
-CREATE TABLE CHU
+CREATE TABLE CHUCUAHANG
 (
-	MACHU varchar(128) primary key,
+	MACCH varchar(128) primary key,
+	MATKHAU varchar(max),
 	HOTEN	nvarchar(max),
-	NGSINH smalldatetime,
+	NGSINH datetime,
 	GIOITINH nvarchar(3),
 	SDT varchar(15),
 	EMAIL varchar(max),
 	DIACHI nvarchar(max),
-	NGDK smalldatetime,
-	MATKHAU varchar(max),
+	NGDK datetime,
 	VAITRO bit,
 	AVATAR varchar(max),
-	MACH varchar(128) FOREIGN KEY REFERENCES CUAHANG(MACH)
+	TENCUAHANG nvarchar(max),
+	DIADIEM nvarchar(max),
+	DOANHTHU money
 )
 ------ ------
-INSERT INTO CHU(MACHU,HOTEN,NGSINH,NGDK, MACH) VALUES ('C01',N'Nguyễn Tuấn Vĩ','20/10/1980','13/12/2022', 'CH01')
-INSERT INTO CHU(MACHU,HOTEN,NGSINH,NGDK, MACH) VALUES ('C02',N'Nguyễn Mai Minh Đức','20/10/2003','13/12/2022', 'CH01')
+INSERT INTO CHUCUAHANG(MACHU,HOTEN,NGSINH,NGDK, MACH) VALUES ('C01',N'Nguyễn Tuấn Vĩ','20/10/1980','13/12/2022', 'CH01')
+INSERT INTO CHUCUAHANG(MACHU,HOTEN,NGSINH,NGDK, MACH) VALUES ('C02',N'Nguyễn Mai Minh Đức','20/10/2003','13/12/2022', 'CH01')
 ------ ------
 
 
@@ -64,12 +57,13 @@ CREATE TABLE SANPHAM
 (
 	MASP varchar(128) primary key,
 	TENSP nvarchar(max),
-	THELOAI nvarchar(max),
+	LOAISP nvarchar(max),
 	DONVI nvarchar(max),
 	DONGIA money,
-	KICHTHUOC varchar(10),
+	SIZE varchar(10),
 	MOTA nvarchar(max),
-	HINHSP varchar(max)
+	HINHSP varchar(max),
+	AVAILABLE bit
 )
 ------ ------
 INSERT INTO SANPHAM(MASP, TENSP, DONGIA) VALUES ('SP001', N'Sữa Milo', 8000)
@@ -85,9 +79,9 @@ INSERT INTO SANPHAM(MASP, TENSP, DONGIA) VALUES ('SP008', N'Oreo đá xay', 3800
 
 CREATE TABLE CUAHANG_BAN_SANPHAM
 (
-	MACH varchar(128) FOREIGN KEY REFERENCES CUAHANG(MACH),
+	MACCH varchar(128) FOREIGN KEY REFERENCES CHUCUAHANG(MACCH),
 	MASP varchar(128) FOREIGN KEY REFERENCES SANPHAM(MASP),
-		CONSTRAINT PK_CH_SP PRIMARY KEY (MACH,MASP)
+		CONSTRAINT PK_CH_SP PRIMARY KEY (MACCH,MASP)
 )
 ------ ------
 INSERT INTO CUAHANG_BAN_SANPHAM(MACH, MASP) VALUES ('CH01','SP005')
@@ -105,10 +99,10 @@ INSERT INTO CUAHANG_BAN_SANPHAM(MACH, MASP) VALUES ('CH02','SP004')
 CREATE TABLE HOADON
 (
 	SOHD int primary key,
-	NGMH smalldatetime,
+	NGMH datetime,
 	TONGTIEN money,
 	MAKH varchar(128) FOREIGN KEY REFERENCES KHACH(MAKH),
-	MACH varchar(128) FOREIGN KEY REFERENCES CUAHANG(MACH),
+	MACCH varchar(128) FOREIGN KEY REFERENCES CHUCUAHANG(MACCH),
 )
 ------ ------
 INSERT INTO HOADON(SOHD, NGMH, MAKH, MACH) VALUES (10, '14/12/2022', 'KH01', 'CH01')
