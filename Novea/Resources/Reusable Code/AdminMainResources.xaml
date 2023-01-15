@@ -4,5 +4,6 @@
     
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel:SettingViewModel x:Key="SettingVM"></viewmodel:SettingViewModel>
+    <viewmodel:ManagerViewModel x:Key="ManagerVM"></viewmodel:ManagerViewModel>
 
 </ResourceDictionary>

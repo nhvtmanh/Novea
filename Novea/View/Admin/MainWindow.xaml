@@ -116,7 +116,7 @@
                                 DockPanel.Dock="Top" 
                                 HorizontalAlignment="Left"                                         
                                 Margin="25 -25 35 0">
-                            <Ellipse>
+                            <Ellipse Margin="0,0,-3,-3">
                                 <Ellipse.Fill>
                                     <!--<ImageBrush ImageSource="/Resources/Images/images.png"/>-->
                                     <ImageBrush ImageSource="{Binding Ava}"/>
@@ -126,14 +126,14 @@
 
                         <!--Menu Titles-->
                             <TextBlock x:Name="TenDangNhap"
+                                       Margin="10 0 0 0"
                                        Text="VŨ ĐỨC MINH" 
                                        Foreground="#fff8f0" 
                                        TextWrapping="Wrap"
                                        FontSize="22" 
                                        FontWeight="SemiBold" 
                                        DockPanel.Dock="Top" 
-                                       Margin="25 5 0 0"                                        
-                                       TextAlignment="Left">
+                                       TextAlignment="Center" Width="185">
 
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
@@ -144,12 +144,11 @@
                         </TextBlock>
 
                         <TextBlock Text="Quản Trị Viên"             
-                                   Margin="25 0 0 0"
                                        Foreground="#fff8f0"                                 
                                        FontSize="14"                                 
                                        FontWeight="SemiBold"                                 
                                        DockPanel.Dock="Top"                                  
-                                       TextAlignment="Left"/>
+                                       TextAlignment="Center" Width="178"/>
 
                         <Separator Margin="13" 
                                    Background="{StaticResource color1}" 
