@@ -24,11 +24,11 @@ namespace Novea.Model
         public Nullable<System.DateTime> NGMH { get; set; }
         public Nullable<decimal> TONGTIEN { get; set; }
         public string MAKH { get; set; }
-        public string MACH { get; set; }
+        public string MACCH { get; set; }
     
+        public virtual CHUCUAHANG CHUCUAHANG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD> CTHDs { get; set; }
-        public virtual CUAHANG CUAHANG { get; set; }
         public virtual KHACH KHACH { get; set; }
     }
 }

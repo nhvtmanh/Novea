@@ -13,14 +13,14 @@ namespace Novea.ViewModel.Client
 {
     public class StoreViewModel : BaseViewModel
     {
-        private ObservableCollection<CUAHANG> listStore;
-        public ObservableCollection<CUAHANG> ListStore
+        private ObservableCollection<CHUCUAHANG> listStore;
+        public ObservableCollection<CHUCUAHANG> ListStore
         {
             get => listStore;
             set { listStore = value; }
         }
-        private ObservableCollection<CUAHANG> listStore1;
-        public ObservableCollection<CUAHANG> ListStore1
+        private ObservableCollection<CHUCUAHANG> listStore1;
+        public ObservableCollection<CHUCUAHANG> ListStore1
         {
             get => listStore1;
             set { listStore1 = value; }
@@ -28,14 +28,14 @@ namespace Novea.ViewModel.Client
         public ICommand LoadStoreCommand { get; set; }
         public StoreViewModel()
         {
-            ListStore1 = new ObservableCollection<CUAHANG>(DataProvider.Ins.DB.CUAHANGs);
-            ListStore = new ObservableCollection<CUAHANG>(ListStore1.GroupBy(p => p.TENCH).Select(grp => grp.FirstOrDefault()));
+            ListStore1 = new ObservableCollection<CHUCUAHANG>(DataProvider.Ins.DB.CHUCUAHANGs);
+            ListStore = new ObservableCollection<CHUCUAHANG>(ListStore1.GroupBy(p => p.TENCUAHANG).Select(grp => grp.FirstOrDefault()));
             LoadStoreCommand = new RelayCommand<HomeView>((p) => true, (p) => loadStore(p));
         }
         void loadStore(HomeView parameter)
         {
-            ListStore1 = new ObservableCollection<CUAHANG>(DataProvider.Ins.DB.CUAHANGs);
-            ListStore = new ObservableCollection<CUAHANG>(ListStore1.GroupBy(p => p.TENCH).Select(grp => grp.FirstOrDefault()));
+            ListStore1 = new ObservableCollection<CHUCUAHANG>(DataProvider.Ins.DB.CHUCUAHANGs);
+            ListStore = new ObservableCollection<CHUCUAHANG>(ListStore1.GroupBy(p => p.TENCUAHANG).Select(grp => grp.FirstOrDefault()));
         }
     }
 }

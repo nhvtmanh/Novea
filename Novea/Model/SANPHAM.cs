@@ -18,21 +18,22 @@ namespace Novea.Model
         public SANPHAM()
         {
             this.CTHDs = new HashSet<CTHD>();
-            this.CUAHANGs = new HashSet<CUAHANG>();
+            this.CHUCUAHANGs = new HashSet<CHUCUAHANG>();
         }
     
         public string MASP { get; set; }
         public string TENSP { get; set; }
-        public string THELOAI { get; set; }
+        public string LOAISP { get; set; }
         public string DONVI { get; set; }
         public Nullable<decimal> DONGIA { get; set; }
-        public string KICHTHUOC { get; set; }
+        public string SIZE { get; set; }
         public string MOTA { get; set; }
         public string HINHSP { get; set; }
+        public Nullable<bool> AVAILABLE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD> CTHDs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CUAHANG> CUAHANGs { get; set; }
+        public virtual ICollection<CHUCUAHANG> CHUCUAHANGs { get; set; }
     }
 }

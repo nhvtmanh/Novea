@@ -11,7 +11,7 @@ namespace Novea.Model
     {
         public static string TenDangNhap { get; set; }
         public static bool Admin { get; set; }
-        public static CHU ND { get; set; }
+        public static CHUCUAHANG ND { get; set; }
         public static string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
     }
 

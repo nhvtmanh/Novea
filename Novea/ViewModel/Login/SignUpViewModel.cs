@@ -69,9 +69,9 @@ namespace Novea.ViewModel
         }
         bool check(string m)
         {
-            foreach (CHU temp in DataProvider.Ins.DB.CHUs)
+            foreach (CHUCUAHANG temp in DataProvider.Ins.DB.CHUCUAHANGs)
             {
-                if (temp.MACHU == m)
+                if (temp.MACCH == m)
                     return true;
             }
             return false;
@@ -93,13 +93,13 @@ namespace Novea.ViewModel
                 MessageBox.Show("Bạn chưa nhập đầy đủ thông tin !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            int dem = DataProvider.Ins.DB.CHUs.Where(p => p.MACHU == parameter.User.Text).Count();
+            int dem = DataProvider.Ins.DB.CHUCUAHANGs.Where(p => p.MACCH == parameter.User.Text).Count();
             if (dem > 0)
             {
                 MessageBox.Show("Tên đăng nhập đã tồn tại !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            foreach (CHU temp in DataProvider.Ins.DB.CHUs)
+            foreach (CHUCUAHANG temp in DataProvider.Ins.DB.CHUCUAHANGs)
             {
                 if (temp.EMAIL == parameter.Mail.Text)
                 {
@@ -124,8 +124,8 @@ namespace Novea.ViewModel
             MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn đăng ký tài khoản ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             if (h == MessageBoxResult.Yes)
             {
-                CHU temp = new CHU();
-                temp.MACHU = rdma();
+                CHUCUAHANG temp = new CHUCUAHANG();
+                temp.MACCH = rdma();
                 temp.HOTEN = parameter.TenND.Text;
                 temp.GIOITINH = parameter.GT.Text;
                 temp.DIACHI = parameter.DC.Text;
@@ -134,17 +134,17 @@ namespace Novea.ViewModel
                 temp.SDT = parameter.SDT.Text;
                 temp.VAITRO = false;
                 //temp.TTND = true;
-                temp.MACHU = parameter.User.Text;
+                temp.MACCH = parameter.User.Text;
                 temp.MATKHAU = LoginViewModel.MD5Hash(LoginViewModel.Base64Encode(Password));
                 if (linkaddimage == "/Resource/Image/addava.png")
                     temp.AVATAR = "/Resource/Image/addava.png";
                 else
-                    temp.AVATAR = "/Resource/Ava/" + temp.MACHU + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-                DataProvider.Ins.DB.CHUs.Add(temp);
+                    temp.AVATAR = "/Resource/Ava/" + temp.MACCH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                DataProvider.Ins.DB.CHUCUAHANGs.Add(temp);
                 DataProvider.Ins.DB.SaveChanges();
                 try
                 {
-                    File.Copy(linkaddimage, Const._localLink + @"Resource\Ava\" + temp.MACHU + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+                    File.Copy(linkaddimage, Const._localLink + @"Resource\Ava\" + temp.MACCH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
                 }
                 catch { }
                 MessageBox.Show("Chúc mừng bạn đã đăng ký thành công !", "THÔNG BÁO", MessageBoxButton.OK);

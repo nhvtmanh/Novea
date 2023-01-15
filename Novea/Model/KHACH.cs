@@ -21,6 +21,7 @@ namespace Novea.Model
         }
     
         public string MAKH { get; set; }
+        public string MATKHAU { get; set; }
         public string HOTEN { get; set; }
         public Nullable<System.DateTime> NGSINH { get; set; }
         public string GIOITINH { get; set; }
@@ -29,7 +30,6 @@ namespace Novea.Model
         public string DIACHI { get; set; }
         public Nullable<System.DateTime> NGDK { get; set; }
         public Nullable<decimal> DOANHSO { get; set; }
-        public string MATKHAU { get; set; }
         public Nullable<bool> VAITRO { get; set; }
         public string AVATAR { get; set; }
     

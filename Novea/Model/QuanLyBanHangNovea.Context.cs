@@ -25,9 +25,8 @@ namespace Novea.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CHU> CHUs { get; set; }
+        public virtual DbSet<CHUCUAHANG> CHUCUAHANGs { get; set; }
         public virtual DbSet<CTHD> CTHDs { get; set; }
-        public virtual DbSet<CUAHANG> CUAHANGs { get; set; }
         public virtual DbSet<HOADON> HOADONs { get; set; }
         public virtual DbSet<KHACH> KHACHes { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }

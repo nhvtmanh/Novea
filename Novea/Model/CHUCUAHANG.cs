@@ -12,23 +12,30 @@ namespace Novea.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class CUAHANG
+    public partial class CHUCUAHANG
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CUAHANG()
+        public CHUCUAHANG()
         {
-            this.CHUs = new HashSet<CHU>();
             this.HOADONs = new HashSet<HOADON>();
             this.SANPHAMs = new HashSet<SANPHAM>();
         }
     
-        public string MACH { get; set; }
-        public string TENCH { get; set; }
+        public string MACCH { get; set; }
+        public string MATKHAU { get; set; }
+        public string HOTEN { get; set; }
+        public Nullable<System.DateTime> NGSINH { get; set; }
+        public string GIOITINH { get; set; }
+        public string SDT { get; set; }
+        public string EMAIL { get; set; }
+        public string DIACHI { get; set; }
+        public Nullable<System.DateTime> NGDK { get; set; }
+        public Nullable<bool> VAITRO { get; set; }
+        public string AVATAR { get; set; }
+        public string TENCUAHANG { get; set; }
         public string DIADIEM { get; set; }
         public Nullable<decimal> DOANHTHU { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHU> CHUs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOADON> HOADONs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

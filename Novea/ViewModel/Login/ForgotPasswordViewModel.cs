@@ -40,7 +40,7 @@ namespace Novea.ViewModel
         }
         void _SendPass(ForgotPassword parameter)
         {
-            int dem = DataProvider.Ins.DB.CHUs.Where(p => p.EMAIL == parameter.email.Text).Count();
+            int dem = DataProvider.Ins.DB.CHUCUAHANGs.Where(p => p.EMAIL == parameter.email.Text).Count();
             if (dem == 0)
             {
                 MessageBox.Show("Email này chưa được đăng ký !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -48,7 +48,7 @@ namespace Novea.ViewModel
             }
             Random rand = new Random();
             string newpass = rand.Next(100000, 999999).ToString();
-            foreach (CHU temp in DataProvider.Ins.DB.CHUs)
+            foreach (CHUCUAHANG temp in DataProvider.Ins.DB.CHUCUAHANGs)
             {
                 if (temp.EMAIL == parameter.email.Text)
                 {

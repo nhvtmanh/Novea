@@ -27,8 +27,8 @@ namespace Novea.ViewModel.Admin
         public ICommand Quyen_Loaded { get; set; }
 
 
-        private CHU _User;
-        public CHU User { get => _User; set { _User = value; OnPropertyChanged(); } }
+        private CHUCUAHANG _User;
+        public CHUCUAHANG User { get => _User; set { _User = value; OnPropertyChanged(); } }
 
         private string _Ava;
         public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
@@ -114,7 +114,7 @@ namespace Novea.ViewModel.Admin
             if (LoginViewModel.IsLogin)
             {
                 string a = Const.TenDangNhap;
-                User = DataProvider.Ins.DB.CHUs.Where(x => x.MACHU == a).FirstOrDefault();
+                User = DataProvider.Ins.DB.CHUCUAHANGs.Where(x => x.MACCH == a).FirstOrDefault();
                 //Const.ND = User;
                 //Const.Admin = (bool)User.VAITRO;
                 Ava = User.AVATAR;
