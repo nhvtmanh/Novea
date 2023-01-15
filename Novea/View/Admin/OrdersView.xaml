@@ -9,8 +9,15 @@
       mc:Ignorable="d" 
       d:DesignHeight="565" d:DesignWidth="820"
       Title="OrdersView"
-      
+      DataContext="{StaticResource OrVM}"
       x:Name="Orderwd">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCsCommand}"
+                                   CommandParameter="{Binding ElementName=Orderwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Border Height="565"
             Width="820"
@@ -45,7 +52,8 @@
             </Grid>
             <Grid Grid.Row="1">
                 <StackPanel Orientation="Horizontal" Margin="0,0,14,0">
-                    <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"   
+                    <ComboBox x:Name="cbxChon"
+                              Style="{StaticResource MaterialDesignFilledComboBox}"   
                               Padding="5"
                               Foreground="{StaticResource plainTextColor2}"                              
                               materialDesign:HintAssist.Hint="Sắp xếp theo"           
@@ -53,7 +61,17 @@
                               materialDesign:HintAssist.Foreground="#000"
                               Width="253" 
                               Height="46"
-                              Margin="30 0 0 0">
+                              Margin="30 0 0 0"
+                              ItemsSource="{Binding listTK}">
+                        
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+
                         <ComboBoxItem                     
                             Content="Tăng dần"/>
                         <ComboBoxItem
@@ -148,12 +166,12 @@
                                      BorderThickness="0"                                                  
                                      MinWidth="200"                                                  
                                      VerticalAlignment="Center" >
-                                    <!--<i:Interaction.Triggers>
-                            <i:EventTrigger EventName="TextChanged">
-                                <i:InvokeCommandAction Command="{Binding SearchCommand}"
-                                                       CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>-->
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="TextChanged">
+                                            <i:InvokeCommandAction Command="{Binding SearchCommand}"
+                                                       CommandParameter="{Binding ElementName=Orderwd}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                 </TextBox>
                                 <Button Style="{StaticResource MaterialDesignToolButton}"                                                    
                                     Grid.Column="2">
