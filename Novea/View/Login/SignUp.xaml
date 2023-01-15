@@ -169,6 +169,7 @@
                                 <ComboBox
                                     Margin="10,10,0,0"
                                     x:Name="Role" FontFamily="{StaticResource Custom}"
+                                    Text="{Binding Vaitro}"
                                     Style="{StaticResource MaterialDesignFilledComboBox}"
                                     materialDesign:HintAssist.Foreground="Black"
                                     materialDesign:TextFieldAssist.UnderlineBrush="#6C63FF"

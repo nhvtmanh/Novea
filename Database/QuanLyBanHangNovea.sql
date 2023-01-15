@@ -7,6 +7,7 @@ USE QuanLyBanHangNovea
 CREATE TABLE KHACH
 (
 	MAKH varchar(128) primary key,
+	TAIKHOAN varchar(max),
 	MATKHAU varchar(max),
 	HOTEN nvarchar(max),
 	NGSINH datetime,
@@ -29,10 +30,10 @@ INSERT INTO CUAHANG(MACH, TENCH, DIADIEM) VALUES ('CH02', N'Mini NonStop', N's�
 INSERT INTO CUAHANG(MACH, TENCH, DIADIEM) VALUES ('CH03', N'Độc lạ Bình Dương', N'số 10 Nguyễn An Ninh, Dĩ An')
 ------ ------
 
-
 CREATE TABLE CHUCUAHANG
 (
 	MACCH varchar(128) primary key,
+	TAIKHOAN varchar(max),
 	MATKHAU varchar(max),
 	HOTEN	nvarchar(max),
 	NGSINH datetime,
@@ -51,7 +52,6 @@ CREATE TABLE CHUCUAHANG
 INSERT INTO CHUCUAHANG(MACHU,HOTEN,NGSINH,NGDK, MACH) VALUES ('C01',N'Nguyễn Tuấn Vĩ','20/10/1980','13/12/2022', 'CH01')
 INSERT INTO CHUCUAHANG(MACHU,HOTEN,NGSINH,NGDK, MACH) VALUES ('C02',N'Nguyễn Mai Minh Đức','20/10/2003','13/12/2022', 'CH01')
 ------ ------
-
 
 CREATE TABLE SANPHAM
 (

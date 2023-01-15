@@ -41,7 +41,6 @@ namespace Novea.ViewModel.Admin
             GetIdTab = new RelayCommand<RadioButton>((p) => true, (p) => Name = p.Uid);
             SwitchTab = new RelayCommand<MainWindow>((p) => true, (p) => switchtab(p));
             LogOutCommand = new RelayCommand<MainWindow>((p) => { return true; }, (p) => LogOut(p));
-
             Loadwd = new RelayCommand<MainWindow>((p) => true, (p) => _Loadwd(p));
             MoveWindow = new RelayCommand<MainWindow>((p) => true, (p) => moveWindow(p));
             TenDangNhap_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadTenAD(p));
@@ -115,15 +114,15 @@ namespace Novea.ViewModel.Admin
             {
                 string a = Const.TenDangNhap;
                 User = DataProvider.Ins.DB.CHUCUAHANGs.Where(x => x.MACCH == a).FirstOrDefault();
-                //Const.ND = User;
+                //Const.CCH = User;
                 //Const.Admin = (bool)User.VAITRO;
-                Ava = User.AVATAR;
-                LoadTenAD(p);
+                //Ava = User.AVATAR;
+                //LoadTenAD(p);
             }
         }
         public void LoadTenAD(MainWindow p)
         {
-            p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
+            //p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
         }
         public void moveWindow(MainWindow p)
         {

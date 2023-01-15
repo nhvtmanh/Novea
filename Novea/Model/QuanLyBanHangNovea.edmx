@@ -10,6 +10,7 @@
             <PropertyRef Name="MACCH" />
           </Key>
           <Property Name="MACCH" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="TAIKHOAN" Type="varchar(max)" />
           <Property Name="MATKHAU" Type="varchar(max)" />
           <Property Name="HOTEN" Type="nvarchar(max)" />
           <Property Name="NGSINH" Type="datetime" />
@@ -59,6 +60,7 @@
             <PropertyRef Name="MAKH" />
           </Key>
           <Property Name="MAKH" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="TAIKHOAN" Type="varchar(max)" />
           <Property Name="MATKHAU" Type="varchar(max)" />
           <Property Name="HOTEN" Type="nvarchar(max)" />
           <Property Name="NGSINH" Type="datetime" />
@@ -85,7 +87,7 @@
           <Property Name="HINHSP" Type="varchar(max)" />
           <Property Name="AVAILABLE" Type="bit" />
         </EntityType>
-        <Association Name="FK__CTHD__MASP__6C190EBB">
+        <Association Name="FK__CTHD__MASP__6B24EA82">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
           <ReferentialConstraint>
@@ -97,7 +99,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTHD__SOHD__6B24EA82">
+        <Association Name="FK__CTHD__SOHD__6A30C649">
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
           <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
           <ReferentialConstraint>
@@ -164,11 +166,11 @@
           <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KHACH" EntityType="Self.KHACH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__CTHD__MASP__6C190EBB" Association="Self.FK__CTHD__MASP__6C190EBB">
+          <AssociationSet Name="FK__CTHD__MASP__6B24EA82" Association="Self.FK__CTHD__MASP__6B24EA82">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CTHD" EntitySet="CTHD" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTHD__SOHD__6B24EA82" Association="Self.FK__CTHD__SOHD__6B24EA82">
+          <AssociationSet Name="FK__CTHD__SOHD__6A30C649" Association="Self.FK__CTHD__SOHD__6A30C649">
             <End Role="HOADON" EntitySet="HOADON" />
             <End Role="CTHD" EntitySet="CTHD" />
           </AssociationSet>
@@ -203,11 +205,11 @@
             <End Role="CHUCUAHANG" EntitySet="CHUCUAHANGs" />
             <End Role="HOADON" EntitySet="HOADONs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTHD__MASP__6C190EBB" Association="QuanLyBanHangNoveaModel.FK__CTHD__MASP__6C190EBB">
+          <AssociationSet Name="FK__CTHD__MASP__6B24EA82" Association="QuanLyBanHangNoveaModel.FK__CTHD__MASP__6B24EA82">
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="CTHD" EntitySet="CTHDs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTHD__SOHD__6B24EA82" Association="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__6B24EA82">
+          <AssociationSet Name="FK__CTHD__SOHD__6A30C649" Association="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__6A30C649">
             <End Role="HOADON" EntitySet="HOADONs" />
             <End Role="CTHD" EntitySet="CTHDs" />
           </AssociationSet>
@@ -225,6 +227,7 @@
             <PropertyRef Name="MACCH" />
           </Key>
           <Property Name="MACCH" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="TAIKHOAN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MATKHAU" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="HOTEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NGSINH" Type="DateTime" Precision="3" />
@@ -252,8 +255,8 @@
           <Property Name="TRIGIA" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="LuongDa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="LuongDuong" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SANPHAM" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__MASP__6C190EBB" FromRole="CTHD" ToRole="SANPHAM" />
-          <NavigationProperty Name="HOADON" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__6B24EA82" FromRole="CTHD" ToRole="HOADON" />
+          <NavigationProperty Name="SANPHAM" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__MASP__6B24EA82" FromRole="CTHD" ToRole="SANPHAM" />
+          <NavigationProperty Name="HOADON" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__6A30C649" FromRole="CTHD" ToRole="HOADON" />
         </EntityType>
         <EntityType Name="HOADON">
           <Key>
@@ -265,7 +268,7 @@
           <Property Name="MAKH" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="MACCH" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CHUCUAHANG" Relationship="QuanLyBanHangNoveaModel.FK__HOADON__MACCH__6754599E" FromRole="HOADON" ToRole="CHUCUAHANG" />
-          <NavigationProperty Name="CTHDs" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__6B24EA82" FromRole="HOADON" ToRole="CTHD" />
+          <NavigationProperty Name="CTHDs" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__6A30C649" FromRole="HOADON" ToRole="CTHD" />
           <NavigationProperty Name="KHACH" Relationship="QuanLyBanHangNoveaModel.FK__HOADON__MAKH__66603565" FromRole="HOADON" ToRole="KHACH" />
         </EntityType>
         <EntityType Name="KHACH">
@@ -273,6 +276,7 @@
             <PropertyRef Name="MAKH" />
           </Key>
           <Property Name="MAKH" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="TAIKHOAN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MATKHAU" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="HOTEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NGSINH" Type="DateTime" Precision="3" />
@@ -299,7 +303,7 @@
           <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HINHSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AVAILABLE" Type="Boolean" />
-          <NavigationProperty Name="CTHDs" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__MASP__6C190EBB" FromRole="SANPHAM" ToRole="CTHD" />
+          <NavigationProperty Name="CTHDs" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__MASP__6B24EA82" FromRole="SANPHAM" ToRole="CTHD" />
           <NavigationProperty Name="CHUCUAHANGs" Relationship="QuanLyBanHangNoveaModel.CUAHANG_BAN_SANPHAM" FromRole="SANPHAM" ToRole="CHUCUAHANG" />
         </EntityType>
         <Association Name="FK__HOADON__MACCH__6754599E">
@@ -314,7 +318,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTHD__MASP__6C190EBB">
+        <Association Name="FK__CTHD__MASP__6B24EA82">
           <End Type="QuanLyBanHangNoveaModel.SANPHAM" Role="SANPHAM" Multiplicity="1" />
           <End Type="QuanLyBanHangNoveaModel.CTHD" Role="CTHD" Multiplicity="*" />
           <ReferentialConstraint>
@@ -326,7 +330,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTHD__SOHD__6B24EA82">
+        <Association Name="FK__CTHD__SOHD__6A30C649">
           <End Type="QuanLyBanHangNoveaModel.HOADON" Role="HOADON" Multiplicity="1" />
           <End Type="QuanLyBanHangNoveaModel.CTHD" Role="CTHD" Multiplicity="*" />
           <ReferentialConstraint>
@@ -376,6 +380,7 @@
                 <ScalarProperty Name="NGSINH" ColumnName="NGSINH" />
                 <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
                 <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+                <ScalarProperty Name="TAIKHOAN" ColumnName="TAIKHOAN" />
                 <ScalarProperty Name="MACCH" ColumnName="MACCH" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -417,6 +422,7 @@
                 <ScalarProperty Name="NGSINH" ColumnName="NGSINH" />
                 <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
                 <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+                <ScalarProperty Name="TAIKHOAN" ColumnName="TAIKHOAN" />
                 <ScalarProperty Name="MAKH" ColumnName="MAKH" />
               </MappingFragment>
             </EntityTypeMapping>

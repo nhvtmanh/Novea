@@ -22,6 +22,7 @@ namespace Novea.Model
         }
     
         public string MACCH { get; set; }
+        public string TAIKHOAN { get; set; }
         public string MATKHAU { get; set; }
         public string HOTEN { get; set; }
         public Nullable<System.DateTime> NGSINH { get; set; }
