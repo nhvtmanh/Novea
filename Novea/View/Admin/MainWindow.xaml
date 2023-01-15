@@ -114,8 +114,8 @@
                                 Background="White" 
                                 CornerRadius="100" 
                                 DockPanel.Dock="Top" 
-                                HorizontalAlignment="Center"                                
-                                Margin="20 -25 35 0">
+                                HorizontalAlignment="Left"                                         
+                                Margin="25 -25 35 0">
                             <Ellipse>
                                 <Ellipse.Fill>
                                     <!--<ImageBrush ImageSource="/Resources/Images/images.png"/>-->
@@ -128,11 +128,12 @@
                             <TextBlock x:Name="TenDangNhap"
                                        Text="VŨ ĐỨC MINH" 
                                        Foreground="#fff8f0" 
-                                       FontSize="21" 
+                                       TextWrapping="Wrap"
+                                       FontSize="22" 
                                        FontWeight="SemiBold" 
                                        DockPanel.Dock="Top" 
-                                       Margin="5" 
-                                       TextAlignment="Center">
+                                       Margin="25 5 0 0"                                        
+                                       TextAlignment="Left">
 
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
@@ -142,23 +143,18 @@
                             </i:Interaction.Triggers>/>
                         </TextBlock>
 
-                            <TextBlock x:Name="Quyen"
-                                   Text="Quản Trị Viên" 
-                                   Foreground="#fff8f0" 
-                                   FontSize="14" 
-                                   FontWeight="SemiBold" 
+                        <TextBlock Text="Quản Trị Viên"             
+                                   Margin="25 0 0 0"
+                                       Foreground="#fff8f0"                                 
+                                       FontSize="14"                                 
+                                       FontWeight="SemiBold"                                 
+                                       DockPanel.Dock="Top"                                  
+                                       TextAlignment="Left"/>
+
+                        <Separator Margin="13" 
+                                   Background="{StaticResource color1}" 
                                    DockPanel.Dock="Top" 
-                                   TextAlignment="Center">
-                                    
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Loaded">
-                                    <i:InvokeCommandAction Command="{Binding Quyen_Loaded}"
-                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>/>
-                        </TextBlock>
-                        
-                        <Separator Margin="15" Background="{StaticResource color1}" DockPanel.Dock="Top" Height="1"/>
+                                   Height="1"/>
 
                         <StackPanel>
 
@@ -178,7 +174,8 @@
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Home" Style="{StaticResource menuButtonIcon}"/>
+                                    <materialDesign:PackIcon Kind="Home" 
+                                                             Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="TRANG CHỦ" Style="{StaticResource menuButtonText}"/>
                                 </StackPanel>
                             </RadioButton>

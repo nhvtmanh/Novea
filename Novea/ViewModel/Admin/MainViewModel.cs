@@ -29,8 +29,7 @@ namespace Novea.ViewModel.Admin
 
         private CHU _User;
         public CHU User { get => _User; set { _User = value; OnPropertyChanged(); } }
-        //private Visibility _SetQuanLy;
-        //public Visibility SetQuanLy { get => _SetQuanLy; set { _SetQuanLy = value; OnPropertyChanged(); } }
+
         private string _Ava;
         public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
         public string Name;
@@ -46,7 +45,6 @@ namespace Novea.ViewModel.Admin
             Loadwd = new RelayCommand<MainWindow>((p) => true, (p) => _Loadwd(p));
             MoveWindow = new RelayCommand<MainWindow>((p) => true, (p) => moveWindow(p));
             TenDangNhap_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadTenAD(p));
-            Quyen_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadQuyen(p));
         }
         void LogOut(MainWindow p)
         {
@@ -117,28 +115,15 @@ namespace Novea.ViewModel.Admin
             {
                 string a = Const.TenDangNhap;
                 User = DataProvider.Ins.DB.CHUs.Where(x => x.MACHU == a).FirstOrDefault();
-                Const.ND = User;
-                //SetQuanLy = (bool)User.VAITRO ? Visibility.Visible : Visibility.Collapsed;
-                Const.Admin = (bool)User.VAITRO;
+                //Const.ND = User;
+                //Const.Admin = (bool)User.VAITRO;
                 Ava = User.AVATAR;
                 LoadTenAD(p);
             }
         }
         public void LoadTenAD(MainWindow p)
         {
-            //try
-            //{
             p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //}
-
-        }
-        public void LoadQuyen(MainWindow p)
-        {
-            p.Quyen.Text = (bool)User.VAITRO ? "Khách" : "Chủ";
         }
         public void moveWindow(MainWindow p)
         {
