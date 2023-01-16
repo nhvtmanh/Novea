@@ -1,5 +1,6 @@
 ﻿using Novea.Model;
 using Novea.View;
+using Novea.View.Client;
 using Microsoft.Win32;
 using Novea.ViewModel;
 using Novea;
@@ -54,7 +55,7 @@ namespace Novea.ViewModel
         }
         public void Move(LoginWindow p)
         {
-            //p.DragMove();
+            p.DragMove();
         }
         public void login(LoginWindow p)
         {
@@ -62,8 +63,8 @@ namespace Novea.ViewModel
             {
                 if (p == null) return;
                 string PassEncode = MD5Hash(Base64Encode(Password));
-                var accCount = DataProvider.Ins.DB.CHUCUAHANGs.Where(x => x.TAIKHOAN == Username && x.MATKHAU == PassEncode).Count();
-                if (accCount > 0)
+                var accCountCHU = DataProvider.Ins.DB.CHUCUAHANGs.Where(x => x.TAIKHOAN == Username && x.MATKHAU == PassEncode).Count();
+                if (accCountCHU > 0)
                 {
                     IsLogin = true;
                     Const.TenDangNhap = Username;
@@ -72,7 +73,17 @@ namespace Novea.ViewModel
                     Username = "";
                     p.Hide();
                 }
-                else
+                var accCountKHACH = DataProvider.Ins.DB.KHACHes.Where(x => x.TAIKHOAN == Username && x.MATKHAU == PassEncode).Count();
+                if (accCountKHACH > 0)
+                {
+                    IsLogin = true;
+                    Const.TenDangNhap = Username;
+                    Guest guest = new Guest();
+                    guest.Show();
+                    Username = "";
+                    p.Hide();
+                }
+                if(accCountCHU <= 0 && accCountKHACH <= 0)
                 {
                     MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", MessageBoxButton.OK);
                 }

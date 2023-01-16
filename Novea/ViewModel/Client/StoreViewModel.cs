@@ -37,5 +37,9 @@ namespace Novea.ViewModel.Client
             ListStore1 = new ObservableCollection<CHUCUAHANG>(DataProvider.Ins.DB.CHUCUAHANGs);
             ListStore = new ObservableCollection<CHUCUAHANG>(ListStore1.GroupBy(p => p.TENCUAHANG).Select(grp => grp.FirstOrDefault()));
         }
+        public void moveWindow(MainWindow p)
+        {
+            p.DragMove();
+        }
     }
 }
