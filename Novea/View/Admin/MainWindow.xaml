@@ -84,11 +84,12 @@
                                              VerticalAlignment="Center">
                         </materialDesign:PackIcon>
                         <TextBlock Text="NOVEA"                              
-                               FontSize="30"                                              
+                               FontSize="28"                                              
                                FontWeight="Medium"                                   
                                Style="{StaticResource NameApp}" 
                                Height="36" 
                                HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
                                Foreground="{StaticResource plainTextColor2}">
 
                         </TextBlock>
@@ -115,10 +116,9 @@
                                 CornerRadius="100" 
                                 DockPanel.Dock="Top" 
                                 HorizontalAlignment="Left"                                         
-                                Margin="25 -25 35 0">
+                                Margin="33 -25 35 0">
                             <Ellipse Margin="0,0,-3,-3">
                                 <Ellipse.Fill>
-                                    <!--<ImageBrush ImageSource="/Resources/Images/images.png"/>-->
                                     <ImageBrush ImageSource="{Binding Ava}"/>
                                 </Ellipse.Fill>
                             </Ellipse>

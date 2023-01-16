@@ -23,11 +23,13 @@ namespace Novea.ViewModel.Admin
 
         private ObservableCollection<HOADON> _listHD1;
         public ObservableCollection<HOADON> listHD1 { get => _listHD1; set { _listHD1 = value; OnPropertyChanged(); } }
+        public ICommand SearchCommand { get; set; }
         public ICommand LoadCsCommand { get; set; }
 
         public ManagerViewModel()
         {
             listHD1 = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
+            //SearchCommand = new RelayCommand<ManagerView>((p) => { return p == null ? false : true; }, (p) => _SearchCommand(p));
             LoadCsCommand = new RelayCommand<ManagerView>((p) => true, (p) => _LoadCsCommand(p));
             listHD = new ObservableCollection<HOADON>(listHD1.GroupBy(p => p.SOHD).Select(grp => grp.FirstOrDefault()));
             if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
@@ -43,5 +45,56 @@ namespace Novea.ViewModel.Admin
             //_Filter(parameter);
             //_SearchCommand(parameter);
         }
+        //void _SearchCommand(ManagerView paramater)
+        //{
+        //    ObservableCollection<SANPHAM> temp = new ObservableCollection<SANPHAM>();
+        //    if (paramater.txbSearch.Text != "")
+        //    {
+        //        switch (paramater.cbxChon.SelectedItem.ToString())
+        //        {
+        //            case "Tên SP":
+        //                {
+        //                    foreach (HOADON s in listHD)
+        //                    {
+        //                        if (s.TENSP.ToLower().Contains(paramater.txbSearch.Text.ToLower()))
+        //                        {
+        //                            temp.Add(s);
+        //                        }
+        //                    }
+        //                    break;
+        //                }
+        //            case "Giá SP":
+        //                {
+        //                    try
+        //                    {
+        //                        foreach (HOADON s in listHD)
+        //                        {
+        //                            //if (s.GIA <= int.Parse(paramater.txbSearch.Text))
+        //                            //{
+        //                                temp.Add(s);
+        //                            //}
+        //                        }
+        //                    }
+        //                    catch { }
+        //                    break;
+        //                }
+        //            default:
+        //                {
+        //                    foreach (HOADON s in listHD)
+        //                    {
+        //                        if (s.MACCH.ToLower().Contains(paramater.txbSearch.Text.ToLower()))
+        //                        {
+        //                            temp.Add(s);
+        //                        }
+        //                    }
+        //                    break;
+        //                }
+        //        }
+        //        paramater.ListViewProduct.ItemsSource = temp;
+        //    }
+        //    else
+        //        paramater.ListViewProduct.ItemsSource = listHD;
+        //}
+
     }
 }
