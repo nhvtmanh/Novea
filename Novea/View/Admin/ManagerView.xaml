@@ -143,8 +143,15 @@
                                     Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Button Style="{StaticResource MaterialDesignToolButton}"
-                                         Foreground="{StaticResource plainTextColor2}"
-                                        >
+                                        Foreground="{StaticResource plainTextColor2}"
+                                        IsDefault="True">
+                                    
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding SearchCommand}"
+                                                       CommandParameter="{Binding ElementName=Managerwd}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
 
                                     <materialDesign:PackIcon Kind="Search"                                                                 
                                                          Opacity=".56" />
@@ -153,17 +160,11 @@
                                          Foreground="{StaticResource plainTextColor2}"
                                      Grid.Column="1"                                                  
                                      Margin="8 0 0 0"                                                 
-                                     materialDesign:HintAssist.Hint="Tìm mã sản phẩm"                                                
+                                     materialDesign:HintAssist.Hint="Tìm số hóa đơn"                                                
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"                                                 
                                      BorderThickness="0"                                                  
                                      MinWidth="200"                                                  
                                      VerticalAlignment="Center" >
-                                    <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="TextChanged">
-                                <i:InvokeCommandAction Command="{Binding SearchCommand}"
-                                                       CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
                                 </TextBox>
                                 <Button Style="{StaticResource MaterialDesignToolButton}"                                                    
                                     Grid.Column="2">
@@ -232,53 +233,45 @@
                         </Grid>
                     </Border>
 
-                    <Border>
-
-                    </Border>
-                    <ListView x:Name="ListViewProduct" ItemsSource="{Binding listHD}"
-                          SelectionMode="Single"
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          ScrollViewer.VerticalScrollBarVisibility="Hidden" 
-                              d:ItemsSource="{d:SampleData ItemCount=5}" Width="602" Height="414" 
-                              Background="LightYellow">
+                    <ListView x:Name="ListViewBill" ItemsSource="{Binding listHD}"      
+                              SelectionMode="Single"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"                      
+                              ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                              d:ItemsSource="{d:SampleData ItemCount=5}" Width="602" Height="394">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Border Height="29"
-                                        Width="587"
-                                        Background="{StaticResource plainTextColor2}"
-                                        CornerRadius="15" Margin="0 10 0 0">
-                                    <Grid>
+                                        CornerRadius="15"
+                                        Width="587">
+                                    <Grid Width="587">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="144*"/>
+                                            <ColumnDefinition Width="146*"/>
                                             <ColumnDefinition Width="152*"/>
                                             <ColumnDefinition Width="157*"/>
                                             <ColumnDefinition Width="134*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <TextBlock FontFamily="{StaticResource Custom}"                                                      
+                                        <TextBlock FontFamily="{StaticResource Custom}"                                                              
                                                    Foreground="{StaticResource plainTextColor3}"                                                   
                                                    FontSize="14"                                                    
                                                    HorizontalAlignment="Center"        
                                                    VerticalAlignment="Center"
                                                    Text="{Binding SOHD}" Height="16" Width="38"/>
+
                                         <TextBlock FontFamily="{StaticResource Custom}"                                             
                                                    Foreground="{StaticResource plainTextColor3}"                                                   
                                                    FontSize="14"                                                    
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Center"                                                   
-                                                   Text="{Binding MAKH}" Grid.Column="1" Height="16" Width="40"/>
+                                                   Text="{Binding MAKH}" Grid.Column="1" Height="16"/>
                                         <TextBlock FontFamily="{StaticResource Custom}"                                                    
-                                                   Foreground="{StaticResource plainTextColor3}"                                                 
-                                                   FontSize="14"                                                    
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Center"
-                                                   Text="{Binding NGMH}" Grid.Column="2" Height="16" Width="42"/>
+                                                   Foreground="{StaticResource plainTextColor3}"
+                                                   FontSize="14"
+                                                   Text="{Binding NGMH}" Grid.Column="2" Height="16" Width="136" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         <TextBlock FontFamily="{StaticResource Custom}"    
                                                    Foreground="{StaticResource plainTextColor3}"
                                                    FontSize="14"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Center"
-                                                   Text="{Binding GIA,StringFormat={}{0:####} VNĐ}" Grid.Column="3" Height="16" Width="56"/>
+                                                   Text="{Binding TONGTIEN,StringFormat={}{0:####} VNĐ}" Grid.Column="3" Height="16" VerticalAlignment="Center" Margin="19,0,11,0"/>
                                     </Grid>
 
                                 </Border>
@@ -287,7 +280,7 @@
                         </ListView.ItemTemplate>
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel Background="{StaticResource plainTextColor1}" Height="396"/>
+                                <WrapPanel Margin="0 10 0 0"/>
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
                         <!--<i:Interaction.Triggers>
@@ -301,268 +294,6 @@
             </Grid>
         </Grid>
     </Border>
-
-    <!--<Border
-        x:Name="xx"
-        CornerRadius="15" >
-        <Border.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
-                <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
-                <GradientStop Color="{StaticResource primaryBackColor2}" Offset="1"/>
-            </LinearGradientBrush>
-        </Border.Background>
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="MouseLeftButtonDown">
-                <i:InvokeCommandAction Command="{Binding MoveWindow}"
-                                       CommandParameter="{Binding ElementName=DetailOrderwd}"></i:InvokeCommandAction>
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="570"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Grid.ColumnSpan="2">
-                <StackPanel 
-                                Orientation="Horizontal" 
-                                HorizontalAlignment="Right" 
-                                VerticalAlignment="Center"
-                                Margin="0,0,10,0"
-                                >
-                    <materialDesign:PackIcon Kind="CloseThick" Foreground="White" Height="24" Width="24">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseLeftButtonDown">
-                                <i:InvokeCommandAction Command="{Binding Closewd}"
-                                                       CommandParameter="{Binding ElementName=DetailOrderwd}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </materialDesign:PackIcon>
-                </StackPanel>
-            </Grid>
-            <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                <TextBlock
-                    Text="CHI TIẾT ĐƠN HÀNG"
-                    Foreground="{StaticResource color1}"
-                    FontFamily="{StaticResource Custom}"
-                    FontSize="30"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
-                    />
-            </Grid>
-            <Grid Grid.Column="0" Grid.Row="2" Height="auto">
-                <Border>
-                    <Ellipse Height="205" Width="204" 
-                             VerticalAlignment="Top" HorizontalAlignment="Center"
-                             Margin="0,10,0,0" StrokeThickness="5">
-                        <Ellipse.Effect>
-                            <DropShadowEffect ShadowDepth="0"
-                          Color="Black"
-                          Opacity="10"
-                          BlurRadius="10"/>
-                        </Ellipse.Effect>
-                        <Ellipse.Fill>
-                            <ImageBrush x:Name="HinhAnh1" ImageSource="{Binding linkaddimage}"/>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                </Border>
-                <Button HorizontalAlignment="Center" 
-                        VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignFlatMidBgButton}"
-                        Content="Thêm ảnh đại diện" FontFamily="{StaticResource Custom}"
-                        BorderThickness="1"
-                        BorderBrush="{StaticResource color1}"
-                        Width="160" Height="40" Background="Transparent" Foreground="{StaticResource color1}"/>
-            </Grid>
-            <Grid Grid.Column="1" Grid.Row="2" Margin="0,0,0,27" Height="auto">
-                <Border Margin="10,0,10,150"
-                        Padding="10"
-                        Background="#1e3385"
-                        CornerRadius="15"
-                        >
-                    <StackPanel
-                            Margin="10"
-                            >
-                        <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                   FontSize="15"
-                                   Margin="0,0,0,5"
-                                Text="THÔNG TIN ĐƠN HÀNG"
-                                FontFamily="{StaticResource Custom}"
-                                HorizontalAlignment="Center"
-                                />
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-                                <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="8,0,0,0"
-                                    Text="MÃ ĐH"
-                                    FontFamily="{StaticResource Custom}"/>
-                            </StackPanel>
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="MaND"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                                    <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="TenND"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                                </StackPanel>
-                            </Border>
-                        </StackPanel>
-                        <StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-                                <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="8,0,0,0"
-                                    Text="LOẠI SP"
-                                    FontFamily="{StaticResource Custom}"
-                                    />
-                                <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="2,0,0,0"
-                                    Text="|"
-                                    FontFamily="{StaticResource Custom}"
-                                    />
-                                <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="2,0,0,0"
-                                    Text="ĐƠN VỊ"
-                                    FontFamily="{StaticResource Custom}"
-                                    />
-                            </StackPanel>
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="MaKH"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                                    <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    Text="|"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                                    <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="TenKH"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                                </StackPanel>
-                            </Border>
-                        </StackPanel>
-                        <StackPanel>
-                            <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="8,0,0,5"
-                                    Text="ĐƠN GIÁ"
-                                    FontFamily="{StaticResource Custom}"
-                                />
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
-                                <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="Ngay"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                            </Border>
-                        </StackPanel>
-                        <StackPanel>
-                            <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="8,0,0,5"
-                                    Text="SIZE"
-                                    FontFamily="{StaticResource Custom}"
-                                />
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
-                                <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="SoHD"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                            </Border>
-                        </StackPanel>
-                        <StackPanel>
-                            <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="8,0,0,5"
-                                    Text="MÔ TẢ SẢN PHẨM"
-                                    FontFamily="{StaticResource Custom}"
-                                />
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
-                                <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="KM"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                            </Border>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
-                            <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                       VerticalAlignment="Center"
-                                       FontSize="13"
-                                    Margin="8,0,0,0"
-                                    Text="AVAILABLE"
-                                    FontFamily="{StaticResource Custom}"/>
-                            <ToggleButton HorizontalAlignment="Right" Margin="300 0 10 0"  
-                                          Style="{StaticResource MaterialDesignSwitchToggleButton}"  
-                                          ToolTip="MaterialDesignSwitchToggleButton with Custom Track Background">
-                                <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
-                                    <SolidColorBrush    
-                                        Color="{StaticResource Primary900Foreground}" />
-                                </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
-                                <materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
-                                    <SolidColorBrush     
-                                        Color="{StaticResource Primary900Foreground}" />
-                                </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
-                            </ToggleButton>
-                        </StackPanel>
-                        <Border Grid.Column="1" Grid.Row="1"/>
-                    </StackPanel>
-
-                </Border>
-
-
-                <Button Margin="30,414,30,97" Background="Transparent" BorderBrush="{StaticResource color1}">
-                    <TextBlock Foreground="{StaticResource color1}">XÓA SẢN PHẨM</TextBlock>
-                </Button>
-
-
-            </Grid>
-
-        </Grid>
-    </Border>-->
 </Page>
     
     

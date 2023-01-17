@@ -1,4 +1,5 @@
-﻿using Novea.Model;
+﻿using MaterialDesignThemes.Wpf;
+using Novea.Model;
 using Novea.View;
 using Novea.View.Admin;
 using System;
@@ -24,12 +25,17 @@ namespace Novea.ViewModel.Admin
         private ObservableCollection<HOADON> _listHD1;
         public ObservableCollection<HOADON> listHD1 { get => _listHD1; set { _listHD1 = value; OnPropertyChanged(); } }
         public ICommand SearchCommand { get; set; }
+        public ICommand DetailPdCommand { get; set; }
+        public ICommand AddPdPdCommand { get; set; }
         public ICommand LoadCsCommand { get; set; }
+        private ObservableCollection<string> _listTK;
+        public ObservableCollection<string> listTK { get => _listTK; set { _listTK = value; OnPropertyChanged(); } }
+        public ICommand Filter { get; set; }
 
         public ManagerViewModel()
         {
             listHD1 = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
-            //SearchCommand = new RelayCommand<ManagerView>((p) => { return p == null ? false : true; }, (p) => _SearchCommand(p));
+            SearchCommand = new RelayCommand<ManagerView>((p) => { return p == null ? false : true; }, (p) => _SearchCommand(p));
             LoadCsCommand = new RelayCommand<ManagerView>((p) => true, (p) => _LoadCsCommand(p));
             listHD = new ObservableCollection<HOADON>(listHD1.GroupBy(p => p.SOHD).Select(grp => grp.FirstOrDefault()));
             if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
@@ -37,64 +43,68 @@ namespace Novea.ViewModel.Admin
         }
         void _LoadCsCommand(ManagerView parameter)
         {
-            //listTK = new ObservableCollection<string>() { "Tên SP", "Giá SP" };
+            listTK = new ObservableCollection<string>() { "Tên SP", "Giá SP" };
             listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
             listHD = new ObservableCollection<HOADON>(listHD1.GroupBy(p => p.SOHD).Select(grp => grp.FirstOrDefault()));
-            //parameter.cbxChon.SelectedIndex = 0;
-            //parameter.cbxChon1.SelectedIndex = 0;
-            //_Filter(parameter);
+            _Filter(parameter);
             //_SearchCommand(parameter);
         }
-        //void _SearchCommand(ManagerView paramater)
-        //{
-        //    ObservableCollection<SANPHAM> temp = new ObservableCollection<SANPHAM>();
-        //    if (paramater.txbSearch.Text != "")
-        //    {
-        //        switch (paramater.cbxChon.SelectedItem.ToString())
-        //        {
-        //            case "Tên SP":
-        //                {
-        //                    foreach (HOADON s in listHD)
-        //                    {
-        //                        if (s.TENSP.ToLower().Contains(paramater.txbSearch.Text.ToLower()))
-        //                        {
-        //                            temp.Add(s);
-        //                        }
-        //                    }
-        //                    break;
-        //                }
-        //            case "Giá SP":
-        //                {
-        //                    try
-        //                    {
-        //                        foreach (HOADON s in listHD)
-        //                        {
-        //                            //if (s.GIA <= int.Parse(paramater.txbSearch.Text))
-        //                            //{
-        //                                temp.Add(s);
-        //                            //}
-        //                        }
-        //                    }
-        //                    catch { }
-        //                    break;
-        //                }
-        //            default:
-        //                {
-        //                    foreach (HOADON s in listHD)
-        //                    {
-        //                        if (s.MACCH.ToLower().Contains(paramater.txbSearch.Text.ToLower()))
-        //                        {
-        //                            temp.Add(s);
-        //                        }
-        //                    }
-        //                    break;
-        //                }
-        //        }
-        //        paramater.ListViewProduct.ItemsSource = temp;
-        //    }
-        //    else
-        //        paramater.ListViewProduct.ItemsSource = listHD;
-        //}
+        void _SearchCommand(ManagerView paramater)
+        {
+            ObservableCollection<HOADON> temp = new ObservableCollection<HOADON>();
+            if (paramater.txbSearch.Text == "")
+            {
+                MessageBox.Show("Vui lòng điền vào ô tìm kiếm");
+            }
+            else
+            {
+                foreach (HOADON s in listHD)
+                {
+                    if (s.SOHD.ToString().Contains(paramater.txbSearch.Text))
+                    {
+                        temp.Add(s);
+                    }
+                }
+                if(temp != null)
+                {
+                    paramater.ListViewBill.ItemsSource = temp;
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy mã hóa đơn");
+                }
+            }
+        }
+
+        void _Filter(ManagerView parameter)
+        {
+            var SortProperty = parameter.cbxChon.Text;
+            
+
+            switch (parameter.cbxChon.SelectedIndex.ToString())
+            {
+                case "0":
+                    {
+                        listHD = new ObservableCollection<HOADON>(listHD1.GroupBy(p => p.SOHD).Select(grp => grp.FirstOrDefault()));
+                        parameter.ListViewBill.ItemsSource = listHD;
+                        break;
+                    }
+                case "1":
+                    {
+                        listHD = new ObservableCollection<HOADON>(listHD1.GroupBy(p => p.SOHD).Select(grp => grp.FirstOrDefault())/*.Where(p => p.SOHD)*/);
+                        parameter.ListViewBill.ItemsSource = listHD;
+                        break;
+                    }
+                case "2":
+                    {
+                        listHD = new ObservableCollection<HOADON>(listHD1.GroupBy(p => p.SOHD).Select(grp => grp.FirstOrDefault())/*.Where(p => p.SOHD == "1")*/);
+                        parameter.ListViewBill.ItemsSource = listHD;
+                        break;
+                    }                
+            }
+
+        }
+
 
     }
 }
