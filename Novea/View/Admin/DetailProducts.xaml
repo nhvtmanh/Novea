@@ -12,11 +12,11 @@
         x:Name="DetailOrderwd"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Height="650" 
+        Height="540" 
         Width="700" WindowStartupLocation="CenterScreen">
     <Border
         x:Name="xx"
-        CornerRadius="15">
+        CornerRadius="15" >
         <Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
                 <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
@@ -46,14 +46,6 @@
                                 VerticalAlignment="Center"
                                 Margin="0,0,10,0"
                                 >
-                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="White" Height="24" Width="24" Margin="0,0,8,0">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseLeftButtonDown">
-                                <i:InvokeCommandAction Command="{Binding Minimizewd}"
-                                                       CommandParameter="{Binding ElementName=DetailOrderwd}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </materialDesign:PackIcon>
                     <materialDesign:PackIcon Kind="CloseThick" Foreground="White" Height="24" Width="24">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseLeftButtonDown">
@@ -71,14 +63,14 @@
                     FontFamily="{StaticResource Custom}"
                     FontSize="30"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
+                    VerticalAlignment="Top"
                     />
             </Grid>
-            <Grid Grid.Column="0" Grid.Row="2">
+            <Grid Grid.Column="0" Grid.Row="2" Height="auto">
                 <Border>
                     <Ellipse Height="205" Width="204" 
                              VerticalAlignment="Top" HorizontalAlignment="Center"
-                             Margin="0,35,0,0" StrokeThickness="5">
+                             Margin="0,10,0,0" StrokeThickness="5">
                         <Ellipse.Effect>
                             <DropShadowEffect ShadowDepth="0"
                           Color="Black"
@@ -91,15 +83,15 @@
                     </Ellipse>
                 </Border>
                 <Button HorizontalAlignment="Center" 
-                        VerticalAlignment="Top"
+                        VerticalAlignment="Center"
                         Style="{StaticResource MaterialDesignFlatMidBgButton}"
                         Content="Thêm ảnh đại diện" FontFamily="{StaticResource Custom}"
                         BorderThickness="1"
                         BorderBrush="{StaticResource color1}"
-                        Width="160" Height="40" Background="Transparent" Foreground="{StaticResource color1}" Margin="0,397,0,0"/>
+                        Width="160" Height="40" Background="Transparent" Foreground="{StaticResource color1}"/>
             </Grid>
-            <Grid Grid.Column="1" Grid.Row="2">
-                <Border Margin="10,31,10,137"
+            <Grid Grid.Column="1" Grid.Row="2" Margin="0,0,0,27" Height="auto">
+                <Border Margin="10,0,10,150"
                         Padding="10"
                         Background="#1e3385"
                         CornerRadius="15"
@@ -268,11 +260,11 @@
                                     materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                             </Border>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
                             <TextBlock Foreground="{StaticResource plainTextColor3}"
                                        VerticalAlignment="Center"
                                        FontSize="13"
-                                    Margin="8,0,0,5"
+                                    Margin="8,0,0,0"
                                     Text="AVAILABLE"
                                     FontFamily="{StaticResource Custom}"/>
                             <ToggleButton HorizontalAlignment="Right" Margin="300 0 10 0"  
@@ -294,11 +286,11 @@
                 </Border>
 
 
-                <Button Margin="30,471,30,67" Background="Transparent" BorderBrush="{StaticResource color1}">
+                <Button Margin="30,414,30,97" Background="Transparent" BorderBrush="{StaticResource color1}">
                     <TextBlock Foreground="{StaticResource color1}">XÓA SẢN PHẨM</TextBlock>
                 </Button>
-                
-                
+
+
             </Grid>
 
         </Grid>
