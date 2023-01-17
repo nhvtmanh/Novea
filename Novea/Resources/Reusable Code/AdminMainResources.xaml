@@ -6,5 +6,6 @@
     <viewmodel:OrdersViewModel x:Key="OrVM"></viewmodel:OrdersViewModel>
     <viewmodel:SettingViewModel x:Key="SettingVM"></viewmodel:SettingViewModel>
     <viewmodel:ManagerViewModel x:Key="ManagerVM"></viewmodel:ManagerViewModel>
+    <viewmodel:ProductViewModel x:Key="ProductVM"></viewmodel:ProductViewModel>
 
 </ResourceDictionary>

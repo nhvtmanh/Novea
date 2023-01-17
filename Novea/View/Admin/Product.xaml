@@ -8,8 +8,16 @@
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
       d:DesignHeight="565" d:DesignWidth="820"
-      Title="Product">
-    <!--DataContext="{StaticResource ProductsVM}"-->
+      Title="Product"
+      DataContext="{StaticResource ProductVM}"
+      x:Name="Productwd">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCsCommand}"
+                                                       CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Border Height="565"
             Width="820"
@@ -44,7 +52,8 @@
             </Grid>
             <Grid Grid.Row="1">
                 <StackPanel Orientation="Horizontal">
-                    <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"    
+                    <ComboBox x:Name="cbxChon1"
+                              Style="{StaticResource MaterialDesignFilledComboBox}"    
                               Padding="5"
                               Foreground="{StaticResource plainTextColor2}"                              
                               materialDesign:HintAssist.Hint="Sắp xếp theo"           
@@ -57,6 +66,12 @@
                             Content="Tăng dần"/>
                         <ComboBoxItem
                             Content="Giảm dần"/>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding Filter}"
+                                                       CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ComboBox>
                     <!--<ComboBox
                         x:Name="cbxChon1"
@@ -149,12 +164,14 @@
                                      BorderThickness="0"                                                  
                                      MinWidth="200"                                                  
                                      VerticalAlignment="Center" >
-                                    <!--<i:Interaction.Triggers>
-                            <i:EventTrigger EventName="TextChanged">
-                                <i:InvokeCommandAction Command="{Binding SearchCommand}"
+
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="TextChanged">
+                                            <i:InvokeCommandAction Command="{Binding SearchCommand}"
                                                        CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>-->
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
                                 </TextBox>
                                 <Button Style="{StaticResource MaterialDesignToolButton}"                                                               
                                         Foreground="{StaticResource plainTextColor2}"                                        
@@ -196,12 +213,12 @@
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
                             </StackPanel>
-                            <!--<i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding AddPdPdCommand}"
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding AddPdPdCommand}"
                                                        CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>-->
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </Button>
                     </StackPanel>
 
@@ -296,6 +313,12 @@
                                                     FontSize="14"
                                                     HorizontalAlignment="Center"/>
                                         <!--Text="{Binding GIA,StringFormat={}{0:#,###} VNĐ}"-->
+                                        <TextBlock
+                                                    FontFamily="{StaticResource Custom}"
+                                                    FontSize="14"
+                                                    HorizontalAlignment="Center"
+                                                    Text="{Binding GIA,StringFormat={}{0:#.###} VNĐ}"
+                                                    />
 
                                     </StackPanel>
                                 </Border>
@@ -306,12 +329,12 @@
                                 <WrapPanel/>
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
-                        <!--<i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding DetailPdCommand}"
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding DetailPdCommand}"
                                                        CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>-->
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ListView>
                 </StackPanel>
             </Grid>
