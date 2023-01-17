@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Novea.View.Admin
@@ -18,7 +17,7 @@ namespace Novea.View.Admin
     /// <summary>
     /// Interaction logic for DetailProducts.xaml
     /// </summary>
-    public partial class DetailProducts : Page
+    public partial class DetailProducts : Window
     {
         public DetailProducts()
         {
