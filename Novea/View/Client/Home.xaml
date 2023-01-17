@@ -124,26 +124,21 @@
                                         </Border>
                                     </Grid>
                                     <Grid Grid.Column="1">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="80"/>
-                                            <RowDefinition Height="*"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid Grid.Row="0">
+                                        <DockPanel>
                                             <TextBlock FontFamily="{StaticResource Custom1}"
                                                        FontSize="30"
                                                        HorizontalAlignment="Left"
                                                        VerticalAlignment="Center"
+                                                       DockPanel.Dock="Top"
                                                        Margin="25"
-                                                       Text="{Binding TENCH}"/>
-                                        </Grid>
-                                        <Grid Grid.Row="1">
+                                                       Text="{Binding TENCUAHANG}"/>
                                             <TextBlock FontFamily="{StaticResource Custom1}"
                                                        FontSize="20"
                                                        HorizontalAlignment="Left"
                                                        VerticalAlignment="Center"
-                                                       Margin="25"
+                                                       Margin="25 -25 0 0"
                                                        Text="{Binding DIADIEM}"/>
-                                        </Grid>
+                                        </DockPanel>
                                     </Grid>
                                 </Grid>
                             </Border>
