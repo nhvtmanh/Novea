@@ -19,145 +19,133 @@ namespace Novea.ViewModel.Admin
         private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         private ObservableCollection<SANPHAM> _listSP;
         public ObservableCollection<SANPHAM> listSP { get => _listSP; set { _listSP = value; /*OnPropertyChanged();*/ } }
-        private ObservableCollection<SANPHAM> _listSP1;
-        public ObservableCollection<SANPHAM> listSP1 { get => _listSP1; set { _listSP1 = value; /*OnPropertyChanged();*/ } }
+        private ObservableCollection<SANPHAM> _listSP_temp;
+        public ObservableCollection<SANPHAM> listSP_temp { get => _listSP_temp; set { _listSP_temp = value; /*OnPropertyChanged();*/ } }
         public ICommand SearchCommand { get; set; }
         public ICommand DetailPdCommand { get; set; }
         public ICommand AddPdPdCommand { get; set; }
         public ICommand LoadCsCommand { get; set; }
+        public ICommand Filter { get; set; }
+        public ICommand Orderby { get; set; }
         private ObservableCollection<string> _listTK;
         public ObservableCollection<string> listTK { get => _listTK; set { _listTK = value; OnPropertyChanged(); } }
-        public ICommand Filter { get; set; }
+        
         public ProductViewModel()
         {
-            listTK = new ObservableCollection<string>() { "Tên SP", "Giá SP" };
-            listSP1 = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.AVAILABLE != false));
-            listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
+            listTK = new ObservableCollection<string>() { "None", "Giá tăng dần", "Giá giảm dần" };
+            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.AVAILABLE != false));
+            listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
             AddPdPdCommand = new RelayCommand<Product>((p) => { return p == null ? false : true; }, (p) => _AddPdCommand(p));
             SearchCommand = new RelayCommand<Product>((p) => { return p == null ? false : true; }, (p) => _SearchCommand(p));
             DetailPdCommand = new RelayCommand<Product>((p) => { return p.ListViewProduct.SelectedItem == null ? false : true; }, (p) => _DetailPd(p));
             LoadCsCommand = new RelayCommand<Product>((p) => true, (p) => _LoadCsCommand(p));
             Filter = new RelayCommand<Product>((p) => true, (p) => _Filter(p));
+            Orderby = new RelayCommand<Product>((p) => true, (p) => _Orderby(p));
         }
-        void _LoadCsCommand(Product parameter)
+        public void _LoadCsCommand(Product parameter)
         {
-            listTK = new ObservableCollection<string>() { "Tên SP", "Giá SP" };
-            listSP1 = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.AVAILABLE != false));
-            listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
-            //parameter.cbxChon.SelectedIndex = 0;
+            listTK = new ObservableCollection<string>() {"None", "Giá tăng dần", "Giá giảm dần" };
+            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.AVAILABLE != false));
+            listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
+            parameter.cbxChon2.SelectedIndex = 0;
             parameter.cbxChon1.SelectedIndex = 0;
             _Filter(parameter);
             _SearchCommand(parameter);
+            _Orderby(parameter);
         }
-        void _Filter(Product parameter)
+        public void _Filter(Product parameter)
         {
             switch (parameter.cbxChon1.SelectedIndex.ToString())
             {
                 case "0":
                     {
-                        listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
+                        listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
                         parameter.ListViewProduct.ItemsSource = listSP;
                         break;
                     }
                 case "1":
                     {
-                        listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Áo sơ mi"));
+                        listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Cà phê"));
                         parameter.ListViewProduct.ItemsSource = listSP;
                         break;
                     }
                 case "2":
                     {
-                        listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Áo thun"));
+                        listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Trà"));
                         parameter.ListViewProduct.ItemsSource = listSP;
                         break;
                     }
                 case "3":
                     {
-                        listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Áo trùm đầu"));
-                        parameter.ListViewProduct.ItemsSource = listSP;
+                        listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Trà sữa"));
                         parameter.ListViewProduct.ItemsSource = listSP;
                         break;
                     }
                 case "4":
                     {
-                        listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Áo khoác"));
+                        listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Đá xay"));
                         parameter.ListViewProduct.ItemsSource = listSP;
                         break;
                     }
                 case "5":
                     {
-                        listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Áo tay dài"));
+                        listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Sinh tố"));
                         parameter.ListViewProduct.ItemsSource = listSP;
                         break;
                     }
                 case "6":
                     {
-                        listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Quần"));
-                        parameter.ListViewProduct.ItemsSource = listSP;
-                        break;
-                    }
-                case "7":
-                    {
-                        listSP = new ObservableCollection<SANPHAM>(listSP1.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Phụ kiện"));
+                        listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Sữa chua"));
                         parameter.ListViewProduct.ItemsSource = listSP;
                         break;
                     }
             }
 
         }
-        void _SearchCommand(Product paramater)
+        public void _Orderby(Product parameter)
+        {
+            switch (parameter.cbxChon2.SelectedIndex.ToString())
+            {
+                case "0":
+                    {
+                        listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
+                        parameter.ListViewProduct.ItemsSource = listSP;
+                        break;
+                    }
+                case "1":
+                    {
+                        listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).OrderBy(p => p.DONGIA));
+                        parameter.ListViewProduct.ItemsSource = listSP;
+                        break;
+                    }
+                case "2":
+                    {
+                        listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).OrderByDescending(p => p.DONGIA));
+                        parameter.ListViewProduct.ItemsSource = listSP;
+                        break;
+                    }
+            }
+        }
+        public void _SearchCommand(Product paramater)
         {
             ObservableCollection<SANPHAM> temp = new ObservableCollection<SANPHAM>();
-            if (paramater.txbSearch.Text != "")
+            foreach (SANPHAM s in listSP)
             {
-                switch (paramater.cbxChon1.SelectedItem.ToString())
+                if (paramater.txbSearch.Text != "")
                 {
-                    case "Tên SP":
-                        {
-                            foreach (SANPHAM s in listSP)
-                            {
-                                if (s.TENSP.ToLower().Contains(paramater.txbSearch.Text.ToLower()))
-                                {
-                                    temp.Add(s);
-                                }
-                            }
-                            break;
-                        }
-                    case "Giá SP":
-                        {
-                            try
-                            {
-                                foreach (SANPHAM s in listSP)
-                                {
-                                    if (s.DONGIA <= int.Parse(paramater.txbSearch.Text))
-                                    {
-                                        temp.Add(s);
-                                    }
-                                }
-                            }
-                            catch { }
-                            break;
-                        }
-                    default:
-                        {
-                            foreach (SANPHAM s in listSP)
-                            {
-                                if (s.TENSP.ToLower().Contains(paramater.txbSearch.Text.ToLower()))
-                                {
-                                    temp.Add(s);
-                                }
-                            }
-                            break;
-                        }
+                    if (s.TENSP.ToLower().Contains(paramater.txbSearch.Text.ToLower()))
+                    {
+                        temp.Add(s);
+                    }
+                    paramater.ListViewProduct.ItemsSource = temp;
                 }
-                paramater.ListViewProduct.ItemsSource = temp;
+                else
+                    paramater.ListViewProduct.ItemsSource = listSP;
             }
-            else
-                paramater.ListViewProduct.ItemsSource = listSP;
         }
-        void _DetailPd(Product paramater)
+        public void _DetailPd(Product paramater)
         {
-            //DetailProduct detailProduct = new DetailProduct();
+            DetailProducts detailProduct = new DetailProducts();
             SANPHAM temp = (SANPHAM)paramater.ListViewProduct.SelectedItem;
             //detailProduct.TenSP.Text = temp.TENSP;
             //detailProduct.GiaSP.Text = string.Format("{0:0,0}", temp.GIA) + " VNĐ";
@@ -166,15 +154,16 @@ namespace Novea.ViewModel.Admin
             //detailProduct.SLSP.Text = "Số lượng: " + SL;
             //detailProduct.kichco.ItemsSource = new ObservableCollection<SANPHAM>(listSP1.Where(p => p.TENSP == temp.TENSP && p.SL >= 0));
             //detailProduct.Mota.Text = temp.MOTA;
-            Uri fileUri = new Uri(temp.HINHSP);
+            //Uri fileUri = new Uri(temp.HINHSP);
             //detailProduct.HinhAnh.Source = new BitmapImage(fileUri);
             //detailProduct.ShowDialog();
-            //listSP1 = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL >= 0));
+            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.AVAILABLE != false));
             paramater.ListViewProduct.SelectedItem = null;
             _Filter(paramater);
             _SearchCommand(paramater);
+            _Orderby(paramater);
         }
-        bool check(string m)
+        public bool check(string m)
         {
             foreach (SANPHAM temp in DataProvider.Ins.DB.SANPHAMs)
             {
@@ -183,22 +172,22 @@ namespace Novea.ViewModel.Admin
             }
             return false;
         }
-        string rdma()
+        public string rdmaSP()
         {
-            string ma;
+            string maSP;
             do
             {
                 Random rand = new Random();
-                ma = "PD" + rand.Next(0, 10000).ToString();
-            } while (check(ma));
-            return ma;
+                maSP = "SP" + rand.Next(0, 10000).ToString();
+            } while (check(maSP));
+            return maSP;
         }
-        void _AddPdCommand(Product paramater)
+        public void _AddPdCommand(Product paramater)
         {
-            //AddProductView addProductView = new AddProductView();
-            //addProductView.MaSp.Text = rdma();
-            //addProductView.ShowDialog();
-            //listSP1 = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.SL >= 0));
+            AddProducts addProductView = new AddProducts();
+            addProductView.MaSp.Text = rdmaSP();
+            addProductView.ShowDialog();
+            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.AVAILABLE != false));
             _Filter(paramater);
             _SearchCommand(paramater);
         }

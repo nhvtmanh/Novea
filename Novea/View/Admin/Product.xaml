@@ -55,17 +55,30 @@
                     <ComboBox x:Name="cbxChon1"
                               Style="{StaticResource MaterialDesignFilledComboBox}"    
                               Padding="5"
-                              Foreground="{StaticResource plainTextColor2}"                              
-                              materialDesign:HintAssist.Hint="Sắp xếp theo"           
+                              Foreground="{StaticResource plainTextColor2}" 
+                              materialDesign:TextFieldAssist.TextBoxViewMargin="8,-11,0,0"
+                              materialDesign:HintAssist.Hint="Bộ lọc"
+                              materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                              BorderThickness="0"
                               Background="#fff"
                               materialDesign:HintAssist.Foreground="#000"
-                              Width="253" 
+                              Width="128" 
                               Height="46"
-                              Margin="30 0 0 0">
+                              Margin="50 0 0 0">
                         <ComboBoxItem                     
-                            Content="Tăng dần"/>
+                            Content="Tất cả"/>
+                        <ComboBoxItem                     
+                            Content="Cà phê"/>
                         <ComboBoxItem
-                            Content="Giảm dần"/>
+                            Content="Trà"/>
+                        <ComboBoxItem                     
+                            Content="Trà sữa"/>
+                        <ComboBoxItem
+                            Content="Đá xay"/>
+                        <ComboBoxItem                     
+                            Content="Sinh tố"/>
+                        <ComboBoxItem
+                            Content="Sữa chua"/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
                                 <i:InvokeCommandAction Command="{Binding Filter}"
@@ -73,69 +86,37 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ComboBox>
-                    <!--<ComboBox
-                        x:Name="cbxChon1"
-                        Style="{StaticResource MaterialDesignFilledComboBox}"                            
-                        materialDesign:TextFieldAssist.TextBoxViewMargin="8,-11,0,0"
-                        materialDesign:HintAssist.Hint="Bộ lọc"
-                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                        BorderThickness="0"
-                        materialDesign:HintAssist.FontFamily="{StaticResource Custom}"
-                        materialDesign:HintAssist.Foreground="White"
-                        Background="White"
-                        FontFamily="{StaticResource Custom}"
-                        FontSize="14"
-                        SelectedIndex="0" Width="120">
-                            <ComboBoxItem Content="Tất cả"/>
-                            <ComboBoxItem Content="Áo sơ mi"/>
-                            <ComboBoxItem Content="Áo thun"/>
-                            <ComboBoxItem Content="Áo trùm đầu"/>
-                            <ComboBoxItem Content="Áo khoác"/>
-                            <ComboBoxItem Content="Áo tay dài"/>
-                            <ComboBoxItem Content="Quần"/>
-                            <ComboBoxItem Content="Phụ kiện"/>
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="SelectionChanged">
-                                    <i:InvokeCommandAction Command="{Binding Filter}"
+                    
+                    
+                    <ComboBox x:Name="cbxChon2"
+                              Style="{StaticResource MaterialDesignFilledComboBox}"    
+                              Padding="5"
+                              Foreground="{StaticResource plainTextColor2}"                              
+                              materialDesign:HintAssist.Hint="Sắp xếp theo"           
+                              Background="#fff"
+                              materialDesign:HintAssist.Foreground="#000"
+                              Width="128" 
+                              Height="46"
+                              Margin="20 0 0 0"
+                              ItemsSource="{Binding listTK}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding Orderby}"
                                                        CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </ComboBox>-->
-
-                    <!--<Border
-                        Margin="8,0,0,0"
-                        Height="40"
-                        Width="120"
-                        CornerRadius="10"
-                        Background="White"
-                        >
-                        <ComboBox
-                        x:Name="cbxChon"
-                        Style="{StaticResource MaterialDesignFilledComboBox}"
-                        materialDesign:TextFieldAssist.TextBoxViewMargin="8,-11,0,0"
-                        materialDesign:HintAssist.Hint="Tìm Kiếm"
-                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                        BorderThickness="0"
-                        materialDesign:HintAssist.FontFamily="{StaticResource Custom}"
-                        materialDesign:HintAssist.Foreground="White"
-                        Background="White"
-                        FontFamily="{StaticResource Custom}"
-                        Height="38"
-                        FontSize="14"
-                        ItemsSource="{Binding listTK}"
-                        Width="110">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                    </Border>-->
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+                    
 
                     <StackPanel Orientation="Horizontal"
-                                Margin="124 0 0 0">
+                                Margin="20 0 0 0">
                         <materialDesign:ColorZone Mode="Standard"                                               
                                               Padding="8 4 8 4"                                               
                                               CornerRadius="2"                                                
@@ -187,7 +168,7 @@
                                 ToolTip="Thêm"                                        
                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"                                                               
                                 Width="90"                                     
-                                Margin="20 0 0 0"                                                                   
+                                Margin="40 0 0 0"                                                                   
                                 Background="{StaticResource color1}"
                                 Foreground="#fff"
                                 HorizontalAlignment="Center"
@@ -224,9 +205,10 @@
 
                 </StackPanel>
             </Grid>
+            
             <Grid Grid.Row="2">
                 <StackPanel>
-                    <Border
+                    <!--<Border
                         Margin="-33,0,0,0"
                         Width="600"
                         Height="40"
@@ -279,7 +261,7 @@
                                 />
                             </Grid>
                         </Grid>
-                    </Border>
+                    </Border>-->
 
                     <ListView x:Name="ListViewProduct" ItemsSource="{Binding listSP}"
                           SelectionMode="Single"
@@ -311,8 +293,9 @@
                                         <TextBlock
                                                     FontFamily="{StaticResource Custom}"
                                                     FontSize="14"
-                                                    HorizontalAlignment="Center"/>
-                                        <!--Text="{Binding GIA,StringFormat={}{0:#,###} VNĐ}"-->
+                                                    HorizontalAlignment="Center"
+                                                    Text="{Binding LOAISP}"
+                                                    />
                                         <TextBlock
                                                     FontFamily="{StaticResource Custom}"
                                                     FontSize="14"
