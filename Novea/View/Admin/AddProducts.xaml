@@ -7,7 +7,18 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:Novea.View.Admin"
         mc:Ignorable="d"
-        Title="AddProducts" Height="450" Width="800">
+        Title="AddProducts" Height="450" Width="800"
+        ResizeMode="CanMinimize"
+        x:Name="AddProductwd"
+        DataContext="{StaticResource AddProductVM}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loadwd}"
+                                   CommandParameter="{Binding ElementName=AddProductwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Border
         Background="White"
         CornerRadius="15"
@@ -19,16 +30,7 @@
                 <GradientStop Color="#FFCAD4" Offset="1"/>
             </LinearGradientBrush>
         </Border.BorderBrush>
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="MouseLeftButtonDown">
-                <i:InvokeCommandAction Command="{Binding MoveWindow}"
-                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
-            </i:EventTrigger>
-            <i:EventTrigger EventName="Loaded">
-                <i:InvokeCommandAction Command="{Binding GetName}"
-                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
+        
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="135*"/>
@@ -36,26 +38,27 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Border Margin="0,0,0,0.333">
-                    <Ellipse Height="205" Width="202" 
-                             VerticalAlignment="Top" HorizontalAlignment="Center"
-                             Margin="0,46,0,0" StrokeThickness="5">
-                        <Ellipse.Effect>
-                            <DropShadowEffect ShadowDepth="0"
-                          Color="Black"
-                          Opacity="10"
-                          BlurRadius="10"/>
-                        </Ellipse.Effect>
-                        <Ellipse.Fill>
-                            <ImageBrush x:Name="HinhAnh1" ImageSource="{Binding linkaddimage}"/>
-                        </Ellipse.Fill>
-                    </Ellipse>
+                    <Image 
+                    x:Name="HinhAnh"
+                    Source="{Binding linkimage}"
+                    Height="450"
+                    VerticalAlignment="Center">
+                        
+                    </Image>
                 </Border>
                 <Button HorizontalAlignment="Center" 
                         VerticalAlignment="Top"
                         Style="{StaticResource MaterialDesignFlatMidBgButton}"
                         Content="Thêm ảnh đại diện" FontFamily="{StaticResource Custom}"
                         BorderThickness="0"
-                        Width="160" Height="40" Background="#6C63FF" Foreground="White" Margin="0,342,0,0"/>
+                        Width="160" Height="40" Background="#6C63FF" Foreground="White" Margin="0,342,0,0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding AddImage}"
+                                                       CommandParameter="{Binding ElementName=HinhAnh}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -73,7 +76,7 @@
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseLeftButtonDown">
                                     <i:InvokeCommandAction Command="{Binding Minimizewd}"
-                                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=AddProductwd}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </materialDesign:PackIcon>
@@ -81,112 +84,238 @@
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseLeftButtonDown">
                                     <i:InvokeCommandAction Command="{Binding Closewd}"
-                                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=AddProductwd}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </materialDesign:PackIcon>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <StackPanel Orientation="Vertical"
-                                Margin="15,20,0,0">
-                        <StackPanel Margin="0 0 0 15">
-                            <Label FontFamily="{StaticResource Custom}">LOẠI SẢN PHẨM</Label>
-                            <StackPanel>
-                                <TextBox Style="{StaticResource MaterialDesignFilledTextBox}"   
-                                         HorizontalAlignment="Left"   
-                                     AcceptsReturn="True"   
-                                     TextWrapping="Wrap"   
-                                     MaxWidth="400"   
-                                     materialDesign:HintAssist.Hint="Loại sản phẩm"   
-                                     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}" Width="510" />
-                            </StackPanel>
-                        </StackPanel>
-
-                        <StackPanel Margin="0 0 0 15">
-                            <Label FontFamily="{StaticResource Custom}">SỐ LƯỢNG SẢN PHẨM</Label>
-                            <StackPanel>
-                                <TextBox Style="{StaticResource MaterialDesignFilledTextBox}"    
-                                         HorizontalAlignment="Left"   
-                                     AcceptsReturn="True"   
-                                     TextWrapping="Wrap"   
-                                     MaxWidth="400"   
-                                     materialDesign:HintAssist.Hint="Số lượng sản phẩm"   
-                                     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}" Width="510" />
-                            </StackPanel>
-
-                        </StackPanel>
-
-                        <StackPanel Margin="0 0 0 15">
-                            <Label FontFamily="{StaticResource Custom}">MÔ TẢ SẢN PHẨM</Label>
-                            <StackPanel>
-                                <TextBox Style="{StaticResource MaterialDesignFilledTextBox}"    
-                                         HorizontalAlignment="Left"   
-                                     AcceptsReturn="True"   
-                                     TextWrapping="Wrap"   
-                                     MaxWidth="400"   
-                                     materialDesign:HintAssist.Hint="Mô tả sản phẩm"   
-                                     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}" Width="510" />
-                            </StackPanel>
-                        </StackPanel>
-
-
-
-
-
-                        <Expander
-                            x:Name="Info"
-                            Background="Transparent"
-                            Header="Chi tiết sản phẩm"
+                    <StackPanel 
+                                Orientation="Vertical"
+                                Margin="15,30,0,0"
+                                >
+                        <TextBlock
+                            Margin="-15,0,0,20"
+                            HorizontalAlignment="Center"
+                            Text="SẢN PHẨM MỚI"
+                            FontSize="24"
                             FontFamily="{StaticResource Custom}"
+                            />
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    Text="MÃ SẢN PHẨM"
+                                    FontFamily="{StaticResource Custom}"
+                                />
+                                <Border
+                                CornerRadius="10"
+                                BorderThickness="2"
+                                BorderBrush="gray"
+                                Height="30"
+                                >
+                                    <TextBox
+                                    x:Name="MaSp"
+                                    HorizontalAlignment="Left"
+                                    Width="150"
+                                    IsEnabled="False"
+                                    BorderThickness="0"
+                                    FontFamily="{StaticResource Custom}"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                    materialDesign:HintAssist.Hint="THÊM MÃ SẢN PHẨM"
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"
+                                    materialDesign:TextFieldAssist.UnderlineBrush="LightPink"
+                                />
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"
+                                        Margin="10,0,0,0"
+                                        >
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    Text="TÊN SẢN PHẨM"
+                                    FontFamily="{StaticResource Custom}"
+                                />
+                                <TextBox
+                                    Height="30"
+                                    x:Name="TenSp"
+                                    FontFamily="{StaticResource Custom}"
+                                    HorizontalAlignment="Left"
+                                    Width="150"
+                                    BorderThickness="2"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                    materialDesign:HintAssist.Hint="THÊM TÊN SẢN PHẨM"
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"
+                                    materialDesign:TextFieldAssist.UnderlineBrush="LightPink"
+                                />
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" 
+                                    Margin="0,10,0,0"
+                                    >
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    Text="GIÁ SẢN PHẨM"
+                                    FontFamily="{StaticResource Custom}"
+                                />
+                                <TextBox
+                                    Height="30"
+                                    x:Name="GiaSp"
+                                    HorizontalAlignment="Left"
+                                    Width="150"
+                                    FontFamily="{StaticResource Custom}"
+                                    BorderThickness="2"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                    materialDesign:HintAssist.Hint="THÊM GIÁ SẢN PHẨM"
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"
+                                    materialDesign:TextFieldAssist.UnderlineBrush="LightPink"
+                                />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"
+                                        Margin="10,0,0,0"
+                                        >
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    Text="LOẠI SẢN PHẨM"
+                                    FontFamily="{StaticResource Custom}"
+                                />
+                                <Border
+                                BorderBrush="Gray"
+                                BorderThickness="2"
+                                Margin="5,0,0,0"
+                                Height="30"
+                                Width="150"
+                                CornerRadius="10"
+                                Background="White"
                             >
-                            <TextBox x:Name="Mota"
-                                     Height="80"
-                                     TextWrapping="Wrap"
-                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                     BorderThickness="0"
-                                     AcceptsReturn="True"
-                                     Text="Làm gì đã có gì mà xem"
-                                     VerticalScrollBarVisibility="Visible"
-                                     />
-                        </Expander>
-                        <Button Content="CẬP NHẬT"
-                                Margin="0,20,0,0"
+                                    <ComboBox
+                                    x:Name="LoaiSp"
+                                    Style="{StaticResource MaterialDesignFilledComboBox}"
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="4,-15,0,0"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    BorderThickness="0"
+                                    materialDesign:HintAssist.FontFamily="{StaticResource Custom}"
+                                    materialDesign:HintAssist.Foreground="White"
+                                    Background="White"
+                                    FontFamily="{StaticResource Custom}"
+                                    Height="30"
+                                    FontSize="12"
+                                    Width="130">
+                                        <ComboBoxItem                     
+                                            Content="Tất cả"/>
+                                        <ComboBoxItem                     
+                                            Content="Cà phê"/>
+                                        <ComboBoxItem
+                                            Content="Trà"/>
+                                        <ComboBoxItem                     
+                                            Content="Trà sữa"/>
+                                        <ComboBoxItem
+                                            Content="Đá xay"/>
+                                        <ComboBoxItem                     
+                                            Content="Sinh tố"/>
+                                        <ComboBoxItem
+                                            Content="Sữa chua"/>
+                                    </ComboBox>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" 
+                                    Margin="0,10,0,0"
+                                    >
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    Text="ĐƠN VỊ TÍNH"
+                                    FontFamily="{StaticResource Custom}"
+                                />
+                                <TextBox
+                                    Height="30"
+                                    x:Name="DvSp"
+                                    HorizontalAlignment="Left"
+                                    Width="150"
+                                    FontFamily="{StaticResource Custom}"
+                                    BorderThickness="2"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                    materialDesign:HintAssist.Hint="THÊM ĐƠN VỊ"
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"
+                                    materialDesign:TextFieldAssist.UnderlineBrush="LightPink"
+                                />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"
+                                        Margin="10,0,0,0"
+                                        >
+                                <TextBlock
+                                    Margin="8,0,0,0"
+                                    Text="KÍCH CỠ"
+                                    FontFamily="{StaticResource Custom}"
+                                />
+                                <Border
+                                BorderBrush="Gray"
+                                BorderThickness="2"
+                                Margin="5,0,0,0"
+                                Height="30"
+                                Width="150"
+                                CornerRadius="10"
+                                Background="White"
+                            >
+                                    <ComboBox
+                                    x:Name="SizeSp"
+                                    Style="{StaticResource MaterialDesignFilledComboBox}"
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="4,-15,0,0"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    BorderThickness="0"
+                                    materialDesign:HintAssist.FontFamily="{StaticResource Custom}"
+                                    materialDesign:HintAssist.Foreground="White"
+                                    Background="White"
+                                    FontFamily="{StaticResource Custom}"
+                                    Height="30"
+                                    FontSize="12"
+                                    Width="130">
+                                        <ComboBoxItem Content="S"/>
+                                        <ComboBoxItem Content="M"/>
+                                        <ComboBoxItem Content="L"/>
+                                    </ComboBox>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                        <TextBlock
+                                    Margin="8,10,0,0"
+                                    Text="THÔNG TIN SẢN PHẨM"
+                                    FontFamily="{StaticResource Custom}"
+                                />
+                        <TextBox
+                                    x:Name="MotaSp"
+                                    FontFamily="{StaticResource Custom}"
+                                    HorizontalAlignment="Left"
+                                    Width="310"
+                                    Height="50"
+                                    BorderThickness="2"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                    materialDesign:HintAssist.Hint="THÊM THÔNG TIN SẢN PHẨM"
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"
+                                    materialDesign:TextFieldAssist.UnderlineBrush="LightPink"
+                                    HorizontalScrollBarVisibility="Auto"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"
+                                />
+                        <Button Content="THÊM SẢN PHẨM"
+                                Margin="0,30,0,0"
                                 Width="230"
+                                Background="LightPink"
                                 BorderThickness="0"
-                                x:Name="btncapnhat"
-                                Visibility="Collapsed"
+                                x:Name="btnadd"
                                 >
-                            <Button.Background>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
-                                    <GradientStop Color="#FFE5D8" Offset="0"/>
-                                    <GradientStop Color="#FFCAD4" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Button.Background>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding UpdateProduct}"
-                                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </Button>
-                        <Button Content="XÓA"
-                                Margin="0,15,0,0"
-                                Width="230"
-                                BorderThickness="0"
-                                x:Name="btnxoa"
-                                Visibility="Collapsed"
-                                >
-                            <Button.Background>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
-                                    <GradientStop Color="#FFE5D8" Offset="0"/>
-                                    <GradientStop Color="#FFCAD4" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Button.Background>
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding DeleteProduct}"
-                                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
+                                    <i:InvokeCommandAction Command="{Binding AddProduct}"
+                                                       CommandParameter="{Binding ElementName=AddProductwd}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </Button>
