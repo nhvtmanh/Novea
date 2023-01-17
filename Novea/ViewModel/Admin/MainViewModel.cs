@@ -20,7 +20,6 @@ namespace Novea.ViewModel.Admin
         public ICommand GetIdTab { get; set; }
         public ICommand SwitchTab { get; set; }
         public ICommand LogOutCommand { get; set; }
-        
         public ICommand Loadwd { get; set; }
         public ICommand MoveWindow { get; set; }
         public ICommand TenDangNhap_Loaded { get; set; }
@@ -44,6 +43,7 @@ namespace Novea.ViewModel.Admin
             Loadwd = new RelayCommand<MainWindow>((p) => true, (p) => _Loadwd(p));
             MoveWindow = new RelayCommand<MainWindow>((p) => true, (p) => moveWindow(p));
             TenDangNhap_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadTenAD(p));
+            Quyen_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadQuyen(p));
         }
         void LogOut(MainWindow p)
         {
@@ -113,8 +113,9 @@ namespace Novea.ViewModel.Admin
             if (LoginViewModel.IsLogin)
             {
                 string a = Const.TenDangNhap;
-                User = DataProvider.Ins.DB.CHUCUAHANGs.Where(x => x.MACCH == a).FirstOrDefault();
+                User = DataProvider.Ins.DB.CHUCUAHANGs.Where(x => x.TAIKHOAN == a).FirstOrDefault();
                 Const.CCH = User;
+                Const.Admin = (bool)User.VAITRO;
                 Ava = User.AVATAR;
                 LoadTenAD(p);
             }
@@ -122,6 +123,10 @@ namespace Novea.ViewModel.Admin
         public void LoadTenAD(MainWindow p)
         {
             p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
+        }
+        public void LoadQuyen(MainWindow p)
+        {
+            p.Quyen.Text = (bool)User.VAITRO ? "Chủ" : "Khách";
         }
         public void moveWindow(MainWindow p)
         {
