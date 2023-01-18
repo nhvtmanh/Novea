@@ -207,7 +207,7 @@
             </Grid>
             
             <Grid Grid.Row="2">
-                <StackPanel>
+                <!--<StackPanel>-->
                     <!--<Border
                         Margin="-33,0,0,0"
                         Width="600"
@@ -300,7 +300,7 @@
                                                     FontFamily="{StaticResource Custom}"
                                                     FontSize="14"
                                                     HorizontalAlignment="Center"
-                                                    Text="{Binding GIA,StringFormat={}{0:#.###} VNĐ}"
+                                                    Text="{Binding GIA,StringFormat={}{0:#,###} VNĐ}"
                                                     />
 
                                     </StackPanel>
@@ -319,7 +319,7 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ListView>
-                </StackPanel>
+                <!--</StackPanel>-->
             </Grid>
         </Grid>
     </Border>
