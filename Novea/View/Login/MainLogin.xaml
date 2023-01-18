@@ -84,7 +84,7 @@
                                                        CommandParameter="{Binding ElementName=btnCLient}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                    <Grid Width="130">
+                    <Grid Width="auto" Height="auto">
                         <Rectangle Fill="#FD8A87"
                                HorizontalAlignment="Center"
                                Height="130"  Width="130"
@@ -124,8 +124,7 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
 
-                    <Grid Width="130"
-                          Height="130">
+                    <Grid  Width="auto" Height="auto">
                         <Rectangle Fill="#FC84CB" 
                                HorizontalAlignment="Left" 
                                Height="130"  Width="130"
@@ -144,7 +143,7 @@
                 </Button>
 
 
-                <Border Margin="235,196,235,95" CornerRadius="15" Width="554" Height="254">
+                <Border Margin="235,196,235,95" CornerRadius="15" Width="auto" Height="auto">
                     <Grid>
                         <Frame x:Name="Login" 
                                Source="/view/Login/ClientLoginPage.xaml" 

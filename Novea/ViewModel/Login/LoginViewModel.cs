@@ -18,6 +18,7 @@ using System.Windows.Input;
 using Novea.View.Login;
 
 namespace Novea.ViewModel
+{ 
     public class LoginViewModel : BaseViewModel
     {
         public static bool IsLogin { get; set; }
