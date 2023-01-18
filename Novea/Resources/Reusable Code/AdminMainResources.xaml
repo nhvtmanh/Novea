@@ -8,5 +8,4 @@
     <viewmodel:ManagerViewModel x:Key="ManagerVM"></viewmodel:ManagerViewModel>
     <viewmodel:ProductViewModel x:Key="ProductVM"></viewmodel:ProductViewModel>
     <viewmodel:AddProductsViewModel x:Key="AddProductVM"></viewmodel:AddProductsViewModel>
-    <viewmodel:DetailBillViewModel x:Key="DetailBillVM"></viewmodel:DetailBillViewModel>
 </ResourceDictionary>

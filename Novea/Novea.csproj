@@ -118,7 +118,6 @@
     </Compile>
     <Compile Include="ViewModel\Admin\AddProductsViewModel.cs" />
     <Compile Include="ViewModel\Admin\CustomerViewModel.cs" />
-    <Compile Include="ViewModel\Admin\DetailBillViewModel.cs" />
     <Compile Include="ViewModel\Admin\DetailProductsViewModel.cs" />
     <Compile Include="ViewModel\Admin\MainViewModel.cs" />
     <Compile Include="ViewModel\Admin\ManagerViewModel.cs" />
@@ -140,9 +139,6 @@
     </Compile>
     <Compile Include="View\Admin\CustomerView.xaml.cs">
       <DependentUpon>CustomerView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Admin\DetailBill.xaml.cs">
-      <DependentUpon>DetailBill.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\DetailOrders.xaml.cs">
       <DependentUpon>DetailOrders.xaml</DependentUpon>
@@ -231,10 +227,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Admin\CustomerView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Admin\DetailBill.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
