@@ -129,8 +129,10 @@
     <Compile Include="ViewModel\Admin\HomeViewModel.cs" />
     <Compile Include="ViewModel\Client\StoreDetailViewModel.cs" />
     <Compile Include="ViewModel\Client\StoreViewModel.cs" />
+    <Compile Include="ViewModel\Login\AdminLoginViewModel.cs" />
     <Compile Include="ViewModel\Login\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModel\Login\LoginViewModel.cs" />
+    <Compile Include="ViewModel\Login\MainLoginViewModel.cs" />
     <Compile Include="ViewModel\Login\SignUpViewModel.cs" />
     <Compile Include="View\Admin\AddProducts.xaml.cs">
       <DependentUpon>AddProducts.xaml</DependentUpon>
@@ -174,6 +176,18 @@
     <Compile Include="View\Client\StoreDetail.xaml.cs">
       <DependentUpon>StoreDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Login\AdminLoginPage.xaml.cs">
+      <DependentUpon>AdminLoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\AdminSignUp.xaml.cs">
+      <DependentUpon>AdminSignUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\ClientLoginPage.xaml.cs">
+      <DependentUpon>ClientLoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\ClientSignUp.xaml.cs">
+      <DependentUpon>ClientSignUp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Login\ForgotPassword.xaml.cs">
       <DependentUpon>ForgotPassword.xaml</DependentUpon>
     </Compile>
@@ -189,6 +203,9 @@
     </Compile>
     <Compile Include="View\Admin\Product.xaml.cs">
       <DependentUpon>Product.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\MainLogin.xaml.cs">
+      <DependentUpon>MainLogin.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Login\SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
@@ -261,6 +278,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Login\AdminLoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Login\AdminSignUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Login\ClientLoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Login\ClientSignUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Login\ForgotPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -294,6 +327,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Admin\Product.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Login\MainLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -383,6 +420,7 @@
       <DependentUpon>QuanLyBanHangNovea.edmx</DependentUpon>
       <LastGenOutput>QuanLyBanHangNovea.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\gamer.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -93,7 +93,7 @@
                 <Grid Grid.Row="1">
                     <StackPanel 
                                 Orientation="Vertical"
-                                Margin="15,30,0,0"
+                                Margin="10,20,5,10"
                                 >
                         <TextBlock
                             Margin="-15,0,0,20"

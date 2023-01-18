@@ -15,9 +15,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Novea.View.Login;
 
 namespace Novea.ViewModel
-{
     public class LoginViewModel : BaseViewModel
     {
         public static bool IsLogin { get; set; }
@@ -25,18 +25,28 @@ namespace Novea.ViewModel
         public string Username { get => _Username; set { _Username = value; OnPropertyChanged(); } }
         private string _Password;
         public string Password { get => _Password; set { _Password = value; OnPropertyChanged(); } }
+
+        public ICommand GetIdTab { get; set; }
+        public ICommand SwitchTab { get; set; }
+
+        public string Name;
+
         public ICommand CloseLogin { get; set; }
         public ICommand MinimizeLogin { get; set; }
         public ICommand MoveLogin { get; set; }
         public ICommand Login { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
         public ICommand RegisterCommand { get; set; }
+        public ICommand Loadwd { get; set; }
         public ICommand ForgetPassCommand { get; set; }
+
         public LoginViewModel()
         {
             IsLogin = false;
             Password = "";
             Username = "";
+            GetIdTab = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
+            SwitchTab = new RelayCommand<MainLogin>((p) => true, (p) => switchtab(p));
             CloseLogin = new RelayCommand<LoginWindow>((p) => true, (p) => Close());
             MinimizeLogin = new RelayCommand<LoginWindow>((p) => true, (p) => Minimize(p));
             MoveLogin = new RelayCommand<LoginWindow>((p) => true, (p) => Move(p));
@@ -44,6 +54,28 @@ namespace Novea.ViewModel
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => true, (p) => { Password = p.Password; });
             RegisterCommand = new RelayCommand<LoginWindow>((p) => true, (p) => _RegisterCommand(p));
             ForgetPassCommand = new RelayCommand<LoginWindow>((p) => true, (p) => _ForgetPassCommand(p));
+        }
+
+        void switchtab(MainLogin p)
+        {
+            int index = int.Parse(Name);
+            switch (index)
+            {
+                case 0:
+                    {
+                        p.Login.NavigationService.Navigate(new View.Login.AdminLoginPage());
+                        break;
+                    }
+                case 1:
+                    {
+                        p.Login.NavigationService.Navigate(new View.Login.ClientLoginPage());
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
         }
         public void Close()
         {
@@ -120,5 +152,7 @@ namespace Novea.ViewModel
             ForgotPassword forgetPassView = new ForgotPassword();
             forgetPassView.ShowDialog();
         }
+
+        
     }
 }
