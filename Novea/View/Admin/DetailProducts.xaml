@@ -9,13 +9,21 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
-        x:Name="DetailOrderwd"
+        x:Name="DetailProductwd"
+        DataContext="{StaticResource DetailProductVM}"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Height="550" 
         Width="700" WindowStartupLocation="CenterScreen">
-    <Border x:Name="xx"       
-            CornerRadius="15" >
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loadwd}"
+                                   CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Border    CornerRadius="15" >
         <Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
                 <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
@@ -25,7 +33,11 @@
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
                 <i:InvokeCommandAction Command="{Binding MoveWindow}"
-                                       CommandParameter="{Binding ElementName=DetailOrderwd}"></i:InvokeCommandAction>
+                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding GetName}"
+                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
             </i:EventTrigger>
         </i:Interaction.Triggers>
         <Grid>
@@ -49,7 +61,7 @@
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseLeftButtonDown">
                                 <i:InvokeCommandAction Command="{Binding Closewd}"
-                                                       CommandParameter="{Binding ElementName=DetailOrderwd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </materialDesign:PackIcon>
@@ -77,17 +89,17 @@
                           BlurRadius="10"/>
                         </Ellipse.Effect>
                         <Ellipse.Fill>
-                            <ImageBrush x:Name="HinhAnh1" ImageSource="{Binding linkaddimage}"/>
+                            <ImageBrush x:Name="HinhAnh" ImageSource="{Binding linkaddimage}"/>
                         </Ellipse.Fill>
                     </Ellipse>
                 </Border>
                 <Button HorizontalAlignment="Center" 
                         VerticalAlignment="Center"
                         Style="{StaticResource MaterialDesignFlatMidBgButton}"
-                        Content="Thêm ảnh đại diện" FontFamily="{StaticResource Custom}"
+                        Content="Cập nhật hình sản phẩm" FontFamily="{StaticResource Custom}"
                         BorderThickness="1"
                         BorderBrush="{StaticResource color1}"
-                        Width="160" Height="40" Background="Transparent" Foreground="{StaticResource color1}"/>
+                        Width="190" Height="40" Background="Transparent" Foreground="{StaticResource color1}"/>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="2" Margin="0,0,0,27" Height="auto">
                 <Border Margin="10,10,10,140"
@@ -126,14 +138,14 @@
                             <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="MaND"
+                                    x:Name="MaSP"
                                     HorizontalAlignment="Left"
                                     FontFamily="{StaticResource Custom}"
                                     BorderThickness="0"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
                                     IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,10,0"/>
                                     <TextBox Foreground="{StaticResource plainTextColor3}"
                                     Text="|"
                                     HorizontalAlignment="Left"
@@ -142,9 +154,9 @@
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
                                     IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,10,0"/>
                                     <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="TenND"
+                                    x:Name="TenSP"
                                     HorizontalAlignment="Left"
                                     FontFamily="{StaticResource Custom}"
                                     BorderThickness="0"
@@ -176,14 +188,14 @@
                             <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="MaKH"
+                                    x:Name="LoaiSP"
                                     HorizontalAlignment="Left"
                                     FontFamily="{StaticResource Custom}"
                                     BorderThickness="0"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
                                     IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,10,0"/>
                                     <TextBox Foreground="{StaticResource plainTextColor3}"
                                     Text="|"
                                     HorizontalAlignment="Left"
@@ -192,9 +204,9 @@
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
                                     IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,10,0"/>
                                     <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="TenKH"
+                                    x:Name="DonVi"
                                     HorizontalAlignment="Left"
                                     FontFamily="{StaticResource Custom}"
                                     BorderThickness="0"
@@ -213,7 +225,7 @@
                                 />
                             <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
                                 <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="Ngay"
+                                    x:Name="GiaSP"
                                     HorizontalAlignment="Left"
                                     FontFamily="{StaticResource Custom}"
                                     BorderThickness="0"

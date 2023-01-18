@@ -290,17 +290,17 @@
                                                     HorizontalAlignment="Center"
                                                     Text="{Binding TENSP}"
                                                     />
-                                        <TextBlock
+                                        <!--<TextBlock
                                                     FontFamily="{StaticResource Custom}"
                                                     FontSize="14"
                                                     HorizontalAlignment="Center"
                                                     Text="{Binding LOAISP}"
-                                                    />
+                                                    />-->
                                         <TextBlock
                                                     FontFamily="{StaticResource Custom}"
                                                     FontSize="14"
                                                     HorizontalAlignment="Center"
-                                                    Text="{Binding GIA,StringFormat={}{0:#,###} VNĐ}"
+                                                    Text="{Binding DONGIA,StringFormat={}{0:#,###} VNĐ}"
                                                     />
 
                                     </StackPanel>
