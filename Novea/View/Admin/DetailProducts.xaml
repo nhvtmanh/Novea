@@ -118,140 +118,137 @@
                                 HorizontalAlignment="Center"/>
                         
                         
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-                                <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="8,0,0,0"
-                                    Text="MÃ SP"
-                                    FontFamily="{StaticResource Custom}"/>
-                                <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="2,0,0,0"
-                                    Text=" | "
-                                    FontFamily="{StaticResource Custom}"
-                                    />
-                                <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="2,0,0,0"
-                                    Text="TÊN SP"
-                                    FontFamily="{StaticResource Custom}"
-                                    />
-                            </StackPanel>
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="MaSP"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,10,0"/>
-                                    <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    Text="|"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,10,0"/>
-                                    <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="TenSP"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical" Width="218" HorizontalAlignment="Left">
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                                    <TextBlock Foreground="{StaticResource plainTextColor3}"
+                                        Margin="8,0,0,0"
+                                        Text="MÃ SẢN PHẨM"
+                                        FontFamily="{StaticResource Custom}"/>
                                 </StackPanel>
-                            </Border>
-                        </StackPanel>
-                        <StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-                                <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="8,0,0,0"
-                                    Text="LOẠI SP"
-                                    FontFamily="{StaticResource Custom}"
-                                    />
-                                <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="2,0,0,0"
-                                    Text=" | "
-                                    FontFamily="{StaticResource Custom}"
-                                    />
-                                <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="2,0,0,0"
-                                    Text="ĐƠN VỊ"
-                                    FontFamily="{StaticResource Custom}"
-                                    />
+                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15" Width="213" HorizontalAlignment="Left">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox Foreground="{StaticResource plainTextColor3}"
+                                        x:Name="MaSP"
+                                        HorizontalAlignment="Left"
+                                        FontFamily="{StaticResource Custom}"
+                                        BorderThickness="0"
+                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                        materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                        IsEnabled="False"
+                                        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,10,0"/>
+                                    </StackPanel>
+                                </Border>
                             </StackPanel>
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="LoaiSP"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,10,0"/>
-                                    <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    Text="|"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,10,0"/>
-                                    <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="DonVi"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                            <StackPanel Orientation="Vertical" Width="218" HorizontalAlignment="Right">
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                                    <TextBlock Foreground="{StaticResource plainTextColor3}"
+                                        Margin="8,0,0,0"
+                                        Text="TÊN SẢN PHẨM"
+                                        FontFamily="{StaticResource Custom}"/>
                                 </StackPanel>
-                            </Border>
+                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15" Width="213" HorizontalAlignment="Left">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox Foreground="{StaticResource plainTextColor3}"
+                                        x:Name="TenSP"
+                                        HorizontalAlignment="Left"
+                                        FontFamily="{StaticResource Custom}"
+                                        BorderThickness="0"
+                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                        materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                        IsEnabled="False"
+                                        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
                         </StackPanel>
-                        <StackPanel>
-                            <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="8,0,0,5"
-                                    Text="ĐƠN GIÁ"
-                                    FontFamily="{StaticResource Custom}"
-                                />
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
-                                <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="GiaSP"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                            </Border>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical" Width="218" HorizontalAlignment="Left">
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                                    <TextBlock Foreground="{StaticResource plainTextColor3}"
+                                        Margin="8,0,0,0"
+                                        Text="GIÁ SẢN PHẨM"
+                                        FontFamily="{StaticResource Custom}"/>
+                                </StackPanel>
+                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15" Width="213" HorizontalAlignment="Left">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox Foreground="{StaticResource plainTextColor3}"
+                                        x:Name="GiaSP"
+                                        HorizontalAlignment="Left"
+                                        FontFamily="{StaticResource Custom}"
+                                        BorderThickness="0"
+                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                        materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                        IsEnabled="False"
+                                        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,10,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Width="218" HorizontalAlignment="Right">
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                                    <TextBlock Foreground="{StaticResource plainTextColor3}"
+                                        Margin="8,0,0,0"
+                                        Text="LOẠI SẢN PHẨM"
+                                        FontFamily="{StaticResource Custom}"/>
+                                </StackPanel>
+                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15" Width="213" HorizontalAlignment="Left">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox Foreground="{StaticResource plainTextColor3}"
+                                        x:Name="LoaiSP"
+                                        HorizontalAlignment="Left"
+                                        FontFamily="{StaticResource Custom}"
+                                        BorderThickness="0"
+                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                        materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                        IsEnabled="False"
+                                        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
                         </StackPanel>
-                        <StackPanel>
-                            <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                    Margin="8,0,0,5"
-                                    Text="SIZE"
-                                    FontFamily="{StaticResource Custom}"
-                                />
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
-                                <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="SoHD"
-                                    HorizontalAlignment="Left"
-                                    FontFamily="{StaticResource Custom}"
-                                    BorderThickness="0"
-                                    IsEnabled="False"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                            </Border>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical" Width="218" HorizontalAlignment="Left">
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                                    <TextBlock Foreground="{StaticResource plainTextColor3}"
+                                        Margin="8,0,0,0"
+                                        Text="ĐƠN VỊ TÍNH"
+                                        FontFamily="{StaticResource Custom}"/>
+                                </StackPanel>
+                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15" Width="213" HorizontalAlignment="Left">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox Foreground="{StaticResource plainTextColor3}"
+                                        x:Name="DVT"
+                                        HorizontalAlignment="Left"
+                                        FontFamily="{StaticResource Custom}"
+                                        BorderThickness="0"
+                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                        materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                        IsEnabled="False"
+                                        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,10,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Width="218" HorizontalAlignment="Right">
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                                    <TextBlock Foreground="{StaticResource plainTextColor3}"
+                                        Margin="8,0,0,0"
+                                        Text="KÍCH CỠ"
+                                        FontFamily="{StaticResource Custom}"/>
+                                </StackPanel>
+                                <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15" Width="213" HorizontalAlignment="Left">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox Foreground="{StaticResource plainTextColor3}"
+                                        x:Name="Size"
+                                        HorizontalAlignment="Left"
+                                        FontFamily="{StaticResource Custom}"
+                                        BorderThickness="0"
+                                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                        materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                        IsEnabled="False"
+                                        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
                         </StackPanel>
                         <StackPanel>
                             <TextBlock Foreground="{StaticResource plainTextColor3}"
@@ -259,7 +256,7 @@
                                     Text="MÔ TẢ SẢN PHẨM"
                                     FontFamily="{StaticResource Custom}"
                                 />
-                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
+                            <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15" Height="90">
                                 <TextBox Foreground="{StaticResource plainTextColor3}"
                                     x:Name="KM"
                                     HorizontalAlignment="Left"
