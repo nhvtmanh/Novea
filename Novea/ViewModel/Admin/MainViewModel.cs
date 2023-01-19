@@ -26,8 +26,8 @@ namespace Novea.ViewModel.Admin
         public ICommand Quyen_Loaded { get; set; }
 
 
-        private CHUCUAHANG _User;
-        public CHUCUAHANG User { get => _User; set { _User = value; OnPropertyChanged(); } }
+        private CUAHANG _User;
+        public CUAHANG User { get => _User; set { _User = value; OnPropertyChanged(); } }
 
         private string _Ava;
         public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
@@ -107,32 +107,28 @@ namespace Novea.ViewModel.Admin
         {
             p.WindowState = WindowState.Minimized;
         }
-        //Start Ham
         void _Loadwd(MainWindow p)
         {
             if (LoginViewModel.IsLogin)
             {
                 string a = Const.TenDangNhap;
-                User = DataProvider.Ins.DB.CHUCUAHANGs.Where(x => x.TAIKHOAN == a).FirstOrDefault();
-                Const.CCH = User;
-                Const.Admin = (bool)User.VAITRO;
+                User = DataProvider.Ins.DB.CUAHANGs.Where(x => x.TAIKHOAN == a).FirstOrDefault();
+                Const.CH = User;
                 Ava = User.AVATAR;
                 LoadTenAD(p);
             }
         }
         public void LoadTenAD(MainWindow p)
         {
-            p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
+            p.TenDangNhap.Text = string.Join(" ", User.TENCH.Split().Reverse().Take(2).Reverse());
         }
         public void LoadQuyen(MainWindow p)
         {
-            p.Quyen.Text = (bool)User.VAITRO ? "Chủ" : "Khách";
+            p.Quyen.Text = "Cửa hàng";
         }
         public void moveWindow(MainWindow p)
         {
             p.DragMove();
         }
-        //End Ham
-
     }
 }

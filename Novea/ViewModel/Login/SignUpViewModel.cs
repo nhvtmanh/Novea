@@ -71,9 +71,9 @@ namespace Novea.ViewModel
         }
         bool checkMACCH(string m)
         {
-            foreach (CHUCUAHANG temp in DataProvider.Ins.DB.CHUCUAHANGs)
+            foreach (CUAHANG temp in DataProvider.Ins.DB.CUAHANGs)
             {
-                if (temp.MACCH == m)
+                if (temp.MACH == m)
                     return true;
             }
             return false;
@@ -114,7 +114,7 @@ namespace Novea.ViewModel
                 MessageBox.Show("Bạn chưa nhập đầy đủ thông tin !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            int dem1 = DataProvider.Ins.DB.CHUCUAHANGs.Where(p => p.TAIKHOAN == parameter.User.Text).Count();
+            int dem1 = DataProvider.Ins.DB.CUAHANGs.Where(p => p.TAIKHOAN == parameter.User.Text).Count();
             if (dem1 > 0)
             {
                 MessageBox.Show("Tên đăng nhập đã tồn tại !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -126,7 +126,7 @@ namespace Novea.ViewModel
                 MessageBox.Show("Tên đăng nhập đã tồn tại !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            foreach (CHUCUAHANG temp in DataProvider.Ins.DB.CHUCUAHANGs)
+            foreach (CUAHANG temp in DataProvider.Ins.DB.CUAHANGs)
             {
                 if (temp.EMAIL == parameter.Mail.Text)
                 {
@@ -161,26 +161,23 @@ namespace Novea.ViewModel
             {
                 if(Vaitro == "Chủ")
                 {
-                    CHUCUAHANG temp = new CHUCUAHANG();
-                    temp.MACCH = rdMACCH();
-                    temp.HOTEN = parameter.TenND.Text;
-                    temp.GIOITINH = parameter.GT.Text;
-                    temp.DIACHI = parameter.DC.Text;
-                    temp.NGSINH = (DateTime)parameter.NS.SelectedDate;
+                    CUAHANG temp = new CUAHANG();
+                    temp.MACH = rdMACCH();
+                    temp.TENCH = parameter.TenND.Text;
+                    temp.DIADIEM = parameter.DC.Text;
                     temp.EMAIL = parameter.Mail.Text;
                     temp.SDT = parameter.SDT.Text;
-                    temp.VAITRO = true;
                     temp.TAIKHOAN = parameter.User.Text;
                     temp.MATKHAU = LoginViewModel.MD5Hash(LoginViewModel.Base64Encode(Password));
                     if (linkaddimage == "/Resource/Image/addava.png")
                         temp.AVATAR = "/Resource/Image/addava.png";
                     else
-                        temp.AVATAR = "/Resource/Ava/" + temp.MACCH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-                    DataProvider.Ins.DB.CHUCUAHANGs.Add(temp);
+                        temp.AVATAR = "/Resource/Ava/" + temp.MACH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                    DataProvider.Ins.DB.CUAHANGs.Add(temp);
                     DataProvider.Ins.DB.SaveChanges();
                     try
                     {
-                        File.Copy(linkaddimage, Const._localLink + @"Resource\Ava\" + temp.MACCH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+                        File.Copy(linkaddimage, Const._localLink + @"Resource\Ava\" + temp.MACH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
                     }
                     catch { }
                     MessageBox.Show("Chúc mừng bạn đã đăng ký thành công !", "THÔNG BÁO", MessageBoxButton.OK);
@@ -206,7 +203,6 @@ namespace Novea.ViewModel
                     temp.NGSINH = (DateTime)parameter.NS.SelectedDate;
                     temp.EMAIL = parameter.Mail.Text;
                     temp.SDT = parameter.SDT.Text;
-                    temp.VAITRO = false;
                     temp.TAIKHOAN = parameter.User.Text;
                     temp.MATKHAU = LoginViewModel.MD5Hash(LoginViewModel.Base64Encode(Password));
                     if (linkaddimage == "/Resource/Image/addava.png")
