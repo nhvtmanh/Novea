@@ -8,10 +8,14 @@
       mc:Ignorable="d" 
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
       d:DesignHeight="254" d:DesignWidth="554"
-      Title="AdminLoginPage">
+      Title="AdminLoginPage"
+      x:Name="AdminLoginWD"
+      DataContext="{StaticResource AdminLoginVM}"
+      >
 
     <Border CornerRadius="15"                        
             Background="#FC84CB">
+        
         <StackPanel>
             <StackPanel Margin="0,15" Orientation="Horizontal" Width="315">
                 <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Foreground="{StaticResource plainTextColor2}"/>
@@ -49,7 +53,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding Login}"
-                                                       CommandParameter="{Binding ElementName=LoginWd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=AdminLoginWD}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
@@ -63,7 +67,7 @@
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseLeftButtonDown">
                                         <i:InvokeCommandAction Command="{Binding RegisterCommand}"
-                                                       CommandParameter="{Binding ElementName=LoginWd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=AdminLoginWD}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                     <TextBlock.Style>
@@ -87,7 +91,7 @@
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseLeftButtonDown">
                                         <i:InvokeCommandAction Command="{Binding ForgetPassCommand}"
-                                                       CommandParameter="{Binding ElementName=LoginWd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=AdminLoginWD}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                     <TextBlock.Style>

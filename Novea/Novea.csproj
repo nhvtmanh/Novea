@@ -131,6 +131,9 @@
     <Compile Include="ViewModel\Client\StoreDetailViewModel.cs" />
     <Compile Include="ViewModel\Client\StoreViewModel.cs" />
     <Compile Include="ViewModel\Login\AdminLoginViewModel.cs" />
+    <Compile Include="ViewModel\Login\AdminSignUpViewModel.cs" />
+    <Compile Include="ViewModel\Login\ClientLoginViewModel.cs" />
+    <Compile Include="ViewModel\Login\ClientSignUpViewModel.cs" />
     <Compile Include="ViewModel\Login\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModel\Login\LoginViewModel.cs" />
     <Compile Include="ViewModel\Login\MainLoginViewModel.cs" />

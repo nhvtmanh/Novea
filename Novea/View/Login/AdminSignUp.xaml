@@ -7,6 +7,8 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Novea.View.Login"
+        x:Name="AdminRegisterwd"
+        DataContext="{StaticResource AdminSignUpVM}"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
@@ -22,7 +24,7 @@
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
                 <i:InvokeCommandAction Command="{Binding Movewd}"
-                                                       CommandParameter="{Binding ElementName=Registerwd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=AdminRegisterwd}"></i:InvokeCommandAction>
             </i:EventTrigger>
         </i:Interaction.Triggers>
         <Grid>
@@ -43,7 +45,7 @@
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseLeftButtonDown">
                                 <i:InvokeCommandAction Command="{Binding Minimizewd}"
-                                                       CommandParameter="{Binding ElementName=Registerwd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=AdminRegisterwd}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </materialDesign:PackIcon>
@@ -51,7 +53,7 @@
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseLeftButtonDown">
                                 <i:InvokeCommandAction Command="{Binding Close1}"
-                                                       CommandParameter="{Binding ElementName=Registerwd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=AdminRegisterwd}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </materialDesign:PackIcon>
@@ -158,7 +160,7 @@
                                     VerticalAlignment="Top"
                                     AcceptsReturn="True"
                                     TextWrapping="Wrap"
-                                    MaxWidth="400" x:Name="TenND"
+                                    MaxWidth="400" x:Name="TenCH"
                                     FontFamily="{StaticResource Custom}"
                                     materialDesign:HintAssist.Hint="Tên cửa hàng" Height="45"/>
                                 <TextBox  Width="190"
@@ -197,7 +199,7 @@
                                     VerticalAlignment="Top"
                                     AcceptsReturn="True"
                                     TextWrapping="Wrap"
-                                    MaxWidth="400" x:Name="DC"
+                                    MaxWidth="400" x:Name="DCCH"
                                     materialDesign:HintAssist.Foreground="Black"
                                     materialDesign:TextFieldAssist.UnderlineBrush="#6C63FF"
                                     FontFamily="{StaticResource Custom}"
@@ -220,7 +222,7 @@
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding Register}"
-                                                       CommandParameter="{Binding ElementName=Registerwd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=AdminRegisterwd}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </Button>

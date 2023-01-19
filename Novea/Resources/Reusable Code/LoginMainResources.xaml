@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:viewmodel="clr-namespace:Novea.ViewModel" xmlns:viewmodel1="clr-namespace:Novea.ViewModel.Login">
+                    xmlns:viewmodel="clr-namespace:Novea.ViewModel" 
+                    xmlns:viewmodel1="clr-namespace:Novea.ViewModel.Login">
 
     <viewmodel:SignUpViewModel x:Key="SignUpVM"></viewmodel:SignUpViewModel>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
@@ -8,4 +9,8 @@
     
     <!--new-->
     <viewmodel1:MainLoginViewModel x:Key="MainLoginVM"></viewmodel1:MainLoginViewModel>
+    <viewmodel1:AdminLoginViewModel x:Key="AdminLoginVM"></viewmodel1:AdminLoginViewModel>
+    <viewmodel1:AdminSignUpViewModel x:Key="AdminSignUpVM"></viewmodel1:AdminSignUpViewModel>
+    <viewmodel1:ClientLoginViewModel x:Key="ClientLoginVM"></viewmodel1:ClientLoginViewModel>
+    <viewmodel1:ClientSignUpViewModel x:Key="ClientSignUpVM"></viewmodel1:ClientSignUpViewModel>
 </ResourceDictionary>

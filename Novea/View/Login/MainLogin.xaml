@@ -14,9 +14,9 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         ResizeMode="NoResize"
-        x:Name="LoginWD"
+        x:Name="MainLoginWD"
         WindowStartupLocation="CenterScreen"
-        DataContext="{StaticResource LoginVM}"
+        DataContext="{StaticResource MainLoginVM}"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
 
@@ -25,7 +25,7 @@
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
                 <i:InvokeCommandAction Command="{Binding MoveLogin}"
-                                                       CommandParameter="{Binding ElementName=LoginWd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
             </i:EventTrigger>
         </i:Interaction.Triggers>
 
@@ -77,7 +77,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                       CommandParameter="{Binding ElementName=LoginWD}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                         <i:EventTrigger EventName="MouseMove">
                             <i:InvokeCommandAction Command="{Binding GetIdTab}"
@@ -116,7 +116,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                       CommandParameter="{Binding ElementName=LoginWD}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                         <i:EventTrigger EventName="MouseMove">
                             <i:InvokeCommandAction Command="{Binding GetIdTab}"
@@ -148,140 +148,13 @@
                         <Frame x:Name="Login" 
                                Source="/view/Login/ClientLoginPage.xaml" 
                                NavigationUIVisibility="Hidden"
-                               DataContext="{StaticResource LoginVM}">
+                               DataContext="{StaticResource MainLoginVM}">
                         </Frame>
                     </Grid>
                 </Border>
 
 
             </Grid>
-
-
-
-
         </StackPanel>
-
-        <!--<Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Rectangle RadiusY="8" RadiusX="8" Fill="White"/>
-            <Image Source="/Resources/Images/login.jpg" RenderTransformOrigin="0.5,0.5" Margin="446,0,0,0">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.069"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
-            <StackPanel Margin="17,50,595,17" Grid.Column="0">
-                <Label Content="ĐĂNG NHẬP" 
-                       FontFamily="Segoe UI Black" 
-                       FontSize="46" Margin="0,10" 
-                       VerticalAlignment="Top" 
-                       HorizontalAlignment="Center" 
-                       FontWeight="Bold"/>
-                <TextBlock x:Name="abc" 
-                               TextWrapping="Wrap" 
-                               Foreground="#FF2468AC" 
-                               Width="302" 
-                               Text="Chào mừng trở lại với Novea" 
-                               HorizontalAlignment="Center" 
-                               TextAlignment="Center" 
-                               FontFamily="Tahoma" 
-                               FontWeight="Bold" 
-                               FontSize="18"/>
-                <StackPanel Margin="0,15" Orientation="Horizontal" Width="315">
-                    <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Foreground="#707070"/>
-                    <TextBox x:Name="dangnhap" Text="{Binding Username}"
-                        materialDesign:HintAssist.Hint="Tên tài khoản" Width="250" Margin="5"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Width="315">
-                    <materialDesign:PackIcon Kind="Key" VerticalAlignment="Center" Foreground="#707070"/>
-                    <PasswordBox x:Name="password"
-                        materialDesign:HintAssist.Hint="Mật khẩu" Width="250" Margin="5">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="PasswordChanged">
-                                <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
-                                                       CommandParameter="{Binding ElementName=password}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </PasswordBox>
-
-
-                </StackPanel>
-                <Grid Margin="5">
-                    <CheckBox x:Name="Remember" Content="Nhớ tên tài khoản" Margin="50,20,0,10" Foreground="#707070"/>
-                </Grid>
-                <Button
-                                Content="ĐĂNG NHẬP"
-                                Height="55"
-                                Width="302"
-                                FontFamily="{StaticResource Custom}"
-                                Background="LightBlue"
-                                Foreground="DarkCyan"
-                                BorderBrush="Transparent"     
-                        HorizontalAlignment="Center" FontSize="22" FontWeight="Bold">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding Login}"
-                                                       CommandParameter="{Binding ElementName=LoginWd}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Width="300" Height="40">
-                    <TextBlock
-                                Text="ĐĂNG KÝ"
-                                Margin="0,10,0,0"
-                                FontFamily="{StaticResource Custom}"
-                                Background="Transparent" FontWeight="Bold" FontSize="14" VerticalAlignment="Bottom"
-                                >
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseLeftButtonDown">
-                                        <i:InvokeCommandAction Command="{Binding RegisterCommand}"
-                                                       CommandParameter="{Binding ElementName=LoginWd}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                        <TextBlock.Style>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="DarkGray"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Foreground" Value="LightBlue"/>
-                                        <Setter Property="TextDecorations" Value="Underline"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                    <TextBlock
-                                Text="QUÊN MẬT KHẨU"
-                                Margin="119,10,0,0"
-                                FontFamily="{StaticResource Custom}"
-                                Background="Transparent" FontSize="14" FontWeight="Bold" VerticalAlignment="Bottom"
-                                >
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseLeftButtonDown">
-                                        <i:InvokeCommandAction Command="{Binding ForgetPassCommand}"
-                                                       CommandParameter="{Binding ElementName=LoginWd}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                        <TextBlock.Style>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="DarkGray"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Foreground" Value="LightBlue"/>
-                                        <Setter Property="TextDecorations" Value="Underline"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                </StackPanel>
-            </StackPanel>
-        </Grid>-->
     </Border>
 </Window>
