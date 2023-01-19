@@ -115,6 +115,7 @@ namespace Novea.ViewModel.Admin
                 string a = Const.TenDangNhap;
                 User = DataProvider.Ins.DB.CUAHANGs.Where(x => x.TAIKHOAN == a).FirstOrDefault();
                 Const.CH = User;
+                Const.MACH = User.MACH;
                 Ava = User.AVATAR;
                 LoadTenAD(p);
             }
