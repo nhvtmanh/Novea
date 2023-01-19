@@ -1,6 +1,7 @@
 ﻿using Novea.Model;
 using Novea.View;
 using Novea.View.Admin;
+using Novea.ViewModel.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -109,7 +110,7 @@ namespace Novea.ViewModel.Admin
         }
         void _Loadwd(MainWindow p)
         {
-            if (LoginViewModel.IsLogin)
+            if (AdminLoginViewModel.IsLogin)
             {
                 string a = Const.TenDangNhap;
                 User = DataProvider.Ins.DB.CUAHANGs.Where(x => x.TAIKHOAN == a).FirstOrDefault();

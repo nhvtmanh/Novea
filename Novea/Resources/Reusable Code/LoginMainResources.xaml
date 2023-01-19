@@ -3,7 +3,6 @@
                     xmlns:viewmodel="clr-namespace:Novea.ViewModel" 
                     xmlns:viewmodel1="clr-namespace:Novea.ViewModel.Login">
 
-    <viewmodel:SignUpViewModel x:Key="SignUpVM"></viewmodel:SignUpViewModel>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
     <viewmodel:ForgotPasswordViewModel x:Key="ForgetPassVM"></viewmodel:ForgotPasswordViewModel>
     

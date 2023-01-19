@@ -87,7 +87,7 @@
                     <Grid Width="auto" Height="auto">
                         <Rectangle Fill="#FD8A87"
                                HorizontalAlignment="Center"
-                               Height="130"  Width="130"
+                               Height="130"  Width="128"
                                RadiusY="14.5" RadiusX="14.5"
                                VerticalAlignment="Center"/>
                         <Image HorizontalAlignment="Center"
