@@ -18,7 +18,6 @@ namespace Novea.Model
         public SANPHAM()
         {
             this.CTHDs = new HashSet<CTHD>();
-            this.CUAHANGs = new HashSet<CUAHANG>();
         }
     
         public string MASP { get; set; }
@@ -28,12 +27,13 @@ namespace Novea.Model
         public Nullable<decimal> DONGIA { get; set; }
         public string SIZE { get; set; }
         public string MOTA { get; set; }
-        public string HINHSP { get; set; }
         public Nullable<bool> AVAILABLE { get; set; }
+        public string HINHSP { get; set; }
+        public byte[] IMGdb { get; set; }
+        public string MACH { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD> CTHDs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CUAHANG> CUAHANGs { get; set; }
+        public virtual CUAHANG CUAHANG { get; set; }
     }
 }

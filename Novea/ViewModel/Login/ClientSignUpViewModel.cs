@@ -93,13 +93,27 @@ namespace Novea.ViewModel.Login
                 MessageBox.Show("Bạn chưa nhập đầy đủ thông tin !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            int dem = DataProvider.Ins.DB.KHACHes.Where(p => p.TAIKHOAN == parameter.User.Text).Count();
-            if (dem > 0)
+            int dem1 = DataProvider.Ins.DB.KHACHes.Where(p => p.TAIKHOAN == parameter.User.Text).Count();
+            if (dem1 > 0)
+            {
+                MessageBox.Show("Tên đăng nhập đã tồn tại !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            int dem2 = DataProvider.Ins.DB.CUAHANGs.Where(p => p.TAIKHOAN == parameter.User.Text).Count();
+            if (dem2 > 0)
             {
                 MessageBox.Show("Tên đăng nhập đã tồn tại !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             foreach (KHACH temp in DataProvider.Ins.DB.KHACHes)
+            {
+                if (temp.EMAIL == parameter.Mail.Text)
+                {
+                    MessageBox.Show("Email này đã được sử dụng !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+            foreach (CUAHANG temp in DataProvider.Ins.DB.CUAHANGs)
             {
                 if (temp.EMAIL == parameter.Mail.Text)
                 {
