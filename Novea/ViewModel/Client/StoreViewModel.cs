@@ -17,14 +17,14 @@ namespace Novea.ViewModel.Client
 {
     public class StoreViewModel : BaseViewModel
     {
-        private ObservableCollection<CHUCUAHANG> listStore;
-        public ObservableCollection<CHUCUAHANG> ListStore
+        private ObservableCollection<CUAHANG> listStore;
+        public ObservableCollection<CUAHANG> ListStore
         {
             get => listStore;
             set { listStore = value; }
         }
-        private ObservableCollection<CHUCUAHANG> listStore1;
-        public ObservableCollection<CHUCUAHANG> ListStore1
+        private ObservableCollection<CUAHANG> listStore1;
+        public ObservableCollection<CUAHANG> ListStore1
         {
             get => listStore1;
             set { listStore1 = value; }
@@ -33,15 +33,15 @@ namespace Novea.ViewModel.Client
         public ICommand StoreDetailCommand { get; set; }
         public StoreViewModel()
         {
-            ListStore1 = new ObservableCollection<CHUCUAHANG>(DataProvider.Ins.DB.CHUCUAHANGs);
-            ListStore = new ObservableCollection<CHUCUAHANG>(ListStore1.GroupBy(p => p.TENCUAHANG).Select(grp => grp.FirstOrDefault()));
+            ListStore1 = new ObservableCollection<CUAHANG>(DataProvider.Ins.DB.CUAHANGs);
+            ListStore = new ObservableCollection<CUAHANG>(ListStore1.GroupBy(p => p.TENCH).Select(grp => grp.FirstOrDefault()));
             LoadStoreCommand = new RelayCommand<Home>((p) => true, (p) => loadStore(p));
             StoreDetailCommand = new RelayCommand<Home>((p) => { return p.ListViewStore.SelectedItem != null; }, (p) => displayStoreDetail(p));
         }
         void loadStore(Home parameter)
         {
-            ListStore1 = new ObservableCollection<CHUCUAHANG>(DataProvider.Ins.DB.CHUCUAHANGs);
-            ListStore = new ObservableCollection<CHUCUAHANG>(ListStore1.GroupBy(p => p.TENCUAHANG).Select(grp => grp.FirstOrDefault()));
+            ListStore1 = new ObservableCollection<CUAHANG>(DataProvider.Ins.DB.CUAHANGs);
+            ListStore = new ObservableCollection<CUAHANG>(ListStore1.GroupBy(p => p.TENCH).Select(grp => grp.FirstOrDefault()));
         }
         void displayStoreDetail(Home parameter)
         {

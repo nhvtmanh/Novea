@@ -96,7 +96,7 @@ namespace Novea.ViewModel
             {
                 if (p == null) return;
                 string PassEncode = MD5Hash(Base64Encode(Password));
-                var accCountCHU = DataProvider.Ins.DB.CHUCUAHANGs.Where(x => x.TAIKHOAN == Username && x.MATKHAU == PassEncode).Count();
+                var accCountCHU = DataProvider.Ins.DB.CUAHANGs.Where(x => x.TAIKHOAN == Username && x.MATKHAU == PassEncode).Count();
                 if (accCountCHU > 0)
                 {
                     IsLogin = true;

@@ -34,7 +34,7 @@ namespace Novea.ViewModel.Admin
         {
             parameter.cbxChon.SelectedIndex = 0;
         }
-        bool check(int m)
+        bool check(string m)
         {
             foreach (HOADON temp in DataProvider.Ins.DB.HOADONs)
             {
@@ -43,13 +43,13 @@ namespace Novea.ViewModel.Admin
             }
             return false;
         }
-        int rdma()
+        string rdma()
         {
-            int ma;
+            string ma;
             do
             {
                 Random rand = new Random();
-                ma = rand.Next(0, 10000);
+                ma = "HD" + rand.Next(0, 10000);
             } while (check(ma));
             return ma;
         }
@@ -67,7 +67,7 @@ namespace Novea.ViewModel.Admin
                             {
                                 foreach (HOADON s in listSP)
                                 {
-                                    if (s.SOHD == int.Parse(paramater.txbSearch.Text))
+                                    if (s.SOHD == paramater.txbSearch.Text)
                                     {
                                         temp.Add(s);
                                     }

@@ -19,7 +19,7 @@ using Novea.View.Login;
 
 namespace Novea.ViewModel.Login
 {
-    public class AdminLoginViewModel : BaseViewModel
+    public class ClientLoginViewModel : BaseViewModel
     {
         public static bool IsLogin { get; set; }
         private string _Username;
@@ -31,30 +31,30 @@ namespace Novea.ViewModel.Login
         public ICommand RegisterCommand { get; set; }
         public ICommand ForgetPassCommand { get; set; }
 
-        public AdminLoginViewModel()
+        public ClientLoginViewModel()
         {
             IsLogin = false;
             Password = "";
             Username = "";
-            Login = new RelayCommand<AdminLoginPage>((p) => true, (p) => login(p));
+            Login = new RelayCommand<ClientLoginPage>((p) => true, (p) => login(p));
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => true, (p) => { Password = p.Password; });
-            RegisterCommand = new RelayCommand<AdminLoginPage>((p) => true, (p) => _RegisterCommand(p));
-            ForgetPassCommand = new RelayCommand<AdminLoginPage>((p) => true, (p) => _ForgetPassCommand(p));
+            RegisterCommand = new RelayCommand<ClientLoginPage>((p) => true, (p) => _RegisterCommand(p));
+            ForgetPassCommand = new RelayCommand<ClientLoginPage>((p) => true, (p) => _ForgetPassCommand(p));
         }
 
-        public void login(AdminLoginPage p)
+        public void login(ClientLoginPage p)
         {
             try
             {
                 if (p == null) return;
                 string PassEncode = MD5Hash(Base64Encode(Password));
-                var accCountCH = DataProvider.Ins.DB.CUAHANGs.Where(x => x.TAIKHOAN == Username && x.MATKHAU == PassEncode).Count();
-                if (accCountCH > 0)
+                var accCountKHACH = DataProvider.Ins.DB.KHACHes.Where(x => x.TAIKHOAN == Username && x.MATKHAU == PassEncode).Count();
+                if (accCountKHACH > 0)
                 {
                     IsLogin = true;
                     Const.TenDangNhap = Username;
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
+                    Guest guest = new Guest();
+                    guest.Show();
                     Username = "";
                     //p.Hide();
                 }
@@ -85,12 +85,12 @@ namespace Novea.ViewModel.Login
             }
             return hash.ToString();
         }
-        void _RegisterCommand(AdminLoginPage parameter)
+        void _RegisterCommand(ClientLoginPage parameter)
         {
-            AdminSignUp adminSignUp = new AdminSignUp();
-            adminSignUp.ShowDialog();
+            ClientSignUp clientSignUp = new ClientSignUp();
+            clientSignUp.ShowDialog();
         }
-        void _ForgetPassCommand(AdminLoginPage parameter)
+        void _ForgetPassCommand(ClientLoginPage parameter)
         {
             ForgotPassword forgetPassView = new ForgotPassword();
             forgetPassView.ShowDialog();

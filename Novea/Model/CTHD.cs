@@ -14,7 +14,7 @@ namespace Novea.Model
     
     public partial class CTHD
     {
-        public int SOHD { get; set; }
+        public string SOHD { get; set; }
         public string MASP { get; set; }
         public Nullable<int> SOLUONG { get; set; }
         public Nullable<decimal> TRIGIA { get; set; }

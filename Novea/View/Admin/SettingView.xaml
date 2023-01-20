@@ -42,166 +42,156 @@
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Row="1">
-                <StackPanel Orientation="Horizontal">
+            <Border CornerRadius="10" Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="202*"/>
+                        <RowDefinition Height="267*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="226"/>
+                        <ColumnDefinition Width="311"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Border Margin="0,0,0,1" Grid.RowSpan="2">
+                        <Ellipse Height="170" Width="170"                             
+                                 VerticalAlignment="Top" 
+                                 HorizontalAlignment="Center"
+                                 Margin="0,32,0,0" StrokeThickness="5">
+                            <Ellipse.Effect>
+                                <DropShadowEffect ShadowDepth="0"
+                                        Color="Black"
+                                        Opacity="10"
+                                        BlurRadius="10"/>
+                            </Ellipse.Effect>
+                            <Ellipse.Fill>
+                                <ImageBrush x:Name="img" ImageSource="{Binding Ava}"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Border>
+                    <Button HorizontalAlignment="Center" Margin="0,76,0,0" VerticalAlignment="Top"                             
+                            Style="{StaticResource MaterialDesignFlatMidBgButton}"                              
+                            Content="Thay đổi ảnh" FontFamily="{StaticResource Custom}"                              
+                            Width="150" Height="40" Background="Transparent" Foreground="{StaticResource color1}"                               
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Row="1"
+                            BorderBrush="{StaticResource color1}">
 
-                    <!--<Button Padding="20"
-                            Height="auto"
-                            Margin="100 0 0 0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                        Width="230"
-                        FocusVisualStyle="{x:Null}">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Height" Value="300" />
-                                <Setter Property="Foreground" Value="#E2E2E4" />
-
-                                <Setter Property="Background">
-                                    <Setter.Value>
-                                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                                            <GradientStop Color="#FFA033" Offset="0"/>
-                                            <GradientStop Color="#fff8f0" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="{TemplateBinding Background}" CornerRadius="5">
-                                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#5F76F6" />
-                                        <Setter Property="Foreground" Value="#ffffff" />
-                                        <Setter Property="Cursor" Value="Hand"/>
-                                    </Trigger>
-
-                                    <DataTrigger Binding="{Binding ElementName=element,Path=IsActive}" Value="True">
-                                        <Setter Property="Background" Value="#5F76F6" />
-                                        <Setter Property="Foreground" Value="#ffffff" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-
-                        <StackPanel VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="AccountCog" 
-                                                 Width="50" 
-                                                 Height="50"                       
-                                                 Foreground="{StaticResource plainTextColor2}"
-                                                 VerticalAlignment="Center"
-                                                 HorizontalAlignment="Center"/>
-                            <TextBlock Text="THÔNG TIN CÁ NHÂN" 
-                                       FontSize="18" 
-                                       FontWeight="SemiBold"    
-                                       Foreground="{StaticResource plainTextColor2}"
-                                       TextAlignment="Center"/>
-                        </StackPanel>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding AddImage}"
+                                                       CommandParameter="{Binding ElementName=img}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Button>
+                    <Grid Grid.Column="1" Margin="0,0,0,1" Grid.RowSpan="2">
+                        <StackPanel Margin="10">
+                            <TextBox Margin="0,10,0,10" 
+                                     Foreground="{StaticResource plainTextColor1}" 
+                                     FontSize="15"
+                                     Background="{StaticResource color1}"
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    VerticalAlignment="Top"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"
+                                    MaxWidth="400" x:Name="NameBox"
+                                    FontFamily="{StaticResource Custom}"
+                                    materialDesign:HintAssist.Hint="Họ tên" Text="{Binding Name}"/>
+                            <DatePicker Margin="0,20,0,10"  x:Name="DateBox"                                            
+                                        Text="{Binding DoB}"
+                                        FontFamily="{StaticResource Custom}"
+                                        Foreground="{StaticResource plainTextColor1}"                                     
+                                        FontSize="15"                                    
+                                        Background="{StaticResource color1}"
+                                            Focusable="False"
+                                            materialDesign:HintAssist.Hint="Ngày sinh" 
+                                        Style="{StaticResource MaterialDesignFilledDatePicker}" HorizontalAlignment="Left" Width="291">
+                            </DatePicker>
 
-                    <Button Padding="20" 
-                            Margin="142 0 0 0"
-                            Width="230" 
-                            Height="auto"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
-                        FocusVisualStyle="{x:Null}">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Height" Value="300" />
-                                <Setter Property="Foreground" Value="#E2E2E4" />
-
-                                <Setter Property="Background">
-                                    <Setter.Value>
-                                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                                            <GradientStop Color="#FFA033" Offset="0"/>
-                                            <GradientStop Color="#fff8f0" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="{TemplateBinding Background}" CornerRadius="5">
-                                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#5F76F6" />
-                                        <Setter Property="Foreground" Value="#ffffff" />
-                                        <Setter Property="Cursor" Value="Hand"/>
-                                    </Trigger>
-
-                                    <DataTrigger Binding="{Binding ElementName=element,Path=IsActive}" Value="True">
-                                        <Setter Property="Background" Value="#5F76F6" />
-                                        <Setter Property="Foreground" Value="#ffffff" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-
-                        <StackPanel VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="ShopCogOutline" 
-                                                 Width="50" 
-                                                 Height="50"                       
-                                                 Foreground="{StaticResource plainTextColor2}"                                                 
-                                                 VerticalAlignment="Center" 
-                                                 HorizontalAlignment="Center"/>
-                            <TextBlock Text="THÔNG TIN CỬA HÀNG" 
-                                       FontSize="18" 
-                                       FontWeight="SemiBold"   
-                                       Foreground="{StaticResource plainTextColor2}"
-                                       TextAlignment="Center"/>
+                            <TextBox Margin="0,20,-200,10" 
+                                     Foreground="{StaticResource plainTextColor1}" 
+                                     FontSize="15"
+                                     Background="{StaticResource color1}"
+                                 HorizontalAlignment="Left"
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"
+                                    MaxWidth="400" x:Name="AddressBox"
+                                    FontFamily="{StaticResource Custom}"
+                                    materialDesign:HintAssist.Hint="Địa chỉ" Text="{Binding DiaChi}" Width="291"/>
+                            <TextBox HorizontalAlignment="Left"
+                                     Foreground="{StaticResource plainTextColor1}" 
+                                     FontSize="15"
+                                     Background="{StaticResource color1}"
+                                    Margin="0,20,-238,10"
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"
+                                    MaxWidth="600" x:Name="Mail"
+                                    FontFamily="{StaticResource Custom}"
+                                    materialDesign:HintAssist.Hint="Email" Text="{Binding Mail}" Width="529"/>
                         </StackPanel>
-                    </Button>-->
-                    
-                    
+                    </Grid>
+                    <Grid Grid.Column="2" Margin="0,0,0,10" Grid.RowSpan="2">
+                        <StackPanel>
 
-                    <TabControl Width="819"
-                                Style="{StaticResource MaterialDesignFilledTabControl}"                                 
-                                materialDesign:ColorZoneAssist.Mode="Custom"                                 
-                                materialDesign:ColorZoneAssist.Foreground="{StaticResource plainTextColor1}"                                
-                                materialDesign:ColorZoneAssist.Background="{StaticResource color1}">
-                        <TabItem Header="Thông Tin Cá Nhân" 
-                                 Height="52">
-                            <Frame Source="/view/Admin/PersonInfoSetting.xaml"                                                   
-                                   NavigationUIVisibility="Hidden"                                                 
-                                   DataContext="{StaticResource SettingVM}">
-                            </Frame>
-                        </TabItem>
-                        <TabItem Header="Thông Tin Cửa Hàng">
+                            <TextBox Foreground="{StaticResource plainTextColor1}" 
+                                     FontSize="15"
+                                     Background="{StaticResource color1}"
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                 Margin="20 20 50 10"
+                            AcceptsReturn="True"
+                            TextWrapping="Wrap"
+                            FontFamily="{StaticResource Custom}"
+                            materialDesign:HintAssist.Hint="Mật khẩu" Text="{Binding Name}" Width="209"/>
 
-                            <Frame Source="/view/Admin/ShopInfoSetting.xaml"                                                   
-                                   NavigationUIVisibility="Hidden"                                                 
-                                   DataContext="{StaticResource SettingVM}">
-                            </Frame>
+                            <ComboBox Margin="20,20,0,10"
+                                      Foreground="{StaticResource plainTextColor1}"
+                                      FontSize="15"                                   
+                                      Background="{StaticResource color1}"                                                            
+                                      Style="{StaticResource MaterialDesignFilledComboBox}" 
+                                      HorizontalAlignment="Left"
+                                    x:Name="GTBox" FontFamily="{StaticResource Custom}"
+                                    IsEnabled="{Binding IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
+                                    materialDesign:HintAssist.Hint="Giới tính"
+                                    Width="211" SelectedIndex="{Binding GioiTinh}" Height="47">
+                                <ComboBoxItem
+                                        Content="Nam" />
+                                <ComboBoxItem
+                                        Content="Nữ" />
+                            </ComboBox>
+                            <TextBox Margin="20,20,0,10"  Width="209"
+                                     Foreground="{StaticResource plainTextColor1}" 
+                                     FontSize="15"
+                                     Background="{StaticResource color1}"
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                            AcceptsReturn="True"
+                            TextWrapping="Wrap"
+                            HorizontalAlignment="Left" x:Name="SDTBox"
+                            FontFamily="{StaticResource Custom}"
+                            materialDesign:HintAssist.Hint="Số điện thoại" Text="{Binding SDT}" />
 
-                        </TabItem>
-                    </TabControl>
-                </StackPanel>
-
-
-
-            </Grid>
-            <!--<Grid Grid.Row="2">
-                <Frame x:Name="Main"                           
-                       Source="/view/Admin/PersonInfoSetting.xaml"                            
-                       NavigationUIVisibility="Hidden"                          
-                       DataContext="{StaticResource SettingVM}">
-                </Frame>
-            </Grid>-->
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+            <Button Grid.Row="1"                                
+                    BorderThickness="2"
+                Style="{StaticResource MaterialDesignRaisedButton}"                       
+                Width="390" 
+                Margin="324,407,106,77"  
+                Height="45"
+                Content="CẬP NHẬT THÔNG TIN" FontFamily="{StaticResource Custom}"                       
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
+                    Background="Transparent"
+                    BorderBrush="{StaticResource color1}"
+                    Foreground="{StaticResource color1}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding UpdateInfo}"
+                                                       CommandParameter="{Binding ElementName=Settingwd}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
         </Grid>
     </Border>
 </Page>

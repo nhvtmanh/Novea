@@ -22,6 +22,7 @@ namespace Novea.ViewModel.Login
     {
         public ICommand GetIdTab { get; set; }
         public ICommand SwitchTab { get; set; }
+        public ICommand MoveLogin { get; set; }
 
         public string Name;
 
@@ -29,6 +30,7 @@ namespace Novea.ViewModel.Login
         {
             GetIdTab = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
             SwitchTab = new RelayCommand<MainLogin>((p) => true, (p) => switchtab(p));
+            MoveLogin = new RelayCommand<MainLogin>((p) => true, (p) => Move(p));
         }
 
         void switchtab(MainLogin p)
@@ -51,6 +53,10 @@ namespace Novea.ViewModel.Login
                         break;
                     }
             }
+        }
+        public void Move(MainLogin p)
+        {
+            p.DragMove();
         }
     }
 }

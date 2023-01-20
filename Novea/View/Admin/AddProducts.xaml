@@ -49,9 +49,9 @@
                 <Button HorizontalAlignment="Center" 
                         VerticalAlignment="Top"
                         Style="{StaticResource MaterialDesignFlatMidBgButton}"
-                        Content="Thêm ảnh đại diện" FontFamily="{StaticResource Custom}"
+                        Content="Thêm hình sản phẩm" FontFamily="{StaticResource Custom}"
                         BorderThickness="0"
-                        Width="160" Height="40" Background="#6C63FF" Foreground="White" Margin="0,342,0,0">
+                        Width="181" Height="40" Background="#6C63FF" Foreground="White" Margin="0,342,0,0">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding AddImage}"
@@ -103,21 +103,21 @@
                             FontFamily="{StaticResource Custom}"
                             />
                         <StackPanel Orientation="Horizontal">
-                            <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Vertical" Width="249">
                                 <TextBlock
                                     Margin="8,0,0,0"
                                     Text="MÃ SẢN PHẨM"
-                                    FontFamily="{StaticResource Custom}"
+                                    FontFamily="{StaticResource Custom}" Width="150" HorizontalAlignment="Right"
                                 />
                                 <Border
                                 CornerRadius="10"
                                 BorderThickness="2"
                                 BorderBrush="gray"
-                                Height="30"
+                                Height="30" HorizontalAlignment="Right"
                                 >
                                     <TextBox
                                     x:Name="MaSp"
-                                    HorizontalAlignment="Left"
+                                    HorizontalAlignment="Right"
                                     Width="150"
                                     IsEnabled="False"
                                     BorderThickness="0"
@@ -131,12 +131,12 @@
                                 </Border>
                             </StackPanel>
                             <StackPanel Orientation="Vertical"
-                                        Margin="10,0,0,0"
+                                        Margin="15,0,0,0"
                                         >
                                 <TextBlock
-                                    Margin="8,0,0,0"
+                                    Margin="4,0,0,0"
                                     Text="TÊN SẢN PHẨM"
-                                    FontFamily="{StaticResource Custom}"
+                                    FontFamily="{StaticResource Custom}" HorizontalAlignment="Left"
                                 />
                                 <TextBox
                                     Height="30"
@@ -156,17 +156,17 @@
                         <StackPanel Orientation="Horizontal" 
                                     Margin="0,10,0,0"
                                     >
-                            <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Vertical" Width="249">
                                 <TextBlock
                                     Margin="8,0,0,0"
                                     Text="GIÁ SẢN PHẨM"
-                                    FontFamily="{StaticResource Custom}"
+                                    FontFamily="{StaticResource Custom}" Width="150" HorizontalAlignment="Right"
                                 />
                                 <TextBox
                                     Height="30"
                                     x:Name="GiaSp"
-                                    HorizontalAlignment="Left"
-                                    Width="150"
+                                    HorizontalAlignment="Right"
+                                    Width="154"
                                     FontFamily="{StaticResource Custom}"
                                     BorderThickness="2"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
@@ -227,17 +227,17 @@
                         <StackPanel Orientation="Horizontal" 
                                     Margin="0,10,0,0"
                                     >
-                            <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Vertical" Width="249">
                                 <TextBlock
                                     Margin="8,0,0,0"
                                     Text="ĐƠN VỊ TÍNH"
-                                    FontFamily="{StaticResource Custom}"
+                                    FontFamily="{StaticResource Custom}" Width="150" HorizontalAlignment="Right"
                                 />
                                 <TextBox
                                     Height="30"
                                     x:Name="DvSp"
-                                    HorizontalAlignment="Left"
-                                    Width="150"
+                                    HorizontalAlignment="Right"
+                                    Width="154"
                                     FontFamily="{StaticResource Custom}"
                                     BorderThickness="2"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
@@ -285,15 +285,15 @@
                             </StackPanel>
                         </StackPanel>
                         <TextBlock
-                                    Margin="8,10,0,0"
+                                    Margin="0,10,0,0"
                                     Text="THÔNG TIN SẢN PHẨM"
-                                    FontFamily="{StaticResource Custom}"
+                                    FontFamily="{StaticResource Custom}" HorizontalAlignment="Center" Width="309"
                                 />
                         <TextBox
                                     x:Name="MotaSp"
                                     FontFamily="{StaticResource Custom}"
-                                    HorizontalAlignment="Left"
-                                    Width="310"
+                                    HorizontalAlignment="Center"
+                                    Width="319"
                                     Height="50"
                                     BorderThickness="2"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"

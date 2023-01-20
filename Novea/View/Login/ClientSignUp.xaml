@@ -7,23 +7,27 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Novea.View.Login"
+        x:Name="ClientRegisterwd"
+        DataContext="{StaticResource ClientSignUpVM}"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True" Height="450" Width="650" WindowStartupLocation="CenterScreen">
     <Border CornerRadius="12">
+
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseLeftButtonDown">
+                <i:InvokeCommandAction Command="{Binding Movewd}"
+                                                       CommandParameter="{Binding ElementName=ClientRegisterwd}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+
         <Border.Background>
             <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
                 <GradientStop Color="#41518F" Offset="0" />
                 <GradientStop Color="#2C386C" Offset="1" />
             </LinearGradientBrush>
         </Border.Background>
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="MouseLeftButtonDown">
-                <i:InvokeCommandAction Command="{Binding Movewd}"
-                                                       CommandParameter="{Binding ElementName=Registerwd}"></i:InvokeCommandAction>
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
@@ -42,7 +46,7 @@
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseLeftButtonDown">
                                 <i:InvokeCommandAction Command="{Binding Minimizewd}"
-                                                       CommandParameter="{Binding ElementName=Registerwd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=ClientRegisterwd}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </materialDesign:PackIcon>
@@ -50,7 +54,7 @@
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseLeftButtonDown">
                                 <i:InvokeCommandAction Command="{Binding Close1}"
-                                                       CommandParameter="{Binding ElementName=Registerwd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=ClientRegisterwd}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </materialDesign:PackIcon>
@@ -245,7 +249,7 @@
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
                                     <i:InvokeCommandAction Command="{Binding Register}"
-                                                       CommandParameter="{Binding ElementName=Registerwd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=ClientRegisterwd}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </Button>
