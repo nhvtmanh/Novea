@@ -79,6 +79,10 @@
                             Content="Sinh tố"/>
                         <ComboBoxItem
                             Content="Sữa chua"/>
+                        <ComboBoxItem
+                            Content="Nước ép"/>
+                        <ComboBoxItem
+                            Content="Nước ngọt"/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
                                 <i:InvokeCommandAction Command="{Binding Filter}"
@@ -290,12 +294,6 @@
                                                     HorizontalAlignment="Center"
                                                     Text="{Binding TENSP}"
                                                     />
-                                        <!--<TextBlock
-                                                    FontFamily="{StaticResource Custom}"
-                                                    FontSize="14"
-                                                    HorizontalAlignment="Center"
-                                                    Text="{Binding LOAISP}"
-                                                    />-->
                                         <TextBlock
                                                     FontFamily="{StaticResource Custom}"
                                                     FontSize="14"

@@ -32,8 +32,8 @@ namespace Novea.ViewModel.Admin
         
         public ProductViewModel()
         {
-            listTK = new ObservableCollection<string>() { "None", "Giá tăng dần", "Giá giảm dần" };
-            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.AVAILABLE != false));
+            listTK = new ObservableCollection<string>() { "Không sắp xếp", "Giá tăng dần", "Giá giảm dần" };
+            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
             AddPdPdCommand = new RelayCommand<Product>((p) => { return p == null ? false : true; }, (p) => _AddPdCommand(p));
             SearchCommand = new RelayCommand<Product>((p) => { return p == null ? false : true; }, (p) => _SearchCommand(p));
@@ -44,8 +44,8 @@ namespace Novea.ViewModel.Admin
         }
         public void _LoadCsCommand(Product parameter)
         {
-            listTK = new ObservableCollection<string>() {"None", "Giá tăng dần", "Giá giảm dần" };
-            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.AVAILABLE != false));
+            listTK = new ObservableCollection<string>() {"Không sắp xếp", "Giá tăng dần", "Giá giảm dần" };
+            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
             parameter.cbxChon2.SelectedIndex = 0;
             parameter.cbxChon1.SelectedIndex = 0;
@@ -99,6 +99,18 @@ namespace Novea.ViewModel.Admin
                         parameter.ListViewProduct.ItemsSource = listSP;
                         break;
                     }
+                case "7":
+                    {
+                        listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Nước ép"));
+                        parameter.ListViewProduct.ItemsSource = listSP;
+                        break;
+                    }
+                case "8":
+                    {
+                        listSP = new ObservableCollection<SANPHAM>(listSP_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()).Where(p => p.LOAISP == "Nước ngọt"));
+                        parameter.ListViewProduct.ItemsSource = listSP;
+                        break;
+                    }
             }
 
         }
@@ -147,17 +159,21 @@ namespace Novea.ViewModel.Admin
         {
             DetailProducts detailProduct = new DetailProducts();
             SANPHAM temp = (SANPHAM)paramater.ListViewProduct.SelectedItem;
-            //detailProduct.TenSP.Text = temp.TENSP;
-            //detailProduct.GiaSP.Text = string.Format("{0:0,0}", temp.GIA) + " VNĐ";
-            //detailProduct.LoaiSP.Text = temp.LOAISP;
-            //string SL = listSP1.Where(p => p.TENSP == temp.TENSP && p.AVAILABLE != false).Select(p => p.AVAILABLE).Sum().ToString();
-            //detailProduct.SLSP.Text = "Số lượng: " + SL;
-            //detailProduct.kichco.ItemsSource = new ObservableCollection<SANPHAM>(listSP1.Where(p => p.TENSP == temp.TENSP && p.SL >= 0));
-            //detailProduct.Mota.Text = temp.MOTA;
-            //Uri fileUri = new Uri(temp.HINHSP);
-            //detailProduct.HinhAnh.Source = new BitmapImage(fileUri);
-            //detailProduct.ShowDialog();
-            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.AVAILABLE != false));
+            detailProduct.MaSP.Text = temp.MASP;
+            detailProduct.TenSP.Text = temp.TENSP;
+            detailProduct.GiaSP.Text = string.Format("{0:0,0}", temp.DONGIA) + " VNĐ";
+            detailProduct.LoaiSP.Text = temp.LOAISP;
+            detailProduct.DVT.Text = temp.DONVI;
+            detailProduct.Size.Text = temp.SIZE;
+            detailProduct.Mota.Text = temp.MOTA;
+            try
+            {
+                Uri fileUri = new Uri(temp.HINHSP);
+                detailProduct.HinhAnh.ImageSource = new BitmapImage(fileUri);
+            }
+            catch { }
+            detailProduct.ShowDialog();
+            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             paramater.ListViewProduct.SelectedItem = null;
             _Filter(paramater);
             _SearchCommand(paramater);
@@ -187,7 +203,7 @@ namespace Novea.ViewModel.Admin
             AddProducts addProductView = new AddProducts();
             addProductView.MaSp.Text = rdmaSP();
             addProductView.ShowDialog();
-            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.AVAILABLE != false));
+            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.AVAILABLE != false && p.MACH == Const.CH.MACH));
             _Filter(paramater);
             _SearchCommand(paramater);
         }

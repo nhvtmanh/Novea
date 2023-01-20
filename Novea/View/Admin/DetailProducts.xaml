@@ -10,7 +10,7 @@
         Background="Transparent"
         AllowsTransparency="True"
         x:Name="DetailProductwd"
-        DataContext="{StaticResource DetailProductVM}"
+        DataContext="{StaticResource DetailProductsVM}"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Height="550" 
@@ -36,7 +36,7 @@
                                        CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
             </i:EventTrigger>
             <i:EventTrigger EventName="Loaded">
-                <i:InvokeCommandAction Command="{Binding GetName}"
+                <i:InvokeCommandAction Command="{Binding GetMaSP}"
                                        CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
             </i:EventTrigger>
         </i:Interaction.Triggers>
@@ -237,7 +237,7 @@
                                 </StackPanel>
                                 <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15" Width="213" HorizontalAlignment="Left">
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBox Foreground="{StaticResource plainTextColor3}"
+                                        <ComboBox Foreground="{StaticResource plainTextColor3}"
                                         x:Name="Size"
                                         HorizontalAlignment="Left"
                                         FontFamily="{StaticResource Custom}"
@@ -245,7 +245,11 @@
                                         materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                         materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
                                         IsEnabled="False"
-                                        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0">
+                                            <ComboBoxItem Content="S"/>
+                                            <ComboBoxItem Content="M"/>
+                                            <ComboBoxItem Content="L"/>
+                                        </ComboBox>
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -258,7 +262,7 @@
                                 />
                             <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15" Height="90">
                                 <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="KM"
+                                    x:Name="Mota"
                                     HorizontalAlignment="Left"
                                     FontFamily="{StaticResource Custom}"
                                     BorderThickness="0"
@@ -275,7 +279,9 @@
                                     Margin="8,0,0,0"
                                     Text="AVAILABLE"
                                     FontFamily="{StaticResource Custom}"/>
-                            <ToggleButton HorizontalAlignment="Right" Margin="300 0 10 0"  
+                            <ToggleButton x:Name="Avail"
+                                          IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                                          HorizontalAlignment="Right" Margin="300 0 10 0"  
                                           Style="{StaticResource MaterialDesignSwitchToggleButton}"  
                                           ToolTip="MaterialDesignSwitchToggleButton with Custom Track Background">
                                 <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
@@ -286,6 +292,12 @@
                                     <SolidColorBrush     
                                         Color="{StaticResource Primary900Foreground}" />
                                 </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding ChangeAvailProduct}"
+                                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                             </ToggleButton>
                         </StackPanel>
                         <Border Grid.Column="1" Grid.Row="1"/>
@@ -294,8 +306,24 @@
                 </Border>
 
 
-                <Button Margin="30,421,30,90" Background="Transparent" BorderBrush="{StaticResource color1}">
+                <Button x:Name="btncapnhat" Margin="30,421,266,90" Background="Transparent" BorderBrush="{StaticResource color1}" Width="200">
+                    <TextBlock Foreground="{StaticResource color1}">CẬP NHẬT SẢN PHẨM</TextBlock>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding UpdateProduct}"
+                                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+
+                <Button x:Name="btnxoa" Margin="230,421,30,90" Background="Transparent" BorderBrush="{StaticResource color1}" Width="200">
                     <TextBlock Foreground="{StaticResource color1}">XÓA SẢN PHẨM</TextBlock>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding DeleteProduct}"
+                                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </Button>
 
 

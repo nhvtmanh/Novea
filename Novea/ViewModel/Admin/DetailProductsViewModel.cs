@@ -14,90 +14,102 @@ namespace Novea.ViewModel.Admin
 {
     public class DetailProductsViewModel : BaseViewModel
     {
-        //public ICommand Closewd { get; set; }
-        //public ICommand Minimizewd { get; set; }
-        //public ICommand MoveWindow { get; set; }
-        //public ICommand UpdateProduct { get; set; }
-        //public ICommand GetName { get; set; }
-        //private string TenSP1;
-        //public ICommand Loadwd { get; set; }
-        //public ICommand DeleteProduct { get; set; }
-        //public DetailProductsViewModel()
-        //{
-        //    Closewd = new RelayCommand<DetailProducts>((p) => true, (p) => Close(p));
-        //    Minimizewd = new RelayCommand<DetailProducts>((p) => true, (p) => Minimize(p));
-        //    MoveWindow = new RelayCommand<DetailProducts>((p) => true, (p) => moveWindow(p));
-        //    GetName = new RelayCommand<DetailProducts>((p) => true, (p) => _GetName(p));
-        //    UpdateProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _UpdateProduct(p));
-        //    Loadwd = new RelayCommand<DetailProducts>((p) => true, (p) => _Loadwd(p));
-        //    DeleteProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _DeleteProduct(p));
-        //}
-        //void _Loadwd(DetailProducts parmater)
-        //{
-        //    if (Const.Admin)
-        //    {
-        //        parmater.TenSP.IsEnabled = true;
-        //        parmater.Mota.IsEnabled = true;
-        //        parmater.btncapnhat.Visibility = Visibility.Visible;
-        //        parmater.btnxoa.Visibility = Visibility.Visible;
-        //    }
-        //    else
-        //    {
-        //        parmater.TenSP.IsEnabled = false;
-        //        parmater.Mota.IsEnabled = false;
-        //        parmater.Mota.Height = 200;
-        //    }
-        //}
-        //void _DeleteProduct(DetailProducts parameter)
-        //{
-        //    MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn xóa sản phẩm ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-        //    if (h == MessageBoxResult.Yes)
-        //    {
-        //        foreach (SANPHAM a in DataProvider.Ins.DB.SANPHAMs.Where(pa => (pa.TENSP == TenSP1 && pa.SL >= 0)))
-        //        {
-        //            a.SL = -1;
-        //        }
-        //        DataProvider.Ins.DB.SaveChanges();
-        //        MessageBox.Show("Xóa sản phẩm thành công !", "THÔNG BÁO");
-        //    }
-        //}
-        //void moveWindow(DetailProducts p)
-        //{
-        //    p.DragMove();
-        //}
-        //void Close(DetailProducts p)
-        //{
-        //    p.Close();
-        //}
-        //void Minimize(DetailProducts p)
-        //{
-        //    p.WindowState = WindowState.Minimized;
-        //}
-        //void _GetName(DetailProducts p)
-        //{
-        //    TenSP1 = p.TenSP.Text;
-        //}
-        //void _UpdateProduct(DetailProducts p)
-        //{
-        //    MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn cập nhật sản phẩm ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-        //    if (h == MessageBoxResult.Yes)
-        //    {
-        //        if (string.IsNullOrEmpty(p.TenSP.Text) || string.IsNullOrEmpty(p.Mota.Text) || string.IsNullOrEmpty(p.Mota.Text))
-        //        {
-        //            MessageBox.Show("Thông tin chưa đầy đủ !", "THÔNG BÁO");
-        //        }
-        //        else
-        //        {
-        //            foreach (SANPHAM a in DataProvider.Ins.DB.SANPHAMs.Where(pa => (pa.TENSP == TenSP1 && pa.SL >= 0)))
-        //            {
-        //                a.TENSP = p.TenSP.Text;
-        //                a.MOTA = p.Mota.Text;
-        //                a.MOTA = p.Mota.Text;
-        //            }
-        //            DataProvider.Ins.DB.SaveChanges();
-        //            MessageBox.Show("Cập nhật sản phẩm thành công !", "THÔNG BÁO");
-        //        }
-        //    }
-        //}
+        public ICommand Closewd { get; set; }
+        public ICommand MoveWindow { get; set; }
+        public ICommand UpdateProduct { get; set; }
+        public ICommand ChangeAvailProduct { get; set; } 
+        public ICommand GetMaSP { get; set; }
+        private string MaSP_Now;
+        public ICommand Loadwd { get; set; }
+        public ICommand DeleteProduct { get; set; }
+        private bool _IsChecked;
+        public bool IsChecked { get { return _IsChecked; } set { _IsChecked = value; OnPropertyChanged(); } }
+        public DetailProductsViewModel()
+        {
+            Closewd = new RelayCommand<DetailProducts>((p) => true, (p) => Close(p));
+            MoveWindow = new RelayCommand<DetailProducts>((p) => true, (p) => moveWindow(p));
+            GetMaSP = new RelayCommand<DetailProducts>((p) => true, (p) => _GetMaSP(p));
+            UpdateProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _UpdateProduct(p));
+            Loadwd = new RelayCommand<DetailProducts>((p) => true, (p) => _Loadwd(p));
+            DeleteProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _DeleteProduct(p));
+            ChangeAvailProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _ChangeAvailProduct(p));
+        }
+        void _Loadwd(DetailProducts paramater)
+        {
+            IsChecked = true;
+            paramater.TenSP.IsEnabled = true;
+            paramater.Mota.IsEnabled = true;
+            paramater.GiaSP.IsEnabled = true;
+            paramater.LoaiSP.IsEnabled = true;
+            paramater.DVT.IsEnabled = true;
+            paramater.Size.IsEnabled = true;
+        }
+        void _ChangeAvailProduct(DetailProducts parameter)
+        {
+            
+            if(parameter.Avail.IsChecked.Value == true)
+            {
+                foreach (SANPHAM sp in DataProvider.Ins.DB.SANPHAMs.Where(pa => (pa.MASP == MaSP_Now)))
+                {
+                    sp.AVAILABLE = true;
+                }
+                DataProvider.Ins.DB.SaveChanges();
+            }
+            else
+            {
+                foreach (SANPHAM sp in DataProvider.Ins.DB.SANPHAMs.Where(pa => (pa.MASP == MaSP_Now)))
+                {
+                    sp.AVAILABLE = false;
+                }
+                DataProvider.Ins.DB.SaveChanges();
+            }
+        }
+        void _DeleteProduct(DetailProducts parameter)
+        {
+            MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn xóa sản phẩm ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (h == MessageBoxResult.Yes)
+            {
+                var itemToRemove = DataProvider.Ins.DB.SANPHAMs.SingleOrDefault(pa => (pa.MASP == MaSP_Now));
+                if (itemToRemove != null)
+                {
+                    DataProvider.Ins.DB.SANPHAMs.Remove(itemToRemove);
+                    DataProvider.Ins.DB.SaveChanges();
+                    MessageBox.Show("Xóa sản phẩm thành công !", "THÔNG BÁO");
+                }                              
+            }
+        }
+        void moveWindow(DetailProducts p)
+        {
+            p.DragMove();
+        }
+        void Close(DetailProducts p)
+        {
+            p.Close();
+        }
+        void _GetMaSP(DetailProducts p)
+        {
+            MaSP_Now = p.MaSP.Text;
+        }
+        void _UpdateProduct(DetailProducts p)
+        {
+            MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn cập nhật sản phẩm ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (h == MessageBoxResult.Yes)
+            {
+                if (string.IsNullOrEmpty(p.TenSP.Text) || string.IsNullOrEmpty(p.Mota.Text) )
+                {
+                    MessageBox.Show("Thông tin chưa đầy đủ !", "THÔNG BÁO");
+                }
+                else
+                {
+                    foreach (SANPHAM a in DataProvider.Ins.DB.SANPHAMs.Where(pa => (pa.MASP == MaSP_Now && pa.AVAILABLE != false)))
+                    {
+                        a.TENSP = p.TenSP.Text;
+                        a.MOTA = p.Mota.Text;
+                    }
+                    DataProvider.Ins.DB.SaveChanges();
+                    MessageBox.Show("Cập nhật sản phẩm thành công !", "THÔNG BÁO");
+                }
+            }
+        }
     }
 }

@@ -69,15 +69,15 @@ namespace Novea.ViewModel.Admin
             }
             return false;
         }
-        string rdma()
+        string _rdmaSP()
         {
-            string ma;
+            string maSP;
             do
             {
                 Random rand = new Random();
-                ma = "PD" + rand.Next(0, 10000).ToString();
-            } while (check(ma));
-            return ma;
+                maSP = "SP" + rand.Next(0, 10000).ToString();
+            } while (check(maSP));
+            return maSP;
         }
         void _AddProduct(AddProducts paramater)
         {
@@ -117,6 +117,7 @@ namespace Novea.ViewModel.Admin
                         sanpham.DONVI = paramater.DvSp.Text;                       
                         sanpham.SIZE = paramater.SizeSp.Text;
                         sanpham.MOTA = paramater.MotaSp.Text;
+                        sanpham.MACH = Const.CH.MACH;
                         sanpham.AVAILABLE = true;
                         sanpham.HINHSP = "/Resource/ImgProduct/" + "product_" + paramater.MaSp.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
                         DataProvider.Ins.DB.SANPHAMs.Add(sanpham);
@@ -127,7 +128,7 @@ namespace Novea.ViewModel.Admin
                         }
                         catch { }
                         MessageBox.Show("Thêm sản phẩm mới thành công !", "THÔNG BÁO");
-                        paramater.MaSp.Text = rdma();
+                        paramater.MaSp.Text = _rdmaSP();
                         paramater.TenSp.Clear();
                         paramater.LoaiSp.SelectedItem = null;
                         paramater.GiaSp.Clear();
