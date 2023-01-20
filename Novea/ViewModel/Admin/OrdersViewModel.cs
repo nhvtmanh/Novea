@@ -13,10 +13,28 @@ using System.Windows.Input;
 
 namespace Novea.ViewModel.Admin
 {
+    public class HienThi
+    {
+        public string MaSp { get; set; }
+        public string TenSP { get; set; }
+        public int SL { get; set; }
+        public int Dongia { get; set; }
+        public int Tong { get; set; }
+        public string Size { get; set; }
+        public HienThi(string MaSp = "", string TenSP = "", string Size = "", int SL = 0, int Dongia = 0, int Tong = 0)
+        {
+            this.MaSp = MaSp;
+            this.TenSP = TenSP;
+            this.SL = SL;
+            this.Tong = Tong;
+            this.Size = Size;
+            this.Dongia = Dongia;
+        }
+    }
     public class OrdersViewModel : BaseViewModel
     {
-        private ObservableCollection<HOADON> _listSP;
-        public ObservableCollection<HOADON> listSP { get => _listSP; set { _listSP = value; OnPropertyChanged(); } }
+        private ObservableCollection<HOADON> _listHD;
+        public ObservableCollection<HOADON> listHD { get => _listHD; set { _listHD = value; OnPropertyChanged(); } }
         public ICommand SearchCommand { get; set; }
         public ICommand Detail { get; set; }
         public ICommand LoadCsCommand { get; set; }
@@ -25,9 +43,9 @@ namespace Novea.ViewModel.Admin
         public OrdersViewModel()
         {
             listTK = new ObservableCollection<string>() { "Họ tên", "Số HD", "Ngày" };
-            listSP = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
+            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(p => p.MACH == Const.CH.MACH));
             SearchCommand = new RelayCommand<OrdersView>((p) => true, (p) => _SearchCommand(p));
-            //Detail = new RelayCommand<OrdersView>((p) => p.ListViewProduct.SelectedItem != null ? true : false, (p) => _Detail(p));
+            Detail = new RelayCommand<OrdersView>((p) => p.ListViewHD.SelectedItem != null ? true : false, (p) => _Detail(p));
             LoadCsCommand = new RelayCommand<OrdersView>((p) => true, (p) => _LoadCsCommand(p));
         }
         void _LoadCsCommand(OrdersView parameter)
@@ -43,15 +61,15 @@ namespace Novea.ViewModel.Admin
             }
             return false;
         }
-        string rdma()
+        string rdmaHD()
         {
-            string ma;
+            string maHD;
             do
             {
                 Random rand = new Random();
-                ma = "HD" + rand.Next(0, 10000);
-            } while (check(ma));
-            return ma;
+                maHD = "HD" + rand.Next(0, 10000);
+            } while (check(maHD));
+            return maHD;
         }
         
         void _SearchCommand(OrdersView paramater)
@@ -65,9 +83,9 @@ namespace Novea.ViewModel.Admin
                         {
                             try
                             {
-                                foreach (HOADON s in listSP)
+                                foreach (HOADON s in listHD)
                                 {
-                                    if (s.SOHD == paramater.txbSearch.Text)
+                                    if (s.SOHD.ToLower().Contains(paramater.txbSearch.Text.ToLower())) 
                                     {
                                         temp.Add(s);
                                     }
@@ -79,7 +97,7 @@ namespace Novea.ViewModel.Admin
                         }
                     case "Họ tên":
                         {
-                            foreach (HOADON s in listSP)
+                            foreach (HOADON s in listHD)
                             {
                                 if (s.KHACH.HOTEN.ToLower().Contains(paramater.txbSearch.Text.ToLower()))
                                 {
@@ -90,7 +108,7 @@ namespace Novea.ViewModel.Admin
                         }
                     case "Ngày":
                         {
-                            foreach (HOADON s in listSP)
+                            foreach (HOADON s in listHD)
                             {
                                 if (s.NGMH.ToString().Contains(paramater.txbSearch.Text))
                                 {
@@ -101,7 +119,7 @@ namespace Novea.ViewModel.Admin
                         }
                     default:
                         {
-                            foreach (HOADON s in listSP)
+                            foreach (HOADON s in listHD)
                             {
                                 if (s.KHACH.HOTEN.ToLower().Contains(paramater.txbSearch.Text.ToLower()))
                                 {
@@ -111,36 +129,36 @@ namespace Novea.ViewModel.Admin
                             break;
                         }
                 }
-                paramater.ListViewProduct.ItemsSource = temp;
+                paramater.ListViewHD.ItemsSource = temp;
             }
             else
-                paramater.ListViewProduct.ItemsSource = listSP;
+                paramater.ListViewHD.ItemsSource = listHD;
         }
-        //void _Detail(OrdersView parameter)
-        //{
-        //    DetailOrder detailOrder = new DetailOrder();
-        //    HOADON temp = (HOADON)parameter.ListViewHD.SelectedItem;
-        //    detailOrder.MaND.Text = temp.CUAHANG.MACH;
-        //    detailOrder.TenND.Text = temp.KHACH.HOTEN;
-        //    detailOrder.Ngay.Text = temp.NGMH.ToString("dd/MM/yyyy hh:mm tt");
-        //    detailOrder.SoHD.Text = temp.SOHD.ToString();
-        //    detailOrder.MaKH.Text = temp.MAKH.ToString();
-        //    detailOrder.TenKH.Text = temp.KHACHHANG.HOTEN;
-        //    detailOrder.KM.Text = temp.KHUYENMAI.ToString() + "%";
-        //    List<HienThi> list = new List<HienThi>();
-        //    foreach (CTHD a in temp.CTHDs)
-        //    {
-        //        list.Add(new HienThi(a.MASP, a.SANPHAM.TENSP, a.SANPHAM.SIZE, a.SL, a.SANPHAM.GIA, a.SL * a.SANPHAM.GIA));
-        //    }
-        //    detailOrder.ListViewSP.ItemsSource = list;
-        //    detailOrder.GG.Text = "- " + String.Format("{0:0,0}", (temp.TRIGIA * 100 / (100 - temp.KHUYENMAI)) * temp.KHUYENMAI / 100) + " VND";
-        //    detailOrder.TT.Text = String.Format("{0:0,0}", temp.TRIGIA) + " VND";
-        //    detailOrder.TT1.Text = String.Format("{0:0,0}", temp.TRIGIA) + " VND";
-        //    detailOrder.ShowDialog();
-        //    parameter.ListViewHD.SelectedItem = null;
-        //    listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
-        //    parameter.ListViewHD.ItemsSource = listHD;
-        //    _SearchCommand(parameter);
-        //}
+        void _Detail(OrdersView parameter)
+        {
+            DetailOrders detailOrder = new DetailOrders();
+            HOADON temp = (HOADON)parameter.ListViewHD.SelectedItem;
+            detailOrder.MaND.Text = temp.CUAHANG.MACH;
+            detailOrder.TenND.Text = temp.KHACH.HOTEN;
+            detailOrder.Ngay.Text = temp.NGMH.ToString(/*"dd/MM/yyyy hh:mm tt"*/);
+            detailOrder.SoHD.Text = temp.SOHD.ToString();
+            detailOrder.MaKH.Text = temp.MAKH.ToString();
+            detailOrder.TenKH.Text = temp.KHACH.HOTEN;
+            //detailOrder.KM.Text = temp.KHUYENMAI.ToString() + "%";
+            List<HienThi> list = new List<HienThi>();
+            foreach (CTHD a in temp.CTHDs)
+            {
+                list.Add(new HienThi(a.MASP, a.SANPHAM.TENSP, a.SANPHAM.SIZE, a.SL, a.SANPHAM.GIA, a.SL * a.SANPHAM.GIA));
+            }
+            detailOrder.ListViewSP.ItemsSource = list;
+            detailOrder.GG.Text = "- " + String.Format("{0:0,0}", (temp.TRIGIA * 100 / (100 - temp.KHUYENMAI)) * temp.KHUYENMAI / 100) + " VND";
+            detailOrder.TT.Text = String.Format("{0:0,0}", temp.TRIGIA) + " VND";
+            detailOrder.TT1.Text = String.Format("{0:0,0}", temp.TRIGIA) + " VND";
+            detailOrder.ShowDialog();
+            parameter.ListViewHD.SelectedItem = null;
+            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
+            parameter.ListViewHD.ItemsSource = listHD;
+            _SearchCommand(parameter);
+        }
     }
 }

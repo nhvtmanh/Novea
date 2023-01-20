@@ -109,8 +109,19 @@
                             <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
                                 <TextBlock Foreground="{StaticResource plainTextColor3}"
                                     Margin="8,0,0,0"
-                                    Text="MÃ ĐH"
-                                    FontFamily="{StaticResource Custom}"/>
+                                    Text="MÃ CH"
+                                    FontFamily="{StaticResource Custom}"
+                                    />
+                                <TextBlock Foreground="{StaticResource plainTextColor3}"
+                                    Margin="2,0,0,0"
+                                    Text="|"
+                                    FontFamily="{StaticResource Custom}"
+                                    />
+                                <TextBlock Foreground="{StaticResource plainTextColor3}"
+                                    Margin="2,0,0,0"
+                                    Text="TÊN CH"
+                                    FontFamily="{StaticResource Custom}"
+                                    />
                             </StackPanel>
                             <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
                                 <StackPanel Orientation="Horizontal">
@@ -156,14 +167,13 @@
                             <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 15">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBox Foreground="{StaticResource plainTextColor3}"
-                                    x:Name="MaKH"
-                                    HorizontalAlignment="Left"
+                                    x:Name=""
                                     FontFamily="{StaticResource Custom}"
                                     BorderThickness="0"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
                                     IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0" Width="24"/>
                                     <TextBox Foreground="{StaticResource plainTextColor3}"
                                     Text="|"
                                     HorizontalAlignment="Left"
@@ -175,13 +185,12 @@
                                     materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                                     <TextBox Foreground="{StaticResource plainTextColor3}"
                                     x:Name="TenKH"
-                                    HorizontalAlignment="Left"
                                     FontFamily="{StaticResource Custom}"
                                     BorderThickness="0"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
                                     IsEnabled="False"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0" Width="388"/>
                                 </StackPanel>
                             </Border>
                         </StackPanel>
