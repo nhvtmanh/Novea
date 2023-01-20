@@ -45,8 +45,9 @@ namespace Novea.ViewModel.Client
         }
         void displayStoreDetail(Home parameter)
         {
+            Page page = new StoreDetail();
             
-
+            Guest.Instance.Main.NavigationService.Navigate(page);
         }
     }
 }

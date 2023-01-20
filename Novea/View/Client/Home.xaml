@@ -130,7 +130,7 @@
                                                        VerticalAlignment="Center"
                                                        DockPanel.Dock="Top"
                                                        Margin="25"
-                                                       Text="{Binding TENCUAHANG}"/>
+                                                       Text="{Binding TENCH}"/>
                                             <TextBlock FontFamily="{StaticResource Custom1}"
                                                        FontSize="20"
                                                        Foreground="{StaticResource plainTextColor2}"

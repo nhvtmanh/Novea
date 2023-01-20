@@ -19,9 +19,16 @@ namespace Novea.View
     /// </summary>
     public partial class Guest : Window
     {
+        private static Guest instance;
+        public static Guest Instance
+        {
+            get { return instance; }
+            set { instance = value; }
+        }
         public Guest()
         {
             InitializeComponent();
+            instance = this;
         }
     }
 }
