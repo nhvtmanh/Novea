@@ -1,13 +1,17 @@
 ﻿using Novea.Model;
-using Novea.View.Admin;
+using Novea.View;
+using Novea.View.Client;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace Novea.ViewModel.Client
 {
@@ -26,20 +30,23 @@ namespace Novea.ViewModel.Client
             set { listStore1 = value; }
         }
         public ICommand LoadStoreCommand { get; set; }
+        public ICommand StoreDetailCommand { get; set; }
         public StoreViewModel()
         {
             ListStore1 = new ObservableCollection<CHUCUAHANG>(DataProvider.Ins.DB.CHUCUAHANGs);
             ListStore = new ObservableCollection<CHUCUAHANG>(ListStore1.GroupBy(p => p.TENCUAHANG).Select(grp => grp.FirstOrDefault()));
-            LoadStoreCommand = new RelayCommand<HomeView>((p) => true, (p) => loadStore(p));
+            LoadStoreCommand = new RelayCommand<Home>((p) => true, (p) => loadStore(p));
+            StoreDetailCommand = new RelayCommand<Home>((p) => { return p.ListViewStore.SelectedItem != null; }, (p) => displayStoreDetail(p));
         }
-        void loadStore(HomeView parameter)
+        void loadStore(Home parameter)
         {
             ListStore1 = new ObservableCollection<CHUCUAHANG>(DataProvider.Ins.DB.CHUCUAHANGs);
             ListStore = new ObservableCollection<CHUCUAHANG>(ListStore1.GroupBy(p => p.TENCUAHANG).Select(grp => grp.FirstOrDefault()));
         }
-        public void moveWindow(MainWindow p)
+        void displayStoreDetail(Home parameter)
         {
-            p.DragMove();
+            
+
         }
     }
 }
