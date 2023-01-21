@@ -10,6 +10,7 @@
         Background="Transparent"
         AllowsTransparency="True"
         x:Name="DetailOrderwd"
+        DataContext="{StaticResource DetailOrderVM}"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Height="550" 
@@ -21,6 +22,12 @@
                 <GradientStop Color="{StaticResource primaryBackColor2}" Offset="1"/>
             </LinearGradientBrush>
         </Border.Background>
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseLeftButtonDown">
+                <i:InvokeCommandAction Command="{Binding MoveWindow}"
+                                       CommandParameter="{Binding ElementName=DetailOrderwd}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
@@ -72,7 +79,8 @@
                                    HorizontalAlignment="Left"
                                    DockPanel.Dock="Left"
                                    Text="Khách hàng"/>
-                        <TextBlock FontFamily="{StaticResource Custom1}"
+                        <TextBlock x:Name="TenKH"
+                                   FontFamily="{StaticResource Custom1}"
                                    FontSize="30"
                                    Height="40"
                                    Margin="20,0,0,0"
@@ -92,7 +100,8 @@
                                    HorizontalAlignment="Left"
                                    DockPanel.Dock="Left"
                                    Text="Địa chỉ"/>
-                        <TextBlock FontFamily="{StaticResource Custom1}"
+                        <TextBlock x:Name="DCKH"
+                                   FontFamily="{StaticResource Custom1}"
                                    FontSize="30"
                                    Height="40"
                                    Margin="20,0,0,0"
@@ -106,7 +115,104 @@
                 </Grid>
             </Grid>
             <Grid Grid.Row="3">
-                <ListView>
+                <ListView x:Name="ListViewCTHD" ItemsSource="{Binding listCTHD}"
+                          SelectionMode="Single"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                        >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                        Margin="10"
+                                        Height="210"
+                                        Width="170"
+                                        Background="White"
+                                        CornerRadius="15"
+                                        >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="130"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <TextBlock
+                                                Text="{Binding MASP}"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontFamily="{StaticResource Custom}"
+                                                FontSize="12"
+                                            />
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBlock
+                                                Margin="2,0,0,0"
+                                                HorizontalAlignment="Left"
+                                                Text="{Binding SANPHAM.TENSP}"
+                                                VerticalAlignment="Center"
+                                                FontFamily="{StaticResource Custom}"
+                                                FontSize="12"
+                                            />
+                                    </Grid>
+                                    <Grid Grid.Column="2">
+                                        <TextBlock
+                                                Text="{Binding SANPHAM.SIZE}"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                FontFamily="{StaticResource Custom}"
+                                                FontSize="12"
+                                            />
+                                    </Grid>
+                                    <Grid Grid.Column="3">
+                                        <TextBlock
+                                                Text="{Binding LUONGDA}"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                MaxWidth="150"
+                                                FontFamily="{StaticResource Custom}"
+                                                FontSize="12"
+                                            />
+                                    </Grid>
+                                    <Grid Grid.Column="4">
+                                        <TextBlock
+                                                Text="{Binding LUONGDUONG}"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                MaxWidth="150"
+                                                FontFamily="{StaticResource Custom}"
+                                                FontSize="12"
+                                            />
+                                    </Grid>
+                                    <Grid Grid.Column="5">
+                                        <TextBlock
+                                                Text="{Binding SOLUONG}"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                MaxWidth="150"
+                                                FontFamily="{StaticResource Custom}"
+                                                FontSize="12"
+                                            />
+                                    </Grid>
+                                    <Grid Grid.Column="6">
+                                        <TextBlock
+                                                Text="{Binding TRIGIA,StringFormat={}{0:#,###} VNĐ}"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                MaxWidth="150"
+                                                FontFamily="{StaticResource Custom}"
+                                                FontSize="12"
+                                            />
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
                     
                 </ListView>
                 <Separator Margin="20,245,20,0" 
