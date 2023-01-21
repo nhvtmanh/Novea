@@ -7,7 +7,9 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
-      d:DesignHeight="530" d:DesignWidth="820"
+      DataContext="{StaticResource PersonInfoSettingVM}"
+      d:DesignHeight="477" d:DesignWidth="820"
+      x:Name="ChangePasswd"
       Title="PersonInfoSetting">
 
     <Border>
@@ -24,168 +26,116 @@
                 <RowDefinition Height="199*"/>
             </Grid.RowDefinitions>
 
-            <Label HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-                   FontWeight="Medium"
-                   Foreground="{StaticResource plainTextColor3}"
-               FontFamily="{StaticResource Custom}"
-               FontSize="28"
-               Grid.Row="0">
-                THÔNG TIN CÁ NHÂN
-            </Label>
-
-            <Border CornerRadius="10" Grid.Row="1">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="202*"/>
-                        <RowDefinition Height="267*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="226"/>
-                        <ColumnDefinition Width="311"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Border Margin="0,0,0,1" Grid.RowSpan="2">
-                        <Ellipse Height="170" Width="170"                             
-                                 VerticalAlignment="Top" 
-                                 HorizontalAlignment="Center"
-                                 Margin="30" StrokeThickness="5">
-                            <Ellipse.Effect>
-                                <DropShadowEffect ShadowDepth="0"
-                                        Color="Black"
-                                        Opacity="10"
-                                        BlurRadius="10"/>
-                            </Ellipse.Effect>
-                            <Ellipse.Fill>
-                                <ImageBrush x:Name="img" ImageSource="{Binding Ava}"/>
-                            </Ellipse.Fill>
-                        </Ellipse>
-                    </Border>
-                    <Button HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top"                             
-                            Style="{StaticResource MaterialDesignFlatMidBgButton}"                              
-                            Content="Thay đổi ảnh" FontFamily="{StaticResource Custom}"                              
-                            Width="150" Height="40" Background="Transparent" Foreground="{StaticResource color1}"                               
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Row="1"
-                            BorderBrush="{StaticResource color1}">
-
+            <StackPanel Margin="0,5,0,0"
+                        Grid.Row="1">
+                <Border CornerRadius="10" Height="61" Width="432" Margin="0 0 0 30">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="5"
+                          Color="Orange"
+                          Opacity="0.5"
+                          BlurRadius="10"/>
+                    </Border.Effect>
+                    <PasswordBox x:Name="oldpass"
+                                Style="{StaticResource MaterialDesignFilledPasswordBox}"
+                                VerticalAlignment="Center"
+                                materialDesign:TextFieldAssist.UnderlineBrush="Orange"
+                                materialDesign:HintAssist.Foreground="Orange"
+                                Height="47"
+                                FontSize="12"
+                                Background="White"
+                                FontWeight="Bold"
+                                FontFamily="{StaticResource Custom}"
+                                materialDesign:HintAssist.Hint="Nhập mật khẩu cũ" Margin="10,0,10,0" >
                         <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding AddImage}"
-                                                       CommandParameter="{Binding ElementName=img}"></i:InvokeCommandAction>
+                            <i:EventTrigger EventName="PasswordChanged">
+                                <i:InvokeCommandAction Command="{Binding OldPassChangedCommand}"
+                                                       CommandParameter="{Binding ElementName=oldpass}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
-                    </Button>
-                    <Grid Grid.Column="1" Margin="0,0,0,1" Grid.RowSpan="2">
-                        <StackPanel Margin="10">
-                            <TextBox Margin="0,10,0,0" 
-                                     Foreground="{StaticResource plainTextColor1}" 
-                                     FontSize="15"
-                                     Background="{StaticResource color1}"
-                                    Style="{StaticResource MaterialDesignFilledTextBox}"
-                                    VerticalAlignment="Top"
-                                    AcceptsReturn="True"
-                                    TextWrapping="Wrap"
-                                    MaxWidth="400" x:Name="NameBox"
-                                    FontFamily="{StaticResource Custom}"
-                                    materialDesign:HintAssist.Hint="Họ tên" Text="{Binding Name}"/>
-                            <DatePicker Margin="0,20,0,0"  x:Name="DateBox"                                            
-                                        Text="{Binding DoB}"
-                                        FontFamily="{StaticResource Custom}"
-                                        Foreground="{StaticResource plainTextColor1}"                                     
-                                        FontSize="15"                                    
-                                        Background="{StaticResource color1}"
-                                            Focusable="False"
-                                            materialDesign:HintAssist.Hint="Ngày sinh" 
-                                        Style="{StaticResource MaterialDesignFilledDatePicker}" HorizontalAlignment="Left" Width="291">
-                            </DatePicker>
-
-                            <TextBox Margin="0,20,-200,0" 
-                                     Foreground="{StaticResource plainTextColor1}" 
-                                     FontSize="15"
-                                     Background="{StaticResource color1}"
-                                 HorizontalAlignment="Left"
-                                    Style="{StaticResource MaterialDesignFilledTextBox}"
-                                    AcceptsReturn="True"
-                                    TextWrapping="Wrap"
-                                    MaxWidth="400" x:Name="AddressBox"
-                                    FontFamily="{StaticResource Custom}"
-                                    materialDesign:HintAssist.Hint="Địa chỉ" Text="{Binding DiaChi}" Width="291"/>
-                            <TextBox HorizontalAlignment="Left"
-                                     Foreground="{StaticResource plainTextColor1}" 
-                                     FontSize="15"
-                                     Background="{StaticResource color1}"
-                                    Margin="0,20,-200,0"
-                                    Style="{StaticResource MaterialDesignFilledTextBox}"
-                                    AcceptsReturn="True"
-                                    TextWrapping="Wrap"
-                                    MaxWidth="400" x:Name="Mail"
-                                    FontFamily="{StaticResource Custom}"
-                                    materialDesign:HintAssist.Hint="Email" Text="{Binding Mail}" Width="291"/>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Grid.Column="2" Margin="0,0,0,140" Grid.RowSpan="2">
-                        <StackPanel>
-
-                            <TextBox Foreground="{StaticResource plainTextColor1}" 
-                                     FontSize="15"
-                                     Background="{StaticResource color1}"
-                                    Style="{StaticResource MaterialDesignFilledTextBox}"
-                                 Margin="20 20 50 0"
-                            AcceptsReturn="True"
-                            TextWrapping="Wrap"
-                            FontFamily="{StaticResource Custom}"
-                            materialDesign:HintAssist.Hint="Mật khẩu" Text="{Binding Name}" Width="209"/>
-
-                            <ComboBox Margin="20,20,0,0"
-                                      Foreground="{StaticResource plainTextColor1}"
-                                      FontSize="15"                                   
-                                      Background="{StaticResource color1}"                                                            
-                                      Style="{StaticResource MaterialDesignFilledComboBox}" 
-                                      HorizontalAlignment="Left"
-                                    x:Name="GTBox" FontFamily="{StaticResource Custom}"
-                                    IsEnabled="{Binding IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
-                                    materialDesign:HintAssist.Hint="Giới tính"
-                                    Width="211" SelectedIndex="{Binding GioiTinh}" Height="47">
-                                <ComboBoxItem
-                                        Content="Nam" />
-                                <ComboBoxItem
-                                        Content="Nữ" />
-                            </ComboBox>
-                            <TextBox Margin="20,20,0,0"  Width="209"
-                                     Foreground="{StaticResource plainTextColor1}" 
-                                     FontSize="15"
-                                     Background="{StaticResource color1}"
-                                    Style="{StaticResource MaterialDesignFilledTextBox}"
-                            AcceptsReturn="True"
-                            TextWrapping="Wrap"
-                            HorizontalAlignment="Left" x:Name="SDTBox"
-                            FontFamily="{StaticResource Custom}"
-                            materialDesign:HintAssist.Hint="Số điện thoại" Text="{Binding SDT}" />
-
-                        </StackPanel>
-                    </Grid>
-                </Grid>
-            </Border>
-            <Button Grid.Row="1"                                
-                    BorderThickness="2"
-                Style="{StaticResource MaterialDesignRaisedButton}"                       
-                Width="390" 
-                Margin="310,277,120,110"  
-                Height="45"
-                Content="CẬP NHẬT THÔNG TIN" FontFamily="{StaticResource Custom}"                       
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
-                    Background="Transparent"
-                    BorderBrush="{StaticResource color1}"
-                    Foreground="{StaticResource color1}">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding UpdateInfo}"
-                                                       CommandParameter="{Binding ElementName=Settingwd}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
+                    </PasswordBox>
+                </Border>
+                <Border CornerRadius="10" Height="193" Margin="0,10,0,0" Width="438">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="5"
+                          Color="Orange"
+                          Opacity="0.5"
+                          BlurRadius="10"/>
+                    </Border.Effect>
+                    <StackPanel VerticalAlignment="Top" Height="173">
+                        <PasswordBox 
+                                x:Name="newpass"
+                                Style="{StaticResource MaterialDesignFilledPasswordBox}"
+                                materialDesign:TextFieldAssist.UnderlineBrush="Orange"
+                                materialDesign:HintAssist.Foreground="Orange"
+                                Margin="0,0,0,15"
+                                Height="48"
+                                Width="412"
+                                FontSize="12"
+                                Foreground="Black"
+                                Background="White"
+                                FontWeight="Bold"
+                                FontFamily="{StaticResource Custom}"
+                                materialDesign:HintAssist.Hint="Nhập mật khẩu mới" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PasswordChanged">
+                                    <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
+                                    CommandParameter="{Binding ElementName=newpass}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </PasswordBox>
+                        <PasswordBox x:Name="passagain"
+                                     Margin="0 30 0 0"
+                                Style="{StaticResource MaterialDesignFilledPasswordBox}"
+                                Height="48"
+                                Width="412"
+                                FontSize="12"
+                                materialDesign:TextFieldAssist.UnderlineBrush="Orange"
+                                materialDesign:HintAssist.Foreground="Orange"
+                                Foreground="Black"
+                                Background="White"
+                                FontWeight="Bold"
+                                FontFamily="{StaticResource Custom}"
+                                materialDesign:HintAssist.Hint="Nhập lại mật khẩu mới" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PasswordChanged">
+                                    <i:InvokeCommandAction Command="{Binding NewPassChangedCommand}"
+                                    CommandParameter="{Binding ElementName=passagain}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </PasswordBox>
+                    </StackPanel>
+                </Border>
+                <Button HorizontalAlignment="Center"
+                            materialDesign:ButtonAssist.CornerRadius="5"
+                            Width="375" Height="38"
+                        Foreground="{StaticResource plainTextColor2}"
+                            BorderThickness="0"
+                            FontFamily="{StaticResource Custom}" Margin="0,5,0,10">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
+                            <GradientStop Color="Yellow" Offset="0"/>
+                            <GradientStop Color="Orange" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="3"
+                          Color="Orange"
+                          Opacity="0.5"
+                          BlurRadius="5"/>
+                    </Button.Effect>
+                    Lưu
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding Save}"
+                                                       CommandParameter="{Binding ElementName=ChangePasswd}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </StackPanel>
         </Grid>
 
     </Border>
+
+
 
 </Page>

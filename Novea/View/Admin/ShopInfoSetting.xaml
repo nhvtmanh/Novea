@@ -6,33 +6,26 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       xmlns:local="clr-namespace:Novea.View.Admin"
-      mc:Ignorable="d"             
-      d:DesignHeight="477" d:DesignWidth="820"
-      Title="ShopInfoSetting">
+      mc:Ignorable="d"   
+      x:Name="ShopInfoSettingwd"
+      DataContext="{StaticResource ShopInfoSettingVM}"
+      d:DesignHeight="477" d:DesignWidth="820">
 
 
-    <Border>
+    <Border Height="565"
+            Width="820"
+            CornerRadius="0 0 30 0">
         <Border.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
                 <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
                 <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
             </LinearGradientBrush>
         </Border.Background>
-
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="26*"/>
-                <RowDefinition Height="199*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-                   FontWeight="Medium"
-               FontFamily="{StaticResource Custom}"
-               FontSize="28"
-               Grid.Row="0"
-                   Foreground="{StaticResource plainTextColor3}">
-                THÔNG TIN CỬA HÀNG
-            </Label>
 
             <Border CornerRadius="10" Grid.Row="1">
                 <Grid>
@@ -46,9 +39,10 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Border Margin="0,0,0,1" Grid.RowSpan="2">
-                        <Ellipse Height="170" Width="170" 
-                             VerticalAlignment="Top" HorizontalAlignment="Center"
-                             Margin="30" StrokeThickness="5">
+                        <Ellipse Height="170" Width="170"                             
+                                 VerticalAlignment="Top" 
+                                 HorizontalAlignment="Center"
+                                 Margin="0,32,0,0" StrokeThickness="5">
                             <Ellipse.Effect>
                                 <DropShadowEffect ShadowDepth="0"
                                         Color="Black"
@@ -60,14 +54,26 @@
                             </Ellipse.Fill>
                         </Ellipse>
                     </Border>
+                    <Button HorizontalAlignment="Center" Margin="0,76,0,0" VerticalAlignment="Top"                             
+                            Style="{StaticResource MaterialDesignFlatMidBgButton}"                              
+                            Content="Thay đổi ảnh" FontFamily="{StaticResource Custom}"                              
+                            Width="150" Height="40" Foreground="{StaticResource plainTextColor2}"                               
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Row="1"
+                            BorderBrush="{StaticResource color1}">
+                        
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
+                                <GradientStop Color="Yellow" Offset="0"/>
+                                <GradientStop Color="Orange" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <Button.Effect>
+                            <DropShadowEffect ShadowDepth="3"
+                          Color="Orange"
+                          Opacity="0.5"
+                          BlurRadius="5"/>
+                        </Button.Effect>
 
-                    <Button HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top"
-                                Style="{StaticResource MaterialDesignFlatMidBgButton}"
-                                Content="Thay đổi ảnh" FontFamily="{StaticResource Custom}"
-                                Width="150" Height="40" Background="Transparent"
-                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.Row="1"
-                            BorderBrush="{StaticResource color1}"
-                            Foreground="{StaticResource color1}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding AddImage}"
@@ -76,58 +82,143 @@
                         </i:Interaction.Triggers>
                     </Button>
                     <Grid Grid.Column="1" Margin="0,0,0,1" Grid.RowSpan="2">
-                        <StackPanel Margin="10">
+                        <StackPanel Margin="10,10,-228,10">
+                            <Border>
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="5"
+                          Color="Orange"
+                          Opacity="0.5"
+                          BlurRadius="10"/>
+                                </Border.Effect>
+                                <TextBox Margin="0,20,0,20" 
+                                     Width="300"
+                                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                                materialDesign:TextFieldAssist.UnderlineBrush="Orange"
+                                materialDesign:HintAssist.Foreground="Orange"
+                                Height="47"
+                                FontSize="12"
+                                Background="White"
+                                FontWeight="Bold"
+                                     HorizontalAlignment="Left"
+                                FontFamily="{StaticResource Custom}"
+                                     MaxWidth="529"
+                                    x:Name="NameBox"
+                                    materialDesign:HintAssist.Hint="Tên cửa hàng" 
+                                     Text="{Binding Name}"/>
+                            </Border>
 
+                            <Border>
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="5"
+                          Color="Orange"
+                          Opacity="0.5"
+                          BlurRadius="10"/>
+                                </Border.Effect>
+                                <TextBox  Margin="0,10,0,20" 
+                                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                                VerticalAlignment="Center"
+                                materialDesign:TextFieldAssist.UnderlineBrush="Orange"
+                                materialDesign:HintAssist.Foreground="Orange"
+                                Height="47"
+                                FontSize="12"
+                                Background="White"
+                                FontWeight="Bold"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"
+                                    MaxWidth="529" x:Name="AddressBox"
+                                    FontFamily="{StaticResource Custom}"
+                                    materialDesign:HintAssist.Hint="Địa chỉ" Text="{Binding DiaChi}" Width="529"/>
+                            </Border>
+                            
 
-
-                            <TextBox Foreground="{StaticResource plainTextColor1}" 
-                                     FontSize="15"
-                                     Background="{StaticResource color1}"
-                                 Margin="0 10 50 0"                                 
-                                 Style="{StaticResource MaterialDesignFilledTextBox}"                                  
-                                 AcceptsReturn="True"                                 
-                                 TextWrapping="Wrap"                                 
-                                 MaxWidth="290"                          
-                                 FontFamily="{StaticResource Custom}"                                 
-                                 materialDesign:HintAssist.Hint="Tên cửa hàng" Text="{Binding Name}" Width="290"/>
-
+                            <Border>
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="5"
+                          Color="Orange"
+                          Opacity="0.5"
+                          BlurRadius="10"/>
+                                </Border.Effect>
+                                <TextBox  Margin="0,10,0,10" 
+                                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                                VerticalAlignment="Center"
+                                materialDesign:TextFieldAssist.UnderlineBrush="Orange"
+                                materialDesign:HintAssist.Foreground="Orange"
+                                Height="47"
+                                FontSize="12"
+                                Background="White"
+                                FontWeight="Bold"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"
+                                    MaxWidth="600" x:Name="Mail"
+                                    FontFamily="{StaticResource Custom}"
+                                    materialDesign:HintAssist.Hint="Email" Text="{Binding Mail}" Width="529"/>
+                            </Border>
+                            
+                            
                         </StackPanel>
                     </Grid>
-                    <Grid Grid.Column="2" Margin="0,0,0,140" Grid.RowSpan="2">
-                        <StackPanel>
-                            <TextBox Foreground="{StaticResource plainTextColor1}" 
-                                     FontSize="15"
-                                     Background="{StaticResource color1}"
-                                 Margin="0 20 50 0"                                                                                                      
-                            Style="{StaticResource MaterialDesignFilledTextBox}"
-                            AcceptsReturn="True"
-                            TextWrapping="Wrap"
-                            MaxWidth="290" x:Name="AddressBox"
+                    
+                    <Grid Grid.Column="2" Margin="0,0,0,10" Grid.RowSpan="2">
+                        <StackPanel Margin="10,10,-10,-10">
+                            <Border>
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="5"
+                          Color="Orange"
+                          Opacity="0.5"
+                          BlurRadius="10"/>
+                                </Border.Effect>
+                                <TextBox Margin="0,20,0,10" 
+                                     Width="220"
+                                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                                VerticalAlignment="Center"
+                                materialDesign:TextFieldAssist.UnderlineBrush="Orange"
+                                materialDesign:HintAssist.Foreground="Orange"
+                                Height="47"
+                                FontSize="12"
+                                Background="White"
+                                FontWeight="Bold"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"
+                            HorizontalAlignment="Left" x:Name="SDTBox"
                             FontFamily="{StaticResource Custom}"
-                            materialDesign:HintAssist.Hint="Địa chỉ" Text="{Binding DiaChi}" Width="234"/>
+                            materialDesign:HintAssist.Hint="Số điện thoại" Text="{Binding SDT}" />
+
+                            </Border>
+                            
                         </StackPanel>
                     </Grid>
                 </Grid>
             </Border>
-            <Button Grid.Row="1"     
-                    Background="Transparent"
-                    Foreground="{StaticResource color1}"
-                    BorderBrush="{StaticResource color1}"
+            <Button Grid.Row="1"                                
                     BorderThickness="2"
                 Style="{StaticResource MaterialDesignRaisedButton}"                       
                 Width="390" 
-                Margin="317,268,113,114"  
-                Height="40"
+                Margin="329,363,101,121"  
+                Height="45"
                 Content="CẬP NHẬT THÔNG TIN" FontFamily="{StaticResource Custom}"                       
-                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" >
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
+                    Foreground="{StaticResource plainTextColor2}">
+
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
+                        <GradientStop Color="Yellow" Offset="0"/>
+                        <GradientStop Color="Orange" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="3"
+                          Color="Orange"
+                          Opacity="0.5"
+                          BlurRadius="5"/>
+                </Button.Effect>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding UpdateInfo}"
-                                                       CommandParameter="{Binding ElementName=Settingwd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=ShopInfoSettingwd}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
         </Grid>
-
     </Border>
+    
 </Page>
