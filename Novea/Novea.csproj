@@ -127,7 +127,7 @@
     <Compile Include="ViewModel\Admin\PersonInfoSettingVM.cs" />
     <Compile Include="ViewModel\Admin\ProductViewModel.cs" />
     <Compile Include="ViewModel\Admin\SettingViewModel.cs" />
-    <Compile Include="ViewModel\Admin\ShopInfoSetting.cs" />
+    <Compile Include="ViewModel\Admin\ShopInfoSettingViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\Client\GuestViewModel.cs" />
     <Compile Include="ViewModel\Admin\HomeViewModel.cs" />

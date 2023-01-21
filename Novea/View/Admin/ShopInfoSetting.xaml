@@ -6,10 +6,10 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       xmlns:local="clr-namespace:Novea.View.Admin"
-      mc:Ignorable="d"             
+      mc:Ignorable="d"   
+      x:Name="ShopInfoSettingwd"
       DataContext="{StaticResource ShopInfoSettingVM}"
-      d:DesignHeight="477" d:DesignWidth="820"
-      Title="ShopInfoSetting">
+      d:DesignHeight="477" d:DesignWidth="820">
 
 
     <Border Height="565"
@@ -214,7 +214,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding UpdateInfo}"
-                                                       CommandParameter="{Binding ElementName=Settingwd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=ShopInfoSettingwd}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
