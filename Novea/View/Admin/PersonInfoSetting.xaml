@@ -9,6 +9,7 @@
       mc:Ignorable="d" 
       DataContext="{StaticResource PersonInfoSettingVM}"
       d:DesignHeight="477" d:DesignWidth="820"
+      x:Name="ChangePasswd"
       Title="PersonInfoSetting">
 
     <Border>
