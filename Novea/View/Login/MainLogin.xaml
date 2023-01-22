@@ -88,7 +88,7 @@
             <Label Content="ĐĂNG NHẬP" 
                    Foreground="{StaticResource color1}"
                        FontFamily="Segoe UI Black" 
-                       FontSize="46" Margin="0,10" 
+                       FontSize="50" Margin="0,10" 
                        VerticalAlignment="Top" 
                        HorizontalAlignment="Center" 
                        FontWeight="Bold"/>
@@ -154,7 +154,7 @@
                     </Grid>
                 </Button>
 
-                <Button  VerticalAlignment="Top" Height="130" Width="130" Margin="548,35,333,0"   
+                <Button  VerticalAlignment="Top" Height="130" Width="130" Margin="508,40,333,0"   
                          x:Uid="0"                         
                          x:Name="btnAdmin"
                          Padding="-5"
@@ -191,7 +191,7 @@
                 </Button>
 
 
-                <Border Margin="235,196,235,95" CornerRadius="15" Width="auto" Height="auto">
+                <Border Margin="235,186,235,95" CornerRadius="15" Width="auto" Height="auto">
                     <Grid>
                         <Frame x:Name="Login" 
                                Source="/view/Login/ClientLoginPage.xaml" 
