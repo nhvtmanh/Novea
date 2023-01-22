@@ -114,8 +114,8 @@
                                 Background="White" 
                                 CornerRadius="100" 
                                 DockPanel.Dock="Top" 
-                                HorizontalAlignment="Left"                                         
-                                Margin="25 -25 35 0">
+                                HorizontalAlignment="Center"                                         
+                                Margin="0 -25 35 0">
                             <Ellipse Margin="0,0,-3,-3">
                                 <Ellipse.Fill>
                                     <!--<ImageBrush ImageSource="/Resources/Images/images.png"/>-->
@@ -133,7 +133,7 @@
                                        FontSize="22" 
                                        FontWeight="SemiBold" 
                                        DockPanel.Dock="Top" 
-                                       TextAlignment="Center" Width="185">
+                                       TextAlignment="Center" Width="auto">
 
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">

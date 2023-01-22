@@ -44,13 +44,14 @@
 
             <Border CornerRadius="10" Grid.Row="1">
                 <TabControl materialDesign:ColorZoneAssist.Mode="Custom" 
-                            materialDesign:ColorZoneAssist.Foreground="Gold">
-                    <TabItem Header="Thông tin cửa hàng">
+                            materialDesign:ColorZoneAssist.Foreground="Gold"
+                              materialDesign:ColorZoneAssist.Background="{DynamicResource MaterialDesignCardBackground}">
+                    <TabItem Foreground="Red" Header="Thông tin cửa hàng">
                         <Frame Source="/view/Admin/ShopInfoSetting.xaml" 
                            NavigationUIVisibility="Hidden">
                         </Frame>
                     </TabItem>
-                    <TabItem Header="ĐỔI MẬT KHẨU">
+                    <TabItem Header="Đổi mật khẩu">
                         <Frame Source="/view/Admin/PersonInfoSetting.xaml" 
                            NavigationUIVisibility="Hidden">
                         </Frame>

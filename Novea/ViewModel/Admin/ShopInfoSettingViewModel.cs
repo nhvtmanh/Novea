@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using Novea.Model;
 using Novea.View.Admin;
+using Novea.ViewModel.Login;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,8 +29,7 @@ namespace Novea.ViewModel.Admin
         public string DiaChi { get => _DiaChi; set { _DiaChi = value; OnPropertyChanged(); } }
         private string _Mail;
         public string Mail { get => _Mail; set { _Mail = value; OnPropertyChanged(); } }
-        private int _GioiTinh;
-        public int GioiTinh { get => _GioiTinh; set { _GioiTinh = value; OnPropertyChanged(); } }
+
         private string _SDT;
         public string SDT { get => _SDT; set { _SDT = value; OnPropertyChanged(); } }
         private string _TenTK;
@@ -58,11 +58,11 @@ namespace Novea.ViewModel.Admin
         }
         void _Loadwd(ShopInfoSetting p)
         {
-            if (LoginViewModel.IsLogin)
+            if (AdminLoginViewModel.IsLogin)
             {
                 string a = Const.TenDangNhap;
                 User = DataProvider.Ins.DB.CUAHANGs.Where(x => x.TAIKHOAN == a).FirstOrDefault();
-                Ava = User.AVATAR;  
+                Ava = User.AVATAR;
                 Name = User.TENCH;
                 DoB = User.NGDK.ToString();
                 DiaChi = User.DIADIEM;
@@ -94,15 +94,15 @@ namespace Novea.ViewModel.Admin
             temp.DIADIEM = p.AddressBox.Text;
             temp.EMAIL = p.Mail.Text;
             string rd = StringGenerator();
-            if (User.AVATAR != Ava)
-                temp.AVATAR = "/Resource/Ava/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString();
+            //if (User.AVATAR != Ava)
+            //    temp.AVATAR = "/Resource/Ava/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString();
             DataProvider.Ins.DB.SaveChanges();
-            try
-            {
-                if (User.AVATAR != Ava)
-                    File.Copy(Ava, Const._localLink + @"Resource/Ava/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString(), true);
-            }
-            catch { }
+            //try
+            //{
+            //    if (User.AVATAR != Ava)
+            //        File.Copy(Ava, Const._localLink + @"Resource/Ava/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString(), true);
+            //}
+            //catch { }
             MessageBox.Show("Cập nhật thành công!", "Thông báo");
         }
         static string StringGenerator()

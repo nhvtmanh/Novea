@@ -190,7 +190,6 @@
                 </Grid>
             </Border>
             <Button Grid.Row="1"                                
-                    BorderThickness="2"
                 Style="{StaticResource MaterialDesignRaisedButton}"                       
                 Width="390" 
                 Margin="329,363,101,121"  
@@ -219,6 +218,12 @@
                 </i:Interaction.Triggers>
             </Button>
         </Grid>
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding Loadwd}"
+                                       CommandParameter="{Binding ElementName=ShopInfoSettingwd}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
     </Border>
     
 </Page>

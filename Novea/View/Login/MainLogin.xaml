@@ -13,14 +13,16 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
+        AllowsTransparency="True"
+        WindowStyle="None"
         ResizeMode="NoResize"
+        Background="Transparent"                
         x:Name="MainLoginWD"
         WindowStartupLocation="CenterScreen"
         DataContext="{StaticResource MainLoginVM}"
-        Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
 
-    <Border>
+    <Border CornerRadius="15">
 
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
@@ -38,6 +40,51 @@
         </Border.Background>
 
         <StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Margin="0 0 10 0"
+                        Height="30">
+
+                <Button Style="{StaticResource controlButton}"
+                                    Tag="{StaticResource plainTextColor1}"
+                                    Width="30"
+                                    Margin="5 0 0 0">
+                    <materialDesign:PackIcon Kind="WindowMinimize"
+                                             Width="{Binding Width,ElementName=a}"
+                                             Height="{Binding Width,ElementName=a}">
+                        
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding MinimizeLogin}"                                    
+                                                       CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </materialDesign:PackIcon>
+
+                </Button>
+
+                <Button Style="{StaticResource controlButton}"
+                                    Tag="{StaticResource plainTextColor1}"
+                                    Width="30"
+                                    x:Name="a"
+                                    Margin="5 0 0 0">
+                    
+                    <materialDesign:PackIcon Kind="CloseThick"
+                                             Width="{Binding Width,ElementName=a}"
+                                             Height="{Binding Width,ElementName=a}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding CloseLogin}"                                               
+                                                                    CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </materialDesign:PackIcon>
+
+                </Button>
+
+                
+            </StackPanel>
             <Label Content="ĐĂNG NHẬP" 
                    Foreground="{StaticResource color1}"
                        FontFamily="Segoe UI Black" 
@@ -45,6 +92,7 @@
                        VerticalAlignment="Top" 
                        HorizontalAlignment="Center" 
                        FontWeight="Bold"/>
+            
             <TextBlock x:Name="abc" 
                                TextWrapping="Wrap" 
                                Foreground="{StaticResource plainTextColor3}" 
