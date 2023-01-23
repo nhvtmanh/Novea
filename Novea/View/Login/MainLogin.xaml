@@ -43,7 +43,7 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
-                        Margin="0 0 10 0"
+                        Margin="0 5 10 0"
                         Height="30">
 
                 <Button Style="{StaticResource controlButton}"
@@ -186,8 +186,8 @@
                                Height="20" Margin="0,100,0,0"
                                TextWrapping="Wrap" Text="CỬA HÀNG"
                                VerticalAlignment="Top" Width="100" TextAlignment="Center"/>
-
                     </Grid>
+                    
                 </Button>
 
 

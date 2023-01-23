@@ -24,7 +24,6 @@ namespace Novea.ViewModel.Admin
         public ICommand Loadwd { get; set; }
         public ICommand MoveWindow { get; set; }
         public ICommand TenDangNhap_Loaded { get; set; }
-        public ICommand Quyen_Loaded { get; set; }
 
 
         private CUAHANG _User;
@@ -44,7 +43,6 @@ namespace Novea.ViewModel.Admin
             Loadwd = new RelayCommand<MainWindow>((p) => true, (p) => _Loadwd(p));
             MoveWindow = new RelayCommand<MainWindow>((p) => true, (p) => moveWindow(p));
             TenDangNhap_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadTenAD(p));
-            Quyen_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadQuyen(p));
         }
         void LogOut(MainWindow p)
         {
@@ -123,10 +121,6 @@ namespace Novea.ViewModel.Admin
         public void LoadTenAD(MainWindow p)
         {
             p.TenDangNhap.Text = string.Join(" ", User.TENCH.Split().Reverse().Take(2).Reverse());
-        }
-        public void LoadQuyen(MainWindow p)
-        {
-            p.Quyen.Text = "Cửa hàng";
         }
         public void moveWindow(MainWindow p)
         {
