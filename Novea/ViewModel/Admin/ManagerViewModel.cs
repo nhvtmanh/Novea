@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 
 namespace Novea.ViewModel.Admin
 {
-    public class HienThi
+    public class HienThiHoaDon
     {
         public string MaSP { get; set; }
         public string TenSP { get; set; }
@@ -21,7 +21,7 @@ namespace Novea.ViewModel.Admin
         public int Tong { get; set; }
         public string Size { get; set; }
         public string LuongDa { get; set; }
-        public HienThi(string MaSp = "", string TenSP = "", string Size = "", Nullable<decimal> TriGia = 0, Nullable<int> SL = 0, int Tong = 0, string LuongDuong = "", string LuongDa = "")
+        public HienThiHoaDon(string MaSp = "", string TenSP = "", string Size = "", Nullable<decimal> TriGia = 0, Nullable<int> SL = 0, int Tong = 0, string LuongDuong = "", string LuongDa = "")
         {
             this.MaSP = MaSp;
             this.TenSP = TenSP;
@@ -63,11 +63,13 @@ namespace Novea.ViewModel.Admin
             parameter.cbxChon.SelectedIndex = 0;
             parameter.ListViewBill.Items.SortDescriptions.Add(new SortDescription("SOHD", ListSortDirection.Ascending));
         }
+
         void _SortCommand(ManagerView parameter)
         {
             var SortDirection = parameter.cbxChon.SelectedIndex.ToString() == "0" ? ListSortDirection.Ascending : ListSortDirection.Descending;
             parameter.ListViewBill.Items.SortDescriptions[0] = new SortDescription("SOHD", SortDirection);
         }
+
         void _SearchCommand(ManagerView paramater)
         {
             ObservableCollection<HOADON> temp = new ObservableCollection<HOADON>();
@@ -79,7 +81,7 @@ namespace Novea.ViewModel.Admin
             {
                 foreach (HOADON s in listHD)
                 {
-                    if (s.SOHD.ToString().Contains(paramater.txbSearch.Text))
+                    if (s.SOHD.ToLower().Contains(paramater.txbSearch.Text.ToLower()))
                     {
                         temp.Add(s);
                     }
@@ -107,10 +109,10 @@ namespace Novea.ViewModel.Admin
             detailBill.MAKH.Text = temp.MAKH;
             detailBill.MACCH.Text = temp.MACH;
 
-            List<HienThi> list = new List<HienThi>();
+            List<HienThiHoaDon> list = new List<HienThiHoaDon>();
             foreach (CTHD a in temp.CTHDs)
             {
-                list.Add(new HienThi(a.MASP, a.SANPHAM.TENSP, a.SANPHAM.SIZE, a.SANPHAM.DONGIA, a.SOLUONG, (int)a.TRIGIA, a.LuongDuong, a.LuongDa));
+                list.Add(new HienThiHoaDon(a.MASP, a.SANPHAM.TENSP, a.SANPHAM.SIZE, a.SANPHAM.DONGIA, a.SOLUONG, (int)a.TRIGIA, a.LuongDuong, a.LuongDa));
             }
 
             detailBill.ListViewSP.ItemsSource = list;
@@ -118,6 +120,7 @@ namespace Novea.ViewModel.Admin
             detailBill.ShowDialog();
             listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
             paramater.ListViewBill.SelectedItem = null;
+            _SearchCommand(paramater);
         }
 
 
