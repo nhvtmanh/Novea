@@ -11,6 +11,13 @@
       DataContext="{StaticResource StoreDetailVM}"
       x:Name="StoreDetailwd">
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCsCommand}"
+                                                       CommandParameter="{Binding ElementName=StoreDetailwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
     <Border CornerRadius="0 0 40 0"
             Background="Transparent">
         <Grid>
@@ -72,7 +79,7 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <ListView x:Name="ListViewProduct" 
-                              ItemsSource="{Binding ListProduct}"
+                              ItemsSource="{Binding listProduct}"
                               SelectionMode="Single"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                               ScrollViewer.VerticalScrollBarVisibility="Hidden">
@@ -105,12 +112,12 @@
                                 <WrapPanel/>
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
-                        <!--<i:Interaction.Triggers>
+                        <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding DetailProductCommand}"
+                                <i:InvokeCommandAction Command="{Binding DetailPdCommand}"
                                                        CommandParameter="{Binding ElementName=StoreDetailwd}"></i:InvokeCommandAction>
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>-->
+                        </i:Interaction.Triggers>
                     </ListView>
                 </Grid>
             </Grid>

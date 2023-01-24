@@ -13,7 +13,23 @@
         ResizeMode="NoResize"
         x:Name="Guestwd" Height="600" Width="1024"
         DataContext="{StaticResource GuestVM}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loadwd}"
+                                                       CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Border CornerRadius="40" BorderThickness="1">
+
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseLeftButtonDown">
+                <i:InvokeCommandAction Command="{Binding MoveWindow}"
+                                       CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+
         <Border.BorderBrush>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="{StaticResource winBorderColor1}" Offset="0"/>
@@ -69,18 +85,28 @@
                                 Margin="20 -30 35 0">
                             <Ellipse>
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="/Resources/Images/cheems.jpeg"></ImageBrush>
+                                    <!--<ImageBrush ImageSource="/Resources/Images/cheems.jpeg"></ImageBrush>-->
+                                    <ImageBrush ImageSource="{Binding Ava}"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>
                         <TextBlock 
+                            x:Name="TenDangNhap"
                             Text="nhvtmanh" 
                             Foreground="#fff8f0" 
                             FontSize="21" 
                             FontWeight="SemiBold" 
                             DockPanel.Dock="Top" 
                             Margin="5" 
-                            TextAlignment="Center"/>
+                            TextAlignment="Center">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding TenDangNhap_Loaded}"
+                                                       CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>/>
+                        </TextBlock>
+                            
                         <TextBlock 
                             Text="Khách hàng" 
                             Foreground="#fff8f0" 

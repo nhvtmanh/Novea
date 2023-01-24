@@ -125,7 +125,7 @@
                         </Border>
 
                         <!--Menu Titles-->
-                        <TextBlock x:Name="TenDangNhap"
+                        <TextBlock     x:Name="TenDangNhap"
                                        Margin="10 5 0 0"
                                        Text="VŨ ĐỨC MINH" 
                                        Foreground="#fff8f0" 

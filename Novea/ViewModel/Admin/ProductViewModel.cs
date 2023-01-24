@@ -203,7 +203,7 @@ namespace Novea.ViewModel.Admin
             AddProducts addProductView = new AddProducts();
             addProductView.MaSp.Text = rdmaSP();
             addProductView.ShowDialog();
-            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.AVAILABLE != false && p.MACH == Const.CH.MACH));
+            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             _Filter(paramater);
             _SearchCommand(paramater);
         }

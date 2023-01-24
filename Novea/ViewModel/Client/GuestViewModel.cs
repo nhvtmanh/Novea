@@ -1,4 +1,7 @@
 ﻿using Novea.View;
+using Novea.View.Client;
+using Novea.ViewModel.Login;
+using Novea.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +15,18 @@ namespace Novea.ViewModel.Client
 {
     public class GuestViewModel : BaseViewModel
     {
+        private KHACH _User;
+        public KHACH User { get => _User; set { _User = value; OnPropertyChanged(); } }
+        private string _Ava;
+        public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
         public ICommand SwitchTab { get; set; }
         public ICommand GetIdTab { get; set; }
         public ICommand LogOutCommand { get; set; }
         public ICommand CloseGuestwd { get; set; }
         public ICommand MinimizeGuestwd { get; set; }
+        public ICommand Loadwd { get; set; }
+        public ICommand TenDangNhap_Loaded { get; set; }
+        public ICommand MoveWindow { get; set; }
         public string name;
         public GuestViewModel()
         {
@@ -25,6 +35,24 @@ namespace Novea.ViewModel.Client
             LogOutCommand = new RelayCommand<Guest>((p) => { return true; }, (p) => logOut(p));
             CloseGuestwd = new RelayCommand<Guest>((p) => true, (p) => Close());
             MinimizeGuestwd = new RelayCommand<Guest>((p) => true, (p) => Minimize(p));
+            Loadwd = new RelayCommand<Guest>((p) => true, (p) => _Loadwd(p));
+            TenDangNhap_Loaded = new RelayCommand<Guest>((p) => true, (p) => LoadTenAD(p));
+            MoveWindow = new RelayCommand<Guest>((p) => true, (p) => moveWindow(p));
+        }
+        void _Loadwd(Guest p)
+        {
+            if (ClientLoginViewModel.IsLogin)
+            {
+                string a = Const.TenDangNhap;
+                User = DataProvider.Ins.DB.KHACHes.Where(x => x.TAIKHOAN == a).FirstOrDefault();
+                Const.KH = User;
+                Ava = User.AVATAR;
+                LoadTenAD(p);
+            }
+        }
+        public void LoadTenAD(Guest p)
+        {
+            p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
         }
         void switchTab(Guest p)
         {
@@ -60,6 +88,10 @@ namespace Novea.ViewModel.Client
         public void Minimize(Guest p)
         {
             p.WindowState = WindowState.Minimized;
-        }       
+        }
+        public void moveWindow(Guest p)
+        {
+            p.DragMove();
+        }
     }
 }

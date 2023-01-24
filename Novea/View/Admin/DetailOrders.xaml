@@ -10,7 +10,7 @@
         Background="Transparent"
         AllowsTransparency="True"
         x:Name="DetailOrderwd"
-        DataContext="{StaticResource DetailOrderVM}"
+        DataContext="{StaticResource DetailOrdersVM}"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Height="550" 
@@ -254,7 +254,7 @@
                             FontSize="28">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding DeleteProduct}"
+                                <i:InvokeCommandAction Command="{Binding FinishOrderCommand}"
                                                        CommandParameter="{Binding ElementName=DetailOrderwd}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>

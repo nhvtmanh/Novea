@@ -32,7 +32,10 @@ namespace Novea.ViewModel.Admin
         }
         void _LoadCsCommand(OrdersView parameter)
         {
+            listTK = new ObservableCollection<string>() { "Họ tên", "Số HD", "Ngày" };
+            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(p => p.MACH == Const.CH.MACH));
             parameter.cbxChon.SelectedIndex = 0;
+            _SearchCommand(parameter);
         }
         bool check(string m)
         {
@@ -125,7 +128,7 @@ namespace Novea.ViewModel.Admin
             detailOrder.DCKH.Text = temp.KHACH.DIACHI;
             detailOrder.ShowDialog();
             parameter.ListViewHD.SelectedItem = null;
-            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
+            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(p => p.MACH == Const.CH.MACH));
             parameter.ListViewHD.ItemsSource = listHD;
             _SearchCommand(parameter);
         }

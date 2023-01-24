@@ -9,7 +9,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="565" d:DesignWidth="820"
       Title="OrdersView"
-      DataContext="{StaticResource OrVM}"
+      DataContext="{StaticResource OrdersVM}"
       x:Name="Orderwd">
 
     <i:Interaction.Triggers>
@@ -56,7 +56,7 @@
                               Style="{StaticResource MaterialDesignFilledComboBox}"   
                               Padding="5"
                               Foreground="{StaticResource plainTextColor2}"                              
-                              materialDesign:HintAssist.Hint="Sắp xếp theo"           
+                              materialDesign:HintAssist.Hint="Tìm kiếm theo"           
                               Background="#fff"
                               materialDesign:HintAssist.Foreground="#000"
                               Width="253" 
@@ -96,7 +96,7 @@
                                 <TextBox x:Name="txbSearch"
                                      Grid.Column="1"                                                  
                                      Margin="8 0 0 0"                                                 
-                                     materialDesign:HintAssist.Hint="Tìm số hóa đơn"                                                
+                                     materialDesign:HintAssist.Hint="Vd: Tìm số hóa đơn"                                                
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"                                                 
                                      BorderThickness="0"                                                  
                                      MinWidth="200"                                                  
