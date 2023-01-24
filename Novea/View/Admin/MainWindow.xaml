@@ -61,10 +61,12 @@
                     <RowDefinition Height="253*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Border CornerRadius="20"
+                <Border CornerRadius="15"
                         Background="{StaticResource plainTextColor3}"
                         Width="154"
-                        Height="40"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Height="35"
                         BorderThickness="1.5">
                     <Border.BorderBrush>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -87,11 +89,8 @@
                                FontSize="30"                                              
                                FontWeight="Medium"                                   
                                Style="{StaticResource NameApp}" 
-                               Height="36" 
-                               HorizontalAlignment="Center"
-                               Foreground="{StaticResource plainTextColor2}">
-
-                        </TextBlock>
+                               Height="33"
+                               Foreground="{StaticResource plainTextColor2}"/>
                     </StackPanel>
                 </Border>
 
