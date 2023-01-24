@@ -64,7 +64,7 @@
                 <Border CornerRadius="20"
                         Background="{StaticResource plainTextColor3}"
                         Width="154"
-                        Height="35"
+                        Height="40"
                         BorderThickness="1.5">
                     <Border.BorderBrush>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -75,18 +75,23 @@
                     </Border.BorderBrush>
                     <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Center">
+                            VerticalAlignment="Center"
+                            Margin="0 0 0 0">
                         <materialDesign:PackIcon Kind="W3c" 
                                              Foreground="{StaticResource plainTextColor2}"                                                
+                                             Margin="0 0 3 3"                                                    
                                              Height="36"                                                                                                                            Width="30"                                                                               
                                              VerticalAlignment="Center">
                         </materialDesign:PackIcon>
-                        <TextBlock Text="NOVEA"         
+                        <TextBlock Text="NOVEA"                              
                                FontSize="30"                                              
                                FontWeight="Medium"                                   
                                Style="{StaticResource NameApp}" 
-                               Height="36"
-                               Foreground="{StaticResource plainTextColor2}" Width="103"/>
+                               Height="36" 
+                               HorizontalAlignment="Center"
+                               Foreground="{StaticResource plainTextColor2}">
+
+                        </TextBlock>
                     </StackPanel>
                 </Border>
 
@@ -138,12 +143,19 @@
                             </i:Interaction.Triggers>/>
                         </TextBlock>
 
-                        <TextBlock     Text="Chủ Cửa Hàng"  
+                        <TextBlock     Text="Quản Trị Viên"  
+                                       x:Name="Quyen"
                                        Foreground="#fff8f0"                                 
                                        FontSize="14"                                 
                                        FontWeight="SemiBold"                                 
                                        DockPanel.Dock="Top"                                  
                                        TextAlignment="Center" Width="178">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding Quyen_Loaded}"
+                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>/>
                         </TextBlock>
 
                         <Separator Margin="13" 
