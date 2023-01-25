@@ -19,7 +19,13 @@
             <i:InvokeCommandAction Command="{Binding Loadwd}"
                                                        CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
         </i:EventTrigger>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding CloseLG}"
+                                   CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
+        </i:EventTrigger>
     </i:Interaction.Triggers>
+    
+    
 
     <Border CornerRadius="30"
             BorderThickness="1">
@@ -143,18 +149,11 @@
                         </TextBlock>
 
                         <TextBlock     Text="Quản Trị Viên"  
-                                       x:Name="Quyen"
                                        Foreground="#fff8f0"                                 
                                        FontSize="14"                                 
                                        FontWeight="SemiBold"                                 
                                        DockPanel.Dock="Top"                                  
                                        TextAlignment="Center" Width="178">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Loaded">
-                                    <i:InvokeCommandAction Command="{Binding Quyen_Loaded}"
-                                                           CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>/>
                         </TextBlock>
 
                         <Separator Margin="13" 
@@ -290,7 +289,6 @@
 
                             <RadioButton Style="{StaticResource menuButton}"                                
                                          Tag="{StaticResource color1}"
-                                         Uid="6"
                                          x:Name="btnLogout">
 
                                 <i:Interaction.Triggers>

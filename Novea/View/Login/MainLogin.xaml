@@ -22,6 +22,13 @@
         DataContext="{StaticResource MainLoginVM}"
         FontFamily="{DynamicResource MaterialDesignFont}">
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding CloseLG}"
+                                   CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Border CornerRadius="15">
 
         <i:Interaction.Triggers>
@@ -48,7 +55,7 @@
 
                 <Button Style="{StaticResource controlButton}"
                                     Tag="{StaticResource plainTextColor1}"
-                                    Width="30"
+                                    Width="25"
                                     Margin="5 0 0 0">
                     <materialDesign:PackIcon Kind="WindowMinimize"
                                              Width="{Binding Width,ElementName=a}"
@@ -66,7 +73,7 @@
 
                 <Button Style="{StaticResource controlButton}"
                                     Tag="{StaticResource plainTextColor1}"
-                                    Width="30"
+                                    Width="25"
                                     x:Name="a"
                                     Margin="5 0 0 0">
                     
@@ -194,9 +201,9 @@
                 <Border Margin="235,186,235,95" CornerRadius="15" Width="auto" Height="auto">
                     <Grid>
                         <Frame x:Name="Login" 
-                               Source="/view/Login/ClientLoginPage.xaml" 
-                               NavigationUIVisibility="Hidden"
-                               DataContext="{StaticResource MainLoginVM}">
+                               Source="/view/Login/ClientLoginPage.xaml"                                
+                               NavigationUIVisibility="Hidden">
+                            
                         </Frame>
                     </Grid>
                 </Border>

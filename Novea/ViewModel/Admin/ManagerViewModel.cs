@@ -114,13 +114,10 @@ namespace Novea.ViewModel.Admin
             {
                 list.Add(new HienThiHoaDon(a.MASP, a.SANPHAM.TENSP, a.SANPHAM.SIZE, a.SANPHAM.DONGIA, a.SOLUONG, (int)a.TRIGIA, a.LuongDuong, a.LuongDa));
             }
-
             detailBill.ListViewSP.ItemsSource = list;
-
             detailBill.ShowDialog();
             listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
             paramater.ListViewBill.SelectedItem = null;
-            _SearchCommand(paramater);
         }
 
 

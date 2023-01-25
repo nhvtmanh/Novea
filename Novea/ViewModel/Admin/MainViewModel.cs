@@ -1,6 +1,7 @@
 ﻿using Novea.Model;
 using Novea.View;
 using Novea.View.Admin;
+using Novea.View.Login;
 using Novea.ViewModel.Login;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Novea.ViewModel.Admin
 {
     public class MainViewModel : BaseViewModel
     {
-        public ICommand CloseLogin { get; set; }
+        public ICommand Closewd { get; set; }
         public ICommand MinimizeLogin { get; set; }
         public ICommand GetIdTab { get; set; }
         public ICommand SwitchTab { get; set; }
@@ -24,7 +25,7 @@ namespace Novea.ViewModel.Admin
         public ICommand Loadwd { get; set; }
         public ICommand MoveWindow { get; set; }
         public ICommand TenDangNhap_Loaded { get; set; }
-        public ICommand Quyen_Loaded { get; set; }
+        public ICommand CloseLG { get; set; }
 
 
         private CUAHANG _User;
@@ -36,7 +37,7 @@ namespace Novea.ViewModel.Admin
 
         public MainViewModel()
         {
-            CloseLogin = new RelayCommand<MainWindow>((p) => true, (p) => Close());
+            Closewd = new RelayCommand<MainWindow>((p) => true, (p) => Close());
             MinimizeLogin = new RelayCommand<MainWindow>((p) => true, (p) => Minimize(p));
             GetIdTab = new RelayCommand<RadioButton>((p) => true, (p) => Name = p.Uid);
             SwitchTab = new RelayCommand<MainWindow>((p) => true, (p) => switchtab(p));
@@ -44,11 +45,10 @@ namespace Novea.ViewModel.Admin
             Loadwd = new RelayCommand<MainWindow>((p) => true, (p) => _Loadwd(p));
             MoveWindow = new RelayCommand<MainWindow>((p) => true, (p) => moveWindow(p));
             TenDangNhap_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadTenAD(p));
-            Quyen_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadQuyen(p));
         }
         void LogOut(MainWindow p)
         {
-            LoginWindow login = new LoginWindow();
+            MainLogin login = new MainLogin();
             login.Show();
             p.Close();
         }
@@ -123,10 +123,6 @@ namespace Novea.ViewModel.Admin
         public void LoadTenAD(MainWindow p)
         {
             p.TenDangNhap.Text = string.Join(" ", User.TENCH.Split().Reverse().Take(2).Reverse());
-        }
-        public void LoadQuyen(MainWindow p)
-        {
-            p.Quyen.Text = "Cửa hàng";
         }
         public void moveWindow(MainWindow p)
         {
