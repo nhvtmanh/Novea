@@ -45,12 +45,10 @@ namespace Novea.ViewModel.Client
         }
         void displayStoreDetail(Home parameter)
         {
-            Page detailStore = new StoreDetail();
             CUAHANG temp = (CUAHANG)parameter.ListViewStore.SelectedItem;
             Const.CH = temp;
+            Page detailStore = new StoreDetail();
             Guest.Instance.Main.NavigationService.Navigate(detailStore);
-            ListStore1 = new ObservableCollection<CUAHANG>(DataProvider.Ins.DB.CUAHANGs);
-            parameter.ListViewStore.SelectedItem = null;
         }
     }
 }
