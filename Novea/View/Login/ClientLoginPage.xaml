@@ -11,16 +11,21 @@
       d:DesignHeight="254" d:DesignWidth="554"
       Title="ClientLoginPage"
       x:Name="ClientLoginWD"
-      DataContext="{StaticResource ClientLoginVM}"
-      >
-
+      DataContext="{StaticResource ClientLoginVM}">
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding _Loadwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
     <Border CornerRadius="15"                        
             Background="#FD8A87">
         
         <StackPanel>
             <StackPanel Margin="0,15" Orientation="Horizontal" Width="315">
                 <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Foreground="{StaticResource plainTextColor2}"/>
-                <TextBox x:Name="dangnhap" Text="{Binding Username}"
+                <TextBox x:Name="dangnhap" Text="{Binding Username}"                         
                          Foreground="{StaticResource plainTextColor2}"
                         materialDesign:HintAssist.Hint="Tên tài khoản" Width="250" Margin="5"/>
             </StackPanel>
@@ -42,7 +47,7 @@
             <Grid Height="auto">
                 <CheckBox x:Name="Remember" Content="Nhớ tên tài khoản" Margin="50,10,0,21" Foreground="{StaticResource ResourceKey=plainTextColor2}"/>
             </Grid>
-            <Button
+            <Button IsDefault="True"
                                 Content="ĐĂNG NHẬP"
                                 Height="55"
                                 Width="302"

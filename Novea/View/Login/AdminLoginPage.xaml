@@ -10,9 +10,13 @@
       d:DesignHeight="254" d:DesignWidth="554"
       Title="AdminLoginPage"
       x:Name="AdminLoginWD"
-      DataContext="{StaticResource AdminLoginVM}"
-      >
-
+      DataContext="{StaticResource AdminLoginVM}">
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding _Loadwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Border CornerRadius="15"                        
             Background="#FC84CB">
         
@@ -41,7 +45,7 @@
             <Grid Height="auto">
                 <CheckBox x:Name="Remember" Content="Nhớ tên tài khoản" Margin="50,10,0,21" Foreground="{StaticResource ResourceKey=plainTextColor2}"/>
             </Grid>
-            <Button
+            <Button IsDefault="True"
                                 Content="ĐĂNG NHẬP"
                                 Height="55"
                                 Width="302"

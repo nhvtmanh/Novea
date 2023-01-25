@@ -29,16 +29,22 @@ namespace Novea.ViewModel.Login
         public ICommand PasswordChangedCommand { get; set; }
         public ICommand RegisterCommand { get; set; }
         public ICommand ForgetPassCommand { get; set; }
+        public ICommand _Loadwd { get; set; }
 
         public AdminLoginViewModel()
         {
             Const.IsLogin = false;
             Password = "";
             Username = "";
+            _Loadwd = new RelayCommand<ClientLoginPage>((p) => true, (p) => loadwd());
             Login = new RelayCommand<AdminLoginPage>((p) => true, (p) => login(p));
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => true, (p) => { Password = p.Password; });
             RegisterCommand = new RelayCommand<AdminLoginPage>((p) => true, (p) => _RegisterCommand(p));
             ForgetPassCommand = new RelayCommand<AdminLoginPage>((p) => true, (p) => _ForgetPassCommand(p));
+        }
+        void loadwd()
+        {
+            Const.IsLogin = false;
         }
 
         public void login(AdminLoginPage p)
