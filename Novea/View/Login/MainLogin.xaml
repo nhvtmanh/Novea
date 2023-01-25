@@ -23,7 +23,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
 
     <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
+        <i:EventTrigger EventName="MouseLeave">
             <i:InvokeCommandAction Command="{Binding CloseLG}"
                                    CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
         </i:EventTrigger>

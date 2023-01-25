@@ -41,7 +41,7 @@ namespace Novea.ViewModel.Client
         }
         void _Loadwd(Guest p)
         {
-            if (ClientLoginViewModel.IsLogin)
+            if (Const.IsLogin)
             {
                 string a = Const.TenDangNhap;
                 User = DataProvider.Ins.DB.KHACHes.Where(x => x.TAIKHOAN == a).FirstOrDefault();

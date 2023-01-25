@@ -58,7 +58,7 @@ namespace Novea.ViewModel.Admin
         }
         void _Loadwd(ShopInfoSetting p)
         {
-            if (AdminLoginViewModel.IsLogin)
+            if (Const.IsLogin)
             {
                 string a = Const.TenDangNhap;
                 User = DataProvider.Ins.DB.CUAHANGs.Where(x => x.TAIKHOAN == a).FirstOrDefault();

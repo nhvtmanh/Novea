@@ -21,7 +21,6 @@ namespace Novea.ViewModel.Login
 {
     public class AdminLoginViewModel : BaseViewModel
     {
-        public static bool IsLogin { get; set; }
         private string _Username;
         public string Username { get => _Username; set { _Username = value; OnPropertyChanged(); } }
         private string _Password;
@@ -33,7 +32,7 @@ namespace Novea.ViewModel.Login
 
         public AdminLoginViewModel()
         {
-            IsLogin = false;
+            Const.IsLogin = false;
             Password = "";
             Username = "";
             Login = new RelayCommand<AdminLoginPage>((p) => true, (p) => login(p));
@@ -51,7 +50,7 @@ namespace Novea.ViewModel.Login
                 var accCountCH = DataProvider.Ins.DB.CUAHANGs.Where(x => x.TAIKHOAN == Username && x.MATKHAU == PassEncode).Count();
                 if (accCountCH > 0)
                 {
-                    IsLogin = true;
+                    Const.IsLogin = true;
                     Const.TenDangNhap = Username;
                     MainWindow mainWindow = new MainWindow();
                     mainWindow.Show();

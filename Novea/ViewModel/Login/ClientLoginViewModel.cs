@@ -21,7 +21,6 @@ namespace Novea.ViewModel.Login
 {
     public class ClientLoginViewModel : BaseViewModel
     {
-        public static bool IsLogin { get; set; }
         private string _Username;
         public string Username { get => _Username; set { _Username = value; OnPropertyChanged(); } }
         private string _Password;
@@ -33,7 +32,7 @@ namespace Novea.ViewModel.Login
 
         public ClientLoginViewModel()
         {
-            IsLogin = false;
+            Const.IsLogin = false;
             Password = "";
             Username = "";
             Login = new RelayCommand<ClientLoginPage>((p) => true, (p) => login(p));
@@ -51,7 +50,7 @@ namespace Novea.ViewModel.Login
                 var accCountKHACH = DataProvider.Ins.DB.KHACHes.Where(x => x.TAIKHOAN == Username && x.MATKHAU == PassEncode).Count();
                 if (accCountKHACH > 0)
                 {
-                    IsLogin = true;
+                    Const.IsLogin = true;
                     Const.TenDangNhap = Username;
                     Guest guest = new Guest();
                     guest.Show();

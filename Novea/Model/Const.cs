@@ -9,6 +9,8 @@ namespace Novea.Model
 {
     public class Const : BaseViewModel
     {
+        public static bool IsLogin { get; set; }
+
         public static string TenDangNhap { get; set; }
         public static string MACH { get; set; }
         public static CUAHANG CH { get; set; }

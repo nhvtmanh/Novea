@@ -36,11 +36,14 @@ namespace Novea.ViewModel.Login
             GetIdTab = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
             SwitchTab = new RelayCommand<MainLogin>((p) => true, (p) => switchtab(p));
             MoveLogin = new RelayCommand<MainLogin>((p) => true, (p) => Move(p));
-            CloseLG = new RelayCommand<MainLogin>((p) => true, (p) => CloseLogin(p));
+            CloseLG = new RelayCommand<MainLogin>((p) => true, (p) => CloseMainLogin(p));
         }
-        public void CloseLogin(MainLogin p)
+        public void CloseMainLogin(MainLogin p)
         {
-            if(p.islogin)
+            if (Const.IsLogin)
+            {
+                p.Hide();
+            }
         }
 
         public void Close()
