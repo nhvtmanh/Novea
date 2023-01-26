@@ -42,6 +42,8 @@ namespace Novea.ViewModel.Client
         {
             listProduct_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             listProduct = new ObservableCollection<SANPHAM>(listProduct_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
+            parameter.tbTENCH.Text = Const.CH.TENCH;
+            parameter.tbDIADIEM.Text = Const.CH.DIADIEM;
         }
         
         public void _DetailPd(StoreDetail paramater)
