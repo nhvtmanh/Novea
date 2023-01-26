@@ -24,7 +24,6 @@ namespace Novea.ViewModel.Client
         public ObservableCollection<SANPHAM> listProduct_temp { get => _listProduct_temp; set { _listProduct_temp = value; /*OnPropertyChanged();*/ } }
         public ICommand DetailPdCommand { get; set; }
         public ICommand LoadCsCommand { get; set; }
-
         public StoreDetailViewModel()
         {
             listProduct_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));

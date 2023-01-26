@@ -32,18 +32,13 @@
                 </Border>
                 <Button Style="{StaticResource controlButton}"
                         Tag="{StaticResource plainTextColor1}"
-                        Margin="20,20,747,144">
+                        Margin="20,20,747,144"
+                        Click="BackToHome">
                     <materialDesign:PackIcon Kind="ArrowBack"
                                              Width="50"
                                              Height="50"
                                              HorizontalAlignment="Center"
                                              VerticalAlignment="Center">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseLeftButtonDown">
-                                <i:InvokeCommandAction Command="{Binding BackToHome}"                                               
-                                                       CommandParameter="{Binding ElementName=StoreDetailwd}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
                     </materialDesign:PackIcon>
                 </Button>
             </Grid>

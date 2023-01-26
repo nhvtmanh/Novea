@@ -11,7 +11,7 @@
       DataContext="{StaticResource StoreVM}"
       x:Name="Storewd">
     <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Load">
+        <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadStoreCommand}"
                                    CommandParameter="{Binding ElementName=Storewd}"></i:InvokeCommandAction>
         </i:EventTrigger>
