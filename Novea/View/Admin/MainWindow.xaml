@@ -331,42 +331,40 @@
                                 Orientation="Horizontal"
                                 FlowDirection="RightToLeft"
                                 Background="Transparent"
-                                Margin="-205,0,22,0"
-                                MouseLeftButtonDown="pnlControlBar_MouseLeftButtonDown"
-                                MouseEnter="pnlControlBar_MouseEnter">
+                                Margin="-205,0,22,0">
 
                             <Button Style="{StaticResource controlButton}"
                                     Tag="{StaticResource plainTextColor1}"
-                                    Width="20"
-                                    x:Name="a"
-                                    Margin="5 0 0 0">
+                                    Width="25"
+                                    x:Name="a">
                                 <materialDesign:PackIcon Kind="CloseThick"
                                                          Width="{Binding Width,ElementName=a}"
                                                          Height="{Binding Width,ElementName=a}">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="MouseLeftButtonDown">
-                                            <i:InvokeCommandAction Command="{Binding CloseLogin}"                                               
-                                                                    CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                    
                                 </materialDesign:PackIcon>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding Closewd}"                                               
+                                                                    CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
 
                             </Button>
 
                             <Button Style="{StaticResource controlButton}"
                                     Tag="{StaticResource plainTextColor1}"
-                                    Width="20"
-                                    Margin="10 0 0 0">
+                                    Width="25">
                                 <materialDesign:PackIcon Kind="WindowMinimize"
                                                          Width="{Binding Width,ElementName=a}"
                                                          Height="{Binding Width,ElementName=a}">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="MouseLeftButtonDown">
-                                            <i:InvokeCommandAction Command="{Binding MinimizeLogin}"                                    
-                                                                    CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                    
                                 </materialDesign:PackIcon>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding Minimizewd}"                                    
+                                                                    CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
 
                             </Button>
 
@@ -377,8 +375,9 @@
                         <Frame x:Name="Main" 
                            Source="/view/Admin/HomeView.xaml" 
                            NavigationUIVisibility="Hidden"
-                           DataContext="{StaticResource MainVM}"
-                           Navigated="Main_Navigated">
+                           DataContext="{StaticResource MainVM}">
+                            <!--Navigated="Main_Navigated"-->
+                            
                         </Frame>
                     </Grid>
                 </Grid>

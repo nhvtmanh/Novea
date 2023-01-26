@@ -17,15 +17,16 @@ namespace Novea.ViewModel.Admin
 {
     public class MainViewModel : BaseViewModel
     {
+        public ICommand CloseLG { get; set; }
+        
         public ICommand Closewd { get; set; }
-        public ICommand MinimizeLogin { get; set; }
+        public ICommand Minimizewd { get; set; }
         public ICommand GetIdTab { get; set; }
         public ICommand SwitchTab { get; set; }
         public ICommand LogOutCommand { get; set; }
         public ICommand Loadwd { get; set; }
         public ICommand MoveWindow { get; set; }
         public ICommand TenDangNhap_Loaded { get; set; }
-        public ICommand CloseLG { get; set; }
 
 
         private CUAHANG _User;
@@ -38,7 +39,7 @@ namespace Novea.ViewModel.Admin
         public MainViewModel()
         {
             Closewd = new RelayCommand<MainWindow>((p) => true, (p) => Close());
-            MinimizeLogin = new RelayCommand<MainWindow>((p) => true, (p) => Minimize(p));
+            Minimizewd = new RelayCommand<MainWindow>((p) => true, (p) => Minimize(p));
             GetIdTab = new RelayCommand<RadioButton>((p) => true, (p) => Name = p.Uid);
             SwitchTab = new RelayCommand<MainWindow>((p) => true, (p) => switchtab(p));
             LogOutCommand = new RelayCommand<MainWindow>((p) => { return true; }, (p) => LogOut(p));

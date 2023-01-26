@@ -19,9 +19,9 @@ namespace Novea.ViewModel.Client
     {
         private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         private ObservableCollection<SANPHAM> _listProduct;
-        public ObservableCollection<SANPHAM> listProduct { get => _listProduct; set { _listProduct = value; /*OnPropertyChanged();*/ } }
+        public ObservableCollection<SANPHAM> listProduct { get => _listProduct; set { _listProduct = value; OnPropertyChanged(); } }
         private ObservableCollection<SANPHAM> _listProduct_temp;
-        public ObservableCollection<SANPHAM> listProduct_temp { get => _listProduct_temp; set { _listProduct_temp = value; /*OnPropertyChanged();*/ } }
+        public ObservableCollection<SANPHAM> listProduct_temp { get => _listProduct_temp; set { _listProduct_temp = value; OnPropertyChanged(); } }
         public ICommand DetailPdCommand { get; set; }
         public ICommand LoadCsCommand { get; set; }
         public ICommand BackToHomeCommand { get; set; }
@@ -37,6 +37,7 @@ namespace Novea.ViewModel.Client
         {
             Home home = new Home();
             Guest.Instance.Main.NavigationService.Navigate(home);
+            Const.CH = null;
         }
         public void _LoadCsCommand(StoreDetail parameter)
         {
@@ -45,7 +46,6 @@ namespace Novea.ViewModel.Client
             parameter.tbTENCH.Text = Const.CH.TENCH;
             parameter.tbDIADIEM.Text = Const.CH.DIADIEM;
         }
-        
         public void _DetailPd(StoreDetail paramater)
         {
             //DetailProducts detailProduct = new DetailProducts();
