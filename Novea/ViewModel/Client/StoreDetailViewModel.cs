@@ -18,26 +18,26 @@ namespace Novea.ViewModel.Client
     public class StoreDetailViewModel : BaseViewModel
     {
         private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
-        private ObservableCollection<SANPHAM> _listProduct;
-        public ObservableCollection<SANPHAM> listProduct { get => _listProduct; set { _listProduct = value; /*OnPropertyChanged();*/ } }
-        private ObservableCollection<SANPHAM> _listProduct_temp;
-        public ObservableCollection<SANPHAM> listProduct_temp { get => _listProduct_temp; set { _listProduct_temp = value; /*OnPropertyChanged();*/ } }
+        private ObservableCollection<SANPHAM> listProduct;
+        public ObservableCollection<SANPHAM> ListProduct { get => listProduct; set { listProduct = value; /*OnPropertyChanged();*/ } }
+        private ObservableCollection<SANPHAM> listProductTemp;
+        public ObservableCollection<SANPHAM> ListProductTemp { get => listProductTemp; set { listProductTemp = value; /*OnPropertyChanged();*/ } }
         public ICommand DetailPdCommand { get; set; }
-        public ICommand LoadCsCommand { get; set; }
+        public ICommand LoadDetailStoreCommand { get; set; }
         public StoreDetailViewModel()
         {
-            listProduct_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
-            listProduct = new ObservableCollection<SANPHAM>(listProduct_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
-            DetailPdCommand = new RelayCommand<StoreDetail>((p) => { return p.ListViewProduct.SelectedItem == null ? false : true; }, (p) => _DetailPd(p));
-            LoadCsCommand = new RelayCommand<StoreDetail>((p) => true, (p) => _LoadCsCommand(p));
+            ListProductTemp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
+            ListProduct = new ObservableCollection<SANPHAM>(ListProductTemp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
+            DetailPdCommand = new RelayCommand<StoreDetail>((p) => { return p.ListViewProduct.SelectedItem == null ? false : true; }, (p) => DisplayDetailProduct(p));
+            LoadDetailStoreCommand = new RelayCommand<StoreDetail>((p) => true, (p) => LoadDetailStore(p));
         }
-        public void _LoadCsCommand(StoreDetail parameter)
+        public void LoadDetailStore(StoreDetail parameter)
         {
-            listProduct_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
-            listProduct = new ObservableCollection<SANPHAM>(listProduct_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
+            ListProductTemp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
+            ListProduct = new ObservableCollection<SANPHAM>(ListProductTemp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
         }
         
-        public void _DetailPd(StoreDetail paramater)
+        public void DisplayDetailProduct(StoreDetail paramater)
         {
             //DetailProducts detailProduct = new DetailProducts();
             //SANPHAM temp = (SANPHAM)paramater.ListViewProduct.SelectedItem;

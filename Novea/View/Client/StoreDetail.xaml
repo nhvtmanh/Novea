@@ -13,8 +13,8 @@
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadCsCommand}"
-                                                       CommandParameter="{Binding ElementName=StoreDetailwd}"></i:InvokeCommandAction>
+            <i:InvokeCommandAction Command="{Binding LoadDetailStoreCommand}"
+                                   CommandParameter="{Binding ElementName=StoreDetailwd}"></i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     
@@ -60,21 +60,19 @@
                                        HorizontalAlignment="Center"
                                        Margin="10"
                                        DockPanel.Dock="Top"
-                                       Text="Doc la Binh Duong Doc la Binh Duong"
                                        x:Name="tbTENCH"/>
                             <TextBlock FontFamily="{StaticResource Custom1}"
                                        FontSize="20"
                                        Foreground="{StaticResource plainTextColor2}"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
-                                       Text="Di An, Binh Duong Di An, Binh Duong Di An, Binh Duong Di An, Binh Duong"
                                        x:Name="tbDIADIEM"/>
                         </DockPanel>
                     </Border>
                 </Grid>
                 <Grid Grid.Row="1">
                     <ListView x:Name="ListViewProduct" 
-                              ItemsSource="{Binding listProduct}"
+                              ItemsSource="{Binding ListProduct}"
                               SelectionMode="Single"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                               ScrollViewer.VerticalScrollBarVisibility="Hidden">
