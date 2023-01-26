@@ -32,15 +32,13 @@
                 </Border>
                 <Button Style="{StaticResource controlButton}"
                         Tag="{StaticResource plainTextColor1}"
-                        Margin="20,20,747,144"
-                        Click="BackToHome">
+                        Margin="20,20,747,144">
                     <materialDesign:PackIcon Kind="ArrowBack"
                                              Width="50"
                                              Height="50"
                                              HorizontalAlignment="Center"
                                              VerticalAlignment="Center">
                     </materialDesign:PackIcon>
-
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding BackToHomeCommand}"

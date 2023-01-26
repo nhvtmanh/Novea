@@ -21,13 +21,13 @@ namespace Novea.ViewModel.Client
         public ObservableCollection<CUAHANG> ListStore
         {
             get => listStore;
-            set { listStore = value; }
+            set { listStore = value; OnPropertyChanged(); }
         }
         private ObservableCollection<CUAHANG> listStore1;
         public ObservableCollection<CUAHANG> ListStore1
         {
             get => listStore1;
-            set { listStore1 = value; }
+            set { listStore1 = value; OnPropertyChanged(); }
         }
         public ICommand LoadStoreCommand { get; set; }
         public ICommand StoreDetailCommand { get; set; }

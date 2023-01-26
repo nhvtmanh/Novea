@@ -19,9 +19,9 @@ namespace Novea.ViewModel.Client
     {
         private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         private ObservableCollection<SANPHAM> listProduct;
-        public ObservableCollection<SANPHAM> ListProduct { get => listProduct; set { listProduct = value; /*OnPropertyChanged();*/ } }
+        public ObservableCollection<SANPHAM> ListProduct { get => listProduct; set { listProduct = value; OnPropertyChanged(); } }
         private ObservableCollection<SANPHAM> listProductTemp;
-        public ObservableCollection<SANPHAM> ListProductTemp { get => listProductTemp; set { listProductTemp = value; /*OnPropertyChanged();*/ } }
+        public ObservableCollection<SANPHAM> ListProductTemp { get => listProductTemp; set { listProductTemp = value; OnPropertyChanged(); } }
         public ICommand DetailPdCommand { get; set; }
         public ICommand LoadDetailStoreCommand { get; set; }
         public ICommand BackToHomeCommand { get; set; }
@@ -31,12 +31,11 @@ namespace Novea.ViewModel.Client
             ListProduct = new ObservableCollection<SANPHAM>(ListProductTemp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
             DetailPdCommand = new RelayCommand<StoreDetail>((p) => { return p.ListViewProduct.SelectedItem == null ? false : true; }, (p) => DisplayDetailProduct(p));
             LoadDetailStoreCommand = new RelayCommand<StoreDetail>((p) => true, (p) => LoadDetailStore(p));
-            BackToHomeCommand = new RelayCommand<StoreDetail>((p) => true, (p) => backhome(p));
+            BackToHomeCommand = new RelayCommand<StoreDetail>((p) => true, (p) => BackToHome());
         }
-        void backhome(StoreDetail p)
+        void BackToHome()
         {
-            Home home = new Home();
-            Guest.Instance.Main.NavigationService.Navigate(home);
+            Guest.Instance.Main.NavigationService.GoBack();
             Const.CH = null;
         }
         public void LoadDetailStore(StoreDetail parameter)

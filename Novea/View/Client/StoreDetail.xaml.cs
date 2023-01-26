@@ -24,10 +24,5 @@ namespace Novea.View.Client
         {
             InitializeComponent();
         }
-
-        private void BackToHome(object sender, RoutedEventArgs e)
-        {
-            Guest.Instance.Main.NavigationService.GoBack();
-        }
     }
 }
