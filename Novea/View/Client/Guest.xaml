@@ -16,7 +16,7 @@
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding Loadwd}"
+            <i:InvokeCommandAction Command="{Binding LoadGuestwdCommand}"
                                                        CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
@@ -25,7 +25,7 @@
 
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
-                <i:InvokeCommandAction Command="{Binding MoveWindow}"
+                <i:InvokeCommandAction Command="{Binding MoveWindowCommand}"
                                        CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
             </i:EventTrigger>
         </i:Interaction.Triggers>
@@ -101,7 +101,7 @@
                             TextAlignment="Center">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
-                                    <i:InvokeCommandAction Command="{Binding TenDangNhap_Loaded}"
+                                    <i:InvokeCommandAction Command="{Binding LoadTenDangNhapCommand}"
                                                        CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>/>
@@ -127,7 +127,7 @@
                                 IsChecked="True">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                        <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
                                                            CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                     <i:EventTrigger EventName="MouseMove">
@@ -148,7 +148,7 @@
                                 Uid="1">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                        <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
                                                            CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                     <i:EventTrigger EventName="MouseMove">
@@ -169,7 +169,7 @@
                                 Uid="2">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                        <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
                                                            CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                     <i:EventTrigger EventName="MouseMove">
@@ -190,7 +190,7 @@
                                 Uid="3">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                        <i:InvokeCommandAction Command="{Binding SwitchTabCommand}"
                                                            CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                     <i:EventTrigger EventName="MouseMove">
@@ -247,7 +247,7 @@
                                                          Height="{Binding Width, ElementName=clostBt}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="MouseLeftButtonDown">
-                                            <i:InvokeCommandAction Command="{Binding CloseGuestwd}"                                               
+                                            <i:InvokeCommandAction Command="{Binding CloseGuestwdCommand}"                                               
                                                                    CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
@@ -261,7 +261,7 @@
                                                          Height="{Binding Width, ElementName=clostBt}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="MouseLeftButtonDown">
-                                            <i:InvokeCommandAction Command="{Binding MinimizeGuestwd}"                                    
+                                            <i:InvokeCommandAction Command="{Binding MinimizeGuestwdCommand}"                                    
                                                                    CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>

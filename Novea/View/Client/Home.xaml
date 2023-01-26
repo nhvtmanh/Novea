@@ -9,7 +9,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="565" d:DesignWidth="820"
       DataContext="{StaticResource StoreVM}"
-      x:Name="Storewd">
+      x:Name="Storewd"
+      KeepAlive="True">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadStoreCommand}"

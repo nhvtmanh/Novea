@@ -15,31 +15,31 @@ namespace Novea.ViewModel.Client
 {
     public class GuestViewModel : BaseViewModel
     {
-        private KHACH _User;
-        public KHACH User { get => _User; set { _User = value; OnPropertyChanged(); } }
-        private string _Ava;
-        public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
-        public ICommand SwitchTab { get; set; }
+        private KHACH user;
+        public KHACH User { get => user; set { user = value; OnPropertyChanged(); } }
+        private string ava;
+        public string Ava { get => ava; set { ava = value; OnPropertyChanged(); } }
+        public ICommand SwitchTabCommand { get; set; }
         public ICommand GetIdTab { get; set; }
         public ICommand LogOutCommand { get; set; }
-        public ICommand CloseGuestwd { get; set; }
-        public ICommand MinimizeGuestwd { get; set; }
-        public ICommand Loadwd { get; set; }
-        public ICommand TenDangNhap_Loaded { get; set; }
-        public ICommand MoveWindow { get; set; }
+        public ICommand CloseGuestwdCommand { get; set; }
+        public ICommand MinimizeGuestwdCommand { get; set; }
+        public ICommand LoadGuestwdCommand { get; set; }
+        public ICommand LoadTenDangNhapCommand { get; set; }
+        public ICommand MoveWindowCommand { get; set; }
         public string name;
         public GuestViewModel()
         {
-            SwitchTab = new RelayCommand<Guest>((p) => true, (p) => switchTab(p));
+            SwitchTabCommand = new RelayCommand<Guest>((p) => true, (p) => SwitchTab(p));
             GetIdTab = new RelayCommand<RadioButton>((p) => true, (p) => name = p.Uid);
-            LogOutCommand = new RelayCommand<Guest>((p) => { return true; }, (p) => logOut(p));
-            CloseGuestwd = new RelayCommand<Guest>((p) => true, (p) => Close());
-            MinimizeGuestwd = new RelayCommand<Guest>((p) => true, (p) => Minimize(p));
-            Loadwd = new RelayCommand<Guest>((p) => true, (p) => _Loadwd(p));
-            TenDangNhap_Loaded = new RelayCommand<Guest>((p) => true, (p) => LoadTenAD(p));
-            MoveWindow = new RelayCommand<Guest>((p) => true, (p) => moveWindow(p));
+            LogOutCommand = new RelayCommand<Guest>((p) => { return true; }, (p) => LogOut(p));
+            CloseGuestwdCommand = new RelayCommand<Guest>((p) => true, (p) => Close());
+            MinimizeGuestwdCommand = new RelayCommand<Guest>((p) => true, (p) => Minimize(p));
+            LoadGuestwdCommand = new RelayCommand<Guest>((p) => true, (p) => LoadGuestwd(p));
+            LoadTenDangNhapCommand = new RelayCommand<Guest>((p) => true, (p) => LoadTenKhach(p));
+            MoveWindowCommand = new RelayCommand<Guest>((p) => true, (p) => MoveWindow(p));
         }
-        void _Loadwd(Guest p)
+        void LoadGuestwd(Guest p)
         {
             if (Const.IsLogin)
             {
@@ -47,14 +47,14 @@ namespace Novea.ViewModel.Client
                 User = DataProvider.Ins.DB.KHACHes.Where(x => x.TAIKHOAN == a).FirstOrDefault();
                 Const.KH = User;
                 Ava = User.AVATAR;
-                LoadTenAD(p);
+                LoadTenKhach(p);
             }
         }
-        public void LoadTenAD(Guest p)
+        public void LoadTenKhach(Guest p)
         {
             p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
         }
-        void switchTab(Guest p)
+        void SwitchTab(Guest p)
         {
             int i = int.Parse(name);
             switch (i)
@@ -75,7 +75,7 @@ namespace Novea.ViewModel.Client
                     break;
             }
         }
-        void logOut(Guest p)
+        void LogOut(Guest p)
         {
             LoginWindow login = new LoginWindow();
             login.Show();
@@ -89,7 +89,7 @@ namespace Novea.ViewModel.Client
         {
             p.WindowState = WindowState.Minimized;
         }
-        public void moveWindow(Guest p)
+        public void MoveWindow(Guest p)
         {
             p.DragMove();
         }

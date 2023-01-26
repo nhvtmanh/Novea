@@ -36,14 +36,14 @@ namespace Novea.ViewModel.Client
             ListStore1 = new ObservableCollection<CUAHANG>(DataProvider.Ins.DB.CUAHANGs);
             ListStore = new ObservableCollection<CUAHANG>(ListStore1.GroupBy(p => p.TENCH).Select(grp => grp.FirstOrDefault()));
             LoadStoreCommand = new RelayCommand<Home>((p) => true, (p) => loadStore(p));
-            StoreDetailCommand = new RelayCommand<Home>((p) => { return p.ListViewStore.SelectedItem != null; }, (p) => displayStoreDetail(p));
+            StoreDetailCommand = new RelayCommand<Home>((p) => { return p.ListViewStore.SelectedItem != null; }, (p) => DisplayStoreDetail(p));
         }
         void loadStore(Home parameter)
         {
             ListStore1 = new ObservableCollection<CUAHANG>(DataProvider.Ins.DB.CUAHANGs);
             ListStore = new ObservableCollection<CUAHANG>(ListStore1.GroupBy(p => p.TENCH).Select(grp => grp.FirstOrDefault()));
         }
-        void displayStoreDetail(Home parameter)
+        void DisplayStoreDetail(Home parameter)
         {
             CUAHANG temp = (CUAHANG)parameter.ListViewStore.SelectedItem;
             Const.CH = temp;
