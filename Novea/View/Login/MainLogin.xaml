@@ -61,9 +61,8 @@
                         Height="25">
                     <materialDesign:PackIcon Kind="WindowMinimize"
                                              Width="{Binding Width,ElementName=a}"
-                                             Height="{Binding Width,ElementName=a}">
-                        
-                    </materialDesign:PackIcon>
+                                             Height="{Binding Width,ElementName=a}"/>
+                    
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding MinimizeLogin}"                                    
@@ -78,10 +77,8 @@
 
                     <materialDesign:PackIcon Kind="CloseThick"
                                              Width="{Binding Width,ElementName=a}"
-                                             Height="{Binding Width,ElementName=a}">
-                        
-                    </materialDesign:PackIcon>
-                    
+                                             Height="{Binding Width,ElementName=a}"/>
+
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding CloseLogin}"                                               
