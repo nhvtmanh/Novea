@@ -49,45 +49,42 @@
         <StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right"
+                        Width="auto"
+                        Height="auto"
                         VerticalAlignment="Top"
-                        Margin="0 0 10 0"
-                        Height="30">
+                        Margin="0 0 10 0">
 
                 <Button Style="{StaticResource controlButton}"
-                                    Tag="{StaticResource plainTextColor1}"
-                                    Width="25"
-                                    Margin="5 0 0 0">
+                        x:Name="a"
+                        Tag="{StaticResource plainTextColor1}"
+                        Width="25"
+                        Height="25">
                     <materialDesign:PackIcon Kind="WindowMinimize"
                                              Width="{Binding Width,ElementName=a}"
-                                             Height="{Binding Width,ElementName=a}">
-                        
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseLeftButtonDown">
-                                <i:InvokeCommandAction Command="{Binding MinimizeLogin}"                                    
+                                             Height="{Binding Width,ElementName=a}"/>
+                    
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding MinimizeLogin}"                                    
                                                        CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </materialDesign:PackIcon>
-
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </Button>
 
-                <Button Style="{StaticResource controlButton}"
-                                    Tag="{StaticResource plainTextColor1}"
-                                    Width="25"
-                                    x:Name="a"
-                                    Margin="5 0 0 0">
-                    
+                <Button Style="{StaticResource controlButton}"                                   
+                        Tag="{StaticResource plainTextColor1}"                                 
+                        Width="25">
+
                     <materialDesign:PackIcon Kind="CloseThick"
                                              Width="{Binding Width,ElementName=a}"
-                                             Height="{Binding Width,ElementName=a}">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseLeftButtonDown">
-                                <i:InvokeCommandAction Command="{Binding CloseLogin}"                                               
-                                                                    CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </materialDesign:PackIcon>
+                                             Height="{Binding Width,ElementName=a}"/>
 
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding CloseLogin}"                                               
+                                                                    CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </Button>
 
                 

@@ -1,6 +1,7 @@
 ﻿using Novea.View;
 using Novea.View.Client;
 using Novea.ViewModel.Login;
+using Novea.View.Login;
 using Novea.Model;
 using System;
 using System.Collections.Generic;
@@ -77,7 +78,7 @@ namespace Novea.ViewModel.Client
         }
         void LogOut(Guest p)
         {
-            LoginWindow login = new LoginWindow();
+            MainLogin login = new MainLogin();
             login.Show();
             p.Close();
         }

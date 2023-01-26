@@ -33,6 +33,7 @@ namespace Novea.ViewModel.Client
         public ICommand StoreDetailCommand { get; set; }
         public StoreViewModel()
         {
+            Const.CH = null;
             ListStore1 = new ObservableCollection<CUAHANG>(DataProvider.Ins.DB.CUAHANGs);
             ListStore = new ObservableCollection<CUAHANG>(ListStore1.GroupBy(p => p.TENCH).Select(grp => grp.FirstOrDefault()));
             LoadStoreCommand = new RelayCommand<Home>((p) => true, (p) => loadStore(p));
@@ -42,6 +43,7 @@ namespace Novea.ViewModel.Client
         {
             ListStore1 = new ObservableCollection<CUAHANG>(DataProvider.Ins.DB.CUAHANGs);
             ListStore = new ObservableCollection<CUAHANG>(ListStore1.GroupBy(p => p.TENCH).Select(grp => grp.FirstOrDefault()));
+            Const.CH = null;
         }
         void DisplayStoreDetail(Home parameter)
         {

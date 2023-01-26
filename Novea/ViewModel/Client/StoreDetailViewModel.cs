@@ -24,17 +24,27 @@ namespace Novea.ViewModel.Client
         public ObservableCollection<SANPHAM> ListProductTemp { get => listProductTemp; set { listProductTemp = value; /*OnPropertyChanged();*/ } }
         public ICommand DetailPdCommand { get; set; }
         public ICommand LoadDetailStoreCommand { get; set; }
+        public ICommand BackToHomeCommand { get; set; }
         public StoreDetailViewModel()
         {
             ListProductTemp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             ListProduct = new ObservableCollection<SANPHAM>(ListProductTemp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
             DetailPdCommand = new RelayCommand<StoreDetail>((p) => { return p.ListViewProduct.SelectedItem == null ? false : true; }, (p) => DisplayDetailProduct(p));
             LoadDetailStoreCommand = new RelayCommand<StoreDetail>((p) => true, (p) => LoadDetailStore(p));
+            BackToHomeCommand = new RelayCommand<StoreDetail>((p) => true, (p) => backhome(p));
+        }
+        void backhome(StoreDetail p)
+        {
+            Home home = new Home();
+            Guest.Instance.Main.NavigationService.Navigate(home);
+            Const.CH = null;
         }
         public void LoadDetailStore(StoreDetail parameter)
         {
             ListProductTemp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             ListProduct = new ObservableCollection<SANPHAM>(ListProductTemp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
+            parameter.tbTENCH.Text = Const.CH.TENCH;
+            parameter.tbDIADIEM.Text = Const.CH.DIADIEM;
         }
         
         public void DisplayDetailProduct(StoreDetail paramater)
