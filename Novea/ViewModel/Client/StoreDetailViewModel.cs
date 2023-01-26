@@ -24,12 +24,19 @@ namespace Novea.ViewModel.Client
         public ObservableCollection<SANPHAM> listProduct_temp { get => _listProduct_temp; set { _listProduct_temp = value; /*OnPropertyChanged();*/ } }
         public ICommand DetailPdCommand { get; set; }
         public ICommand LoadCsCommand { get; set; }
+        public ICommand BackToHomeCommand { get; set; }
         public StoreDetailViewModel()
         {
             listProduct_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             listProduct = new ObservableCollection<SANPHAM>(listProduct_temp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
             DetailPdCommand = new RelayCommand<StoreDetail>((p) => { return p.ListViewProduct.SelectedItem == null ? false : true; }, (p) => _DetailPd(p));
             LoadCsCommand = new RelayCommand<StoreDetail>((p) => true, (p) => _LoadCsCommand(p));
+            BackToHomeCommand = new RelayCommand<StoreDetail>((p) => true, (p) => backhome(p));
+        }
+        void backhome(StoreDetail p)
+        {
+            Home home = new Home();
+            Guest.Instance.Main.NavigationService.Navigate(home);
         }
         public void _LoadCsCommand(StoreDetail parameter)
         {

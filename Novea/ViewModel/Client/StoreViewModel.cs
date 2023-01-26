@@ -42,6 +42,7 @@ namespace Novea.ViewModel.Client
         {
             ListStore1 = new ObservableCollection<CUAHANG>(DataProvider.Ins.DB.CUAHANGs);
             ListStore = new ObservableCollection<CUAHANG>(ListStore1.GroupBy(p => p.TENCH).Select(grp => grp.FirstOrDefault()));
+            Const.CH = null;
         }
         void DisplayStoreDetail(Home parameter)
         {
