@@ -11,6 +11,7 @@
       xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
       x:Name="Homewd"
       d:DesignHeight="565" d:DesignWidth="820"
+      DataContext="{StaticResource HomeVM}"
       Title="HomeView">
 
     <Border CornerRadius="0 0 40 0">
@@ -72,16 +73,24 @@
                                                  Foreground="{StaticResource plainTextColor2}"
                                                  HorizontalAlignment="Right" />
                         <StackPanel Margin="5">
-                            <TextBlock Text="Total Views"
+                            <TextBlock Text="Total Products"
                                    FontSize="20"
                                    Foreground="{StaticResource plainTextColor2}"
                                    Margin="20 10 10 0"/>
 
                             <TextBlock Text="123456"
+                                       x:Name="totalproducts"
                                    FontSize="35"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
-                                   Margin="20 10 10 0" Width="135"/>
+                                   Margin="20 10 10 0" Width="135">
+                                <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding LoadSP}"
+                                                       CommandParameter="{Binding ElementName=Homewd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            </TextBlock>
                         </StackPanel>
 
 
@@ -119,10 +128,18 @@
                                    Margin="20 10 10 0"/>
 
                             <TextBlock Text="696969"
+                                       x:Name="totalorders"
                                    FontSize="35"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
-                                   Margin="20 10 10 0" Width="135"/>
+                                   Margin="20 10 10 0" Width="135">
+                                <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding LoadDon}"
+                                                       CommandParameter="{Binding ElementName=Homewd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            </TextBlock>
                         </StackPanel>
 
 
@@ -171,10 +188,18 @@
                                    Margin="20 10 10 0"/>
 
                             <TextBlock Text="13579"
+                                       x:Name="totalrevenue"
                                    FontSize="35"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
-                                   Margin="20 10 10 0" Width="135"/>
+                                   Margin="20 10 10 0" Width="135">
+                                <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding LoadDoanhThu}"
+                                                       CommandParameter="{Binding ElementName=Homewd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            </TextBlock>
                         </StackPanel>
 
 

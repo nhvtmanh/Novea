@@ -3,6 +3,7 @@
                     xmlns:viewmodel="clr-namespace:Novea.ViewModel.Admin">
     
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
+    <viewmodel:HomeViewModel x:Key="HomeVM"></viewmodel:HomeViewModel>
     <viewmodel:OrdersViewModel x:Key="OrdersVM"></viewmodel:OrdersViewModel>
     <viewmodel:DetailOrdersViewModel x:Key="DetailOrdersVM"></viewmodel:DetailOrdersViewModel>
     <viewmodel:SettingViewModel x:Key="SettingVM"></viewmodel:SettingViewModel>
