@@ -90,9 +90,9 @@ namespace Novea.ViewModel.Admin
             for (int h = 0; h < 24; h++)
             {
                 int value = 0;
-                if (query.Where(x => x.Ngay.Hour == h && x.Ngay.Day == DateTime.Now.Day && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year).Select(x => x.SL).Count() > 0)
+                if (query/*.Where(x => x.Ngay.Hour == h && x.Ngay.Day == DateTime.Now.Day && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year)*/.Select(x => x.SL).Count() > 0)
                 {
-                    value = query.Where(x => x.Ngay.Hour == h && x.Ngay.Day == DateTime.Now.Day && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year).Select(x => x.SL).Sum();
+                    value = query/*.Where(x => x.Ngay.Hour == h && x.Ngay.Day == DateTime.Now.Day && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year)*/.Select(x => x.SL).Sum();
                 }
                 Result result = new Result(h, value);
                 Data.Add(result);
