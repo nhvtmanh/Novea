@@ -16,6 +16,17 @@ using Novea.View.Admin;
 
 namespace Novea.ViewModel.Admin
 {
+    public class Result
+    {
+        private int _Hour;
+        public int Hour { get => _Hour; set { _Hour = value; } }
+        private int _SP;
+        public int SP { get => _SP; set { _SP = value; } }
+        public Result(int h = 0, int sp = 0)
+        {
+            Hour = h; SP = sp;
+        }
+    }
     class HomeViewModel : BaseViewModel
     {
 
@@ -33,23 +44,23 @@ namespace Novea.ViewModel.Admin
         private SeriesCollection _SeriesCollection { get; set; }
         public SeriesCollection SeriesCollection { get => _SeriesCollection; set { _SeriesCollection = value; OnPropertyChanged(); } }
 
-        /*        private Func<ChartPoint, string> _PointLabel;
-                public Func<ChartPoint, string> PointLabel { get => _PointLabel; set { _PointLabel = value; OnPropertyChanged(); } }
-                private int _AT;
-                public int AT { get => _AT; set { _AT = value; OnPropertyChanged(); } }
-                private int _AK;
-                public int AK { get => _AK; set { _AK = value; OnPropertyChanged(); } }
-                private int _SM;
-                public int SM { get => _SM; set { _SM = value; OnPropertyChanged(); } }*/
-        /*        private int _SP;
-                public int SP { get => _SP; set { _SP = value; OnPropertyChanged(); } }*/
-        //public List<Result> Data { get; set; }
+        private Func<ChartPoint, string> _PointLabel;
+        public Func<ChartPoint, string> PointLabel { get => _PointLabel; set { _PointLabel = value; OnPropertyChanged(); } }
+        private int _AT;
+        public int AT { get => _AT; set { _AT = value; OnPropertyChanged(); } }
+        private int _AK;
+        public int AK { get => _AK; set { _AK = value; OnPropertyChanged(); } }
+        private int _SM;
+        public int SM { get => _SM; set { _SM = value; OnPropertyChanged(); } }
+        private int _SP;
+        public int SP { get => _SP; set { _SP = value; OnPropertyChanged(); } }
+        public List<Result> Data { get; set; }
         public HomeViewModel()
         {
             LoadDoanhThu = new RelayCommand<HomeView>((p) => true, (p) => LoadDT(p));
             LoadDon = new RelayCommand<HomeView>((p) => true, (p) => SoDon(p));
-            //CT = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
-            //LoadChart = new RelayCommand<HomeView>((p) => true, (p) => LineChart(p));
+            CT = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
+            LoadChart = new RelayCommand<HomeView>((p) => true, (p) => LineChart(p));
             LoadSP = new RelayCommand<HomeView>((p) => true, (p) => _LoadSP(p));
             //LineChart();
         }
@@ -60,36 +71,38 @@ namespace Novea.ViewModel.Admin
                 count = (int)DataProvider.Ins.DB.CTHDs.Sum(x => x.SOLUONG);
             p.totalproducts.Text = count.ToString();
         }
-        //public void LineChart(HomeView p)
-        //{
-        //    // PointLabel = ChartPoint => string.Format("{0}({1:P})", ChartPoint.Y, ChartPoint.Participation);
-        //    //List<int> allValues = new List<int>();
-        //    var query = from a in DataProvider.Ins.DB.CTHDs
-        //                join b in DataProvider.Ins.DB.HOADONs on a.SOHD equals b.SOHD
-        //                where a.SOHD == b.SOHD
-                        
-        //                select new HomeViewModel()
-        //                {
-        //                    SL = a.SL,
-        //                    Ngay = b.NGHD,
-        //                    SanPham = a.MASP
-        //                };
-        //    Data = new List<Result>();
-        //    /*            foreach (var obj in query)
-        //                {*/
-        //    for (int h = 0; h < 24; h++)
-        //    {
-        //        int value = 0;
-        //        if (query.Where(x => x.Ngay.Hour == h && x.Ngay.Day == DateTime.Now.Day && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year).Select(x => x.SL).Count() > 0)
-        //        {
-        //            value = query.Where(x => x.Ngay.Hour == h && x.Ngay.Day == DateTime.Now.Day && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year).Select(x => x.SL).Sum();
-        //        }
-        //        Result result = new Result(h, value);
-        //        Data.Add(result);
-        //    }
-        //    p.Chart.ItemsSource = Data;
+        public void LineChart(HomeView p)
+        {
+            PointLabel = ChartPoint => string.Format("{0}({1:P})", ChartPoint.Y, ChartPoint.Participation);
+            List<int> allValues = new List<int>();
+            var query = from a in DataProvider.Ins.DB.CTHDs
+                        join b in DataProvider.Ins.DB.HOADONs on a.SOHD equals b.SOHD
+                        where a.SOHD == b.SOHD
 
-        //}
+                        select new HomeViewModel()
+                        {
+                            SL = (int)a.SOLUONG,
+                            SanPham = a.MASP
+                        };
+            Data = new List<Result>();
+            /*            foreach (var obj in query)
+                        {*/
+            for (int h = 0; h < 24; h++)
+            {
+                int value = 0;
+                if (query.Where(x => x.Ngay.Hour == h && x.Ngay.Day == DateTime.Now.Day && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year).Select(x => x.SL).Count() > 0)
+                {
+                    value = query.Where(x => x.Ngay.Hour == h && x.Ngay.Day == DateTime.Now.Day && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year).Select(x => x.SL).Sum();
+                }
+                Result result = new Result(h, value);
+                Data.Add(result);
+            }
+            p.Chart.ItemsSource = Data;
+
+        }
+
+
+
         public void SoDon(HomeView p)
         {
             int count = DataProvider.Ins.DB.HOADONs.Count();
