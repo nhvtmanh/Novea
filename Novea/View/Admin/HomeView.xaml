@@ -8,9 +8,11 @@
       xmlns:local="clr-namespace:Novea.View.Admin"
       mc:Ignorable="d" 
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
-      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+      xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" 
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"      
       x:Name="Homewd"
       d:DesignHeight="565" d:DesignWidth="820"
+      DataContext="{StaticResource HomeVM}"
       Title="HomeView">
 
     <Border CornerRadius="0 0 40 0">
@@ -72,16 +74,24 @@
                                                  Foreground="{StaticResource plainTextColor2}"
                                                  HorizontalAlignment="Right" />
                         <StackPanel Margin="5">
-                            <TextBlock Text="Total Views"
+                            <TextBlock Text="Total Products"
                                    FontSize="20"
                                    Foreground="{StaticResource plainTextColor2}"
                                    Margin="20 10 10 0"/>
 
                             <TextBlock Text="123456"
+                                       x:Name="totalproducts"
                                    FontSize="35"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
-                                   Margin="20 10 10 0" Width="135"/>
+                                   Margin="20 10 10 0" Width="135">
+                                <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding LoadSP}"
+                                                       CommandParameter="{Binding ElementName=Homewd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            </TextBlock>
                         </StackPanel>
 
 
@@ -119,10 +129,18 @@
                                    Margin="20 10 10 0"/>
 
                             <TextBlock Text="696969"
+                                       x:Name="totalorders"
                                    FontSize="35"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
-                                   Margin="20 10 10 0" Width="135"/>
+                                   Margin="20 10 10 0" Width="135">
+                                <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding LoadDon}"
+                                                       CommandParameter="{Binding ElementName=Homewd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            </TextBlock>
                         </StackPanel>
 
 
@@ -171,10 +189,18 @@
                                    Margin="20 10 10 0"/>
 
                             <TextBlock Text="13579"
+                                       x:Name="totalrevenue"
                                    FontSize="35"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
-                                   Margin="20 10 10 0" Width="135"/>
+                                   Margin="20 10 10 0" Width="135">
+                                <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding LoadDoanhThu}"
+                                                       CommandParameter="{Binding ElementName=Homewd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            </TextBlock>
                         </StackPanel>
 
 
@@ -187,12 +213,86 @@
 
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="203"/>
                 </Grid.ColumnDefinitions>
 
+                <Border 
+                                Height="300"
+                                Width="618"
+                                Background="Yellow"
+                                CornerRadius="25"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" 
+                                >
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="-90"
+                              RenderingBias="Quality" ShadowDepth="5"/>
+                    </Border.Effect>
+                    
+                    <StackPanel VerticalAlignment="Center">
+                        <syncfusion:SfChart 
+                            Height="250" Width="600" Header="Đồ thị sản phẩm bán ra theo giờ">
+                            <syncfusion:SfChart.PrimaryAxis>
+                                <syncfusion:CategoryAxis/>
+                            </syncfusion:SfChart.PrimaryAxis>
+                            
+                            <syncfusion:SfChart.SecondaryAxis>
+                                <syncfusion:NumericalAxis/>
+                            </syncfusion:SfChart.SecondaryAxis>
+                            
+                            <syncfusion:SfChart.Legend>
+                                <syncfusion:ChartLegend/>
+                            </syncfusion:SfChart.Legend>
+                            
+                            <syncfusion:SfChart.Resources>
+                                
+                                <DataTemplate x:Key="tooltipTemplate">
+                                    <Border Background="Red" Margin="-5"
+                                   Padding="4" CornerRadius="3">
+                                        <StackPanel Orientation="Horizontal" >
+                                            <TextBlock Text="{Binding Item.SP}"
+                                                       Foreground="White" 
+                                                       TextAlignment="Center" FontFamily="{StaticResource Custom1}"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+
+                                <Style TargetType="Path" x:Key="tooltipStyle">
+                                    <Setter Property="Stroke" Value="White"/>
+                                    <Setter Property="Fill" Value="#FFE5D8"/>
+                                </Style>
+                                
+                            </syncfusion:SfChart.Resources>
+                            
+                            <syncfusion:SfChart.Behaviors>
+                                <syncfusion:ChartTooltipBehavior Style="{StaticResource tooltipStyle}" 
+                                 Position="Pointer"/>
+                            </syncfusion:SfChart.Behaviors>
+                            
+                            <syncfusion:ColumnSeries x:Name="Chart" ShowTooltip="True" TooltipTemplate="{StaticResource tooltipTemplate}" Palette="Custom" Label="Sản phẩm" ItemsSource="{Binding Data}" XBindingPath="Hour" YBindingPath="SP" EnableAnimation="True" AnimationDuration="00:00:01">
+                                <syncfusion:ColumnSeries.ColorModel>
+                                    <syncfusion:ChartColorModel>
+                                        <syncfusion:ChartColorModel.CustomBrushes>
+                                            <SolidColorBrush Color="LightPink"/>
+                                        </syncfusion:ChartColorModel.CustomBrushes>
+                                    </syncfusion:ChartColorModel>
+                                </syncfusion:ColumnSeries.ColorModel>
+                            </syncfusion:ColumnSeries>
+                            
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding LoadChart}"
+                                                       CommandParameter="{Binding ElementName=Homewd}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            
+                        </syncfusion:SfChart>
+                    </StackPanel>
+                </Border>
+
                 <!--Chart-->
-                <Border CornerRadius="20" Padding="35 25" Background="#243771"
+                <!--<Border CornerRadius="20" Padding="35 25" Background="#243771"
                         Margin="20 0 0 0">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -282,7 +382,7 @@
                         </lvc:CartesianChart>
 
                     </Grid>
-                </Border>
+                </Border>-->
 
                 <!--Orders-->
                 <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15 0 20 40">
