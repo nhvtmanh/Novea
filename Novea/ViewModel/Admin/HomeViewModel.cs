@@ -40,30 +40,24 @@ namespace Novea.ViewModel.Admin
         public ICommand LoadDon { get; set; }
         public ICommand LoadChart { get; set; }
         public ICommand LoadSP { get; set; }
-        private ObservableCollection<CTHD> _CT;
-        public ObservableCollection<CTHD> CT { get => _CT; set { _CT = value; OnPropertyChanged(); } }
-        private SeriesCollection _SeriesCollection { get; set; }
-        public SeriesCollection SeriesCollection { get => _SeriesCollection; set { _SeriesCollection = value; OnPropertyChanged(); } }
 
-        //private Func<ChartPoint, string> _PointLabel;
-        //public Func<ChartPoint, string> PointLabel { get => _PointLabel; set { _PointLabel = value; OnPropertyChanged(); } }
-        //private int _AT;
-        //public int AT { get => _AT; set { _AT = value; OnPropertyChanged(); } }
-        //private int _AK;
-        //public int AK { get => _AK; set { _AK = value; OnPropertyChanged(); } }
-        //private int _SM;
-        //public int SM { get => _SM; set { _SM = value; OnPropertyChanged(); } }
-        //private int _SP;
-        //public int SP { get => _SP; set { _SP = value; OnPropertyChanged(); } }
+        private ObservableCollection<KHACH> _listKH;
+        public ObservableCollection<KHACH> listKH { get => _listKH; set { _listKH = value; OnPropertyChanged(); } }
+        private ObservableCollection<KHACH> _listKH1;
+        public ObservableCollection<KHACH> listKH1 { get => _listKH1; set { _listKH1 = value; OnPropertyChanged(); } }
+        private ObservableCollection<CTHD> _CTHD;
+        public ObservableCollection<CTHD> CTHD { get => _CTHD; set { _CTHD = value; OnPropertyChanged(); } }
+      
         public List<Result> Data { get; set; }
         public HomeViewModel()
         {
+            listKH1 = new ObservableCollection<KHACH>(DataProvider.Ins.DB.KHACHes);
+            listKH = new ObservableCollection<KHACH>(listKH1.GroupBy(p => p.HOTEN).Select(grp => grp.FirstOrDefault()));
             LoadDoanhThu = new RelayCommand<HomeView>((p) => true, (p) => LoadDT(p));
             LoadDon = new RelayCommand<HomeView>((p) => true, (p) => SoDon(p));
-            CT = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
+            CTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
             LoadChart = new RelayCommand<HomeView>((p) => true, (p) => LineChart(p));
             LoadSP = new RelayCommand<HomeView>((p) => true, (p) => _LoadSP(p));
-            //LineChart();
         }
         void _LoadSP(HomeView p)
         {
@@ -74,8 +68,6 @@ namespace Novea.ViewModel.Admin
         }
         public void LineChart(HomeView p)
         {
-            //PointLabel = ChartPoint => string.Format("{0}({1:P})", ChartPoint.Y, ChartPoint.Participation);
-            //List<int> allValues = new List<int>();
             var query = from a in DataProvider.Ins.DB.CTHDs  
                         join b in DataProvider.Ins.DB.HOADONs on a.SOHD equals b.SOHD
                         where a.SOHD == b.SOHD
@@ -100,9 +92,6 @@ namespace Novea.ViewModel.Admin
             p.Chart.ItemsSource = Data;
 
         }
-
-
-
         public void SoDon(HomeView p)
         {
             int count = DataProvider.Ins.DB.HOADONs.Count();
