@@ -214,42 +214,42 @@
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="203"/>
+                    <ColumnDefinition Width="250"/>
                 </Grid.ColumnDefinitions>
 
-                <Border 
-                                Height="300"
-                                Width="618"
-                                Background="Yellow"
-                                CornerRadius="25"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center" 
-                                >
+                <!--Chart-->
+
+                <Border Height="330"                               
+                        Width="550"                               
+                        Background="#243771"                              
+                        CornerRadius="25"                              
+                        HorizontalAlignment="Center"                               
+                        VerticalAlignment="Top" Margin="0,10,0,0">
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="15" Direction="-90"
                               RenderingBias="Quality" ShadowDepth="5"/>
                     </Border.Effect>
-                    
+
                     <StackPanel VerticalAlignment="Center">
-                        <syncfusion:SfChart 
-                            Height="250" Width="600" Header="Đồ thị sản phẩm bán ra theo giờ">
+                        <syncfusion:SfChart Foreground="{StaticResource color1}"
+                            Height="250" Width="545" Header="Đồ thị sản phẩm bán ra theo giờ">
                             <syncfusion:SfChart.PrimaryAxis>
                                 <syncfusion:CategoryAxis/>
                             </syncfusion:SfChart.PrimaryAxis>
-                            
+
                             <syncfusion:SfChart.SecondaryAxis>
                                 <syncfusion:NumericalAxis/>
                             </syncfusion:SfChart.SecondaryAxis>
-                            
+
                             <syncfusion:SfChart.Legend>
                                 <syncfusion:ChartLegend/>
                             </syncfusion:SfChart.Legend>
-                            
+
                             <syncfusion:SfChart.Resources>
-                                
+
                                 <DataTemplate x:Key="tooltipTemplate">
-                                    <Border Background="Red" Margin="-5"
-                                   Padding="4" CornerRadius="3">
+                                    <Border Background="Green" Margin="-5"
+                                            Padding="4" CornerRadius="300">
                                         <StackPanel Orientation="Horizontal" >
                                             <TextBlock Text="{Binding Item.SP}"
                                                        Foreground="White" 
@@ -259,282 +259,82 @@
                                 </DataTemplate>
 
                                 <Style TargetType="Path" x:Key="tooltipStyle">
-                                    <Setter Property="Stroke" Value="White"/>
+                                    <Setter Property="Stroke" Value="Pink"/>
                                     <Setter Property="Fill" Value="#FFE5D8"/>
                                 </Style>
-                                
+
                             </syncfusion:SfChart.Resources>
-                            
+
                             <syncfusion:SfChart.Behaviors>
                                 <syncfusion:ChartTooltipBehavior Style="{StaticResource tooltipStyle}" 
                                  Position="Pointer"/>
                             </syncfusion:SfChart.Behaviors>
-                            
-                            <syncfusion:ColumnSeries x:Name="Chart" ShowTooltip="True" TooltipTemplate="{StaticResource tooltipTemplate}" Palette="Custom" Label="Sản phẩm" ItemsSource="{Binding Data}" XBindingPath="Hour" YBindingPath="SP" EnableAnimation="True" AnimationDuration="00:00:01">
+
+                            <syncfusion:ColumnSeries x:Name="Chart" 
+                                                     ShowTooltip="True" 
+                                                     TooltipTemplate="{StaticResource tooltipTemplate}" 
+                                                     Palette="Custom" Label="Sản phẩm"
+                                                     ItemsSource="{Binding Data}" 
+                                                     XBindingPath="Hour" YBindingPath="SP" 
+                                                     EnableAnimation="True" 
+                                                     AnimationDuration="00:00:01">
+
                                 <syncfusion:ColumnSeries.ColorModel>
                                     <syncfusion:ChartColorModel>
                                         <syncfusion:ChartColorModel.CustomBrushes>
-                                            <SolidColorBrush Color="LightPink"/>
+                                            <SolidColorBrush Color="Red"/>
                                         </syncfusion:ChartColorModel.CustomBrushes>
                                     </syncfusion:ChartColorModel>
                                 </syncfusion:ColumnSeries.ColorModel>
                             </syncfusion:ColumnSeries>
-                            
+
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
                                     <i:InvokeCommandAction Command="{Binding LoadChart}"
                                                        CommandParameter="{Binding ElementName=Homewd}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
-                            
+
                         </syncfusion:SfChart>
                     </StackPanel>
                 </Border>
 
-                <!--Chart-->
-                <!--<Border CornerRadius="20" Padding="35 25" Background="#243771"
-                        Margin="20 0 0 0">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                            <materialDesign:PackIcon Kind="AccountChildCircle" 
-                                                     Foreground="#1e1e24"
-                                                     VerticalAlignment="Center"
-                                                     Width="20"
-                                                     Margin="0 0 5 0"
-                                                     Height="20"/>
-                            <TextBlock Text="Profit"
-                                       FontSize="20"
-                                       Foreground="#1e1e24"/>
-                        </StackPanel>
-
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0 0 0 25" Grid.Row="1">
-                            <TextBlock Text="70000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                            <TextBlock Text="60000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                            <TextBlock Text="50000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                            <TextBlock Text="40000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                            <TextBlock Text="30000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                            <TextBlock Text="20000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                            <TextBlock Text="10000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                            <TextBlock Text="0" Foreground="#717EB2" HorizontalAlignment="Right"/>
-                        </StackPanel>
-
-                        <StackPanel VerticalAlignment="Top"
-                                    Grid.Row="1" 
-                                    Orientation="Horizontal" 
-                                    Margin="77,230,1,0">
-                            <TextBlock Text="1" Foreground="#717EB2"/>
-                            <TextBlock Text="2" Foreground="#717EB2" Margin="30 0 0 0"/>
-                            <TextBlock Text="3" Foreground="#717EB2" Margin="30 0 0 0"/>
-                            <TextBlock Text="4" Foreground="#717EB2" Margin="30 0 0 0"/>
-                            <TextBlock Text="5" Foreground="#717EB2" Margin="30 0 0 0"/>
-                            <TextBlock Text="6" Foreground="#717EB2" Margin="30 0 0 0"/>
-                            <TextBlock Text="7" Foreground="#717EB2" Margin="30 0 0 0"/>
-                            <TextBlock Text="8" Foreground="#717EB2" Margin="30 0 0 0"/>
-                            <TextBlock Text="9" Foreground="#717EB2" Margin="30 0 0 0"/>
-                            <TextBlock Text="10" Foreground="#717EB2" Margin="30 0 0 0"/>
-                            <TextBlock Text="11" Foreground="#717EB2" Margin="30 0 0 0"/>
-                            <TextBlock Text="12" Foreground="#717EB2" Margin="30 0 0 0"/>
-                        </StackPanel>
-
-                        <lvc:CartesianChart Grid.Row="1" Margin="45,10,0,25">
-                            <lvc:CartesianChart.Background>
-                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                    <GradientStop Color="#26376F" Offset="0"/>
-                                    <GradientStop Color="#6A6AE4" Offset="1.5"/>
-                                </LinearGradientBrush>
-                            </lvc:CartesianChart.Background>
-
-                            <lvc:CartesianChart.DataTooltip>
-                                <lvc:DefaultTooltip Background="#24336A" Foreground="#D5E2FF"/>
-                            </lvc:CartesianChart.DataTooltip>
-
-                            <lvc:CartesianChart.AxisX>
-                                <lvc:Axis MinValue="1" MaxValue="5" Foreground="#717EB2" ShowLabels="False">
-                                    <lvc:Axis.Separator>
-                                        <lvc:Separator StrokeThickness="0" Step="1"/>
-                                    </lvc:Axis.Separator>
-                                </lvc:Axis>
-                            </lvc:CartesianChart.AxisX>
-
-                            <lvc:CartesianChart.AxisY>
-                                <lvc:Axis MinValue="0" MaxValue="60000" Foreground="#717EB2" ShowLabels="False">
-                                    <lvc:Axis.Separator>
-                                        <lvc:Separator StrokeThickness="0"/>
-                                    </lvc:Axis.Separator>
-                                </lvc:Axis>
-                            </lvc:CartesianChart.AxisY>
-
-                            <lvc:CartesianChart.Series>
-                                <lvc:LineSeries Name="Slm" Values="20000,17000,30000,15000,50000,30000,20000" StrokeThickness="2" Stroke="#ADA4FD" PointGeometrySize="0">
-                                    <lvc:LineSeries.Fill>
-                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                            <GradientStop Color="#B397E2" Offset="0.4"/>
-                                            <GradientStop Color="#6A6AE4" Offset="1.2"/>
-                                        </LinearGradientBrush>
-                                    </lvc:LineSeries.Fill>
-                                </lvc:LineSeries>
-                            </lvc:CartesianChart.Series>
-                        </lvc:CartesianChart>
-
-                    </Grid>
-                </Border>-->
-
                 <!--Orders-->
-                <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15 0 20 40">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <StackPanel Orientation="Horizontal" Margin="28 0 0 15">
-                            <materialDesign:PackIcon Kind="AccountChildCircle" 
-                                                     VerticalAlignment="Center"
-                                                     Width="20"
-                                                     Margin="0 0 5 0"                                                     
-                                                     Height="20"/>
-                            <TextBlock Text="Last Orders"
-                                       FontSize="20"/>
-                        </StackPanel>
-
-                        <StackPanel Grid.Row="1">
-                            <Border Padding="5" Margin="0 5 0 5" HorizontalAlignment="Stretch">
-                                <Border.Style>
-                                    <Style TargetType="Border">
-                                        <Setter Property="Background" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="#364c8f" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Border.Style>
-
-                                <StackPanel Orientation="Horizontal">
-                                    <Grid Width="45" Height="45" Margin="25 0 0 0">
-                                        <Border CornerRadius="10" Background="#152457" />
-                                        <materialDesign:PackIcon Kind="TshirtCrew" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Grid>
-
-                                    <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
-                                        <TextBlock Text="T-Shirt Embrace" FontSize="14" Foreground="#7C8DC3"/>
-                                        <TextBlock Text="John Doe - 10:30" FontSize="11" Foreground="#7C8DC3" Margin="0 3 0 0"/>
+                <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="18,10,18,30">
+                    <ListView x:Name="ListViewBill" ItemsSource="{Binding listHD}"      
+                              SelectionMode="Single"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"                      
+                              ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Height="29"
+                                        CornerRadius="15"
+                                        Width="587">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontFamily="{StaticResource Custom}"                                                              
+                                                   Foreground="{StaticResource plainTextColor3}"                                                   
+                                                   FontSize="14"                                                    
+                                                   HorizontalAlignment="Center"        
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding SOHD}" Height="16" Width="38"/>
                                     </StackPanel>
-                                </StackPanel>
 
-                            </Border>
+                                </Border>
 
-                            <Border Padding="5" Margin="0 5 0 5" HorizontalAlignment="Stretch">
-                                <Border.Style>
-                                    <Style TargetType="Border">
-                                        <Setter Property="Background" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="#364c8f" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Border.Style>
-
-                                <StackPanel Orientation="Horizontal">
-                                    <Grid Width="45" Height="45" Margin="25 0 0 0">
-                                        <Border CornerRadius="10" Background="#152457" />
-                                        <materialDesign:PackIcon Kind="TshirtCrew" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
-                                    </Grid>
-
-                                    <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
-                                        <TextBlock Text="T-Shirt Embrace" FontSize="14" Foreground="#7C8DC3"/>
-                                        <TextBlock Text="John Doe - 10:30" FontSize="11" Foreground="#7C8DC3" Margin="0 3 0 0"/>
-                                    </StackPanel>
-                                </StackPanel>
-
-                            </Border>
-
-                            <Border Padding="5" Margin="0 5 0 5" HorizontalAlignment="Stretch">
-                                <Border.Style>
-                                    <Style TargetType="Border">
-                                        <Setter Property="Background" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="#364c8f" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Border.Style>
-
-                                <StackPanel Orientation="Horizontal">
-                                    <Grid Width="45" Height="45" Margin="25 0 0 0">
-                                        <Border CornerRadius="10" Background="#152457" />
-                                        <materialDesign:PackIcon Kind="TshirtCrew" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30"/>
-                                    </Grid>
-
-                                    <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
-                                        <TextBlock Text="T-Shirt Embrace" FontSize="14" Foreground="#7C8DC3"/>
-                                        <TextBlock Text="John Doe - 10:30" FontSize="11" Foreground="#7C8DC3" Margin="0 3 0 0"/>
-                                    </StackPanel>
-                                </StackPanel>
-
-                            </Border>
-
-                            <Border Padding="5" Margin="0 5 0 5" HorizontalAlignment="Stretch">
-                                <Border.Style>
-                                    <Style TargetType="Border">
-                                        <Setter Property="Background" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="#364c8f" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Border.Style>
-
-                                <StackPanel Orientation="Horizontal">
-                                    <Grid Width="45" Height="45" Margin="25 0 0 0">
-                                        <Border CornerRadius="10" Background="#152457" />
-                                        <materialDesign:PackIcon Kind="TshirtCrew" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30"/>
-                                    </Grid>
-
-                                    <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
-                                        <TextBlock Text="T-Shirt Embrace" FontSize="14" Foreground="#7C8DC3"/>
-                                        <TextBlock Text="John Doe - 10:30" FontSize="11" Foreground="#7C8DC3" Margin="0 3 0 0"/>
-                                    </StackPanel>
-                                </StackPanel>
-
-                            </Border>
-
-                            <Border Padding="5" Margin="0 5 0 5" HorizontalAlignment="Stretch">
-                                <Border.Style>
-                                    <Style TargetType="Border">
-                                        <Setter Property="Background" Value="Transparent" />
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="#364c8f" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Border.Style>
-
-                                <StackPanel Orientation="Horizontal">
-                                    <Grid Width="45" Height="45" Margin="25 0 0 0">
-                                        <Border CornerRadius="10" Background="#152457" />
-                                        <materialDesign:PackIcon Kind="AccountChildCircle" />
-                                    </Grid>
-
-                                    <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
-                                        <TextBlock Text="T-Shirt Embrace" FontSize="14" Foreground="#7C8DC3"/>
-                                        <TextBlock Text="John Doe - 10:30" FontSize="11" Foreground="#7C8DC3" Margin="0 3 0 0"/>
-                                    </StackPanel>
-                                </StackPanel>
-
-                            </Border>
-
-                        </StackPanel>
-                    </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Margin="0 10 0 0"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding DetailPdCommand}"
+                                                       CommandParameter="{Binding ElementName=Managerwd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListView>
                 </Border>
 
 
