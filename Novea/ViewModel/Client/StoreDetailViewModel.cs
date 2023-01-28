@@ -29,7 +29,7 @@ namespace Novea.ViewModel.Client
         {
             ListProductTemp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             ListProduct = new ObservableCollection<SANPHAM>(ListProductTemp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
-            DetailPdCommand = new RelayCommand<StoreDetail>((p) => { return p.ListViewProduct.SelectedItem == null ? false : true; }, (p) => DisplayDetailProduct(p));
+            DetailPdCommand = new RelayCommand<StoreDetail>((p) => { return p.ListViewProduct.SelectedItem != null; }, (p) => DisplayDetailProduct(p));
             LoadDetailStoreCommand = new RelayCommand<StoreDetail>((p) => true, (p) => LoadDetailStore(p));
             BackToHomeCommand = new RelayCommand<StoreDetail>((p) => true, (p) => BackToHome());
         }
@@ -48,6 +48,8 @@ namespace Novea.ViewModel.Client
         
         public void DisplayDetailProduct(StoreDetail paramater)
         {
+            ProductDetail productDetail = new ProductDetail();
+            productDetail.ShowDialog();
             //DetailProducts detailProduct = new DetailProducts();
             //SANPHAM temp = (SANPHAM)paramater.ListViewProduct.SelectedItem;
             //detailProduct.MaSP.Text = temp.MASP;

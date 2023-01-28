@@ -1,0 +1,230 @@
+﻿<Window x:Class="Novea.View.Client.ProductDetail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Novea.View.Client"
+        mc:Ignorable="d"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        x:Name="ProductDetailwd" Height="500" Width="750"
+        DataContext="{StaticResource ProductDetailVM}">
+    <Border CornerRadius="15">
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
+                <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource primaryBackColor2}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Border CornerRadius="15 0 0 15"
+                        Background="{StaticResource plainTextColor3}">
+                    <StackPanel>
+                        <Border Width="295"
+                                Height="295"
+                                HorizontalAlignment="Center"
+                                Margin="0,50,0,0">
+                            <Image Source="/Resources/Images/cheems.jpeg"/>
+                        </Border>
+                        <TextBlock FontFamily="{StaticResource Custom1}"
+                                   FontSize="30"
+                                   Foreground="{StaticResource plainTextColor2}"
+                                   HorizontalAlignment="Center"
+                                   Margin="10"
+                                   Text="Tra sua Tran Cheems"
+                                   x:Name="tbTENSP"/>
+                        <TextBlock FontFamily="{StaticResource Custom1}"
+                                   FontSize="20"
+                                   Foreground="{StaticResource plainTextColor2}"
+                                   HorizontalAlignment="Center"
+                                   Text="69.696.969"
+                                   x:Name="tbDONGIA"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Button Style="{StaticResource controlButton}"
+                            Tag="{StaticResource plainTextColor1}"
+                            Width="35"
+                            Margin="390,0,0,0"
+                            x:Name="clostBt">
+                        <materialDesign:PackIcon Kind="CloseThick" 
+                                                 Width="{Binding Width, ElementName=clostBt}" 
+                                                 Height="{Binding Width, ElementName=clostBt}">
+                        </materialDesign:PackIcon>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding CloseProductDetailwdCommand}"                                               
+                                                       CommandParameter="{Binding ElementName=ProductDetailwd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="{StaticResource Custom1}"
+                                           Foreground="{StaticResource color1}"
+                                           FontSize="30"
+                                           Height="35"
+                                           Margin="10,-120,0,0"
+                                           Text="Size"/>
+                                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                                          Padding="5"
+                                          Foreground="{StaticResource plainTextColor2}"
+                                          Background="{StaticResource plainTextColor3}"
+                                          FontSize="20"
+                                          Width="70" Height="65"
+                                          Margin="10,-130,0,0"
+                                          SelectedIndex="0">
+                                    <ComboBoxItem Content="S"/>
+                                    <ComboBoxItem Content="M"/>
+                                    <ComboBoxItem Content="L"/>
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <StackPanel>
+                                <TextBlock FontFamily="{StaticResource Custom1}"
+                                           Foreground="{StaticResource color1}"
+                                           FontSize="30"
+                                           Height="35"
+                                           Width="35"
+                                           Margin="-160,22,0,0"
+                                           Text="SL"/>
+                                <TextBox FontFamily="{StaticResource Custom1}"
+                                         Background="{StaticResource plainTextColor3}"
+                                         FontSize="25"
+                                         Width="70" Height="40"
+                                         Margin="-35,-35,0,0"
+                                         Text="1">
+                                </TextBox>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <StackPanel>
+                                <TextBlock FontFamily="{StaticResource Custom1}"
+                                           Foreground="{StaticResource color1}"
+                                           FontSize="30"
+                                           Height="35"
+                                           Width="130"
+                                           Margin="10,15,85,0"
+                                           Text="Lượng đá"/>
+                                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                                          Padding="5"
+                                          Foreground="{StaticResource plainTextColor2}"
+                                          Background="{StaticResource plainTextColor3}"
+                                          FontSize="20"
+                                          Width="100" Height="55"
+                                          Margin="-80,10,0,0"
+                                          SelectedIndex="0">
+                                    <ComboBoxItem Content="100%"/>
+                                    <ComboBoxItem Content="70%"/>
+                                    <ComboBoxItem Content="30%"/>
+                                    <ComboBoxItem Content="0%"/>
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <StackPanel>
+                                <TextBlock FontFamily="{StaticResource Custom1}"
+                                           Foreground="{StaticResource color1}"
+                                           FontSize="30"
+                                           Height="35"
+                                           Width="200"
+                                           Margin="0,15,0,0"
+                                           Text="Lượng đường"/>
+                                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                                          Padding="5"
+                                          Foreground="{StaticResource plainTextColor2}"
+                                          Background="{StaticResource plainTextColor3}"
+                                          FontSize="20"
+                                          Width="100" Height="55"
+                                          Margin="-80,10,0,0"
+                                          SelectedIndex="0">
+                                    <ComboBoxItem Content="100%"/>
+                                    <ComboBoxItem Content="70%"/>
+                                    <ComboBoxItem Content="30%"/>
+                                    <ComboBoxItem Content="0%"/>
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <DockPanel Margin="20,5,0,0">
+                                <TextBlock FontFamily="{StaticResource Custom1}"
+                                           FontSize="20"
+                                           Height="25"
+                                           Foreground="{StaticResource plainTextColor3}"
+                                           HorizontalAlignment="Center"
+                                           DockPanel.Dock="Top"
+                                           Text="Thành tiền"/>
+                                <TextBlock FontFamily="{StaticResource Custom1}"
+                                           FontSize="20"
+                                           Height="25"
+                                           Foreground="{StaticResource plainTextColor3}"
+                                           HorizontalAlignment="Center"
+                                           DockPanel.Dock="Top"
+                                           Text="69.696.969.696d"/>
+                            </DockPanel>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Button Background="BlueViolet" 
+                                    BorderBrush="{StaticResource color1}"
+                                    Foreground="{StaticResource color1}"
+                                    FontSize="20"
+                                    Width="210"
+                                    Height="50"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Thêm vào giỏ hàng">  
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding AddToCartCommand}"
+                                                       CommandParameter="{Binding ElementName=ProductDetailwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

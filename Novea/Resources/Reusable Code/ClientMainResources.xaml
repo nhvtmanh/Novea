@@ -4,4 +4,5 @@
     <viewmodel:GuestViewModel x:Key="GuestVM"></viewmodel:GuestViewModel>
     <viewmodel:StoreDetailViewModel x:Key="StoreDetailVM"></viewmodel:StoreDetailViewModel>
     <viewmodel:StoreViewModel x:Key="StoreVM"></viewmodel:StoreViewModel>
+    <viewmodel:ProductDetailViewModel x:Key="ProductDetailVM"></viewmodel:ProductDetailViewModel>
 </ResourceDictionary>
