@@ -17,8 +17,7 @@ CREATE TABLE KHACH
 	DIACHI nvarchar(max),
 	NGDK datetime,
 	DOANHSO money,
-	AVATAR varchar(max),
-	IMGdb image
+	AVATAR varchar(max)
 )
 
 CREATE TABLE CUAHANG
@@ -32,8 +31,7 @@ CREATE TABLE CUAHANG
 	EMAIL varchar(max),
 	NGDK datetime,	
 	DOANHTHU money,
-	AVATAR varchar(max),	
-	IMGdb image
+	AVATAR varchar(max)	
 )
 
 CREATE TABLE SANPHAM
@@ -47,7 +45,6 @@ CREATE TABLE SANPHAM
 	MOTA nvarchar(max),
 	AVAILABLE bit,
 	HINHSP varchar(max),
-	IMGdb image,
 	MACH varchar(128) FOREIGN KEY REFERENCES CUAHANG(MACH)
 )
 
@@ -56,6 +53,7 @@ CREATE TABLE HOADON
 	SOHD varchar(128) primary key,
 	NGMH datetime,
 	TONGTIEN money,
+	DONE bit,
 	MAKH varchar(128) FOREIGN KEY REFERENCES KHACH(MAKH),
 	MACH varchar(128) FOREIGN KEY REFERENCES CUAHANG(MACH),
 )
@@ -71,46 +69,32 @@ CREATE TABLE CTHD
 	LuongDuong varchar(10)
 )
 
-
-
------- ------
-INSERT INTO KHACH(MAKH,HOTEN,NGSINH,NGDK) VALUES ('KH01',N'Nguyễn Tuân','20/10/1980','13/12/2022')
-INSERT INTO KHACH(MAKH,HOTEN,NGSINH,NGDK) VALUES ('KH02',N'Nguyễn Minh Đức','20/10/2002','13/12/2022')
-UPDATE KHACH SET NGDK = '15/12/2022' WHERE MAKH = 'KH01'
-
-INSERT INTO CUAHANG(MACH, TENCH, DIADIEM) VALUES ('CH01', N'Hai Lần Coffee', N'số 5 Võ Văn Tần, Thủ Đức')
-INSERT INTO CUAHANG(MACH, TENCH, DIADIEM) VALUES ('CH02', N'Mini NonStop', N'số 7 Hàn Thuyên, Thủ Đức')
-INSERT INTO CUAHANG(MACH, TENCH, DIADIEM) VALUES ('CH03', N'Độc lạ Bình Dương', N'số 10 Nguyễn An Ninh, Dĩ An')
------- ------
------- ------
-INSERT INTO SANPHAM(MASP, TENSP, DONGIA, MACH) VALUES ('SP001', N'Cà phê sữa', 25000, 'CH01')
-INSERT INTO SANPHAM(MASP, TENSP, DONGIA, MACH) VALUES ('SP002', N'Trà lài chanh sả', 33000, 'CH01')
-INSERT INTO SANPHAM(MASP, TENSP, DONGIA, MACH) VALUES ('SP003', N'Trà sữa việt quất', 40000, 'CH02')
-INSERT INTO SANPHAM(MASP, TENSP, DONGIA, MACH) VALUES ('SP004', N'Hồng trà phúc bồn tử', 30000, 'CH03')
-
-INSERT INTO SANPHAM(MASP, TENSP, DONGIA, MACH) VALUES ('SP005', N'Socola đá xay', 29000, 'CH02')
-INSERT INTO SANPHAM(MASP, TENSP, DONGIA, MACH) VALUES ('SP006', N'Trà sữa thái xanh', 25000, 'CH03')
-INSERT INTO SANPHAM(MASP, TENSP, DONGIA, MACH) VALUES ('SP007', N'Sữa chua chanh dây', 12000, 'CH02')
-INSERT INTO SANPHAM(MASP, TENSP, DONGIA, MACH) VALUES ('SP008', N'Oreo đá xay', 30000, 'CH03')
------- ------
------- ------
-
-INSERT INTO CTHD(SOHD, MASP, SOLUONG, TRIGIA) VALUES ('HD10', 'SP001', 5, 200000)
-INSERT INTO CTHD(SOHD, MASP, SOLUONG, TRIGIA) VALUES ('HD10', 'SP002', 3, 100000)
------- ------
-INSERT INTO HOADON(SOHD, NGMH) VALUES ('HD10', '2022/12/24')
-INSERT INTO HOADON(SOHD, NGMH) VALUES ('HD11', '2022/12/14')
------- ------
------- ------
-
-
-
+-----------
+-----------
+INSERT INTO KHACH(MAKH,TAIKHOAN ,MATKHAU,HOTEN,NGSINH,GIOITINH,SDT,EMAIL,DIACHI,AVATAR, DOANHSO, NGDK) VALUES 
+	('KH01','q','q',N'Tuấn Kiệt', '20/03/2010','Nam','123','1@gm.uit.edu.vn','q','string/a/b', 0,'22/01/2010')
+-----------
+-----------
+INSERT INTO CUAHANG(MACH,TAIKHOAN ,MATKHAU,TENCH,SDT,EMAIL,DIADIEM,AVATAR, DOANHTHU, NGDK) VALUES 
+	('CH01','q','q',N'Hai Lần Cà phê','1234','2@gm.uit.edu.vn','q','string/a/b', 0,'10/08/2022')
+-----------
+-----------
+INSERT INTO SANPHAM(MASP,TENSP,LOAISP,DONVI,DONGIA,SIZE,MOTA,AVAILABLE,HINHSP,MACH) VALUES 
+('SP01',N'Trà sữa tình yêu',N'trà sữa','ly','45000','M',N'Thơm ngon mời bạn măm nha','true','a/b/c','CH01')
+INSERT INTO SANPHAM(MASP,TENSP,LOAISP,DONVI,DONGIA,SIZE,MOTA,AVAILABLE,HINHSP,MACH) VALUES 
+('SP02',N'Trà sữa uyên ương',N'trà sữa','ly','40000','M',N'Thơm ngon mời bạn măm nha','true','a/b/c','CH01')
+-----------
+-----------
+INSERT INTO HOADON(SOHD,NGMH,DONE,MAKH,MACH, TONGTIEN) VALUES('HD01','20/01/2023','true','KH01','CH01', 0)
+-----------
+-----------
+INSERT INTO CTHD(SOHD, MASP, SOLUONG, LUONGDA,LUONGDUONG, TRIGIA) VALUES ('HD01','SP01',5,'50','50', 0)
+INSERT INTO CTHD(SOHD, MASP, SOLUONG, LUONGDA,LUONGDUONG, TRIGIA) VALUES ('HD01','SP02',5,'50','50', 0)
+-----------
+-----------
 
 /*--I.Rang buoc toan ven cho KHACH--*/
-----1.Ngay sinh phai nho hon ngay dang ky thanh vien
---ALTER TABLE KHACH
---ADD CONSTRAINT CK_KHACH_NGDK CHECK (NGSINH < NGDK)
---2.Doanh so ban ra cho 1 khach hang bang tong tat ca tong tien trong hoa don ma khach hang do mua
+--1.Doanh so ban ra cho 1 khach hang bang tong tat ca tong tien trong hoa don ma khach hang do mua
 	--a.Trigger cho bang KHACH--
 		---INSERT---
 CREATE TRIGGER TRG_KHACH_DOANHSO_INSERT
@@ -126,8 +110,6 @@ BEGIN
 	UPDATE KHACH
 	SET  DOANHSO = 0
 	WHERE MAKH = @MAKH
-
-	PRINT N'Đã thêm 1 khách hàng với doanh số ban đầu là 0 VNĐ'
 END
 		---UPDATE---
 CREATE TRIGGER TRG_KHACH_DOANHSO_UPDATE
@@ -151,11 +133,8 @@ BEGIN
 
 	IF(@DOANHSO <> @TONGDS)
 	BEGIN
-		PRINT N'Lỗi! Tổng doanh số của một khách hàng phải bằng tổng của tổng tiền các hóa đơn mà khách hàng đó mua '
 		ROLLBACK TRANSACTION
 	END
-	ELSE
-		PRINT N'Doanh số không bị thay đổi'
 END
 	--b.Trigger cho bang HOADON--
 		---INSERT, DELETE---
@@ -180,8 +159,6 @@ BEGIN
 	UPDATE KHACH
 	SET DOANHSO = DOANHSO + @TONGDSTHEM - @TONGDSTRU
 	WHERE MAKH = @MAKH
-
-	PRINT N'Doanh số của khách hàng có thay đổi.'
 END
 		---UPDATE---
 CREATE TRIGGER TRG_HOADON_DOANHSO_UPDATE
@@ -205,75 +182,10 @@ BEGIN
 	UPDATE KHACH
 	SET DOANHSO = DOANHSO + @TONGDSTHEM - @TONGDSTRU
 	WHERE MAKH = @MAKH
-
-	PRINT N'Đã cập nhật doanh số của các khách hàng thành công'
 END
 
 /*--II.Rang buoc toan ven cho HOADON--*/
-----1.Ngay mua hang phai lon hon hoac bang ngay dang ky
---	--a.Trigger cho HOADON--
---		---INSERT---
---CREATE TRIGGER TRG_HOADON_NGMH_INSERT
---ON HOADON
---AFTER INSERT
---AS
---BEGIN
---	DECLARE @MAKH varchar(128)
---	DECLARE @NGMH smalldatetime
---	DECLARE @NGDK smalldatetime
-
---	SELECT @MAKH = inserted.MAKH, @NGMH = NGMH, @NGDK = NGDK
---	FROM KHACH, inserted
---	WHERE KHACH.MAKH = inserted.MAKH
-
---	IF (@NGMH < @NGDK)
---	BEGIN
---		PRINT N'Ngày mua hàng phải lớn hơn hoặc bằng ngày đăng ký'
---		ROLLBACK TRANSACTION
---	END
---END
---		---UPDATE---
---CREATE TRIGGER TRG_HOADON_NGMH_UPDATE
---ON HOADON
---AFTER UPDATE
---AS IF (UPDATE(NGMH) OR UPDATE(MAKH))
---BEGIN
---	DECLARE @MAKH varchar(128)
---	DECLARE @NGMH smalldatetime
---	DECLARE @NGDK smalldatetime
-
---	SELECT @MAKH = inserted.MAKH, @NGMH = NGMH, @NGDK = NGDK
---	FROM KHACH, inserted
---	WHERE KHACH.MAKH = inserted.MAKH
-
---	IF (@NGMH < @NGDK)
---	BEGIN
---		PRINT N'Lỗi! Ngày mua hàng phải lớn hơn hoặc bằng ngày đăng ký'
---		ROLLBACK TRANSACTION
---	END
---END
---	--b.Trigger cho KHACH--
---			---UPDATE---
---CREATE TRIGGER TRG_KHACH_NGMH_UPDATE
---ON KHACH
---AFTER UPDATE
---AS IF (UPDATE(NGDK))
---BEGIN
---	DECLARE @MAKH varchar(128)
---	DECLARE @NGMH smalldatetime
---	DECLARE @NGDK smalldatetime
-
---	SELECT @MAKH = inserted.MAKH, @NGMH = NGMH, @NGDK = NGDK
---	FROM HOADON, inserted
---	WHERE HOADON.MAKH = inserted.MAKH
-
---	IF (@NGMH < @NGDK)
---	BEGIN
---		PRINT N'Không thể cập nhật cho khách vì ngày mua hàng phải lớn hơn hoặc bằng ngày đăng ký'
---		ROLLBACK TRANSACTION
---	END
---END
---2.Tong tien bang tong tri gia cac chi tiet hoa don
+--1.Tong tien bang tong tri gia cac chi tiet hoa don
 	--a.Trigger cho bang HOADON--
 		---INSERT---
 CREATE TRIGGER TRG_HOADON_TONGTIEN_INSERT
@@ -289,8 +201,6 @@ BEGIN
 	UPDATE HOADON
 	SET  TONGTIEN = 0
 	WHERE SOHD = @SOHD
-
-	PRINT N'Đã thêm 1 hóa đơn với tổng tiền ban đầu là 0 VNĐ'
 END
 		---UPDATE---
 CREATE TRIGGER TRG_HOADON_TONGTIEN_UPDATE
@@ -314,11 +224,8 @@ BEGIN
 
 	IF(@TONGTIEN <> @TONGTRIGIA)
 	BEGIN
-		PRINT N'Lỗi! Tổng tiền của một hóa đơn phải bằng tổng trị giá các chi tiết hóa đơn'
 		ROLLBACK TRANSACTION
 	END
-	ELSE
-		PRINT N'Tổng tiền không bị thay đổi'
 END
 	--b.Trigger cho bang CTHD--
 		---INSERT, DELETE, UPDATE---
@@ -343,8 +250,6 @@ BEGIN
 	UPDATE HOADON
 	SET TONGTIEN = TONGTIEN + @TONGTRIGIATHEM - @TONGTRIGIATRU
 	WHERE SOHD = @SOHD
-
-	PRINT N'Tổng tiền của hóa đơn có biến thiên'
 END
 
 /*--III.Rang buoc toan ven cho CTHD--*/
@@ -359,23 +264,15 @@ BEGIN
 	DECLARE @MASP varchar(128)
 	DECLARE @SOHD varchar(128)
 	DECLARE @SOLUONG int
-	DECLARE @TRIGIA money
 	DECLARE @DONGIA money
 
-	SELECT @MASP = inserted.MASP, @SOHD = inserted.SOHD, @TRIGIA = inserted.TRIGIA, @SOLUONG = inserted.SOLUONG, @DONGIA = SANPHAM.DONGIA
+	SELECT @MASP = inserted.MASP, @SOHD = inserted.SOHD, @SOLUONG = inserted.SOLUONG, @DONGIA = SANPHAM.DONGIA
 	FROM inserted, SANPHAM
 	WHERE inserted.MASP = SANPHAM.MASP
-
-	IF( @TRIGIA <> (@SOLUONG * @DONGIA) )
-	BEGIN
-		PRINT N'Trị giá phải bằng số lượng nhân đơn giá nên trị giá thêm vào không phù hợp!'
-	END
 	
 	UPDATE CTHD
 	SET TRIGIA = @SOLUONG * @DONGIA
 	WHERE MASP = @MASP AND SOHD = @SOHD
-
-	PRINT N'Thêm thành công 1 chi tiết hóa đơn'
 END
 		---UPDATE_SOLUONG---
 CREATE TRIGGER TRG_CTHD_TRIGIA_UPDATE_SOLUONG
@@ -395,8 +292,6 @@ BEGIN
 	UPDATE CTHD
 	SET TRIGIA = @SOLUONG * @DONGIA
 	WHERE MASP = @MASP AND SOHD = @SOHD
-
-	PRINT N'Đã cập nhật số lượng cho chi tiết hóa đơn thành công'
 END
 		---UPDATE_TRIGIA---
 CREATE TRIGGER TRG_CTHD_TRIGIA_UPDATE_TRIGIA
@@ -416,11 +311,8 @@ BEGIN
 
 	IF( @TRIGIA <> (@SOLUONG * @DONGIA) )
 	BEGIN
-		PRINT N'Trị giá phải bằng số lượng nhân đơn giá'
 		ROLLBACK TRANSACTION
 	END
-	ELSE
-		PRINT N'Trị giá không bị thay đổi'
 END
 	--Trigger cho bang SANPHAM--
 		---UPDATE---
@@ -441,10 +333,7 @@ BEGIN
 	UPDATE CTHD
 	SET TRIGIA = @SOLUONG * @DONGIA
 	WHERE MASP = @MASP AND SOHD = @SOHD
-
-	PRINT N'Đã cập nhật đơn giá cho sản phẩm thành công'
 END
-
 
 /*--IV.Rang buoc toan ven cho CUAHANG--*/
 --1.Doanh thu 1 cua hang bang tong tat ca tong tien xuat tu cua hang do
@@ -463,8 +352,6 @@ BEGIN
 	UPDATE CUAHANG
 	SET DOANHTHU = 0
 	WHERE MACH = @MACH
-
-	PRINT N'Đã thêm 1 cửa hàng mới với doanh thu bằng 0 VNĐ'
 END
 		---UPDATE---
 CREATE TRIGGER TRG_CUAHANG_DOANHTHU_UPDATE
@@ -488,11 +375,8 @@ BEGIN
 
 	IF(@DOANHTHU <> @TONGcuaTONGTIEN)
 	BEGIN
-		PRINT N'Doanh thu của cửa hàng phải bằng tổng tiền của tất cả hóa đơn xuất ra từ cửa hàng đó'
 		ROLLBACK TRANSACTION
 	END
-	ELSE
-		PRINT N'Doanh thu cửa cửa hàng không bị thay đổi.'
 END
 	--Trigger cho bang HOADON--
 		---INSERT, DELETE---
@@ -517,8 +401,6 @@ BEGIN
 	UPDATE CUAHANG
 	SET DOANHTHU = DOANHTHU + @TONGDOANHTHUTHEM - @TONGDOANHTHUTRU
 	WHERE MACH = @MACH
-
-	PRINT N'Doanh thu của cửa hàng có thay đổi!'
 END
 		---UPDATE---
 CREATE TRIGGER TRG_HOADON_DOANHTHU_UPDATE
@@ -542,6 +424,4 @@ BEGIN
 	UPDATE CUAHANG
 	SET DOANHTHU = DOANHTHU + @TONGDOANHTHUTHEM - @TONGDOANHTHUTRU
 	WHERE MACH = @MACH
-
-	PRINT N'Đã cập nhật doanh thu thành công!!!'
 END

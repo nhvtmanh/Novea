@@ -29,7 +29,6 @@ namespace Novea.Model
         public string MOTA { get; set; }
         public Nullable<bool> AVAILABLE { get; set; }
         public string HINHSP { get; set; }
-        public byte[] IMGdb { get; set; }
         public string MACH { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

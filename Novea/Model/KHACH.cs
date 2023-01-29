@@ -29,10 +29,9 @@ namespace Novea.Model
         public string SDT { get; set; }
         public string EMAIL { get; set; }
         public string DIACHI { get; set; }
-        public Nullable<System.DateTime> NGDK { get; set; }
+        public DateTime NGDK { get; set; }
         public Nullable<decimal> DOANHSO { get; set; }
         public string AVATAR { get; set; }
-        public byte[] IMGdb { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOADON> HOADONs { get; set; }

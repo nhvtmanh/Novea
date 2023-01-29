@@ -21,8 +21,9 @@ namespace Novea.Model
         }
     
         public string SOHD { get; set; }
-        public Nullable<System.DateTime> NGMH { get; set; }
+        public DateTime NGMH { get; set; }
         public Nullable<decimal> TONGTIEN { get; set; }
+        public Nullable<bool> DONE { get; set; }
         public string MAKH { get; set; }
         public string MACH { get; set; }
     
