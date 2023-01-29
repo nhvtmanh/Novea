@@ -33,7 +33,7 @@ namespace Novea.ViewModel.Login
         public AdminSignUpViewModel()
         {
 
-            linkaddimage = Const._localLink + "/Resource/Image/addava.png";
+            linkaddimage = Const._localLink + "/Resources/Images/addava.png";
             Close1 = new RelayCommand<AdminSignUp>((p) => true, (p) => Close(p));
             Minimizewd = new RelayCommand<AdminSignUp>((p) => true, (p) => _Minimize(p));
             Movewd = new RelayCommand<AdminSignUp>((p) => true, (p) => _Move(p));
@@ -43,7 +43,7 @@ namespace Novea.ViewModel.Login
         }
         void Close(AdminSignUp p)
         {
-            linkaddimage = Const._localLink + "/Resource/Image/addava.png";
+            linkaddimage = Const._localLink + "/Resources/Images/addava.png";
             p.Close();
         }
         void _Minimize(AdminSignUp p)
@@ -144,17 +144,20 @@ namespace Novea.ViewModel.Login
                 temp.DIADIEM = parameter.DCCH.Text;
                 temp.EMAIL = parameter.Mail.Text;
                 temp.SDT = parameter.SDT.Text;
+                temp.DOANHTHU = 0;
+                DateTime dt = new DateTime(2015, 12, 31, 5, 10, 20);
+                temp.NGDK = dt;
                 temp.TAIKHOAN = parameter.User.Text;
                 temp.MATKHAU = LoginViewModel.MD5Hash(LoginViewModel.Base64Encode(Password));
-                if (linkaddimage == "/Resource/Image/addava.png")
-                    temp.AVATAR = "/Resource/Image/addava.png";
+                if (linkaddimage == "/Resources/Images/addava.png")
+                    temp.AVATAR = "/Resources/Images/addava.png";
                 else
-                    temp.AVATAR = "/Resource/Ava/" + temp.MACH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                    temp.AVATAR = "/Resources/Ava/" + temp.MACH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
                 DataProvider.Ins.DB.CUAHANGs.Add(temp);
                 DataProvider.Ins.DB.SaveChanges();
                 try
                 {
-                    File.Copy(linkaddimage, Const._localLink + @"Resource\Ava\" + temp.MACH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+                    File.Copy(linkaddimage, Const._localLink + @"Resources\Ava\" + temp.MACH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
                 }
                 catch { }
                 MessageBox.Show("Chúc mừng bạn đã đăng ký thành công !", "THÔNG BÁO", MessageBoxButton.OK);
@@ -164,7 +167,7 @@ namespace Novea.ViewModel.Login
                 parameter.SDT.Clear();
                 parameter.DCCH.Clear();
                 parameter.Mail.Clear();
-                linkaddimage = "/Resource/Image/addava.png";
+                linkaddimage = "/Resources/Images/addava.png";
                 parameter.HinhAnh1.ImageSource = new BitmapImage(new Uri(Const._localLink + linkaddimage));
             }
         }
