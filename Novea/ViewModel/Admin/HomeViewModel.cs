@@ -39,7 +39,7 @@ namespace Novea.ViewModel.Admin
         public ICommand LoadDoanhThu { get; set; }
         public ICommand LoadDon { get; set; }
         public ICommand LoadChart { get; set; }
-        public ICommand LoadSP { get; set; }
+        public ICommand LoadSP { get; set; }        
 
         private ObservableCollection<KHACH> _listKH;
         public ObservableCollection<KHACH> listKH { get => _listKH; set { _listKH = value; OnPropertyChanged(); } }
@@ -52,7 +52,7 @@ namespace Novea.ViewModel.Admin
         public HomeViewModel()
         {
             listKH1 = new ObservableCollection<KHACH>(DataProvider.Ins.DB.KHACHes);
-            listKH = new ObservableCollection<KHACH>(listKH1.GroupBy(p => p.HOTEN).Select(grp => grp.FirstOrDefault()));
+            listKH = new ObservableCollection<KHACH>(listKH1.Where(kh => kh.HOADONs.Any(hd => hd.MACH == Const.MACH)));
             LoadDoanhThu = new RelayCommand<HomeView>((p) => true, (p) => LoadDT(p));
             LoadDon = new RelayCommand<HomeView>((p) => true, (p) => SoDon(p));
             CTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
