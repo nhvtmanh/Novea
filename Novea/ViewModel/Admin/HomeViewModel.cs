@@ -43,16 +43,14 @@ namespace Novea.ViewModel.Admin
 
         private ObservableCollection<KHACH> _listKH;
         public ObservableCollection<KHACH> listKH { get => _listKH; set { _listKH = value; OnPropertyChanged(); } }
-        private ObservableCollection<KHACH> _listKH1;
-        public ObservableCollection<KHACH> listKH1 { get => _listKH1; set { _listKH1 = value; OnPropertyChanged(); } }
+
         private ObservableCollection<CTHD> _CTHD;
         public ObservableCollection<CTHD> CTHD { get => _CTHD; set { _CTHD = value; OnPropertyChanged(); } }
       
         public List<Result> Data { get; set; }
         public HomeViewModel()
         {
-            listKH1 = new ObservableCollection<KHACH>(DataProvider.Ins.DB.KHACHes);
-            listKH = new ObservableCollection<KHACH>(listKH1.Where(kh => kh.HOADONs.Any(hd => hd.MACH == Const.MACH)));
+            listKH = new ObservableCollection<KHACH>(DataProvider.Ins.DB.KHACHes.Where(kh => kh.HOADONs.Any(hd => hd.MACH == Const.MACH)));
             LoadDoanhThu = new RelayCommand<HomeView>((p) => true, (p) => LoadDT(p));
             LoadDon = new RelayCommand<HomeView>((p) => true, (p) => SoDon(p));
             CTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
