@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using System.Globalization;
+using System.Windows.Data;
 
 namespace Novea.ViewModel.Client
 {
@@ -25,6 +27,7 @@ namespace Novea.ViewModel.Client
         public ICommand DetailPdCommand { get; set; }
         public ICommand LoadDetailStoreCommand { get; set; }
         public ICommand BackToHomeCommand { get; set; }
+        public static FormatToVND VNDformat { get; } = new FormatToVND();
         public StoreDetailViewModel()
         {
             ListProductTemp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
@@ -49,15 +52,11 @@ namespace Novea.ViewModel.Client
         public void DisplayDetailProduct(StoreDetail paramater)
         {
             ProductDetail productDetail = new ProductDetail();
-            productDetail.ShowDialog();
-            //DetailProducts detailProduct = new DetailProducts();
-            //SANPHAM temp = (SANPHAM)paramater.ListViewProduct.SelectedItem;
-            //detailProduct.MaSP.Text = temp.MASP;
-            //detailProduct.TenSP.Text = temp.TENSP;
+            SANPHAM temp = (SANPHAM)paramater.ListViewProduct.SelectedItem;
+            productDetail.tbTENSP.Text = temp.TENSP;
+            productDetail.tbDONGIA.Text = string.Format("{0:0,0}", temp.DONGIA) + " VNĐ";
+            productDetail.tbMOTA.Text = temp.MOTA;
             //detailProduct.GiaSP.Text = string.Format("{0:0,0}", temp.DONGIA) + " VNĐ";
-            //detailProduct.LoaiSP.Text = temp.LOAISP;
-            //detailProduct.DVT.Text = temp.DONVI;
-            //detailProduct.Size.Text = temp.SIZE;
             //detailProduct.Mota.Text = temp.MOTA;
             //try
             //{
@@ -68,6 +67,8 @@ namespace Novea.ViewModel.Client
             //detailProduct.ShowDialog();
             //listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             //paramater.ListViewProduct.SelectedItem = null;
+
+            productDetail.ShowDialog();
         }
     }
 }

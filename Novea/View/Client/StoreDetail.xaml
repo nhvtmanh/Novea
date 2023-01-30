@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Novea.View.Client"
+      xmlns:local="clr-namespace:Novea.ViewModel.Client"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
@@ -83,9 +83,9 @@
                               ScrollViewer.VerticalScrollBarVisibility="Hidden">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Border Margin="10"
+                                <Border Margin="5"
                                         Height="210"
-                                        Width="170"
+                                        Width="178"
                                         Background="{StaticResource plainTextColor3}"
                                         CornerRadius="15">
                                     <StackPanel>
@@ -100,7 +100,7 @@
                                         <TextBlock FontFamily="{StaticResource Custom1}"
                                                    FontSize="14"
                                                    HorizontalAlignment="Center"
-                                                   Text="{Binding DONGIA}"/>
+                                                   Text="{Binding DONGIA, Converter={x:Static local:StoreDetailViewModel.VNDformat}}"/>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>
