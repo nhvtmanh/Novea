@@ -211,62 +211,6 @@
             </Grid>
             
             <Grid Grid.Row="2">
-                <!--<StackPanel>-->
-                    <!--<Border
-                        Margin="-33,0,0,0"
-                        Width="600"
-                        Height="40"
-                        CornerRadius="10"
-                        Background="{StaticResource color1}"
-                        Padding="5">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="130"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0">
-                                <TextBlock
-                                Text="MÃ SP"
-                                                             Foreground="{StaticResource plainTextColor2}"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                FontFamily="{StaticResource Custom}"
-                                FontSize="15" Margin="46,0,0,0"
-                                />
-                            </Grid>
-                            <Grid Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,114,0">
-                                <TextBlock Foreground="{StaticResource plainTextColor2}"
-                                           Width="auto"
-                                HorizontalAlignment="Left"
-                                Text="TÊN SẢN PHẨM"
-                                VerticalAlignment="Center"
-                                FontFamily="{StaticResource Custom}"
-                                FontSize="15" Margin="55,0,0,0"
-                                />
-                            </Grid>
-                            <Grid Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,195,0">
-                                <TextBlock Text="THỂ LOẠI"                                    
-                                           Foreground="{StaticResource plainTextColor2}"                                    
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                FontFamily="{StaticResource Custom}"
-                                FontSize="15" Margin="83,0,0,0" Width="auto"
-                                />
-                            </Grid>
-                            <Grid Grid.Column="3">
-                                <TextBlock Foreground="{StaticResource plainTextColor2}"                                    
-                                Text="GIÁ TIỀN"
-                                VerticalAlignment="Center"
-                                FontFamily="{StaticResource Custom}"
-                                HorizontalAlignment="Left"
-                                FontSize="15" Margin="110,0,0,0"
-                                />
-                            </Grid>
-                        </Grid>
-                    </Border>-->
-
                     <ListView x:Name="ListViewProduct" ItemsSource="{Binding listSP}"
                           SelectionMode="Single"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"

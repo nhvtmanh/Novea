@@ -30,7 +30,7 @@ namespace Novea.ViewModel.Admin
         public ICommand Minimizewd { get; set; }
         public AddProductsViewModel()
         {
-            linkimage = "/Resource/Image/add.png";
+            linkimage = "/Resources/Images/add.png";
             AddImage = new RelayCommand<Image>((p) => true, (p) => _AddImage(p));
             AddProduct = new RelayCommand<AddProducts>((p) => true, (p) => _AddProduct(p));
             Loadwd = new RelayCommand<AddProducts>((p) => true, (p) => _Loadwd(p));
@@ -39,7 +39,7 @@ namespace Novea.ViewModel.Admin
         }
         void _Loadwd(AddProducts paramater)
         {
-            linkimage = "/Resource/Image/add.png";
+            linkimage = "/Resources/Images/add.png";
         }
         void _AddImage(Image img)
         {
@@ -49,7 +49,7 @@ namespace Novea.ViewModel.Admin
             {
                 linkimage = open.FileName;
             };
-            if (linkimage == "/Resource/Image/add.png")
+            if (linkimage == "/Resources/Images/add.png")
             {
                 Uri fileUri = new Uri(linkimage, UriKind.Relative);
                 img.Source = new BitmapImage(fileUri);
@@ -119,12 +119,12 @@ namespace Novea.ViewModel.Admin
                         sanpham.MOTA = paramater.MotaSp.Text;
                         sanpham.MACH = Const.CH.MACH;
                         sanpham.AVAILABLE = true;
-                        sanpham.HINHSP = "/Resource/ImgProduct/" + "product_" + paramater.MaSp.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                        sanpham.HINHSP = "/Resources/ImgProduct/" + paramater.MaSp.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
                         DataProvider.Ins.DB.SANPHAMs.Add(sanpham);
                         DataProvider.Ins.DB.SaveChanges();
                         try
                         {
-                            File.Copy(linkimage, _localLink + @"Resource\ImgProduct\" + "product_" + paramater.MaSp.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+                            File.Copy(linkimage, _localLink + @"Resources\ImgProduct\" + paramater.MaSp.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
                         }
                         catch { }
                         MessageBox.Show("Thêm sản phẩm mới thành công !", "THÔNG BÁO");
@@ -134,7 +134,7 @@ namespace Novea.ViewModel.Admin
                         paramater.GiaSp.Clear();
                         paramater.DvSp.Clear();
                         paramater.SizeSp.SelectedItem = null;
-                        Uri fileUri = new Uri(Const._localLink + "/Resource/Image/add.png");
+                        Uri fileUri = new Uri(Const._localLink + "/Resources/Images/add.png");
                         paramater.HinhAnh.Source = new BitmapImage(fileUri);
                         paramater.MotaSp.Clear();
                     }
