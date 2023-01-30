@@ -55,16 +55,14 @@ namespace Novea.ViewModel.Client
             SANPHAM temp = (SANPHAM)paramater.ListViewProduct.SelectedItem;
             productDetail.tbTENSP.Text = temp.TENSP;
             productDetail.tbDONGIA.Text = string.Format("{0:0,0}", temp.DONGIA) + " VNĐ";
-            //productDetail.tbMOTA.Text = temp.MOTA;
-            //detailProduct.GiaSP.Text = string.Format("{0:0,0}", temp.DONGIA) + " VNĐ";
-            //detailProduct.Mota.Text = temp.MOTA;
+            productDetail.tbMOTA.Text = temp.MOTA;
+
             //try
             //{
             //    Uri fileUri = new Uri(temp.HINHSP);
             //    detailProduct.HinhAnh.ImageSource = new BitmapImage(fileUri);
             //}
             //catch { }
-            //detailProduct.ShowDialog();
             //listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             //paramater.ListViewProduct.SelectedItem = null;
 

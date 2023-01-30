@@ -33,7 +33,7 @@
                         <Border Width="295"
                                 Height="295"
                                 HorizontalAlignment="Center"
-                                Margin="0,50,0,0">
+                                Margin="0,5,0,0">
                             <Image Source="/Resources/Images/cheems.jpeg"/>
                         </Border>
                         <TextBlock FontFamily="{StaticResource Custom1}"
@@ -41,14 +41,20 @@
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Center"
                                    Margin="10"
-                                   Text="Tra sua Tran Cheems"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
                                    x:Name="tbTENSP"/>
                         <TextBlock FontFamily="{StaticResource Custom1}"
-                                   FontSize="20"
+                                   FontSize="25"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Center"
-                                   Text="69.696.969"
                                    x:Name="tbDONGIA"/>
+                        <TextBlock FontFamily="{StaticResource Custom1}"
+                                   FontSize="25"
+                                   Foreground="{StaticResource plainTextColor2}"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   x:Name="tbMOTA"/>
                     </StackPanel>
                 </Border>
             </Grid>
@@ -101,7 +107,8 @@
                                           FontSize="20"
                                           Width="70" Height="65"
                                           Margin="10,-130,0,0"
-                                          SelectedIndex="0">
+                                          SelectedIndex="0"
+                                          x:Name="cbbSize">
                                     <ComboBoxItem Content="S"/>
                                     <ComboBoxItem Content="M"/>
                                     <ComboBoxItem Content="L"/>
@@ -122,7 +129,8 @@
                                          FontSize="25"
                                          Width="70" Height="40"
                                          Margin="-35,-35,0,0"
-                                         Text="1">
+                                         Text="1"
+                                         x:Name="tbSL">
                                 </TextBox>
                             </StackPanel>
                         </Grid>
@@ -148,7 +156,8 @@
                                           FontSize="20"
                                           Width="100" Height="55"
                                           Margin="-80,10,0,0"
-                                          SelectedIndex="0">
+                                          SelectedIndex="0"
+                                          x:Name="cbbLuongDa">
                                     <ComboBoxItem Content="100%"/>
                                     <ComboBoxItem Content="70%"/>
                                     <ComboBoxItem Content="30%"/>
@@ -172,7 +181,8 @@
                                           FontSize="20"
                                           Width="100" Height="55"
                                           Margin="-80,10,0,0"
-                                          SelectedIndex="0">
+                                          SelectedIndex="0"
+                                          x:Name="cbbLuongDuong">
                                     <ComboBoxItem Content="100%"/>
                                     <ComboBoxItem Content="70%"/>
                                     <ComboBoxItem Content="30%"/>
@@ -201,7 +211,8 @@
                                            Foreground="{StaticResource plainTextColor3}"
                                            HorizontalAlignment="Center"
                                            DockPanel.Dock="Top"
-                                           Text="69.696.969.696d"/>
+                                           Text="69.696.969.696d"
+                                           x:Name="tbTongTien"/>
                             </DockPanel>
                         </Grid>
                         <Grid Grid.Column="1">

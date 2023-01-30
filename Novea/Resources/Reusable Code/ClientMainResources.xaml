@@ -5,4 +5,6 @@
     <viewmodel:StoreDetailViewModel x:Key="StoreDetailVM"></viewmodel:StoreDetailViewModel>
     <viewmodel:StoreViewModel x:Key="StoreVM"></viewmodel:StoreViewModel>
     <viewmodel:ProductDetailViewModel x:Key="ProductDetailVM"></viewmodel:ProductDetailViewModel>
+    <viewmodel:SettingViewModel x:Key="SettingVM"></viewmodel:SettingViewModel>
+    <viewmodel:PersonInfoViewModel x:Key="PersonInfoVM"></viewmodel:PersonInfoViewModel>
 </ResourceDictionary>
