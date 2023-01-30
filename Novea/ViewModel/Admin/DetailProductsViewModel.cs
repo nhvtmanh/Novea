@@ -22,6 +22,10 @@ namespace Novea.ViewModel.Admin
         private string MaSP_Now;
         public ICommand Loadwd { get; set; }
         public ICommand DeleteProduct { get; set; }
+        private string _linkaddimage;
+        public string linkaddimage { get => _linkaddimage; set { _linkaddimage = value; OnPropertyChanged(); } }
+        //private SANPHAM _Product;
+        //public SANPHAM Product { get => _Product; set { _Product = value; OnPropertyChanged(); } }
         private bool _IsChecked;
         public bool IsChecked { get { return _IsChecked; } set { _IsChecked = value; OnPropertyChanged(); } }
         public DetailProductsViewModel()
@@ -36,6 +40,9 @@ namespace Novea.ViewModel.Admin
         }
         void _Loadwd(DetailProducts paramater)
         {
+            GetMaSP = new RelayCommand<DetailProducts>((p) => true, (p) => _GetMaSP(p));
+            //Product = DataProvider.Ins.DB.SANPHAMs.Where(p => p.MASP == MaSP_Now).FirstOrDefault();
+            //linkaddimage = Product.HINHSP;
             IsChecked = true;
             paramater.TenSP.IsEnabled = true;
             paramater.Mota.IsEnabled = true;

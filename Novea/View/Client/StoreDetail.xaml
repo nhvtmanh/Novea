@@ -90,7 +90,7 @@
                                         CornerRadius="15">
                                     <StackPanel>
                                         <Image Margin="0,10,0,0"
-                                               Source="/Resources/Images/cheems.jpeg" 
+                                               Source="{Binding HINHSP,StringFormat={}}" 
                                                Height="154" 
                                                Width="140"/>
                                         <TextBlock FontFamily="{StaticResource Custom1}"
@@ -99,8 +99,8 @@
                                                    Text="{Binding TENSP}"/>
                                         <TextBlock FontFamily="{StaticResource Custom1}"
                                                    FontSize="14"
-                                                   HorizontalAlignment="Center"></TextBlock>
-                                                   <!--Text="{Binding DONGIA, Converter={x:Static local:StoreDetailViewModel.VNDformat}}"/>-->
+                                                   HorizontalAlignment="Center"
+                                                   Text="{Binding DONGIA,StringFormat={}{0:#,###} VNĐ}"/>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>
