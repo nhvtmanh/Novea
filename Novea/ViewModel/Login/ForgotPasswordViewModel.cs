@@ -5,11 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace Novea.ViewModel
 {
@@ -24,15 +26,10 @@ namespace Novea.ViewModel
             Closewd = new RelayCommand<ForgotPassword>((p) => true, (p) => Close(p));
             Minimizewd = new RelayCommand<ForgotPassword>((p) => true, (p) => Minimize(p));
             SendPass = new RelayCommand<ForgotPassword>((p) => true, (p) => _SendPass(p));
-            movewd = new RelayCommand<ForgotPassword>((p) => true, (p) => _movewd(p));
         }
         void Close(ForgotPassword p)
         {
             p.Close();
-        }
-        void _movewd(ForgotPassword p)
-        {
-            p.DragMove();
         }
         void Minimize(ForgotPassword p)
         {
@@ -57,13 +54,23 @@ namespace Novea.ViewModel
                 }
             }
             DataProvider.Ins.DB.SaveChanges();
-            string nd = "Vui lòng nhập mật khẩu " + newpass + " để đăng nhập. Trân trọng !";
-            MailMessage message = new MailMessage("beveragemanagementNovea@gmail.com", parameter.email.Text, "Lấy lại mật khẩu", nd);
-            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
-            smtpClient.EnableSsl = true;
-            smtpClient.Credentials = new NetworkCredential("tài khoản mail của bạn", "mật khẩu email của bạn");
-            smtpClient.Send(message);
+            string body = "Mật khẩu mới của bạn là: " + newpass + " . Vui lòng đổi mật khẩu mới ngay khi đăng nhập!";
+
+            try
+            {
+                MailMessage message = new MailMessage("21522348@gm.uit.edu.vn", parameter.email.Text, "Lấy lại mật khẩu đã quên", body);
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false; 
+                smtp.Credentials = new NetworkCredential("21522348@gm.uit.edu.vn", "");
+                smtp.Send(message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Vui lòng cho phép Quyền truy cập của ứng dụng kém an toàn");
+            }
             MessageBox.Show("Đã gửi mật khẩu vào Email đăng ký !", "Thông báo");
+
         }
     }
 }

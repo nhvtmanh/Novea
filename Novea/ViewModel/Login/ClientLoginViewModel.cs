@@ -30,7 +30,6 @@ namespace Novea.ViewModel.Login
         public ICommand RegisterCommand { get; set; }
         public ICommand ForgetPassCommand { get; set; }
         public ICommand _Loadwd { get; set; }
-
         public ClientLoginViewModel()
         {
             Const.IsLogin = false;

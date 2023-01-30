@@ -12,4 +12,5 @@
     <viewmodel1:AdminSignUpViewModel x:Key="AdminSignUpVM"></viewmodel1:AdminSignUpViewModel>
     <viewmodel1:ClientLoginViewModel x:Key="ClientLoginVM"></viewmodel1:ClientLoginViewModel>
     <viewmodel1:ClientSignUpViewModel x:Key="ClientSignUpVM"></viewmodel1:ClientSignUpViewModel>
+    <viewmodel:ForgotPasswordViewModel x:Key="ForgotPassVM"></viewmodel:ForgotPasswordViewModel>
 </ResourceDictionary>

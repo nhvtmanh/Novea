@@ -31,12 +31,7 @@
 
     <Border CornerRadius="15">
 
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="MouseLeftButtonDown">
-                <i:InvokeCommandAction Command="{Binding MoveLogin}"
-                                                       CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
+
 
 
         <Border.Background>
@@ -46,58 +41,77 @@
             </LinearGradientBrush>
         </Border.Background>
 
-        <StackPanel>
-            <StackPanel Orientation="Horizontal"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="19*"/>
+            </Grid.RowDefinitions>
+            
+            <StackPanel Grid.RowSpan="2">
+                
+                <Grid  Grid.Row="0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding MoveLogin}"
+                                                       CommandParameter="{Binding ElementName=LoginWd}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                    <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right"
-                        Width="auto"
                         Height="auto"
                         VerticalAlignment="Top"
                         Margin="0 0 10 0">
 
-                <Button Style="{StaticResource controlButton}"
+
+
+                        <Button Style="{StaticResource controlButton}"
                         x:Name="a"
                         Tag="{StaticResource plainTextColor1}"
                         Width="25"
                         Height="25">
-                    <materialDesign:PackIcon Kind="WindowMinimize"
+                            <materialDesign:PackIcon Kind="WindowMinimize"
                                              Width="{Binding Width,ElementName=a}"
                                              Height="{Binding Width,ElementName=a}"/>
-                    
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding MinimizeLogin}"                                    
-                                                       CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
 
-                <Button Style="{StaticResource controlButton}"                                   
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding MinimizeLogin}"                                    
+                                                       CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+
+                        <Button Style="{StaticResource controlButton}"                                   
                         Tag="{StaticResource plainTextColor1}"                                 
                         Width="25">
 
-                    <materialDesign:PackIcon Kind="CloseThick"
+                            <materialDesign:PackIcon Kind="CloseThick"
                                              Width="{Binding Width,ElementName=a}"
                                              Height="{Binding Width,ElementName=a}"/>
 
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding CloseLogin}"                                               
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding CloseLogin}"                                               
                                                                     CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
 
+
+                    </StackPanel>
+
+                </Grid>
                 
-            </StackPanel>
-            <Label Content="ĐĂNG NHẬP" 
+                <Label Content="ĐĂNG NHẬP"                    
                    Foreground="{StaticResource color1}"
                        FontFamily="Segoe UI Black" 
-                       FontSize="50" Margin="0,10" 
+                       FontSize="60" Margin="0 0 0 10" 
                        VerticalAlignment="Top" 
                        HorizontalAlignment="Center" 
                        FontWeight="Bold"/>
-            
-            <TextBlock x:Name="abc" 
+
+                <TextBlock x:Name="abc" 
                                TextWrapping="Wrap" 
                                Foreground="{StaticResource plainTextColor3}" 
                                Width="302" 
@@ -107,8 +121,8 @@
                                FontFamily="Tahoma" 
                                FontWeight="Bold" 
                                FontSize="18"/>
-            <Grid>
-                <TextBlock HorizontalAlignment="Center" 
+                <Grid>
+                    <TextBlock HorizontalAlignment="Center" 
                            TextAlignment="Center"
                            VerticalAlignment="Top"
                            Height="25" 
@@ -117,7 +131,7 @@
                            Width="176" FontSize="19" 
                            FontFamily="Segoe UI Semibold" Margin="0,10,0,0"/>
 
-                <Button VerticalAlignment="Top" 
+                    <Button VerticalAlignment="Top" 
                         Padding="-5"
                         x:Uid="1"
                         x:Name="btnCLient"
@@ -126,27 +140,27 @@
                              Height="130" Width="130"
                              Margin="354,40,529,0">
 
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                        CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="MouseMove">
-                            <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetIdTab}"
                                                        CommandParameter="{Binding ElementName=btnCLient}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                    <Grid Width="auto" Height="auto">
-                        <Rectangle Fill="#FD8A87"
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Grid Width="auto" Height="auto">
+                            <Rectangle Fill="#FD8A87"
                                HorizontalAlignment="Center"
                                Height="130"  Width="128"
                                RadiusY="14.5" RadiusX="14.5"
                                VerticalAlignment="Center"/>
-                        <Image HorizontalAlignment="Center"
+                            <Image HorizontalAlignment="Center"
                            Height="65" Margin="0,20,0,0" 
                            VerticalAlignment="Top" Width="72"
                            Source="\Resources\Images\gamer.png"/>
-                        <TextBlock HorizontalAlignment="Center" 
+                            <TextBlock HorizontalAlignment="Center" 
                                Foreground="{StaticResource plainTextColor3}"
                                FontSize="15"
                                Height="20"
@@ -155,58 +169,60 @@
                                Text="KHÁCH HÀNG" 
                                VerticalAlignment="Top" Width="100" TextAlignment="Center"/>
 
-                    </Grid>
-                </Button>
+                        </Grid>
+                    </Button>
 
-                <Button  VerticalAlignment="Top" Height="130" Width="130" Margin="508,40,333,0"   
+                    <Button  VerticalAlignment="Top" Height="130" Width="130" Margin="508,40,333,0"   
                          x:Uid="0"                         
                          x:Name="btnAdmin"
                          Padding="-5"
                              Background="Transparent"
                              BorderBrush="Transparent">
 
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTab}"
                                                        CommandParameter="{Binding ElementName=MainLoginWD}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="MouseMove">
-                            <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetIdTab}"
                                                        CommandParameter="{Binding ElementName=btnAdmin}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
 
-                    <Grid  Width="auto" Height="auto">
-                        <Rectangle Fill="#FC84CB" 
+                        <Grid  Width="auto" Height="auto">
+                            <Rectangle Fill="#FC84CB" 
                                HorizontalAlignment="Left" 
                                Height="130"  Width="130"
                                RadiusY="14.5" RadiusX="14.5"/>
-                        <Image  HorizontalAlignment="Center"
+                            <Image  HorizontalAlignment="Center"
                            Height="65" Margin="0,20,0,0" 
                            VerticalAlignment="Top" Width="86"
                            Source="\Resources\Images\store.png"/>
-                        <TextBlock HorizontalAlignment="Center" 
+                            <TextBlock HorizontalAlignment="Center" 
                                FontSize="15"
                                Height="20" Margin="0,100,0,0"
                                TextWrapping="Wrap" Text="CỬA HÀNG"
                                VerticalAlignment="Top" Width="100" TextAlignment="Center"/>
 
-                    </Grid>
-                </Button>
+                        </Grid>
+                    </Button>
 
 
-                <Border Margin="235,186,235,95" CornerRadius="15" Width="auto" Height="auto">
-                    <Grid>
-                        <Frame x:Name="Login" 
+                    <Border Margin="235,186,235,95" CornerRadius="15" Width="auto" Height="auto">
+                        <Grid>
+                            <Frame x:Name="Login" 
                                Source="/view/Login/ClientLoginPage.xaml"                                
                                NavigationUIVisibility="Hidden">
-                            
-                        </Frame>
-                    </Grid>
-                </Border>
+
+                            </Frame>
+                        </Grid>
+                    </Border>
 
 
-            </Grid>
-        </StackPanel>
+                </Grid>
+            </StackPanel>
+
+        </Grid>
     </Border>
 </Window>

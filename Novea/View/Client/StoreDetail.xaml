@@ -99,8 +99,8 @@
                                                    Text="{Binding TENSP}"/>
                                         <TextBlock FontFamily="{StaticResource Custom1}"
                                                    FontSize="14"
-                                                   HorizontalAlignment="Center"
-                                                   Text="{Binding DONGIA, Converter={x:Static local:StoreDetailViewModel.VNDformat}}"/>
+                                                   HorizontalAlignment="Center"></TextBlock>
+                                                   <!--Text="{Binding DONGIA, Converter={x:Static local:StoreDetailViewModel.VNDformat}}"/>-->
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>

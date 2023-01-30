@@ -27,7 +27,7 @@ namespace Novea.ViewModel.Client
         public ICommand DetailPdCommand { get; set; }
         public ICommand LoadDetailStoreCommand { get; set; }
         public ICommand BackToHomeCommand { get; set; }
-        public static FormatToVND VNDformat { get; } = new FormatToVND();
+        //public static FormatToVND VNDformat { get; } = new FormatToVND();
         public StoreDetailViewModel()
         {
             ListProductTemp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
@@ -55,7 +55,7 @@ namespace Novea.ViewModel.Client
             SANPHAM temp = (SANPHAM)paramater.ListViewProduct.SelectedItem;
             productDetail.tbTENSP.Text = temp.TENSP;
             productDetail.tbDONGIA.Text = string.Format("{0:0,0}", temp.DONGIA) + " VNĐ";
-            productDetail.tbMOTA.Text = temp.MOTA;
+            //productDetail.tbMOTA.Text = temp.MOTA;
             //detailProduct.GiaSP.Text = string.Format("{0:0,0}", temp.DONGIA) + " VNĐ";
             //detailProduct.Mota.Text = temp.MOTA;
             //try
