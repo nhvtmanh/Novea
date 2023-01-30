@@ -16,6 +16,8 @@ namespace Novea.Model
         public static CUAHANG CH { get; set; }
         public static KHACH KH { get; set; }
         public static HOADON HD { get; set; }
+        public static SANPHAM SP_temp{ get; set; }
+
         public static string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
     }
 

@@ -40,6 +40,7 @@ namespace Novea.ViewModel.Client
         {
             Guest.Instance.Main.NavigationService.GoBack();
             Const.CH = null;
+            Const.SP_temp = null;
         }
         public void LoadDetailStore(StoreDetail parameter)
         {
@@ -48,14 +49,65 @@ namespace Novea.ViewModel.Client
             parameter.tbTENCH.Text = Const.CH.TENCH;
             parameter.tbDIADIEM.Text = Const.CH.DIADIEM;
         }
-        
+
+        bool checkSOHD(string m)
+        {
+            foreach (HOADON temp in DataProvider.Ins.DB.HOADONs)
+            {
+                if (temp.SOHD == m)
+                    return true;
+            }
+            return false;
+        }
+        string rdSOHD()
+        {
+            string SoHD;
+            do
+            {
+                Random rand = new Random();
+                SoHD = "HD" + rand.Next(0, 10000).ToString();
+            } while (checkSOHD(SoHD));
+            return SoHD;
+        }
+
         public void DisplayDetailProduct(StoreDetail paramater)
         {
             ProductDetail productDetail = new ProductDetail();
             SANPHAM temp = (SANPHAM)paramater.ListViewProduct.SelectedItem;
-            productDetail.tbTENSP.Text = temp.TENSP;
-            productDetail.tbDONGIA.Text = string.Format("{0:0,0}", temp.DONGIA) + " VNĐ";
-            productDetail.tbMOTA.Text = temp.MOTA;
+            productDetail.txbTENSP.Text = temp.TENSP;
+            productDetail.txbDONGIA.Text = string.Format("{0:0,0}", temp.DONGIA) + " VNĐ";
+            productDetail.txbMOTA.Text = temp.MOTA;
+            productDetail.txbSize.Text = temp.SIZE;
+            Const.SP_temp = temp;
+
+            if(Const.HD == null)
+            {
+                HOADON hd = new HOADON();
+                hd.SOHD = rdSOHD();
+                hd.NGMH = DateTime.Now;
+                hd.TONGTIEN = 0;
+                hd.DONE = false;
+                hd.MAKH = Const.KH.MAKH;
+                hd.MACH = Const.CH.MACH;
+                Const.HD = hd;
+            }
+            if (Const.HD.MACH != Const.CH.MACH)
+            {
+                var itemToRemove = DataProvider.Ins.DB.HOADONs.SingleOrDefault(pa => (pa.SOHD == Const.HD.SOHD));
+                if (itemToRemove != null)
+                {
+                    DataProvider.Ins.DB.HOADONs.Remove(itemToRemove);
+                    DataProvider.Ins.DB.SaveChanges();
+                }
+                HOADON hd = new HOADON();
+                hd.SOHD = rdSOHD();
+                hd.NGMH = DateTime.Now;
+                hd.TONGTIEN = 0;
+                hd.DONE = false;
+                hd.MAKH = Const.KH.MAKH;
+                hd.MACH = Const.CH.MACH;
+                Const.HD = hd;
+            }
 
             //try
             //{

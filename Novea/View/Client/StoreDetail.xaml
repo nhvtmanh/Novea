@@ -98,6 +98,10 @@
                                                    HorizontalAlignment="Center"
                                                    Text="{Binding TENSP}"/>
                                         <TextBlock FontFamily="{StaticResource Custom1}"
+                                                   FontSize="12"
+                                                   HorizontalAlignment="Center"
+                                                   Text="{Binding SIZE}"/>
+                                        <TextBlock FontFamily="{StaticResource Custom1}"
                                                    FontSize="14"
                                                    HorizontalAlignment="Center"
                                                    Text="{Binding DONGIA,StringFormat={}{0:#,###} VNĐ}"/>
