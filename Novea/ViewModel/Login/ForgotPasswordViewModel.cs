@@ -58,16 +58,17 @@ namespace Novea.ViewModel
 
             try
             {
-                MailMessage message = new MailMessage("21522348@gm.uit.edu.vn", parameter.email.Text, "Lấy lại mật khẩu đã quên", body);
+                MailMessage message = new MailMessage("noveamanagement@gmail.com", parameter.email.Text, "Lấy lại mật khẩu đã quên", body);
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false; 
-                smtp.Credentials = new NetworkCredential("21522348@gm.uit.edu.vn", "");
+                smtp.Credentials = new NetworkCredential("noveamanagement@gmail.com", "meilideshenhua");
                 smtp.Send(message);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Vui lòng cho phép Quyền truy cập của ứng dụng kém an toàn");
+                MessageBox.Show("Vui lòng cho phép 'quyền truy cập ứng dụng kém an toàn' của gmail");
+                return;
             }
             MessageBox.Show("Đã gửi mật khẩu vào Email đăng ký !", "Thông báo");
 
