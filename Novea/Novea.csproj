@@ -162,7 +162,9 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\Client\GuestViewModel.cs" />
     <Compile Include="ViewModel\Admin\HomeViewModel.cs" />
+    <Compile Include="ViewModel\Client\PersonInfoViewModel.cs" />
     <Compile Include="ViewModel\Client\ProductDetailViewModel.cs" />
+    <Compile Include="ViewModel\Client\SettingViewModel.cs" />
     <Compile Include="ViewModel\Client\StoreDetailViewModel.cs" />
     <Compile Include="ViewModel\Client\StoreViewModel.cs" />
     <Compile Include="ViewModel\FormatToVND.cs" />
@@ -212,6 +214,9 @@
     </Compile>
     <Compile Include="View\Client\OrderHistory.xaml.cs">
       <DependentUpon>OrderHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Client\PersonInfo.xaml.cs">
+      <DependentUpon>PersonInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Client\ProductDetail.xaml.cs">
       <DependentUpon>ProductDetail.xaml</DependentUpon>
@@ -317,6 +322,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Client\OrderHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Client\PersonInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -474,6 +483,7 @@
       <DependentUpon>QuanLyBanHangNovea.edmx</DependentUpon>
       <LastGenOutput>QuanLyBanHangNovea.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\setting.png" />
     <Resource Include="Resources\AVATAR\CH01.png" />
     <Resource Include="Resources\Images\gamer.png" />
   </ItemGroup>
