@@ -473,7 +473,7 @@
       <DependentUpon>QuanLyBanHangNovea.edmx</DependentUpon>
       <LastGenOutput>QuanLyBanHangNovea.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\AVATAR\2445.png" />
+    <Resource Include="Resources\AVATAR\CH01.png" />
     <Resource Include="Resources\Images\gamer.png" />
   </ItemGroup>
   <ItemGroup>

@@ -32,7 +32,6 @@ namespace Novea.ViewModel.Login
         public ICommand AddImage { get; set; }
         public AdminSignUpViewModel()
         {
-
             linkaddimage = Const._localLink + "/Resource/Image/addava.png";
             Close1 = new RelayCommand<AdminSignUp>((p) => true, (p) => Close(p));
             Minimizewd = new RelayCommand<AdminSignUp>((p) => true, (p) => _Minimize(p));
@@ -149,7 +148,7 @@ namespace Novea.ViewModel.Login
                 if (linkaddimage == "/Resource/Image/addava.png")
                     temp.AVATAR = "/Resource/Image/addava.png";
                 else
-                    temp.AVATAR = "/Resource/Ava/" + temp.MACH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                    temp.AVATAR = "/Resource/AVATAR/" + temp.MACH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
                 DataProvider.Ins.DB.CUAHANGs.Add(temp);
                 DataProvider.Ins.DB.SaveChanges();
                 try
