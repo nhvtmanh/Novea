@@ -119,7 +119,11 @@
                                     </Grid.ColumnDefinitions>
                                     <Grid Grid.Column="0">
                                         <Border>
-                                            <Image Source="/Resources/Images/cheems.jpeg"/>
+                                            <Ellipse>
+                                                <Ellipse.Fill>
+                                                    <ImageBrush ImageSource="{Binding AVATAR}"/>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
                                         </Border>
                                     </Grid>
                                     <Grid Grid.Column="1">

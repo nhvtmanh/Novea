@@ -47,7 +47,7 @@ namespace Novea.ViewModel.Client
                 string a = Const.TenDangNhap;
                 User = DataProvider.Ins.DB.KHACHes.Where(x => x.TAIKHOAN == a).FirstOrDefault();
                 Const.KH = User;
-                Ava = User.AVATAR;
+                Ava = Const._localLink + User.AVATAR;
                 LoadTenKhach(p);
             }
         }
