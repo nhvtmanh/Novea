@@ -7,4 +7,5 @@
     <viewmodel:ProductDetailViewModel x:Key="ProductDetailVM"></viewmodel:ProductDetailViewModel>
     <viewmodel:SettingViewModel x:Key="SettingVM"></viewmodel:SettingViewModel>
     <viewmodel:PersonInfoViewModel x:Key="PersonInfoVM"></viewmodel:PersonInfoViewModel>
+    <viewmodel:ChangePasswordViewModel x:Key="ChangePasswordVM"></viewmodel:ChangePasswordViewModel>
 </ResourceDictionary>

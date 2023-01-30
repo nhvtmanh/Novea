@@ -36,7 +36,7 @@
            
             <Border Grid.Row="1">
                 <TabControl materialDesign:ColorZoneAssist.Mode="Custom" 
-                            materialDesign:ColorZoneAssist.Foreground="Gold"
+                            materialDesign:ColorZoneAssist.Foreground="#000082"
                             materialDesign:ColorZoneAssist.Background="{DynamicResource MaterialDesignCardBackground}">
                     <TabItem Foreground="Red" 
                              Header="Thông tin cá nhân">
@@ -44,11 +44,11 @@
                                NavigationUIVisibility="Hidden">
                         </Frame>
                     </TabItem>
-                    <!--<TabItem Header="Đổi mật khẩu">
+                    <TabItem Header="Đổi mật khẩu">
                         <Frame Source="/View/Client/ChangePassword.xaml" 
                                NavigationUIVisibility="Hidden">
                         </Frame>
-                    </TabItem>-->
+                    </TabItem>
                 </TabControl>
             </Border>
         </Grid>
