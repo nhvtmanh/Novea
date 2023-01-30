@@ -145,19 +145,18 @@ namespace Novea.ViewModel.Login
                 temp.EMAIL = parameter.Mail.Text;
                 temp.SDT = parameter.SDT.Text;
                 temp.DOANHTHU = 0;
-                DateTime dt = new DateTime(2015, 12, 31, 5, 10, 20);
-                temp.NGDK = dt;
+                temp.NGDK = DateTime.Now;
                 temp.TAIKHOAN = parameter.User.Text;
                 temp.MATKHAU = LoginViewModel.MD5Hash(LoginViewModel.Base64Encode(Password));
                 if (linkaddimage == "/Resources/Images/addava.png")
                     temp.AVATAR = "/Resources/Images/addava.png";
                 else
-                    temp.AVATAR = "/Resources/Ava/" + temp.MACH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                    temp.AVATAR = "/Resources/AVATAR/" + temp.MACH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
                 DataProvider.Ins.DB.CUAHANGs.Add(temp);
                 DataProvider.Ins.DB.SaveChanges();
                 try
                 {
-                    File.Copy(linkaddimage, Const._localLink + @"Resources\Ava\" + temp.MACH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+                    File.Copy(linkaddimage, Const._localLink + @"Resources\AVATAR\" + temp.MACH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
                 }
                 catch { }
                 MessageBox.Show("Chúc mừng bạn đã đăng ký thành công !", "THÔNG BÁO", MessageBoxButton.OK);
