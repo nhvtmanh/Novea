@@ -77,7 +77,7 @@ namespace Novea.ViewModel.Client
             productDetail.txbTENSP.Text = temp.TENSP;
             productDetail.txbDONGIA.Text = string.Format("{0:0,0}", temp.DONGIA) + " VNĐ";
             productDetail.txbMOTA.Text = temp.MOTA;
-            productDetail.txbSize.Text = temp.SIZE;
+            productDetail.txbSIZE.Text = "Size: " + temp.SIZE;
             Const.SP_temp = temp;
 
             if(Const.HD == null)
@@ -90,6 +90,9 @@ namespace Novea.ViewModel.Client
                 hd.MAKH = Const.KH.MAKH;
                 hd.MACH = Const.CH.MACH;
                 Const.HD = hd;
+                productDetail.txbSOHD.Text = Const.HD.SOHD;
+                DataProvider.Ins.DB.HOADONs.Add(hd);
+                DataProvider.Ins.DB.SaveChanges();
             }
             if (Const.HD.MACH != Const.CH.MACH)
             {
@@ -107,6 +110,9 @@ namespace Novea.ViewModel.Client
                 hd.MAKH = Const.KH.MAKH;
                 hd.MACH = Const.CH.MACH;
                 Const.HD = hd;
+                productDetail.txbSOHD.Text = Const.HD.SOHD;
+                DataProvider.Ins.DB.HOADONs.Add(hd);
+                DataProvider.Ins.DB.SaveChanges();
             }
 
             //try

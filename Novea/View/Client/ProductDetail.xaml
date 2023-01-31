@@ -45,7 +45,7 @@
                             <Image Source="/Resources/Images/cheems.jpeg"/>
                         </Border>
                         <TextBlock FontFamily="{StaticResource Custom1}"
-                                   FontSize="30"
+                                   FontSize="28"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Center"
                                    Margin="10"
@@ -53,12 +53,17 @@
                                    TextWrapping="Wrap"
                                    x:Name="txbTENSP"/>
                         <TextBlock FontFamily="{StaticResource Custom1}"
-                                   FontSize="25"
+                                   FontSize="22"
+                                   Foreground="{StaticResource plainTextColor2}"
+                                   HorizontalAlignment="Center"
+                                   x:Name="txbSIZE"/>
+                        <TextBlock FontFamily="{StaticResource Custom1}"
+                                   FontSize="22"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Center"
                                    x:Name="txbDONGIA"/>
                         <TextBlock FontFamily="{StaticResource Custom1}"
-                                   FontSize="25"
+                                   FontSize="22"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
@@ -107,15 +112,15 @@
                                            FontSize="30"
                                            Height="35"
                                            Margin="10,-120,0,0"
-                                           Text="Size"/>
+                                           Text="SOHD"/>
                                 <TextBlock FontFamily="{StaticResource Custom1}"
                                          Background="{StaticResource plainTextColor3}"
                                          FontSize="25"
-                                         Width="70" Height="40"
+                                         Width="140" Height="40"
                                          Margin="10,-118,0,0"
                                          Text=""
                                          
-                                           x:Name="txbSize">
+                                           x:Name="txbSOHD">
                                 </TextBlock>
                             </StackPanel>
                         </Grid>

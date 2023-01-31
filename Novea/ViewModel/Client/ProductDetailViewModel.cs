@@ -17,8 +17,10 @@ namespace Novea.ViewModel.Client
 {   
     public class ProductDetailViewModel : BaseViewModel
     {
+        private HOADON _HoaDon;
+        public HOADON HoaDon { get => _HoaDon; set { _HoaDon = value; OnPropertyChanged(); } }
         private CTHD _Cthd;
-        public CTHD Cthd { get => _Cthd; set { _Cthd = value; /*OnPropertyChanged();*/ } }
+        public CTHD Cthd { get => _Cthd; set { _Cthd = value; OnPropertyChanged(); } }
         private string _SL;
         public string SL { get => _SL; set { _SL = value; OnPropertyChanged(); } }
         private string _Trigia;
@@ -26,11 +28,12 @@ namespace Novea.ViewModel.Client
         public ICommand CloseProductDetailwdCommand { get; set; }
         public ICommand Loadwd { get; set; }
         public ICommand UpdateSLCommand { get; set; }
+        public ICommand AddToCartCommand { get; set; }
         public ProductDetailViewModel()
         {
             Loadwd = new RelayCommand<ProductDetail>((p) => true, (p) => _Loadwd(p));
             UpdateSLCommand = new RelayCommand<ProductDetail>((p) => true, (p) => _UpdateSLCommand(p));
-
+            AddToCartCommand = new RelayCommand<ProductDetail>((p) => true, (p) => _AddToCartCommand(p));
             CloseProductDetailwdCommand = new RelayCommand<ProductDetail>((p) => true, (p) => CloseProductDetailwd(p));            
         }
         void _UpdateSLCommand(ProductDetail parameter)
@@ -45,13 +48,32 @@ namespace Novea.ViewModel.Client
                 Trigia = (Int32.Parse(SL) * Decimal.ToInt32(Const.SP_temp.DONGIA)).ToString();
             }
         }
-        void _Loadwd(ProductDetail p)
+        void _Loadwd(ProductDetail parameter)
         {
-            //Cthd.SOHD = Const.HD.SOHD;
-            //Cthd.MASP = Const.SP_temp.MASP;
-            
-            //DataProvider.Ins.DB.CUAHANGs.Add(temp);
-            //DataProvider.Ins.DB.SaveChanges();
+            HoaDon = DataProvider.Ins.DB.HOADONs.Where(p => p.SOHD == parameter.txbSOHD.Text).FirstOrDefault();
+            Const.HD = HoaDon;
+
+            CTHD CT = new CTHD();
+            CT.SOHD = parameter.txbSOHD.Text;
+            CT.MASP = Const.SP_temp.MASP;
+            CT.SOLUONG = 0;
+            CT.TRIGIA = 0;
+            CT.LuongDa = "0";
+            CT.LuongDuong = "0";
+
+            Cthd = CT;
+        }
+        void _AddToCartCommand(ProductDetail parameter)
+        {
+            CTHD Cthd_temp = new CTHD();
+            Cthd_temp = Cthd;
+            Cthd_temp.SOLUONG = Int32.Parse(parameter.txbSL.Text);
+            Cthd_temp.TRIGIA = Convert.ToDecimal(parameter.tXbTongTien.Text);
+            Cthd_temp.LuongDa = parameter.cbbLuongDa.Text;
+            Cthd_temp.LuongDuong = parameter.cbbLuongDuong.Text;
+
+            DataProvider.Ins.DB.CTHDs.Add(Cthd_temp);
+            DataProvider.Ins.DB.SaveChanges();
         }
         void CloseProductDetailwd(ProductDetail p)
         {
