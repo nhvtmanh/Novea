@@ -5,12 +5,14 @@ using Novea.View.Login;
 using Novea.ViewModel.Login;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using System.Xml.Linq;
 
 namespace Novea.ViewModel.Admin
@@ -34,7 +36,11 @@ namespace Novea.ViewModel.Admin
 
         private string _Ava;
         public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
+
         public string Name;
+
+
+
 
         public MainViewModel()
         {
