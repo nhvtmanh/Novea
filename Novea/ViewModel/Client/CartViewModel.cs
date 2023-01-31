@@ -20,7 +20,7 @@ namespace Novea.ViewModel.Client
     public class CartViewModel : BaseViewModel
     {
         private ObservableCollection<CTHD> _listCTHD;
-        public ObservableCollection<CTHD> listCTHD { get => _listCTHD; set { _listCTHD = value; OnPropertyChanged(); } }
+        public ObservableCollection<CTHD> listCTHD { get => _listCTHD; set { _listCTHD = value; /*OnPropertyChanged();*/ } }
         public ICommand LoadCartCommand { get; set; }
         public CartViewModel()
         {
@@ -29,8 +29,10 @@ namespace Novea.ViewModel.Client
         }
         void _LoadCartCommand(Cart parameter)
         {
-            listCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(p => p.SOHD == Const.HD.SOHD));
-
+            if (Const.HD != null)
+            {
+                listCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(p => p.SOHD == Const.HD.SOHD));
+            }
         }
     }
 }
