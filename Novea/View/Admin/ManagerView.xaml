@@ -70,66 +70,6 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ComboBox>
-                    <!--<ComboBox
-                        x:Name="cbxChon1"
-                        Style="{StaticResource MaterialDesignFilledComboBox}"                            
-                        materialDesign:TextFieldAssist.TextBoxViewMargin="8,-11,0,0"
-                        materialDesign:HintAssist.Hint="Bộ lọc"
-                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                        BorderThickness="0"
-                        materialDesign:HintAssist.FontFamily="{StaticResource Custom}"
-                        materialDesign:HintAssist.Foreground="White"
-                        Background="White"
-                        FontFamily="{StaticResource Custom}"
-                        FontSize="14"
-                        SelectedIndex="0" Width="120">
-                            <ComboBoxItem Content="Tất cả"/>
-                            <ComboBoxItem Content="Áo sơ mi"/>
-                            <ComboBoxItem Content="Áo thun"/>
-                            <ComboBoxItem Content="Áo trùm đầu"/>
-                            <ComboBoxItem Content="Áo khoác"/>
-                            <ComboBoxItem Content="Áo tay dài"/>
-                            <ComboBoxItem Content="Quần"/>
-                            <ComboBoxItem Content="Phụ kiện"/>
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="SelectionChanged">
-                                    <i:InvokeCommandAction Command="{Binding Filter}"
-                                                       CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </ComboBox>-->
-
-                    <!--<Border
-                        Margin="8,0,0,0"
-                        Height="40"
-                        Width="120"
-                        CornerRadius="10"
-                        Background="White"
-                        >
-                        <ComboBox
-                        x:Name="cbxChon"
-                        Style="{StaticResource MaterialDesignFilledComboBox}"
-                        materialDesign:TextFieldAssist.TextBoxViewMargin="8,-11,0,0"
-                        materialDesign:HintAssist.Hint="Tìm Kiếm"
-                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                        BorderThickness="0"
-                        materialDesign:HintAssist.FontFamily="{StaticResource Custom}"
-                        materialDesign:HintAssist.Foreground="White"
-                        Background="White"
-                        FontFamily="{StaticResource Custom}"
-                        Height="38"
-                        FontSize="14"
-                        ItemsSource="{Binding listTK}"
-                        Width="110">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                    </Border>-->
 
                     <StackPanel Orientation="Horizontal"
                                 Margin="124 0 0 0">

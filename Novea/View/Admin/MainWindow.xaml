@@ -42,7 +42,7 @@
         </Border.BorderBrush>
 
         <Border.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
                 <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
                 <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
             </LinearGradientBrush>
@@ -375,8 +375,7 @@
                            Source="/view/Admin/HomeView.xaml" 
                            NavigationUIVisibility="Hidden"
                            DataContext="{StaticResource MainVM}">
-                            <!--Navigated="Main_Navigated"-->
-                            
+
                         </Frame>
                     </Grid>
                 </Grid>

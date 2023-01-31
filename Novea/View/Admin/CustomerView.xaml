@@ -8,8 +8,14 @@
       d:DesignHeight="565" d:DesignWidth="820"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-      Title="CustomerView">
-
+      DataContext="{StaticResource CustomerVM}"
+      x:Name="customerwd">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCsCommand}"                                                       
+                                   CommandParameter="{Binding ElementName=customerwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Border Height="565"
             Width="820"
             CornerRadius="0 0 40 0">
@@ -44,79 +50,26 @@
             <Grid Grid.Row="1">
                 <StackPanel Orientation="Horizontal">
                     <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"    
+                              x:Name="cbxChon"
                               Padding="5"
                               Foreground="{StaticResource plainTextColor2}"                              
-                              materialDesign:HintAssist.Hint="Sắp xếp theo"           
+                              materialDesign:HintAssist.Hint="Sắp xếp tên theo"           
                               Background="#fff"
                               materialDesign:HintAssist.Foreground="#000"
                               Width="253" 
                               Height="46"
                               Margin="30 0 0 0">
                         <ComboBoxItem                     
-                            Content="Tăng dần"/>
+                            Content="A->Z"/>
                         <ComboBoxItem
-                            Content="Giảm dần"/>
+                            Content="Z->A"/>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SortCommand}"
+                                                       CommandParameter="{Binding ElementName=customerwd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ComboBox>
-                    <!--<ComboBox
-                        x:Name="cbxChon1"
-                        Style="{StaticResource MaterialDesignFilledComboBox}"                            
-                        materialDesign:TextFieldAssist.TextBoxViewMargin="8,-11,0,0"
-                        materialDesign:HintAssist.Hint="Bộ lọc"
-                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                        BorderThickness="0"
-                        materialDesign:HintAssist.FontFamily="{StaticResource Custom}"
-                        materialDesign:HintAssist.Foreground="White"
-                        Background="White"
-                        FontFamily="{StaticResource Custom}"
-                        FontSize="14"
-                        SelectedIndex="0" Width="120">
-                            <ComboBoxItem Content="Tất cả"/>
-                            <ComboBoxItem Content="Áo sơ mi"/>
-                            <ComboBoxItem Content="Áo thun"/>
-                            <ComboBoxItem Content="Áo trùm đầu"/>
-                            <ComboBoxItem Content="Áo khoác"/>
-                            <ComboBoxItem Content="Áo tay dài"/>
-                            <ComboBoxItem Content="Quần"/>
-                            <ComboBoxItem Content="Phụ kiện"/>
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="SelectionChanged">
-                                    <i:InvokeCommandAction Command="{Binding Filter}"
-                                                       CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </ComboBox>-->
-
-                    <!--<Border
-                        Margin="8,0,0,0"
-                        Height="40"
-                        Width="120"
-                        CornerRadius="10"
-                        Background="White"
-                        >
-                        <ComboBox
-                        x:Name="cbxChon"
-                        Style="{StaticResource MaterialDesignFilledComboBox}"
-                        materialDesign:TextFieldAssist.TextBoxViewMargin="8,-11,0,0"
-                        materialDesign:HintAssist.Hint="Tìm Kiếm"
-                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                        BorderThickness="0"
-                        materialDesign:HintAssist.FontFamily="{StaticResource Custom}"
-                        materialDesign:HintAssist.Foreground="White"
-                        Background="White"
-                        FontFamily="{StaticResource Custom}"
-                        Height="38"
-                        FontSize="14"
-                        ItemsSource="{Binding listTK}"
-                        Width="110">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                    </Border>-->
 
                     <StackPanel Orientation="Horizontal"
                                 Margin="124 0 0 0">
@@ -145,12 +98,12 @@
                                      BorderThickness="0"                                                  
                                      MinWidth="200"                                                  
                                      VerticalAlignment="Center" >
-                                    <!--<i:Interaction.Triggers>
-                            <i:EventTrigger EventName="TextChanged">
-                                <i:InvokeCommandAction Command="{Binding SearchCommand}"
-                                                       CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>-->
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="TextChanged">
+                                            <i:InvokeCommandAction Command="{Binding SearchCommand}"
+                                                       CommandParameter="{Binding ElementName=customerwd}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                 </TextBox>
                                 <Button Style="{StaticResource MaterialDesignToolButton}"                                                    
                                     Grid.Column="2">
@@ -182,7 +135,7 @@
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
                                 <TextBlock
-                                Text="MÃ KH"
+                                Text="Avatar"
                                                              Foreground="{StaticResource plainTextColor2}"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
@@ -193,25 +146,25 @@
                             <Grid Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,97,0">
                                 <TextBlock Foreground="{StaticResource plainTextColor2}"
                                            Width="auto"
-                                HorizontalAlignment="Left"
-                                Text="TÊN KHÁCH HÀNG"
+                                HorizontalAlignment="Center"
+                                Text="MaKH"
                                 VerticalAlignment="Center"
                                 FontFamily="{StaticResource Custom}"
-                                FontSize="15" Margin="55,0,0,0"
+                                FontSize="15"
                                 />
                             </Grid>
                             <Grid Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,188,0">
-                                <TextBlock Text="GIỚI TÍNH"                                    
+                                <TextBlock Text="HoTen"                                    
                                            Foreground="{StaticResource plainTextColor2}"                                    
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 FontFamily="{StaticResource Custom}"
-                                FontSize="15" Margin="83,0,0,0" Width="auto"
+                                FontSize="15" Margin="76,0,0,0" Width="auto"
                                 />
                             </Grid>
                             <Grid Grid.Column="3">
                                 <TextBlock Foreground="{StaticResource plainTextColor2}"                                    
-                                Text="SỐ ĐIỆN THOẠI"
+                                Text="SDT"
                                 VerticalAlignment="Center"
                                 FontFamily="{StaticResource Custom}"
                                 HorizontalAlignment="Left"
@@ -221,55 +174,71 @@
                         </Grid>
                     </Border>
 
-                    <ListView x:Name="ListViewProduct" ItemsSource="{Binding listSP}"
+                    <ListView x:Name="ListViewKH" ItemsSource="{Binding listKH}"
+                          Height="350"
+                          Width="650"
                           SelectionMode="Single"
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden" d:ItemsSource="{d:SampleData ItemCount=5}"
                         >
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Border
-                                        Margin="10"
-                                        Height="210"
-                                        Width="170"
-                                        Background="White"
-                                        CornerRadius="15"
-                                        >
-                                    <StackPanel>
-                                        <Image  
-                                                    Margin="0,10,0,0"
-                                                    Source="{Binding HINHSP,StringFormat={}}" 
-                                                    Height="154" 
-                                                    Width="140"
-                                                    />
-                                        <TextBlock
-                                                    FontFamily="{StaticResource Custom}"
-                                                    FontSize="14"
-                                                    HorizontalAlignment="Center"
-                                                    Text="{Binding TENSP}"
-                                                    />
-                                        <TextBlock
-                                                    FontFamily="{StaticResource Custom}"
-                                                    FontSize="14"
-                                                    HorizontalAlignment="Center"/>
-                                        <!--Text="{Binding GIA,StringFormat={}{0:#,###} VNĐ}"-->
-
-                                    </StackPanel>
+                        Width="600"
+                        Height="40"
+                        CornerRadius="10"
+                       
+                        >
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFE5D8" Offset="1"/>
+                                            <GradientStop Color="#FFCAD4" Offset="0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="121"/>
+                                            <ColumnDefinition Width="145"/>
+                                            <ColumnDefinition Width="166"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <Image Source="{Binding AVATAR, StringFormat=''}" Margin="50,5,31,5"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <TextBlock Margin="10,0,0,0"
+                                                       Text="{Binding MAKH}"
+                                                       FontFamily="{StaticResource Custom}"
+                                                       FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid Grid.Column="2">
+                                            <TextBlock Text="{Binding HOTEN}"                                                  
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                       FontFamily="{StaticResource Custom}"                                                  
+                                                       FontSize="12"/>
+                                        </Grid>
+                                        <Grid Grid.Column="3">
+                                            <TextBlock Text="{Binding SDT}"                                           
+                                                       MaxWidth="150"                                              
+                                                       FontFamily="{StaticResource Custom}"                                               
+                                                       FontSize="12" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Grid>
                                 </Border>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel/>
+                                <WrapPanel Orientation="Vertical"/>
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
-                        <!--<i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding DetailPdCommand}"
-                                                       CommandParameter="{Binding ElementName=Productwd}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>-->
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction     Command="{Binding Detail}"
+                                                           CommandParameter="{Binding ElementName=customerwd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ListView>
+
                 </StackPanel>
             </Grid>
         </Grid>

@@ -14,4 +14,5 @@
     <viewmodel:DetailBillViewModel x:Key="DetailBillVM"></viewmodel:DetailBillViewModel>
     <viewmodel:PersonInfoSettingVM x:Key="PersonInfoSettingVM"></viewmodel:PersonInfoSettingVM>
     <viewmodel:ShopInfoSettingViewModel x:Key="ShopInfoSettingVM"></viewmodel:ShopInfoSettingViewModel>
+    <viewmodel:CustomerViewModel x:Key="CustomerVM"></viewmodel:CustomerViewModel>
 </ResourceDictionary>
