@@ -32,11 +32,12 @@ namespace Novea.ViewModel.Client
         {
             ListProductTemp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             ListProduct = new ObservableCollection<SANPHAM>(ListProductTemp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
-            DetailPdCommand = new RelayCommand<StoreDetail>((p) => { return p.ListViewProduct.SelectedItem != null; }, (p) => DisplayDetailProduct(p));
+            DetailPdCommand = new RelayCommand<StoreDetail>((p) => { return p.ListViewProduct.SelectedItem == null ? false : true; }, (p) => DisplayDetailProduct(p));
             LoadDetailStoreCommand = new RelayCommand<StoreDetail>((p) => true, (p) => LoadDetailStore(p));
             BackToHomeCommand = new RelayCommand<StoreDetail>((p) => true, (p) => BackToHome());
         }
-        void BackToHome()
+
+    void BackToHome()
         {
             Guest.Instance.Main.NavigationService.GoBack();
             Const.CH = null;
@@ -93,26 +94,48 @@ namespace Novea.ViewModel.Client
                 productDetail.txbSOHD.Text = Const.HD.SOHD;
                 DataProvider.Ins.DB.HOADONs.Add(hd);
                 DataProvider.Ins.DB.SaveChanges();
+
+                productDetail.ShowDialog();
             }
-            if (Const.HD.MACH != Const.CH.MACH)
+            else
             {
-                var itemToRemove = DataProvider.Ins.DB.HOADONs.SingleOrDefault(pa => (pa.SOHD == Const.HD.SOHD));
-                if (itemToRemove != null)
+                if (Const.HD.MACH != Const.CH.MACH)
                 {
-                    DataProvider.Ins.DB.HOADONs.Remove(itemToRemove);
+                    var itemToRemove = DataProvider.Ins.DB.HOADONs.SingleOrDefault(pa => (pa.SOHD == Const.HD.SOHD));
+
+                    ObservableCollection<CTHD> ListCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(p => p.SOHD == itemToRemove.SOHD));
+
+                    if (itemToRemove != null)
+                    {
+                        if (ListCTHD != null)
+                        {
+                            for (int i = 0; i < ListCTHD.Count; i++)
+                            {
+                                DataProvider.Ins.DB.CTHDs.Remove(ListCTHD[i]);
+                            }
+                        }
+                        DataProvider.Ins.DB.HOADONs.Remove(itemToRemove);
+                        DataProvider.Ins.DB.SaveChanges();
+                    }
+                    HOADON hd = new HOADON();
+                    hd.SOHD = rdSOHD();
+                    hd.NGMH = DateTime.Now;
+                    hd.TONGTIEN = 0;
+                    hd.DONE = false;
+                    hd.MAKH = Const.KH.MAKH;
+                    hd.MACH = Const.CH.MACH;
+                    Const.HD = hd;
+                    productDetail.txbSOHD.Text = Const.HD.SOHD;
+                    DataProvider.Ins.DB.HOADONs.Add(hd);
                     DataProvider.Ins.DB.SaveChanges();
+
+                    productDetail.ShowDialog();
                 }
-                HOADON hd = new HOADON();
-                hd.SOHD = rdSOHD();
-                hd.NGMH = DateTime.Now;
-                hd.TONGTIEN = 0;
-                hd.DONE = false;
-                hd.MAKH = Const.KH.MAKH;
-                hd.MACH = Const.CH.MACH;
-                Const.HD = hd;
-                productDetail.txbSOHD.Text = Const.HD.SOHD;
-                DataProvider.Ins.DB.HOADONs.Add(hd);
-                DataProvider.Ins.DB.SaveChanges();
+                else
+                {
+                    productDetail.txbSOHD.Text = Const.HD.SOHD;
+                    productDetail.ShowDialog();
+                }
             }
 
             //try
@@ -124,7 +147,7 @@ namespace Novea.ViewModel.Client
             //listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             //paramater.ListViewProduct.SelectedItem = null;
 
-            productDetail.ShowDialog();
+            
         }
     }
 }
