@@ -90,7 +90,7 @@
                                         CornerRadius="15">
                                     <StackPanel>
                                         <Image Margin="0,10,0,0"
-                                               Source="{Binding HINHSP,StringFormat={}}" 
+                                               Source="{Binding HINHSP}" 
                                                Height="154" 
                                                Width="140"/>
                                         <TextBlock FontFamily="{StaticResource Custom1}"

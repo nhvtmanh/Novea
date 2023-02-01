@@ -237,7 +237,7 @@
                                     <Grid Grid.Column="0">
                                         <Image HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
-                                                    Source="{Binding HINHSP,StringFormat={}}" 
+                                                    Source="{Binding HINHSP}" 
                                                     Height="30" 
                                                     Width="30"
                                                     />

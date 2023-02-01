@@ -166,12 +166,6 @@ namespace Novea.ViewModel.Admin
             detailProduct.DVT.Text = temp.DONVI;
             detailProduct.Size.Text = temp.SIZE;
             detailProduct.Mota.Text = temp.MOTA;
-            try
-            {
-                Uri fileUri = new Uri(temp.HINHSP);
-                detailProduct.HinhAnh.ImageSource = new BitmapImage(fileUri);
-            }
-            catch { }
             detailProduct.ShowDialog();
             listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             paramater.ListViewProduct.SelectedItem = null;

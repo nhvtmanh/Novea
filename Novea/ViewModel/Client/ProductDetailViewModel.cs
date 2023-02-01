@@ -12,6 +12,8 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
 using System.Xml.Linq;
+using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace Novea.ViewModel.Client
 {   
@@ -25,6 +27,8 @@ namespace Novea.ViewModel.Client
         public string SL { get => _SL; set { _SL = value; OnPropertyChanged(); } }
         private string _Trigia;
         public string Trigia { get => _Trigia; set { _Trigia = value; OnPropertyChanged(); } }
+        private BitmapImage image;
+        public BitmapImage Image { get => image; set { image = value; OnPropertyChanged(); } }  
         public ICommand CloseProductDetailwdCommand { get; set; }
         public ICommand Loadwd { get; set; }
         public ICommand UpdateSLCommand { get; set; }
@@ -50,6 +54,12 @@ namespace Novea.ViewModel.Client
         }
         void _Loadwd(ProductDetail parameter)
         {
+            byte[] imageData = Const.SP_temp.HINHSP;
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.StreamSource = new MemoryStream(imageData);
+            bitmapImage.EndInit();
+            Image = bitmapImage;
             HoaDon = DataProvider.Ins.DB.HOADONs.Where(p => p.SOHD == parameter.txbSOHD.Text).FirstOrDefault();
             Const.HD = HoaDon;
 

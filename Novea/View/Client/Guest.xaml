@@ -85,7 +85,6 @@
                                 Margin="20 -30 35 0">
                             <Ellipse>
                                 <Ellipse.Fill>
-                                    <!--<ImageBrush ImageSource="/Resources/Images/cheems.jpeg"></ImageBrush>-->
                                     <ImageBrush ImageSource="{Binding Ava}"/>
                                 </Ellipse.Fill>
                             </Ellipse>

@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace Novea.ViewModel.Client
 {
@@ -18,8 +20,8 @@ namespace Novea.ViewModel.Client
     {
         private KHACH user;
         public KHACH User { get => user; set { user = value; OnPropertyChanged(); } }
-        private string ava;
-        public string Ava { get => ava; set { ava = value; OnPropertyChanged(); } }
+        private BitmapImage ava;
+        public BitmapImage Ava { get => ava; set { ava = value; OnPropertyChanged(); } }
         public ICommand SwitchTabCommand { get; set; }
         public ICommand GetIdTab { get; set; }
         public ICommand LogOutCommand { get; set; }
@@ -47,7 +49,12 @@ namespace Novea.ViewModel.Client
                 string a = Const.TenDangNhap;
                 User = DataProvider.Ins.DB.KHACHes.Where(x => x.TAIKHOAN == a).FirstOrDefault();
                 Const.KH = User;
-                Ava = Const._localLink + User.AVATAR;
+                byte[] imageData = Const.KH.AVATAR;
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = new MemoryStream(imageData);
+                bitmapImage.EndInit();
+                Ava = bitmapImage;
                 LoadTenKhach(p);
             }
         }

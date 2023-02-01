@@ -40,7 +40,7 @@
                 <Border Margin="0,0,0,0.333">
                     <Image 
                     x:Name="HinhAnh"
-                    Source="{Binding linkimage}"
+                    Source="{Binding SelectedImage}"
                     Height="450"
                     VerticalAlignment="Center">
                         

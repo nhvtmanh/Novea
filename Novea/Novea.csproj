@@ -177,7 +177,6 @@
     <Compile Include="ViewModel\Login\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModel\Login\LoginViewModel.cs" />
     <Compile Include="ViewModel\Login\MainLoginViewModel.cs" />
-    <Compile Include="ViewModel\Login\SignUpViewModel.cs" />
     <Compile Include="View\Admin\AddProducts.xaml.cs">
       <DependentUpon>AddProducts.xaml</DependentUpon>
     </Compile>

@@ -6,6 +6,7 @@ using Novea.ViewModel.Login;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +35,8 @@ namespace Novea.ViewModel.Admin
         private CUAHANG _User;
         public CUAHANG User { get => _User; set { _User = value; OnPropertyChanged(); } }
 
-        private string _Ava;
-        public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
+        private BitmapImage _Ava;
+        public BitmapImage Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
 
         public string Name;
 
@@ -123,7 +124,12 @@ namespace Novea.ViewModel.Admin
                 User = DataProvider.Ins.DB.CUAHANGs.Where(x => x.TAIKHOAN == a).FirstOrDefault();
                 Const.CH = User;
                 Const.MACH = User.MACH;
-                Ava = Const._localLink + User.AVATAR;
+                byte[] imageData = Const.CH.AVATAR;
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = new MemoryStream(imageData);
+                bitmapImage.EndInit();
+                Ava = bitmapImage;
                 LoadTenAD(p);
             }
         }

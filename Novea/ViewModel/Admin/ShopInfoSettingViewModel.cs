@@ -19,8 +19,9 @@ namespace Novea.ViewModel.Admin
 {
     public class ShopInfoSettingViewModel : BaseViewModel
     {
-        private string _Ava;
-        public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
+        private byte[] imageData;
+        private BitmapImage _Ava;
+        public BitmapImage Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
         private string _Name;
         public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }
         private string _DoB;
@@ -43,18 +44,23 @@ namespace Novea.ViewModel.Admin
         public ShopInfoSettingViewModel()
         {
             Loadwd = new RelayCommand<ShopInfoSetting>((p) => true, (p) => _Loadwd(p));
-            AddImage = new RelayCommand<ImageBrush>((p) => true, (p) => _AddImage(p));
+            AddImage = new RelayCommand<ImageBrush>((p) => true, (p) => _AddImage());
             UpdateInfo = new RelayCommand<ShopInfoSetting>((p) => true, (p) => _UdpateInfo(p));
         }
-        void _AddImage(ImageBrush p)
+        void _AddImage()
         {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Image Files(*.jpg; *.png)|*.jpg; *.png";
-            if (open.ShowDialog() == true)
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
+            if (openFileDialog.ShowDialog() == true)
             {
-                Ava = open.FileName;
+                Ava = new BitmapImage(new Uri(openFileDialog.FileName));
+                MemoryStream memoryStream = new MemoryStream();
+                using (FileStream fileStream = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    fileStream.CopyTo(memoryStream);
+                }
+                imageData = memoryStream.ToArray();
             }
-            p.ImageSource = new BitmapImage(new Uri(Ava));
         }
         void _Loadwd(ShopInfoSetting p)
         {
@@ -62,7 +68,11 @@ namespace Novea.ViewModel.Admin
             {
                 string a = Const.TenDangNhap;
                 User = DataProvider.Ins.DB.CUAHANGs.Where(x => x.TAIKHOAN == a).FirstOrDefault();
-                Ava = User.AVATAR;
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = new MemoryStream(User.AVATAR);
+                bitmapImage.EndInit();
+                Ava = bitmapImage;
                 Name = User.TENCH;
                 DoB = User.NGDK.ToString();
                 DiaChi = User.DIADIEM;
@@ -93,16 +103,8 @@ namespace Novea.ViewModel.Admin
             temp.SDT = p.SDTBox.Text;
             temp.DIADIEM = p.AddressBox.Text;
             temp.EMAIL = p.Mail.Text;
-            string rd = StringGenerator();
-            //if (User.AVATAR != Ava)
-            //    temp.AVATAR = "/Resource/Ava/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString();
+            temp.AVATAR = imageData;
             DataProvider.Ins.DB.SaveChanges();
-            //try
-            //{
-            //    if (User.AVATAR != Ava)
-            //        File.Copy(Ava, Const._localLink + @"Resource/Ava/" + rd + (Ava.Contains(".jpg") ? ".jpg" : ".png").ToString(), true);
-            //}
-            //catch { }
             MessageBox.Show("Cập nhật thành công!", "Thông báo");
         }
         static string StringGenerator()

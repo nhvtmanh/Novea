@@ -91,7 +91,7 @@
                           BlurRadius="10"/>
                             </Ellipse.Effect>
                             <Ellipse.Fill>
-                                <ImageBrush x:Name="HinhAnh1" ImageSource="{Binding linkaddimage}"/>
+                                <ImageBrush x:Name="HinhAnh1" ImageSource="{Binding SelectedImage}"/>
                             </Ellipse.Fill>
                         </Ellipse>
                     </Border>

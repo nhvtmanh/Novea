@@ -18,7 +18,7 @@
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding Loadwd}"
-                                                       CommandParameter="{Binding ElementName=ProductDetailwd}"></i:InvokeCommandAction>
+                                   CommandParameter="{Binding ElementName=ProductDetailwd}"></i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
@@ -42,7 +42,7 @@
                                 Height="295"
                                 HorizontalAlignment="Center"
                                 Margin="0,5,0,0">
-                            <Image Source="/Resources/Images/cheems.jpeg"/>
+                            <Image Source="{Binding Image}"/>
                         </Border>
                         <TextBlock FontFamily="{StaticResource Custom1}"
                                    FontSize="28"

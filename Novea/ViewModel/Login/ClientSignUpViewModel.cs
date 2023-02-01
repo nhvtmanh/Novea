@@ -26,24 +26,26 @@ namespace Novea.ViewModel.Login
         public ICommand Register { get; set; }
         private string _Password;
         public string Password { get => _Password; set { _Password = value; OnPropertyChanged(); } }
+        private byte[] imageData;
+        private BitmapImage selectedImage;
+        public BitmapImage SelectedImage
+        {
+            get { return selectedImage; }
+            set { selectedImage = value; OnPropertyChanged(); }
+        }
         public ICommand PasswordChangedCommand { get; set; }
-        private string _linkaddimage;
-        public string linkaddimage { get => _linkaddimage; set { _linkaddimage = value; OnPropertyChanged(); } }
         public ICommand AddImage { get; set; }
         public ClientSignUpViewModel()
         {
-
-            linkaddimage = Const._localLink + "/Resources/Images/addava.png";
             Close1 = new RelayCommand<ClientSignUp>((p) => true, (p) => Close(p));
             Minimizewd = new RelayCommand<ClientSignUp>((p) => true, (p) => _Minimize(p));
             Movewd = new RelayCommand<ClientSignUp>((p) => true, (p) => _Move(p));
             Register = new RelayCommand<ClientSignUp>((p) => true, (p) => _Register(p));
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => true, (p) => { Password = p.Password; });
-            AddImage = new RelayCommand<ImageBrush>((p) => true, (p) => _AddImage(p));
+            AddImage = new RelayCommand<ImageBrush>((p) => true, (p) => _AddImage());
         }
         void Close(ClientSignUp p)
         {
-            linkaddimage = Const._localLink + "/Resources/Images/addava.png";
             p.Close();
         }
         void _Minimize(ClientSignUp p)
@@ -54,18 +56,20 @@ namespace Novea.ViewModel.Login
         {
             p.DragMove();
         }
-        void _AddImage(ImageBrush img)
+        void _AddImage()
         {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Image Files(*.jpg; *.png)|*.jpg; *.png";
-
-            if (open.ShowDialog() == true)
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
+            if (openFileDialog.ShowDialog() == true)
             {
-                if (open.FileName != "")
-                    linkaddimage = open.FileName;
-            };
-            Uri fileUri = new Uri(linkaddimage);
-            img.ImageSource = new BitmapImage(fileUri);
+                SelectedImage = new BitmapImage(new Uri(openFileDialog.FileName));
+                MemoryStream memoryStream = new MemoryStream();
+                using (FileStream fileStream = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    fileStream.CopyTo(memoryStream);
+                }
+                imageData = memoryStream.ToArray();
+            }
         }
         bool checkMAKH(string m)
         {
@@ -150,17 +154,9 @@ namespace Novea.ViewModel.Login
                 temp.NGDK = DateTime.Now;
                 temp.TAIKHOAN = parameter.User.Text;
                 temp.MATKHAU = LoginViewModel.MD5Hash(LoginViewModel.Base64Encode(Password));
-                if (linkaddimage == "/Resources/Images/addava.png")
-                    temp.AVATAR = "/Resources/Images/addava.png";
-                else
-                    temp.AVATAR = "/Resources/AVATAR/" + temp.MAKH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                temp.AVATAR = imageData;
                 DataProvider.Ins.DB.KHACHes.Add(temp);
                 DataProvider.Ins.DB.SaveChanges();
-                try
-                {
-                    File.Copy(linkaddimage, Const._localLink + @"Resources\AVATAR\" + temp.MAKH + ((linkaddimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
-                }
-                catch { }
                 MessageBox.Show("Chúc mừng bạn đã đăng ký thành công !", "THÔNG BÁO", MessageBoxButton.OK);
                 parameter.User.Clear();
                 parameter.password.Clear();
@@ -170,8 +166,6 @@ namespace Novea.ViewModel.Login
                 parameter.SDT.Clear();
                 parameter.DC.Clear();
                 parameter.Mail.Clear();
-                linkaddimage = "/Resources/Images/addava.png";
-                parameter.HinhAnh1.ImageSource = new BitmapImage(new Uri(Const._localLink + linkaddimage));
             }
         }
     }

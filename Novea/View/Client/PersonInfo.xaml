@@ -11,10 +11,20 @@
       DataContext="{StaticResource PersonInfoVM}"
       x:Name="PersonInfowd">
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="LoadPersonInfowdCommand"
+                                   CommandParameter="{Binding ElementName=PersonInfowd}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Border CornerRadius="0 0 40 0"
             Background="Transparent">
         <Grid>
-            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="337*"/>
+                <ColumnDefinition Width="483*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.ColumnSpan="2">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="400"/>
@@ -37,21 +47,32 @@
                                                   BlurRadius="10"/>
                             </Ellipse.Effect>
                             <Ellipse.Fill>
-                                <ImageBrush ImageSource="/Resources/Images/cheems.jpeg"
-                                            x:Name="Avatar"/>
+                                <ImageBrush ImageSource="{Binding Avatar}"
+                                            x:Name="image"/>
                             </Ellipse.Fill>
                         </Ellipse>
                     </Border>
                     <Button Grid.Row="1"
                             Width="175" Height="40" 
-                            Background="#FD8A87" 
-                            Foreground="White"
+                            Foreground="{StaticResource plainTextColor2}"
                             HorizontalAlignment="Center"
-                            Margin="0,-250,0,0"
+                            Margin="0,-270,0,0"
                             BorderThickness="0"
                             Style="{StaticResource MaterialDesignFlatMidBgButton}"
                             FontFamily="{StaticResource Custom}"
                             Content="Cập nhật ảnh đại diện">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
+                                <GradientStop Color="Yellow" Offset="0"/>
+                                <GradientStop Color="Orange" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <Button.Effect>
+                            <DropShadowEffect ShadowDepth="3"
+                                              Color="Orange"
+                                              Opacity="0.5"
+                                              BlurRadius="5"/>
+                        </Button.Effect>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding UpdateAvatarCommand}"
@@ -193,9 +214,20 @@
                             BorderThickness="0"
                             Style="{StaticResource MaterialDesignFlatMidBgButton}" 
                             FontFamily="{StaticResource Custom}"
-                            Foreground="White"
-                            Background="#FD8A87"
+                            Foreground="{StaticResource plainTextColor2}"
                             Content="Cập nhật thông tin">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
+                                <GradientStop Color="Yellow" Offset="0"/>
+                                <GradientStop Color="Orange" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <Button.Effect>
+                            <DropShadowEffect ShadowDepth="3"
+                                              Color="Orange"
+                                              Opacity="0.5"
+                                              BlurRadius="5"/>
+                        </Button.Effect>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding UpdateInfoCommand}"

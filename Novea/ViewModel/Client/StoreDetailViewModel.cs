@@ -137,17 +137,6 @@ namespace Novea.ViewModel.Client
                     productDetail.ShowDialog();
                 }
             }
-
-            //try
-            //{
-            //    Uri fileUri = new Uri(temp.HINHSP);
-            //    detailProduct.HinhAnh.ImageSource = new BitmapImage(fileUri);
-            //}
-            //catch { }
-            //listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
-            //paramater.ListViewProduct.SelectedItem = null;
-
-            
         }
     }
 }

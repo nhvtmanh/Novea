@@ -1,14 +1,18 @@
-﻿using Novea.Model;
+﻿using Microsoft.Win32;
+using Novea.Model;
 using Novea.View;
 using Novea.View.Admin;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Novea.ViewModel.Admin
 {
@@ -22,8 +26,14 @@ namespace Novea.ViewModel.Admin
         private string MaSP_Now;
         public ICommand Loadwd { get; set; }
         public ICommand DeleteProduct { get; set; }
-        private string _linkaddimage;
-        public string linkaddimage { get => _linkaddimage; set { _linkaddimage = value; OnPropertyChanged(); } }
+        public ICommand UpdateImageCommand { get; set; }
+        private byte[] imageData;
+        private BitmapImage selectedImage;
+        public BitmapImage SelectedImage
+        {
+            get { return selectedImage; }
+            set { selectedImage = value; OnPropertyChanged(); }
+        }
         //private SANPHAM _Product;
         //public SANPHAM Product { get => _Product; set { _Product = value; OnPropertyChanged(); } }
         private bool _IsChecked;
@@ -37,12 +47,36 @@ namespace Novea.ViewModel.Admin
             Loadwd = new RelayCommand<DetailProducts>((p) => true, (p) => _Loadwd(p));
             DeleteProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _DeleteProduct(p));
             ChangeAvailProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _ChangeAvailProduct(p));
+            UpdateImageCommand = new RelayCommand<ImageBrush>((p) => true, (p) => UpdateImage());
         }
+
+        void UpdateImage()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                SelectedImage = new BitmapImage(new Uri(openFileDialog.FileName));
+                MemoryStream memoryStream = new MemoryStream();
+                using (FileStream fileStream = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    fileStream.CopyTo(memoryStream);
+                }
+                imageData = memoryStream.ToArray();
+            }
+        }
+
         void _Loadwd(DetailProducts paramater)
         {
             GetMaSP = new RelayCommand<DetailProducts>((p) => true, (p) => _GetMaSP(p));
             //Product = DataProvider.Ins.DB.SANPHAMs.Where(p => p.MASP == MaSP_Now).FirstOrDefault();
-            //linkaddimage = Product.HINHSP;
+            SANPHAM temp = DataProvider.Ins.DB.SANPHAMs.Where(p => p.MASP == MaSP_Now).FirstOrDefault();
+            imageData = temp.HINHSP;
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.StreamSource = new MemoryStream(imageData);
+            bitmapImage.EndInit();
+            paramater.HinhAnh.ImageSource = bitmapImage;
             IsChecked = true;
             paramater.TenSP.IsEnabled = true;
             paramater.Mota.IsEnabled = true;
@@ -112,6 +146,7 @@ namespace Novea.ViewModel.Admin
                     {
                         a.TENSP = p.TenSP.Text;
                         a.MOTA = p.Mota.Text;
+                        a.HINHSP = imageData;
                     }
                     DataProvider.Ins.DB.SaveChanges();
                     MessageBox.Show("Cập nhật sản phẩm thành công !", "THÔNG BÁO");

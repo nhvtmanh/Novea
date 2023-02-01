@@ -22,16 +22,20 @@ namespace Novea.ViewModel.Admin
     {
         private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         public ICommand AddImage { get; set; }
-        private string _linkimage;
-        public string linkimage { get => _linkimage; set { _linkimage = value; OnPropertyChanged(); } }
+        private byte[] imageData;
+        private BitmapImage selectedImage;
+        public BitmapImage SelectedImage
+        {
+            get { return selectedImage; }
+            set { selectedImage = value; OnPropertyChanged(); }
+        }
         public ICommand AddProduct { get; set; }
         public ICommand Loadwd { get; set; }
         public ICommand Closewd { get; set; }
         public ICommand Minimizewd { get; set; }
         public AddProductsViewModel()
         {
-            linkimage = "/Resources/Images/add.png";
-            AddImage = new RelayCommand<Image>((p) => true, (p) => _AddImage(p));
+            AddImage = new RelayCommand<Image>((p) => true, (p) => _AddImage());
             AddProduct = new RelayCommand<AddProducts>((p) => true, (p) => _AddProduct(p));
             Loadwd = new RelayCommand<AddProducts>((p) => true, (p) => _Loadwd(p));
             Closewd = new RelayCommand<AddProducts>((p) => true, (p) => Close(p));
@@ -39,25 +43,21 @@ namespace Novea.ViewModel.Admin
         }
         void _Loadwd(AddProducts paramater)
         {
-            linkimage = "/Resources/Images/add.png";
+            
         }
-        void _AddImage(Image img)
+        void _AddImage()
         {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Image Files(*.jpg; *.png)|*.jpg; *.png";
-            if (open.ShowDialog() == true)
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
+            if (openFileDialog.ShowDialog() == true)
             {
-                linkimage = open.FileName;
-            };
-            if (linkimage == "/Resources/Images/add.png")
-            {
-                Uri fileUri = new Uri(linkimage, UriKind.Relative);
-                img.Source = new BitmapImage(fileUri);
-            }
-            else
-            {
-                Uri fileUri = new Uri(linkimage);
-                img.Source = new BitmapImage(fileUri);
+                SelectedImage = new BitmapImage(new Uri(openFileDialog.FileName));
+                MemoryStream memoryStream = new MemoryStream();
+                using (FileStream fileStream = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                {
+                    fileStream.CopyTo(memoryStream);
+                }
+                imageData = memoryStream.ToArray();
             }
         }
         bool check(string m)
@@ -81,7 +81,7 @@ namespace Novea.ViewModel.Admin
         }
         void _AddProduct(AddProducts paramater)
         {
-            if (string.IsNullOrEmpty(paramater.MaSp.Text) || string.IsNullOrEmpty(paramater.TenSp.Text) || string.IsNullOrEmpty(paramater.LoaiSp.Text) || string.IsNullOrEmpty(paramater.GiaSp.Text) || string.IsNullOrEmpty(paramater.SizeSp.Text) || string.IsNullOrEmpty(paramater.DvSp.Text) || linkimage == "/Resource/Image/add.png")
+            if (string.IsNullOrEmpty(paramater.MaSp.Text) || string.IsNullOrEmpty(paramater.TenSp.Text) || string.IsNullOrEmpty(paramater.LoaiSp.Text) || string.IsNullOrEmpty(paramater.GiaSp.Text) || string.IsNullOrEmpty(paramater.SizeSp.Text) || string.IsNullOrEmpty(paramater.DvSp.Text))
             {
                 MessageBox.Show("Bạn chưa nhập đủ thông tin.", "Thông Báo", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -119,14 +119,9 @@ namespace Novea.ViewModel.Admin
                         sanpham.MOTA = paramater.MotaSp.Text;
                         sanpham.MACH = Const.CH.MACH;
                         sanpham.AVAILABLE = true;
-                        sanpham.HINHSP = "/Resources/ImgProduct/" + paramater.MaSp.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                        sanpham.HINHSP = imageData;
                         DataProvider.Ins.DB.SANPHAMs.Add(sanpham);
                         DataProvider.Ins.DB.SaveChanges();
-                        try
-                        {
-                            File.Copy(linkimage, _localLink + @"Resources\ImgProduct\" + paramater.MaSp.Text + ((linkimage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
-                        }
-                        catch { }
                         MessageBox.Show("Thêm sản phẩm mới thành công !", "THÔNG BÁO");
                         paramater.MaSp.Text = _rdmaSP();
                         paramater.TenSp.Clear();
@@ -134,8 +129,6 @@ namespace Novea.ViewModel.Admin
                         paramater.GiaSp.Clear();
                         paramater.DvSp.Clear();
                         paramater.SizeSp.SelectedItem = null;
-                        Uri fileUri = new Uri(Const._localLink + "/Resources/Images/add.png");
-                        paramater.HinhAnh.Source = new BitmapImage(fileUri);
                         paramater.MotaSp.Clear();
                     }
                 }
