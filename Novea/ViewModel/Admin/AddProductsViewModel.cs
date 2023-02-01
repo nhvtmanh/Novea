@@ -133,6 +133,7 @@ namespace Novea.ViewModel.Admin
                     }
                 }
             }
+            paramater.Close();
         }
         void Close(AddProducts p)
         {
