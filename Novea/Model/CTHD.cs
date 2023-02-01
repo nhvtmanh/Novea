@@ -16,8 +16,8 @@ namespace Novea.Model
     {
         public string SOHD { get; set; }
         public string MASP { get; set; }
-        public Nullable<int> SOLUONG { get; set; }
-        public Nullable<decimal> TRIGIA { get; set; }
+        public int SOLUONG { get; set; }
+        public decimal TRIGIA { get; set; }
         public string LuongDa { get; set; }
         public string LuongDuong { get; set; }
     

@@ -17,7 +17,7 @@ CREATE TABLE KHACH
 	DIACHI nvarchar(max),
 	NGDK datetime,
 	DOANHSO money,
-	AVATAR varchar(max)
+	AVATAR varbinary(max)
 )
 
 CREATE TABLE CUAHANG
@@ -31,7 +31,7 @@ CREATE TABLE CUAHANG
 	EMAIL varchar(max),
 	NGDK datetime,	
 	DOANHTHU money,
-	AVATAR varchar(max)	
+	AVATAR varbinary(max)	
 )
 
 CREATE TABLE SANPHAM
@@ -44,7 +44,7 @@ CREATE TABLE SANPHAM
 	SIZE varchar(10),
 	MOTA nvarchar(max),
 	AVAILABLE bit,
-	HINHSP varchar(max),
+	HINHSP varbinary(max),
 	MACH varchar(128) FOREIGN KEY REFERENCES CUAHANG(MACH)
 )
 

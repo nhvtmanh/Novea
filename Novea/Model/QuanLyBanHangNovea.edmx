@@ -30,7 +30,7 @@
           <Property Name="EMAIL" Type="varchar(max)" />
           <Property Name="NGDK" Type="datetime" />
           <Property Name="DOANHTHU" Type="money" />
-          <Property Name="AVATAR" Type="varchar(max)" />
+          <Property Name="AVATAR" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="HOADON">
           <Key>
@@ -58,7 +58,7 @@
           <Property Name="DIACHI" Type="nvarchar(max)" />
           <Property Name="NGDK" Type="datetime" />
           <Property Name="DOANHSO" Type="money" />
-          <Property Name="AVATAR" Type="varchar(max)" />
+          <Property Name="AVATAR" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="SANPHAM">
           <Key>
@@ -72,7 +72,7 @@
           <Property Name="SIZE" Type="varchar" MaxLength="10" />
           <Property Name="MOTA" Type="nvarchar(max)" />
           <Property Name="AVAILABLE" Type="bit" />
-          <Property Name="HINHSP" Type="varchar(max)" />
+          <Property Name="HINHSP" Type="varbinary(max)" />
           <Property Name="MACH" Type="varchar" MaxLength="128" />
         </EntityType>
         <Association Name="FK__CTHD__MASP__68487DD7">
@@ -220,7 +220,7 @@
           <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="NGDK" Type="DateTime" Precision="3" />
           <Property Name="DOANHTHU" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AVATAR" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="HOADONs" Relationship="QuanLyBanHangNoveaModel.FK__HOADON__MACH__6477ECF3" FromRole="CUAHANG" ToRole="HOADON" />
           <NavigationProperty Name="SANPHAMs" Relationship="QuanLyBanHangNoveaModel.FK__SANPHAM__MACH__60A75C0F" FromRole="CUAHANG" ToRole="SANPHAM" />
         </EntityType>
@@ -253,7 +253,7 @@
           <Property Name="DIACHI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NGDK" Type="DateTime" Precision="3" />
           <Property Name="DOANHSO" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="AVATAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AVATAR" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="HOADONs" Relationship="QuanLyBanHangNoveaModel.FK__HOADON__MAKH__6383C8BA" FromRole="KHACH" ToRole="HOADON" />
         </EntityType>
         <EntityType Name="SANPHAM">
@@ -268,7 +268,7 @@
           <Property Name="SIZE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AVAILABLE" Type="Boolean" />
-          <Property Name="HINHSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HINHSP" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="MACH" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CTHDs" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__MASP__68487DD7" FromRole="SANPHAM" ToRole="CTHD" />
           <NavigationProperty Name="CUAHANG" Relationship="QuanLyBanHangNoveaModel.FK__SANPHAM__MACH__60A75C0F" FromRole="SANPHAM" ToRole="CUAHANG" />
