@@ -97,8 +97,6 @@ namespace Novea.ViewModel.Admin
             }
         }
 
-
-
         void _DetailPd(ManagerView paramater)
         {
             DetailBill detailBill = new DetailBill();
@@ -116,7 +114,7 @@ namespace Novea.ViewModel.Admin
             }
             detailBill.ListViewSP.ItemsSource = list;
             detailBill.ShowDialog();
-            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
+            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(p => p.MACH == Const.MACH));
             paramater.ListViewBill.SelectedItem = null;
         }
 

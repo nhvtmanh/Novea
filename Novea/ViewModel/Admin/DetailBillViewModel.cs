@@ -25,7 +25,7 @@ namespace Novea.ViewModel.Admin
         }
         void _DeleteOrder(DetailBill parameter)
         {
-            MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn xóa hóa đơn này?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            MessageBoxResult h = System.Windows.MessageBox.Show("Bạn chắc chắn muốn xóa hóa đơn này?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             if (h == MessageBoxResult.Yes)
             {
                 foreach (HOADON temp in DataProvider.Ins.DB.HOADONs)
@@ -36,6 +36,7 @@ namespace Novea.ViewModel.Admin
                     }
                 }
                 DataProvider.Ins.DB.SaveChanges();
+                parameter.Hide();
             }
         }
         void moveWindow(DetailBill p)
