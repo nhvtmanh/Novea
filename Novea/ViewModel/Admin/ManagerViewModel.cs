@@ -75,7 +75,7 @@ namespace Novea.ViewModel.Admin
             ObservableCollection<HOADON> temp = new ObservableCollection<HOADON>();
             if (paramater.txbSearch.Text == "")
             {
-                MessageBox.Show("Vui lòng điền vào ô tìm kiếm");
+                paramater.ListViewBill.ItemsSource = listHD;
             }
             else
             {

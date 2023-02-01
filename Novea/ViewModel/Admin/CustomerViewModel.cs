@@ -52,7 +52,8 @@ namespace Novea.ViewModel.Admin
             ObservableCollection<KHACH> temp = new ObservableCollection<KHACH>();
             if (paramater.txbSearch.Text == "")
             {
-                MessageBox.Show("Vui lòng điền vào ô tìm kiếm");
+                paramater.ListViewKH.ItemsSource = listKH;
+
             }
             else
             {
