@@ -92,13 +92,7 @@
                                 <Button Style="{StaticResource MaterialDesignToolButton}"
                                         Foreground="{StaticResource plainTextColor2}"
                                         IsDefault="True">
-                                    
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding SearchCommand}"
-                                                       CommandParameter="{Binding ElementName=Managerwd}"></i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                   
 
                                     <materialDesign:PackIcon Kind="Search"                                                                 
                                                          Opacity=".56" />
@@ -112,6 +106,12 @@
                                      BorderThickness="0"                                                  
                                      MinWidth="200"                                                  
                                      VerticalAlignment="Center" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="TextChanged">
+                                            <i:InvokeCommandAction Command="{Binding SearchCommand}"
+                                                       CommandParameter="{Binding ElementName=Managerwd}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                 </TextBox>
                                 <Button Style="{StaticResource MaterialDesignToolButton}"                                                    
                                     Grid.Column="2">
