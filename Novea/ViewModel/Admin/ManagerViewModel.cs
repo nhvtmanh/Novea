@@ -61,13 +61,13 @@ namespace Novea.ViewModel.Admin
             listHD1 = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
             listHD = new ObservableCollection<HOADON>(listHD1.GroupBy(p => p.SOHD).Select(grp => grp.FirstOrDefault()).Where(p => p.MACH == Const.MACH));
             parameter.cbxChon.SelectedIndex = 0;
-            parameter.ListViewBill.Items.SortDescriptions.Add(new SortDescription("SOHD", ListSortDirection.Ascending));
+            parameter.ListViewBill.Items.SortDescriptions.Add(new SortDescription("TONGTIEN", ListSortDirection.Ascending));
         }
 
         void _SortCommand(ManagerView parameter)
         {
             var SortDirection = parameter.cbxChon.SelectedIndex.ToString() == "0" ? ListSortDirection.Ascending : ListSortDirection.Descending;
-            parameter.ListViewBill.Items.SortDescriptions[0] = new SortDescription("SOHD", SortDirection);
+            parameter.ListViewBill.Items.SortDescriptions[0] = new SortDescription("TONGTIEN", SortDirection);
         }
 
         void _SearchCommand(ManagerView paramater)
