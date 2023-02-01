@@ -92,7 +92,7 @@
                                 <Button Style="{StaticResource MaterialDesignToolButton}"
                                         Foreground="{StaticResource plainTextColor2}"
                                         IsDefault="True">
-                                   
+
 
                                     <materialDesign:PackIcon Kind="Search"                                                                 
                                                          Opacity=".56" />
@@ -132,7 +132,7 @@
                         Height="40"
                         CornerRadius="10"                                                
                         Background="{StaticResource color1}"
-                        Padding="5">
+                        Padding="5" Margin="0 0 0 10 ">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
@@ -142,7 +142,7 @@
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,96,0">
                                 <TextBlock Text="SOHD"
-                                                             Foreground="{StaticResource plainTextColor1}"
+                                                             Foreground="{StaticResource plainTextColor2}"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 FontFamily="{StaticResource Custom}"
@@ -150,7 +150,7 @@
                                 />
                             </Grid>
                             <Grid Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,85,0">
-                                <TextBlock Foreground="{StaticResource plainTextColor1}"
+                                <TextBlock Foreground="{StaticResource plainTextColor2}"
                                            Width="auto"
                                 HorizontalAlignment="Left"
                                 Text="MA KHACH HANG"
@@ -161,7 +161,7 @@
                             </Grid>
                             <Grid Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,141,0">
                                 <TextBlock Text="NGAY MUA HANG"                                    
-                                           Foreground="{StaticResource plainTextColor1}"                                    
+                                           Foreground="{StaticResource plainTextColor2}"                                    
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 FontFamily="{StaticResource Custom}"
@@ -169,7 +169,7 @@
                                 />
                             </Grid>
                             <Grid Grid.Column="3">
-                                <TextBlock Foreground="{StaticResource plainTextColor1}"                                    
+                                <TextBlock Foreground="{StaticResource plainTextColor2}"                                    
                                 Text="TONG TIEN"
                                 VerticalAlignment="Center"
                                 FontFamily="{StaticResource Custom}"
@@ -187,40 +187,48 @@
                               d:ItemsSource="{d:SampleData ItemCount=5}" Width="602" Height="394">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Border Height="29"
-                                        CornerRadius="15"
-                                        Width="587">
-                                    <Grid Width="587">
+                                <Border Width="580"                        
+                                        Height="40"                       
+                                        CornerRadius="10" Margin="5 0 0 0">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White" Offset="1"/>
+                                            <GradientStop Color="Pink" Offset="0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="146*"/>
-                                            <ColumnDefinition Width="152*"/>
-                                            <ColumnDefinition Width="157*"/>
-                                            <ColumnDefinition Width="134*"/>
+                                            <ColumnDefinition Width="142*"/>
+                                            <ColumnDefinition Width="140*"/>
+                                            <ColumnDefinition Width="143*"/>
+                                            <ColumnDefinition Width="150*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <TextBlock FontFamily="{StaticResource Custom}"                                                              
-                                                   Foreground="{StaticResource plainTextColor3}"                                                   
-                                                   FontSize="14"                                                    
-                                                   HorizontalAlignment="Center"        
+                                        <TextBlock FontFamily="{StaticResource Custom}"       
+                                                   FontSize="14"
+                                                   Width="auto"
+                                                   HorizontalAlignment="Center"
                                                    VerticalAlignment="Center"
-                                                   Text="{Binding SOHD}" Height="16" Width="auto"/>
+                                                   Text="{Binding SOHD}"/>
 
                                         <TextBlock FontFamily="{StaticResource Custom}"                                             
-                                                   Foreground="{StaticResource plainTextColor3}"                                                   
-                                                   FontSize="14"                                                    
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Center"                                                   
-                                                   Text="{Binding MAKH}" Grid.Column="1" Height="16" Width="auto"/>
+                                                   Width="auto"
+                                                   FontSize="14"       
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"                                           
+                                                   Text="{Binding MAKH}" Grid.Column="1"/>
                                         <TextBlock FontFamily="{StaticResource Custom}"                                                    
-                                                   Foreground="{StaticResource plainTextColor3}"
+                                                   Width="auto"
                                                    FontSize="14"
-                                                   Text="{Binding NGMH}" Grid.Column="2" Height="16" Width="auto"
-                                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding NGMH}" Grid.Column="2"/>
                                         <TextBlock FontFamily="{StaticResource Custom}"    
-                                                   Foreground="{StaticResource plainTextColor3}"
+                                                   Width="auto"
                                                    FontSize="14"
-                                                   Text="{Binding TONGTIEN,StringFormat={}{0:####} VNĐ}" Grid.Column="3" Height="16" 
-                                                   VerticalAlignment="Center" Margin="19,0,11,0" Width="auto"/>
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding TONGTIEN,StringFormat={}{0:####} VNĐ}" Grid.Column="3"/>
                                     </Grid>
 
                                 </Border>
@@ -229,15 +237,15 @@
                         </ListView.ItemTemplate>
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel Margin="0 10 0 0"/>
+                                <WrapPanel/>
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
                         <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding DetailPdCommand}"
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding DetailPdCommand}"
                                                        CommandParameter="{Binding ElementName=Managerwd}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ListView>
                 </StackPanel>
             </Grid>

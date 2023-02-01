@@ -120,12 +120,11 @@
             <Grid Grid.Row="2">
                 <StackPanel>
                     <Border
-                        Margin="-33,0,0,0"
                         Width="600"
                         Height="40"
                         CornerRadius="10"                                                
                         Background="{StaticResource color1}"
-                        Padding="5">
+                        Padding="5" Margin="-33 0 0 10">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
@@ -177,21 +176,18 @@
                     <ListView x:Name="ListViewKH" ItemsSource="{Binding listKH}"
                           Height="350"
                           Width="650"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"                      
                           SelectionMode="Single"
-                          ScrollViewer.VerticalScrollBarVisibility="Hidden" d:ItemsSource="{d:SampleData ItemCount=5}"
-                        >
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden" d:ItemsSource="{d:SampleData ItemCount=5}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Border
-                        Width="600"
-                        Height="40"
-                        CornerRadius="10"
-                       
-                        >
+                                <Border Width="580"                        
+                                        Height="40"                       
+                                        CornerRadius="10" Margin="10 0 0 0">
                                     <Border.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FFE5D8" Offset="1"/>
-                                            <GradientStop Color="#FFCAD4" Offset="0"/>
+                                            <GradientStop Color="White" Offset="1"/>
+                                            <GradientStop Color="pink" Offset="0"/>
                                         </LinearGradientBrush>
                                     </Border.Background>
                                     <Grid>
