@@ -18,8 +18,8 @@ namespace Novea.ViewModel.Client
 {
     public class GuestViewModel : BaseViewModel
     {
-        private KHACH user;
-        public KHACH User { get => user; set { user = value; OnPropertyChanged(); } }
+        //private KHACH user;
+        //public KHACH User { get => user; set { user = value; OnPropertyChanged(); } }
         private BitmapImage ava;
         public BitmapImage Ava { get => ava; set { ava = value; OnPropertyChanged(); } }
         public ICommand SwitchTabCommand { get; set; }
@@ -46,9 +46,9 @@ namespace Novea.ViewModel.Client
         {
             if (Const.IsLogin)
             {
-                string a = Const.TenDangNhap;
-                User = DataProvider.Ins.DB.KHACHes.Where(x => x.TAIKHOAN == a).FirstOrDefault();
-                Const.KH = User;
+                //string a = Const.TenDangNhap;
+                //User = DataProvider.Ins.DB.KHACHes.Where(x => x.TAIKHOAN == a).FirstOrDefault();
+                //Const.KH = User;
                 byte[] imageData = Const.KH.AVATAR;
                 BitmapImage bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
@@ -60,7 +60,7 @@ namespace Novea.ViewModel.Client
         }
         public void LoadTenKhach(Guest p)
         {
-            p.TenDangNhap.Text = string.Join(" ", User.HOTEN.Split().Reverse().Take(2).Reverse());
+            p.TenDangNhap.Text = string.Join(" ", Const.KH.HOTEN.Split().Reverse().Take(2).Reverse());
         }
         void SwitchTab(Guest p)
         {

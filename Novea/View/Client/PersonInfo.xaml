@@ -13,7 +13,7 @@
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="LoadPersonInfowdCommand"
+            <i:InvokeCommandAction Command="{Binding LoadPersonInfowdCommand}"
                                    CommandParameter="{Binding ElementName=PersonInfowd}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
@@ -76,7 +76,7 @@
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding UpdateAvatarCommand}"
-                                                       CommandParameter="{Binding ElementName=Avatar}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=image}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
@@ -88,7 +88,7 @@
                                          Margin="0,10,0,0"
                                          materialDesign:HintAssist.Foreground="Black"
                                          materialDesign:TextFieldAssist.UnderlineBrush="#6C63FF"
-                                         Width="190" Height="45"
+                                         Width="290" Height="45"
                                          MaxWidth="400"
                                          Style="{StaticResource MaterialDesignFilledTextBox}"
                                          FontFamily="{StaticResource Custom}"
@@ -97,45 +97,9 @@
                                          TextWrapping="Wrap"
                                          materialDesign:HintAssist.Hint="Tên đăng nhập" 
                                          x:Name="tbTENDANGNHAP"/>
-                                <PasswordBox Background="{StaticResource plainTextColor3}"
-                                             Foreground="{StaticResource plainTextColor2}" 
-                                             Margin="20,10,0,0"
-                                             Height="45"
-                                             Width="190"
-                                             Style="{StaticResource MaterialDesignFilledPasswordBox}"
-                                             FontSize="11"
-                                             FontWeight="Normal"
-                                             FontFamily="{StaticResource Custom}"
-                                             materialDesign:HintAssist.Foreground="Black"
-                                             materialDesign:TextFieldAssist.UnderlineBrush="#6C63FF"
-                                             materialDesign:HintAssist.Hint="Mật khẩu mới"
-                                             x:Name="pwbMATKHAU">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="PasswordChanged">
-                                            <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
-                                                                   CommandParameter="{Binding ElementName=pwbMATKHAU}"></i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </PasswordBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBox Background="{StaticResource plainTextColor3}"
-                                         Foreground="{StaticResource plainTextColor2}" 
-                                         Margin="0,20,0,0"
-                                         materialDesign:HintAssist.Foreground="Black"
-                                         materialDesign:TextFieldAssist.UnderlineBrush="#6C63FF"
-                                         Width="290" Height="45"
-                                         MaxWidth="400"
-                                         Style="{StaticResource MaterialDesignFilledTextBox}"
-                                         FontFamily="{StaticResource Custom}"
-                                         VerticalAlignment="Top"
-                                         AcceptsReturn="True"
-                                         TextWrapping="Wrap"
-                                         materialDesign:HintAssist.Hint="Họ tên" 
-                                         x:Name="tbHOTEN"/>
                                 <ComboBox Background="{StaticResource plainTextColor3}"
                                           Foreground="{StaticResource plainTextColor2}" 
-                                          Margin="20,20,0,0"
+                                          Margin="20,10,0,0"
                                           Width="90" Height="45"
                                           FontFamily="{StaticResource Custom}"
                                           Style="{StaticResource MaterialDesignFilledComboBox}"
@@ -146,6 +110,22 @@
                                     <ComboBoxItem Content="Nam"/>
                                     <ComboBoxItem Content="Nữ"/>
                                 </ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Background="{StaticResource plainTextColor3}"
+                                         Foreground="{StaticResource plainTextColor2}" 
+                                         Margin="0,20,0,0"
+                                         materialDesign:HintAssist.Foreground="Black"
+                                         materialDesign:TextFieldAssist.UnderlineBrush="#6C63FF"
+                                         Width="400" Height="45"
+                                         MaxWidth="400"
+                                         Style="{StaticResource MaterialDesignFilledTextBox}"
+                                         FontFamily="{StaticResource Custom}"
+                                         VerticalAlignment="Top"
+                                         AcceptsReturn="True"
+                                         TextWrapping="Wrap"
+                                         materialDesign:HintAssist.Hint="Họ tên" 
+                                         x:Name="tbHOTEN"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <DatePicker Background="{StaticResource plainTextColor3}"

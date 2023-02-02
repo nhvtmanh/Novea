@@ -53,11 +53,12 @@ namespace Novea.ViewModel.Login
             {
                 if (p == null) return;
                 string PassEncode = MD5Hash(Base64Encode(Password));
-                var accCountKHACH = DataProvider.Ins.DB.KHACHes.Where(x => x.TAIKHOAN == Username && x.MATKHAU == PassEncode).Count();
-                if (accCountKHACH > 0)
+                KHACH accCountKHACH = DataProvider.Ins.DB.KHACHes.Where(x => x.TAIKHOAN == Username && x.MATKHAU == PassEncode).FirstOrDefault();
+                if (accCountKHACH != null)
                 {
                     Const.IsLogin = true;
                     Const.TenDangNhap = Username;
+                    Const.KH = accCountKHACH;
                     Guest guest = new Guest();
                     guest.Show();
                     Username = "";
