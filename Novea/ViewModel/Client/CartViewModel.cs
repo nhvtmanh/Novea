@@ -20,19 +20,66 @@ namespace Novea.ViewModel.Client
     public class CartViewModel : BaseViewModel
     {
         private ObservableCollection<CTHD> _listCTHD;
-        public ObservableCollection<CTHD> listCTHD { get => _listCTHD; set { _listCTHD = value; /*OnPropertyChanged();*/ } }
+        public ObservableCollection<CTHD> listCTHD { get => _listCTHD; set { _listCTHD = value; OnPropertyChanged(); } }
+        private string _TongTien;
+        public string TongTien { get => _TongTien; set { _TongTien = value; OnPropertyChanged(); } }
         public ICommand LoadCartCommand { get; set; }
+        public ICommand DeleteCartCommand { get; set; }
+        public ICommand AcceptCartCommand { get; set; }
         public CartViewModel()
         {
             LoadCartCommand = new RelayCommand<Cart>((p) => true, (p) => _LoadCartCommand(p));
+            DeleteCartCommand = new RelayCommand<Cart>((p) => true, (p) => _DeleteCartCommand(p));
+            AcceptCartCommand = new RelayCommand<Cart>((p) => true, (p) => _AcceptCartCommand(p));
+
         }
         void _LoadCartCommand(Cart parameter)
         {
             if (Const.HD != null)
             {
                 listCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(p => p.SOHD == Const.HD.SOHD));
+                TongTien = Const.HD.TONGTIEN.ToString();
+                MessageBox.Show(Const.HD.SOHD.ToString());
+                MessageBox.Show(TongTien);
             }
+        }
+        void _DeleteCartCommand(Cart parameter)
+        {
+            MessageBoxResult h = System.Windows.MessageBox.Show("Bạn có muốn hủy giỏ hàng hiện tại ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (h == MessageBoxResult.Yes)
+            {
+                var itemToRemove = DataProvider.Ins.DB.HOADONs.Where(pa => (pa.SOHD == Const.HD.SOHD)).SingleOrDefault();
+
+                ObservableCollection<CTHD> ListCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(p => p.SOHD == itemToRemove.SOHD));
+
+                if (itemToRemove != null)
+                {
+                    if (ListCTHD != null)
+                    {
+                        for (int i = 0; i < ListCTHD.Count; i++)
+                        {
+                            DataProvider.Ins.DB.CTHDs.Remove(ListCTHD[i]);
+                        }
+                    }
+                    DataProvider.Ins.DB.HOADONs.Remove(itemToRemove);
+                    DataProvider.Ins.DB.SaveChanges();
+                }
+                listCTHD = null;
+                Const.HD = null;
+                _LoadCartCommand(parameter);
+            }  
+        }
+        void _AcceptCartCommand(Cart parameter)
+        {
+            MessageBoxResult h = System.Windows.MessageBox.Show("Bạn xác nhận mua hàng ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (h == MessageBoxResult.Yes)
+            {
+                listCTHD = null;
+                Const.HD = null;
+                _LoadCartCommand(parameter);
+            }   
         }
     }
 }
+
 
