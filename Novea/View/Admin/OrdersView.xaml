@@ -190,26 +190,23 @@
                                         CornerRadius="15">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="165"/>
-                                            <ColumnDefinition Width="189"/>
-                                            <ColumnDefinition Width="78"/>
-                                            <ColumnDefinition Width="78"/>
+                                            <ColumnDefinition Width="135"/>
+                                            <ColumnDefinition Width="175"/>
+                                            <ColumnDefinition Width="115"/>
+                                            <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
                                         <Grid Grid.Column="0">
-                                            <TextBlock Foreground="{StaticResource plainTextColor3}"
+                                            <TextBlock 
                                                    Text="{Binding SOHD}"                                             
                                                    HorizontalAlignment="Center"                                            
                                                    VerticalAlignment="Center"                                                                                          
                                                    FontFamily="{StaticResource Custom}"                                            
-                                                   FontSize="12"/>
+                                                   FontSize="12"
+                                            />
                                         </Grid>
 
-                                        <Grid Grid.Column="1">
-
-
-
-                                            <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                                
+                                        <Grid Grid.Column="1" Margin="35,0,0,0">
+                                            <TextBlock 
                                                 HorizontalAlignment="Left"
                                                 Text="{Binding KHACH.HOTEN}"
                                                 VerticalAlignment="Center"
@@ -219,31 +216,24 @@
                                         </Grid>
 
                                         <Grid Grid.Column="2">
-
                                                 <TextBlock
-                                                   Foreground="{StaticResource plainTextColor3}"
-                                                
-                                                Text="{Binding NGMH, StringFormat=dd/MM/yyyy hh:mm:tt}"
-                                                HorizontalAlignment="Left"
-                                                VerticalAlignment="Center"
-                                                FontFamily="{StaticResource Custom}"
-                                FontSize="12"
-                                />
+                                                    Text="{Binding NGMH, StringFormat=dd/MM/yyyy hh:mm:tt}"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Center"
+                                                    FontFamily="{StaticResource Custom}"
+                                                    FontSize="12"
+                                                />
                                         </Grid>
 
                                         <Grid Grid.Column="3">
-
-
-                                                    <TextBlock
-                                                   Foreground="{StaticResource plainTextColor3}"
-                                                
-                                                Text="{Binding TONGTIEN, StringFormat={}{0:#,###} VNĐ}"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                MaxWidth="150"
-                                                FontFamily="{StaticResource Custom}"
-                                                FontSize="12"
-                                            />
+                                                <TextBlock
+                                                    Text="{Binding TONGTIEN, StringFormat=\{0:#\,###\} VNĐ}"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    MaxWidth="150"
+                                                    FontFamily="{StaticResource Custom}"
+                                                    FontSize="12"
+                                                />
                                         </Grid>
 
                                     </Grid>

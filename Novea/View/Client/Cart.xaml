@@ -197,7 +197,7 @@
                                                         Width="auto"                                                   
                                                         FontFamily="{StaticResource Custom}"
                                                         FontSize="12"
-                                                        Text="{Binding TRIGIA, StringFormat={}{0:#,###} VNĐ}"/>
+                                                        Text="{Binding TRIGIA, StringFormat=\{0:#\,###\} VNĐ}"/>
                                         </Grid>
 
                                     </Grid>
@@ -232,11 +232,12 @@
                             Text="TỔNG TIỀN: "
                             FontFamily="{StaticResource Custom}"
                             FontSize="26"/>
-                <TextBlock Margin="182,15,0,0"
-                               Width="180"
-                               Height="32"
-                               VerticalAlignment="Top"
-                               HorizontalAlignment="Left"
+                <TextBlock x:Name="txbTONG"
+                            Margin="182,15,0,0"
+                            Width="180"
+                            Height="32"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left"
                             Foreground="SandyBrown"
                             Text="{Binding TongTien, StringFormat=\{0:#\,###\} VNĐ}"
                             FontFamily="{StaticResource Custom}"

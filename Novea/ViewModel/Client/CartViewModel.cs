@@ -35,10 +35,12 @@ namespace Novea.ViewModel.Client
         }
         void _LoadCartCommand(Cart parameter)
         {
+            parameter.txbTONG.Text = "0 VNĐ";
             if (Const.HD != null)
             {
                 listCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(p => p.SOHD == Const.HD.SOHD));
-                TongTien = Const.HD.TONGTIEN.ToString();
+                HOADON hd_temp = DataProvider.Ins.DB.HOADONs.Where(p => p.SOHD == Const.HD.SOHD).FirstOrDefault();
+                TongTien = hd_temp.TONGTIEN.ToString();
                 MessageBox.Show(Const.HD.SOHD.ToString());
                 MessageBox.Show(TongTien);
             }

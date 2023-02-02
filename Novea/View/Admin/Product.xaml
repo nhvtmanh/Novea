@@ -212,41 +212,38 @@
 
             <Grid Grid.Row="2">
                 <ListView x:Name="ListViewProduct" ItemsSource="{Binding listSP}"
-                          Height="350"
-                          Width="650"
                           SelectionMode="Single"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           ScrollViewer.VerticalScrollBarVisibility="Hidden" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Border Margin="10"
+                            <Border     Margin="10"
                                         Height="210"
                                         Background="White"
                                         Width="170"                      
-                                    CornerRadius="10">
+                                        CornerRadius="10">
                                 <StackPanel>
-                                    <Image HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"
+                                    <Image          HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
                                                     Source="{Binding HINHSP}" 
-                                                    Height="30" 
-                                                    Width="30"
+                                                    Height="154" 
+                                                    Width="140"
+                                                    Margin="0,10,0,0"
                                                     />
 
-                                    <TextBlock HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"
-                                                   Foreground="{StaticResource plainTextColor3}"
+                                    <TextBlock      HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
                                                     FontFamily="{StaticResource Custom}"
                                                     FontSize="14"
-                                                   Width="auto"
+                                                    Width="auto"
                                                     Text="{Binding TENSP}"/>
 
-                                    <TextBlock HorizontalAlignment="Center"
-                                                   VerticalAlignment="Center"
-                                                   Width="auto"                                                   
-                                                   FontFamily="{StaticResource Custom}"
-                                                   FontSize="14"
-                                                   Foreground="{StaticResource plainTextColor3}"                                                   
-                                                   Text="{Binding DONGIA, StringFormat=\{0:#\,###\} VNĐ}"/>
+                                    <TextBlock      HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Width="auto"                                                   
+                                                    FontFamily="{StaticResource Custom}"
+                                                    FontSize="14"
+                                                    Text="{Binding DONGIA, StringFormat=\{0:#\,###\} VNĐ}"/>
                                 </StackPanel>
                             </Border>
                         </DataTemplate>

@@ -74,6 +74,7 @@ namespace Novea.ViewModel.Client
             Cthd = CT;
 
             parameter.txbSL.Text = "1";
+            _UpdateSLCommand(parameter); 
         }
         void _AddToCartCommand(ProductDetail parameter)
         {
