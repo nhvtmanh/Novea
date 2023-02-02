@@ -25,7 +25,6 @@ namespace Novea.ViewModel.Client
         public CartViewModel()
         {
             LoadCartCommand = new RelayCommand<Cart>((p) => true, (p) => _LoadCartCommand(p));
-
         }
         void _LoadCartCommand(Cart parameter)
         {
