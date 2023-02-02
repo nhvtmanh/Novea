@@ -219,57 +219,41 @@
                           ScrollViewer.VerticalScrollBarVisibility="Hidden" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Border Width="600"                       
-                                    Height="40"                       
+                            <Border Margin="10"
+                                        Height="210"
+                                        Background="White"
+                                        Width="170"                      
                                     CornerRadius="10">
-                                <Border.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="White" Offset="1"/>
-                                        <GradientStop Color="Pink" Offset="0"/>
-                                    </LinearGradientBrush>
-                                </Border.Background>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="165"/>
-                                        <ColumnDefinition Width="189"/>
-                                        <ColumnDefinition Width="78"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="0">
-                                        <Image HorizontalAlignment="Center"
+                                <StackPanel>
+                                    <Image HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
                                                     Source="{Binding HINHSP}" 
                                                     Height="30" 
                                                     Width="30"
                                                     />
-                                    </Grid>
-                                    <Grid Grid.Column="1">
 
-                                        <TextBlock HorizontalAlignment="Center"
+                                    <TextBlock HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
+                                                   Foreground="{StaticResource plainTextColor3}"
                                                     FontFamily="{StaticResource Custom}"
                                                     FontSize="14"
                                                    Width="auto"
                                                     Text="{Binding TENSP}"/>
-                                    </Grid>
-                                    <Grid Grid.Column="2" Margin="39,0,-158,0">
 
-                                        <TextBlock HorizontalAlignment="Center"
+                                    <TextBlock HorizontalAlignment="Center"
                                                    VerticalAlignment="Center"
                                                    Width="auto"                                                   
-                                                    FontFamily="{StaticResource Custom}"
-                                                    FontSize="14"
-                                                    Text="{Binding DONGIA, StringFormat=\{0:#\,###\} VNĐ}"/>
-                                    </Grid>
-                                    <Grid Grid.Column="2">
-
-                                    </Grid>
-                                </Grid>
+                                                   FontFamily="{StaticResource Custom}"
+                                                   FontSize="14"
+                                                   Foreground="{StaticResource plainTextColor3}"                                                   
+                                                   Text="{Binding DONGIA, StringFormat=\{0:#\,###\} VNĐ}"/>
+                                </StackPanel>
                             </Border>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <StackPanel/>
+                            <WrapPanel/>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                     <i:Interaction.Triggers>
