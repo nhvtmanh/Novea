@@ -51,7 +51,7 @@
                 <Border Width="220"
                     Height="130"
                     CornerRadius="40"
-                    Margin="20 0 50 0">
+                    Margin="22 0 50 0">
 
                     <Border.Background>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
@@ -84,7 +84,7 @@
                                    FontSize="26"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
-                                   Margin="20 20 10 0" Width="135">
+                                   Margin="20 25 10 0" Width="135">
                                 <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
                                     <i:InvokeCommandAction Command="{Binding LoadSP}"
@@ -133,7 +133,7 @@
                                    FontSize="26"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
-                                   Margin="20 20 10 0" Width="135">
+                                   Margin="20 25 10 0" Width="135">
                                 <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
                                     <i:InvokeCommandAction Command="{Binding LoadDon}"
@@ -187,7 +187,7 @@
                                    FontSize="26"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
-                                   Margin="20 20 10 0">
+                                   Margin="20 25 10 0">
                                 <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
                                     <i:InvokeCommandAction Command="{Binding LoadDoanhThu}"
@@ -295,7 +295,7 @@
                 </Border>
 
                 <!--Orders-->
-                <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="18,10,18,30">
+                <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="10,10,18,30">
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="15" Direction="-90"
                               RenderingBias="Quality" ShadowDepth="5"/>

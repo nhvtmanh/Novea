@@ -14,16 +14,17 @@ using System.Collections.ObjectModel;
 using LiveCharts.Defaults;
 using Syncfusion.UI.Xaml.Charts;
 using Novea.View.Admin;
+using System.Windows.Documents;
 
 namespace Novea.ViewModel.Admin
 {
-    public class Result
+    public class KetQuaHienThiList
     {
         private int _Hour;
         public int Hour { get => _Hour; set { _Hour = value; } }
         private int _SP;
         public int SP { get => _SP; set { _SP = value; } }
-        public Result(int h = 0, int sp = 0)
+        public KetQuaHienThiList(int h = 0, int sp = 0)
         {
             Hour = h; SP = sp;
         }
@@ -35,35 +36,39 @@ namespace Novea.ViewModel.Admin
         public string DoanhThu { get => _DoanhThu; set { _DoanhThu = value; OnPropertyChanged(); } }
         public string SanPham { get; set; }
         public int SL { get; set; }
-        public DateTime Ngay { get; set; }
-        public ICommand LoadDoanhThu { get; set; }
-        public ICommand LoadDon { get; set; }
-        public ICommand LoadChart { get; set; }
-        public ICommand LoadSP { get; set; }        
+      
 
         private ObservableCollection<KHACH> _listKH;
         public ObservableCollection<KHACH> listKH { get => _listKH; set { _listKH = value; OnPropertyChanged(); } }
 
+        private ObservableCollection<SANPHAM> _listSP;
+        public ObservableCollection<SANPHAM> listSP { get => _listSP; set { _listSP = value; OnPropertyChanged(); } }
+
+        private ObservableCollection<HOADON> _listHD;
+        public ObservableCollection<HOADON> listHD { get => _listHD; set { _listHD = value; OnPropertyChanged(); } }
+
         private ObservableCollection<CTHD> _CTHD;
         public ObservableCollection<CTHD> CTHD { get => _CTHD; set { _CTHD = value; OnPropertyChanged(); } }
       
-        public List<Result> Data { get; set; }
+        public List<KetQuaHienThiList> Data { get; set; }
+        public DateTime Ngay { get; set; }
+        public ICommand LoadDoanhThu { get; set; }
+        public ICommand LoadDon { get; set; }
+        public ICommand LoadChart { get; set; }
+        public ICommand LoadSP { get; set; }
         public HomeViewModel()
         {
             listKH = new ObservableCollection<KHACH>(DataProvider.Ins.DB.KHACHes.Where(kh => kh.HOADONs.Any(hd => hd.MACH == Const.MACH)));
+            listSP = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(sp => sp.MACH == Const.CH.MACH));
+            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(hd => hd.MACH == Const.CH.MACH));
+
             LoadDoanhThu = new RelayCommand<HomeView>((p) => true, (p) => LoadDT(p));
             LoadDon = new RelayCommand<HomeView>((p) => true, (p) => SoDon(p));
             CTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
             LoadChart = new RelayCommand<HomeView>((p) => true, (p) => LineChart(p));
             LoadSP = new RelayCommand<HomeView>((p) => true, (p) => _LoadSP(p));
         }
-        void _LoadSP(HomeView p)
-        {
-            int count = 0;
-            if (DataProvider.Ins.DB.HOADONs.Count() > 0)
-                count = (int)DataProvider.Ins.DB.CTHDs.Sum(x => x.SOLUONG);
-            p.totalproducts.Text = count.ToString();
-        }
+        
         public void LineChart(HomeView p)
         {
             var query = from a in DataProvider.Ins.DB.CTHDs  
@@ -76,7 +81,7 @@ namespace Novea.ViewModel.Admin
                             SL = (int)a.SOLUONG,
                             SanPham = a.MASP
                         };
-            Data = new List<Result>();           
+            Data = new List<KetQuaHienThiList>();           
             for (int h = 0; h < 24; h++)
             {
                 int value = 0;
@@ -84,24 +89,31 @@ namespace Novea.ViewModel.Admin
                 {
                     value = query.Where(x => x.Ngay.Hour == h && x.Ngay.Day == DateTime.Now.Day && x.Ngay.Month == DateTime.Now.Month && x.Ngay.Year == DateTime.Now.Year).Select(x => x.SL).Sum();
                 }
-                Result result = new Result(h, value);
-                Data.Add(result);
+                KetQuaHienThiList KetQuaHienThiList = new KetQuaHienThiList(h, value);
+                Data.Add(KetQuaHienThiList);
             }
             p.Chart.ItemsSource = Data;
 
         }
+
+        void _LoadSP(HomeView p)
+        {
+            int count = (int)listSP.Count();
+            p.totalproducts.Text = count.ToString();
+        }
+
         public void SoDon(HomeView p)
         {
-            int count = DataProvider.Ins.DB.HOADONs.Count();
+            int count = (int)listHD.Count();
             p.totalorders.Text = count.ToString();
         }
 
         public void LoadDT(HomeView p)
         {
             long total = 0;
-            if (DataProvider.Ins.DB.HOADONs.Select(x => x.TONGTIEN).Count() != 0)
+            if (listHD.Select(x => x.TONGTIEN).Count() != 0)
             {
-                total = (long)DataProvider.Ins.DB.HOADONs.Select(x => x.TONGTIEN).Sum();
+                total = (long)listHD.Select(x => x.TONGTIEN).Sum();
                 DoanhThu = total.ToString("#,###") + " VNĐ";
             }
             else DoanhThu = "0 VNĐ";
