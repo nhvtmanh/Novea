@@ -27,6 +27,10 @@ namespace Novea.Model
 
         private DataProvider()
         {
+            DB = new QuanLyBanHangNoveaEntities();            
+        }
+        public void Refresh()
+        {
             DB = new QuanLyBanHangNoveaEntities();
         }
     }
