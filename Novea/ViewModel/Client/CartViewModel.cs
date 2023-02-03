@@ -46,6 +46,7 @@ namespace Novea.ViewModel.Client
                 HOADON hd_temp = DataProvider.Ins.DB.HOADONs.Where(p => p.SOHD == Const.HD.SOHD).FirstOrDefault();
                 TongTien = hd_temp.TONGTIEN.ToString();
                 MessageBox.Show(Const.HD.SOHD.ToString());
+                parameter.txbTONG.Text = TongTien;
                 MessageBox.Show(TongTien);
             }
         }
