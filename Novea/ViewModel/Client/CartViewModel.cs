@@ -14,11 +14,15 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Globalization;
 using System.Windows.Data;
+using System.ComponentModel;
+using System.Data.Entity;
+using System.Runtime.Remoting.Contexts;
 
 namespace Novea.ViewModel.Client
 {
     public class CartViewModel : BaseViewModel
     {
+        int tong;
         private ObservableCollection<CTHD> _listCTHD;
         public ObservableCollection<CTHD> listCTHD { get => _listCTHD; set { _listCTHD = value; OnPropertyChanged(); } }
         private string _TongTien;
@@ -31,13 +35,13 @@ namespace Novea.ViewModel.Client
             LoadCartCommand = new RelayCommand<Cart>((p) => true, (p) => _LoadCartCommand(p));
             DeleteCartCommand = new RelayCommand<Cart>((p) => true, (p) => _DeleteCartCommand(p));
             AcceptCartCommand = new RelayCommand<Cart>((p) => true, (p) => _AcceptCartCommand(p));
-
         }
         void _LoadCartCommand(Cart parameter)
         {
             parameter.txbTONG.Text = "0 VNĐ";
             if (Const.HD != null)
             {
+                DataProvider.Ins.Refresh();
                 listCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(p => p.SOHD == Const.HD.SOHD));
                 HOADON hd_temp = DataProvider.Ins.DB.HOADONs.Where(p => p.SOHD == Const.HD.SOHD).FirstOrDefault();
                 TongTien = hd_temp.TONGTIEN.ToString();
