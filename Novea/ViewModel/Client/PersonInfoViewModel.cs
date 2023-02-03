@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Novea.Model;
+using Novea.View;
 using Novea.View.Client;
 using System;
 using System.Collections.Generic;
@@ -98,6 +99,12 @@ namespace Novea.ViewModel.Client
             DataProvider.Ins.DB.SaveChanges();
             Const.KH = temp;
             MessageBox.Show("Cập nhật thành công !", "THÔNG BÁO", MessageBoxButton.OK);
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.StreamSource = new MemoryStream(Const.KH.AVATAR);
+            bitmapImage.EndInit();
+            Guest.Instance.image.ImageSource = bitmapImage;
+            Guest.Instance.tbHoten.Text = Const.KH.HOTEN;
         }
 
         void UpdateAvatar()
