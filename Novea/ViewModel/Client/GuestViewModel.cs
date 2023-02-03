@@ -13,6 +13,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.IO;
+using System.Security.Policy;
 
 namespace Novea.ViewModel.Client
 {
@@ -22,13 +23,14 @@ namespace Novea.ViewModel.Client
         //public KHACH User { get => user; set { user = value; OnPropertyChanged(); } }
         private BitmapImage ava;
         public BitmapImage Ava { get => ava; set { ava = value; OnPropertyChanged(); } }
+        private string hoten;
+        public string Hoten { get => hoten; set { hoten = value; OnPropertyChanged(); } }
         public ICommand SwitchTabCommand { get; set; }
         public ICommand GetIdTab { get; set; }
         public ICommand LogOutCommand { get; set; }
         public ICommand CloseGuestwdCommand { get; set; }
         public ICommand MinimizeGuestwdCommand { get; set; }
         public ICommand LoadGuestwdCommand { get; set; }
-        public ICommand LoadTenDangNhapCommand { get; set; }
         public ICommand MoveWindowCommand { get; set; }
         public string name;
         public GuestViewModel()
@@ -39,7 +41,6 @@ namespace Novea.ViewModel.Client
             CloseGuestwdCommand = new RelayCommand<Guest>((p) => true, (p) => Close());
             MinimizeGuestwdCommand = new RelayCommand<Guest>((p) => true, (p) => Minimize(p));
             LoadGuestwdCommand = new RelayCommand<Guest>((p) => true, (p) => LoadGuestwd(p));
-            LoadTenDangNhapCommand = new RelayCommand<Guest>((p) => true, (p) => LoadTenKhach(p));
             MoveWindowCommand = new RelayCommand<Guest>((p) => true, (p) => MoveWindow(p));
         }
         void LoadGuestwd(Guest p)
@@ -55,12 +56,8 @@ namespace Novea.ViewModel.Client
                 bitmapImage.StreamSource = new MemoryStream(imageData);
                 bitmapImage.EndInit();
                 Ava = bitmapImage;
-                LoadTenKhach(p);
+                Hoten = string.Join(" ", Const.KH.HOTEN.Split().Reverse().Take(2).Reverse());
             }
-        }
-        public void LoadTenKhach(Guest p)
-        {
-            p.TenDangNhap.Text = string.Join(" ", Const.KH.HOTEN.Split().Reverse().Take(2).Reverse());
         }
         void SwitchTab(Guest p)
         {

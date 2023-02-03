@@ -85,25 +85,20 @@
                                 Margin="20 -30 35 0">
                             <Ellipse>
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="{Binding Ava}"/>
+                                    <ImageBrush x:Name="image"
+                                                ImageSource="{Binding Ava}"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>
                         <TextBlock 
-                            x:Name="TenDangNhap"
-                            Text="nhvtmanh" 
+                            x:Name="tbHoten"
+                            Text="{Binding Hoten}" 
                             Foreground="#fff8f0" 
                             FontSize="21" 
                             FontWeight="SemiBold" 
                             DockPanel.Dock="Top" 
                             Margin="5" 
                             TextAlignment="Center">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Loaded">
-                                    <i:InvokeCommandAction Command="{Binding LoadTenDangNhapCommand}"
-                                                       CommandParameter="{Binding ElementName=Guestwd}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>/>
                         </TextBlock>
                             
                         <TextBlock 

@@ -18,6 +18,10 @@
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding GetMaSP}"
+                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding Loadwd}"
                                    CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
         </i:EventTrigger>
@@ -33,10 +37,6 @@
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
                 <i:InvokeCommandAction Command="{Binding MoveWindow}"
-                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
-            </i:EventTrigger>
-            <i:EventTrigger EventName="Loaded">
-                <i:InvokeCommandAction Command="{Binding GetMaSP}"
                                        CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
             </i:EventTrigger>
         </i:Interaction.Triggers>
