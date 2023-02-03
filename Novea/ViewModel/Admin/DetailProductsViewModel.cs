@@ -68,7 +68,7 @@ namespace Novea.ViewModel.Admin
 
         void _Loadwd(DetailProducts paramater)
         {
-            GetMaSP = new RelayCommand<DetailProducts>((p) => true, (p) => _GetMaSP(p));
+            //GetMaSP = new RelayCommand<DetailProducts>((p) => true, (p) => _GetMaSP(p));
             //Product = DataProvider.Ins.DB.SANPHAMs.Where(p => p.MASP == MaSP_Now).FirstOrDefault();
             SANPHAM temp = DataProvider.Ins.DB.SANPHAMs.Where(p => p.MASP == MaSP_Now).FirstOrDefault();
             imageData = temp.HINHSP;
