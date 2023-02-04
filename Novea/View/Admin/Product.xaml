@@ -260,7 +260,6 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </ListView>
-                <!--</StackPanel>-->
             </Grid>
         </Grid>
     </Border>

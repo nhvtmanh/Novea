@@ -25,7 +25,7 @@ namespace Novea.ViewModel.Admin
         public OrdersViewModel()
         {
             listTK = new ObservableCollection<string>() { "Họ tên", "Số HD", "Ngày" };
-            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(p => p.MACH == Const.CH.MACH));
+            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(p => p.MACH == Const.CH.MACH && p.FINISHORDERCLIENT == true && p.DONE == false));
             SearchCommand = new RelayCommand<OrdersView>((p) => true, (p) => _SearchCommand(p));
             Detail = new RelayCommand<OrdersView>((p) => p.ListViewHD.SelectedItem != null ? true : false, (p) => _Detail(p));
             LoadCsCommand = new RelayCommand<OrdersView>((p) => true, (p) => _LoadCsCommand(p));
@@ -33,7 +33,7 @@ namespace Novea.ViewModel.Admin
         void _LoadCsCommand(OrdersView parameter)
         {
             listTK = new ObservableCollection<string>() { "Họ tên", "Số HD", "Ngày" };
-            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(p => p.MACH == Const.CH.MACH));
+            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(p => p.MACH == Const.CH.MACH && p.FINISHORDERCLIENT == true && p.DONE == false));
             parameter.cbxChon.SelectedIndex = 0;
             _SearchCommand(parameter);
         }
@@ -128,7 +128,7 @@ namespace Novea.ViewModel.Admin
             detailOrder.DCKH.Text = temp.KHACH.DIACHI;
             detailOrder.ShowDialog();
             parameter.ListViewHD.SelectedItem = null;
-            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(p => p.MACH == Const.CH.MACH));
+            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(p => p.MACH == Const.CH.MACH && p.FINISHORDERCLIENT == true && p.DONE == false));
             parameter.ListViewHD.ItemsSource = listHD;
             _SearchCommand(parameter);
         }

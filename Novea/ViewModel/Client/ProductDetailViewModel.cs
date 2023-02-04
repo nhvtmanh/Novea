@@ -81,7 +81,6 @@ namespace Novea.ViewModel.Client
             CTHD Cthd_temp = new CTHD();
             Cthd_temp = Cthd;
             Cthd_temp.SOLUONG = Int32.Parse(parameter.txbSL.Text);
-            //Cthd_temp.TRIGIA = Convert.ToDecimal(parameter.tXbTongTien.Text.ToString());            
             Cthd_temp.LuongDa = parameter.cbbLuongDa.Text;
             Cthd_temp.LuongDuong = parameter.cbbLuongDuong.Text;
 

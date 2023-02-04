@@ -27,10 +27,9 @@ namespace Novea.ViewModel.Client
         public ICommand DetailPdCommand { get; set; }
         public ICommand LoadDetailStoreCommand { get; set; }
         public ICommand BackToHomeCommand { get; set; }
-        //public static FormatToVND VNDformat { get; } = new FormatToVND();
         public StoreDetailViewModel()
         {
-            ListProductTemp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
+            ListProductTemp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH && p.AVAILABLE == true));
             ListProduct = new ObservableCollection<SANPHAM>(ListProductTemp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
             DetailPdCommand = new RelayCommand<StoreDetail>((p) => { return p.ListViewProduct.SelectedItem == null ? false : true; }, (p) => DisplayDetailProduct(p));
             LoadDetailStoreCommand = new RelayCommand<StoreDetail>((p) => true, (p) => LoadDetailStore(p));
@@ -45,7 +44,7 @@ namespace Novea.ViewModel.Client
         }
         public void LoadDetailStore(StoreDetail parameter)
         {
-            ListProductTemp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
+            ListProductTemp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH && p.AVAILABLE == true));
             ListProduct = new ObservableCollection<SANPHAM>(ListProductTemp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
             parameter.tbTENCH.Text = Const.CH.TENCH;
             parameter.tbDIADIEM.Text = Const.CH.DIADIEM;

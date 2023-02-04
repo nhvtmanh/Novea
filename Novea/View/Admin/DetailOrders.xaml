@@ -244,7 +244,7 @@
                                    Foreground="{StaticResource plainTextColor3}"
                                    HorizontalAlignment="Center"
                                    DockPanel.Dock="Top"
-                                   Text="69.696.969.696d"/>
+                                   Text="{Binding TongTien, StringFormat=\{0:#\,###\} VNĐ}"/>
                     </DockPanel>
                 </Grid>
                 <Grid Grid.Column="1">

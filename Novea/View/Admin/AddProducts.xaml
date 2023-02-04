@@ -207,8 +207,6 @@
                                     FontSize="12"
                                     Width="130">
                                         <ComboBoxItem                     
-                                            Content="Tất cả"/>
-                                        <ComboBoxItem                     
                                             Content="Cà phê"/>
                                         <ComboBoxItem
                                             Content="Trà"/>
