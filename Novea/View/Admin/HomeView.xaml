@@ -48,9 +48,10 @@
                     Height="250">
 
                 <Border Width="220"
-                    Height="130"
+                    Height="140"
                     CornerRadius="40"
                     Margin="22 0 50 0">
+
 
                     <Border.Background>
                         <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
@@ -62,12 +63,12 @@
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
                                        RadiusY="10"
-                                       Rect="0 0 250 130"/>
+                                       Rect="0 0 250 140"/>
                     </Border.Clip>
 
                     <Grid>
                         <materialDesign:PackIcon Kind="Eye" 
-                                                 Margin="0,5,10,0" 
+                                                 Margin="10" 
                                                  Width="40" 
                                                  Height="40" 
                                                  Foreground="{StaticResource plainTextColor2}"
@@ -83,7 +84,7 @@
                                    FontSize="26"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
-                                   Margin="20 25 10 0" Width="135">
+                                   Margin="20 35 10 0" Width="135">
                                 <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
                                     <i:InvokeCommandAction Command="{Binding LoadSP}"
@@ -98,7 +99,7 @@
                 </Border>
 
                 <Border Width="220"
-                    Height="130"
+                    Height="140"
                     CornerRadius="40"
                     Margin="10 0 50 0">
 
@@ -112,12 +113,12 @@
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
                                        RadiusY="10"
-                                       Rect="0 0 250 130"/>
+                                       Rect="0 0 250 140"/>
                     </Border.Clip>
 
                     <Grid>
                         <materialDesign:PackIcon Kind="CartOutline" 
-                                                 Margin="0,5,10,0" 
+                                                 Margin="10" 
                                                  Width="40" 
                                                  Height="40" 
                                                  Foreground="{StaticResource plainTextColor2}" HorizontalAlignment="Right" />
@@ -132,7 +133,7 @@
                                    FontSize="26"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
-                                   Margin="20 25 10 0" Width="135">
+                                   Margin="20 35 10 0" Width="135">
                                 <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
                                     <i:InvokeCommandAction Command="{Binding LoadDon}"
@@ -149,7 +150,7 @@
                 </Border>
 
                 <Border Width="220"                   
-                        Height="130"                   
+                        Height="140"                   
                         CornerRadius="40"                    
                         Margin="10">
 
@@ -163,12 +164,12 @@
                     <Border.Clip>
                         <RectangleGeometry RadiusX="10"
                                        RadiusY="10"
-                                       Rect="0 0 250 130"/>
+                                       Rect="0 0 250 140"/>
                     </Border.Clip>
 
                     <Grid>
                         <materialDesign:PackIcon Kind="Cash"
-                                                 Margin="0,5,10,0" 
+                                                 Margin="10" 
                                                  Width="40" 
                                                  Height="40" 
                                                  Foreground="{StaticResource plainTextColor2}" 
@@ -186,7 +187,7 @@
                                    FontSize="26"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
-                                   Margin="20 25 10 0">
+                                   Margin="20 35 10 0">
                                 <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
                                     <i:InvokeCommandAction Command="{Binding LoadDoanhThu}"
@@ -310,7 +311,7 @@
                                    FontSize="15" HorizontalAlignment="Center" Width="auto" FontWeight="Bold">
                             Khách Hàng Mới
                         </TextBlock>
-                        
+
                         <ListView x:Name="ListViewBill" ItemsSource="{Binding listKH}"      
                               SelectionMode="Single"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"                      
@@ -354,95 +355,8 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </ListView>
-
                     </Grid>
                 </Border>
-
-
-                <!--<StackPanel Grid.Row="2">
-            <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <StackPanel Orientation="Horizontal" Margin="0 0 0 25">
-                        <fa:IconImage Icon="Circle" Style="{StaticResource titleIcon}"/>
-                        <TextBlock Text="Profit" Style="{StaticResource titleText}"/>
-                    </StackPanel>
-
-                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0 0 0 25" Grid.Row="1">
-                        <TextBlock Text="70000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                        <TextBlock Text="60000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                        <TextBlock Text="50000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                        <TextBlock Text="40000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                        <TextBlock Text="30000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                        <TextBlock Text="20000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                        <TextBlock Text="10000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                        <TextBlock Text="0" Foreground="#717EB2" HorizontalAlignment="Right"/>
-                    </StackPanel>
-
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="1" Orientation="Horizontal" Margin="50 0 0 0">
-                        <TextBlock Text="1" Foreground="#717EB2"/>
-                        <TextBlock Text="2" Foreground="#717EB2" Margin="41 0 0 0"/>
-                        <TextBlock Text="3" Foreground="#717EB2" Margin="41 0 0 0"/>
-                        <TextBlock Text="4" Foreground="#717EB2" Margin="41 0 0 0"/>
-                        <TextBlock Text="5" Foreground="#717EB2" Margin="41 0 0 0"/>
-                        <TextBlock Text="6" Foreground="#717EB2" Margin="41 0 0 0"/>
-                        <TextBlock Text="7" Foreground="#717EB2" Margin="41 0 0 0"/>
-                        <TextBlock Text="8" Foreground="#717EB2" Margin="41 0 0 0"/>
-                        <TextBlock Text="9" Foreground="#717EB2" Margin="41 0 0 0"/>
-                        <TextBlock Text="10" Foreground="#717EB2" Margin="41 0 0 0"/>
-                        <TextBlock Text="11" Foreground="#717EB2" Margin="41 0 0 0"/>
-                        <TextBlock Text="12" Foreground="#717EB2" Margin="41 0 0 0"/>
-                    </StackPanel>
-
-                    <lvc:CartesianChart Grid.Row="1" Margin="45 0 0 25">
-                        <lvc:CartesianChart.Background>
-                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                <GradientStop Color="#26376F" Offset="0"/>
-                                <GradientStop Color="#6A6AE4" Offset="1.5"/>
-                            </LinearGradientBrush>
-                        </lvc:CartesianChart.Background>
-
-                        <lvc:CartesianChart.DataTooltip>
-                            <lvc:DefaultTooltip Background="#24336A" Foreground="#D5E2FF"/>
-                        </lvc:CartesianChart.DataTooltip>
-
-                        <lvc:CartesianChart.AxisX>
-                            <lvc:Axis MinValue="1" MaxValue="5" Foreground="#717EB2" ShowLabels="False">
-                                <lvc:Axis.Separator>
-                                    <lvc:Separator StrokeThickness="0" Step="1"/>
-                                </lvc:Axis.Separator>
-                            </lvc:Axis>
-                        </lvc:CartesianChart.AxisX>
-
-                        <lvc:CartesianChart.AxisY>
-                            <lvc:Axis MinValue="0" MaxValue="60000" Foreground="#717EB2" ShowLabels="False">
-                                <lvc:Axis.Separator>
-                                    <lvc:Separator StrokeThickness="0"/>
-                                </lvc:Axis.Separator>
-                            </lvc:Axis>
-                        </lvc:CartesianChart.AxisY>
-
-                        <lvc:CartesianChart.Series>
-                            <lvc:LineSeries Name="Slm" Values="20000,17000,30000,15000,50000,30000,20000" StrokeThickness="2" Stroke="#ADA4FD" PointGeometrySize="0">
-                                <lvc:LineSeries.Fill>
-                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <GradientStop Color="#B397E2" Offset="0.4"/>
-                                        <GradientStop Color="#6A6AE4" Offset="1.2"/>
-                                    </LinearGradientBrush>
-                                </lvc:LineSeries.Fill>
-                            </lvc:LineSeries>
-                        </lvc:CartesianChart.Series>
-                    </lvc:CartesianChart>
-
-                </Grid>
-            </Border>
-        </StackPanel>-->
-
-
 
             </Grid>
         </Grid>

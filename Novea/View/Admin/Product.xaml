@@ -213,6 +213,7 @@
             <Grid Grid.Row="2">
                 <ListView x:Name="ListViewProduct" ItemsSource="{Binding listSP}"
                           SelectionMode="Single"
+                          Margin="30,0,30,0"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           ScrollViewer.VerticalScrollBarVisibility="Hidden" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListView.ItemTemplate>
@@ -220,7 +221,7 @@
                             <Border     Margin="10"
                                         Height="210"
                                         Background="White"
-                                        Width="170"                      
+                                        Width="150"                      
                                         CornerRadius="10">
                                 <StackPanel>
                                     <Image          HorizontalAlignment="Center"

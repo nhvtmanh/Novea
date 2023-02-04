@@ -16,7 +16,13 @@
         Height="600" 
         Width="700" WindowStartupLocation="CenterScreen">
 
-    <Border Background="{StaticResource MaterialDesignLightBackground}" CornerRadius="20">
+    <Border CornerRadius="20">
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
+                <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource primaryBackColor2}" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
         <Grid Height="auto">
             <Grid.RowDefinitions>
                 <RowDefinition Height="39*"/>
@@ -59,7 +65,7 @@
                 </StackPanel>
             </Grid>
 
-            <TextBlock Foreground="{StaticResource plainTextColor2}"
+            <TextBlock Foreground="{StaticResource color1}"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                                    FontSize="15"
@@ -76,7 +82,7 @@
 
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-                            <TextBlock Foreground="{StaticResource plainTextColor2}"
+                            <TextBlock Foreground="{StaticResource color1}"
                                        VerticalAlignment="Center"
                                     Margin="8,0,55,0"
                                     Text="MÃ HÓA ĐƠN"
@@ -84,7 +90,7 @@
                         </StackPanel>
                         <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 10" Width="520">
                             <StackPanel Orientation="Horizontal">
-                                <TextBox Foreground="{StaticResource plainTextColor2}"
+                                <TextBox Foreground="{StaticResource color1}"
                                     x:Name="MaHD"
                                     HorizontalAlignment="Left"
                                     FontFamily="{StaticResource Custom}"
@@ -93,7 +99,7 @@
                                     materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
                                     IsEnabled="False"
                                     materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
-                                <TextBox Foreground="{StaticResource plainTextColor2}"
+                                <TextBox Foreground="{StaticResource plainTextColor3}"
                                     x:Name="TenND"
                                     HorizontalAlignment="Left"
                                     FontFamily="{StaticResource Custom}"
@@ -107,7 +113,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-                            <TextBlock Foreground="{StaticResource plainTextColor2}"
+                            <TextBlock Foreground="{StaticResource color1}"
                                        VerticalAlignment="Center"
                                     Margin="8,0,34,0"
                                     Text="NGÀY MUA HÀNG"
@@ -116,7 +122,7 @@
                         </StackPanel>
                         <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 10" Width="521">
                             <StackPanel Orientation="Horizontal">
-                                <TextBox Foreground="{StaticResource plainTextColor2}"
+                                <TextBox Foreground="{StaticResource plainTextColor3}"
                                     x:Name="NGMH"
                                     HorizontalAlignment="Left"
                                     FontFamily="{StaticResource Custom}"
@@ -130,14 +136,14 @@
                         </Border>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Foreground="{StaticResource plainTextColor2}"
+                        <TextBlock Foreground="{StaticResource color1}"
                                    VerticalAlignment="Center"
                                     Margin="8,0,82,5"
                                     Text="ĐƠN GIÁ"
                                     FontFamily="{StaticResource Custom}"
                                 />
                         <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 10" Width="521">
-                            <TextBox Foreground="{StaticResource plainTextColor2}"
+                            <TextBox Foreground="{StaticResource plainTextColor3}"
                                     x:Name="GIA"
                                     HorizontalAlignment="Left"
                                     FontFamily="{StaticResource Custom}"
@@ -149,14 +155,14 @@
                         </Border>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Foreground="{StaticResource plainTextColor2}"
+                        <TextBlock Foreground="{StaticResource color1}"
                                    VerticalAlignment="Center"
                                     Margin="8,0,33,5"
                                     Text="MÃ KHÁCH HÀNG"
                                     FontFamily="{StaticResource Custom}"
                                 />
                         <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 10" Width="521">
-                            <TextBox Foreground="{StaticResource plainTextColor2}"
+                            <TextBox Foreground="{StaticResource plainTextColor3}"
                                     x:Name="MAKH"
                                     HorizontalAlignment="Left"
                                     FontFamily="{StaticResource Custom}"
@@ -168,14 +174,14 @@
                         </Border>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Foreground="{StaticResource plainTextColor2}"
+                        <TextBlock Foreground="{StaticResource color1}"
                                    VerticalAlignment="Center"
                                     Margin="8,0,20,5"
                                     Text="MÃ CHỦ CỬA HÀNG"
                                     FontFamily="{StaticResource Custom}"
                                 />
                         <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 10" Width="522">
-                            <TextBox Foreground="{StaticResource plainTextColor2}"
+                            <TextBox Foreground="{StaticResource plainTextColor3}"
                                     x:Name="MACCH"
                                     HorizontalAlignment="Left"
                                     FontFamily="{StaticResource Custom}"
@@ -200,9 +206,13 @@
                                 Margin="35,0,0,0"
                                 Width="600"
                                 Height="40"
-                                CornerRadius="10"
-                                Background="White"
-                        >
+                                CornerRadius="10">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White" Offset="1"/>
+                                    <GradientStop Color="pink" Offset="0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100"/>

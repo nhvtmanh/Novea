@@ -44,9 +44,9 @@
 
             <Border CornerRadius="10" Grid.Row="1">
                 <TabControl materialDesign:ColorZoneAssist.Mode="Custom" 
-                            materialDesign:ColorZoneAssist.Foreground="Gold"
+                            materialDesign:ColorZoneAssist.Foreground="Red"
                               materialDesign:ColorZoneAssist.Background="{DynamicResource MaterialDesignCardBackground}">
-                    <TabItem Foreground="Red" Header="Thông tin cửa hàng">
+                    <TabItem Header="Thông tin cửa hàng">
                         <Frame Source="/view/Admin/ShopInfoSetting.xaml" 
                            NavigationUIVisibility="Hidden">
                         </Frame>
