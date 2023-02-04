@@ -20,6 +20,7 @@ namespace Novea.ViewModel.Admin
 
         private ObservableCollection<KHACH> _listKH1;
         public ObservableCollection<KHACH> listKH1 { get => _listKH1; set { _listKH1 = value; OnPropertyChanged(); } }
+
         public ICommand SortCommand { get; set; }
         public ICommand SearchCommand { get; set; }
         public ICommand Detail { get; set; }
@@ -28,8 +29,6 @@ namespace Novea.ViewModel.Admin
 
         public CustomerViewModel()
         {
-            listKH1 = new ObservableCollection<KHACH>(DataProvider.Ins.DB.KHACHes);
-            listKH = new ObservableCollection<KHACH>(listKH1.GroupBy(p => p.HOTEN).Select(grp => grp.FirstOrDefault()).Where(kh => kh.HOADONs.Any(hd => hd.MACH == Const.MACH)));
             SearchCommand = new RelayCommand<CustomerView>((p) => { return p == null ? false : true; }, (p) => _SearchCommand(p));
             LoadCsCommand = new RelayCommand<CustomerView>((p) => true, (p) => _LoadCsCommand(p));
             SortCommand = new RelayCommand<CustomerView>((p) => { return p == null ? false : true; }, (p) => _SortCommand(p));
@@ -37,7 +36,7 @@ namespace Novea.ViewModel.Admin
         void _LoadCsCommand(CustomerView parameter)
         {
             listKH1 = new ObservableCollection<KHACH>(DataProvider.Ins.DB.KHACHes);
-            listKH = new ObservableCollection<KHACH>(listKH1.GroupBy(p => p.HOTEN).Select(grp => grp.FirstOrDefault()).Where(kh => kh.HOADONs.Any(hd => hd.MACH == Const.MACH)));
+            listKH = new ObservableCollection<KHACH>(listKH1.GroupBy(p => p.HOTEN).Select(grp => grp.FirstOrDefault()).Where(kh => kh.HOADONs.Any(hd => hd.MACH == Const.MACH && hd.DONE == true)));
             parameter.cbxChon.SelectedIndex = 0;
             parameter.ListViewKH.Items.SortDescriptions.Add(new SortDescription("HOTEN", ListSortDirection.Ascending));
         }
