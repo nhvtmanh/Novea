@@ -61,6 +61,10 @@
                         <i:InvokeCommandAction Command="{Binding Login}"
                                                        CommandParameter="{Binding ElementName=AdminLoginWD}"></i:InvokeCommandAction>
                     </i:EventTrigger>
+                    <i:EventTrigger EventName="TouchEnter">
+                        <i:InvokeCommandAction Command="{Binding Login}"
+                                                       CommandParameter="{Binding ElementName=AdminLoginWD}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Width="300" Height="40">

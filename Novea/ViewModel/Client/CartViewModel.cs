@@ -80,7 +80,7 @@ namespace Novea.ViewModel.Client
         {
             MessageBoxResult h = System.Windows.MessageBox.Show("Bạn xác nhận mua hàng ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             if (h == MessageBoxResult.Yes)
-            {
+            {                
                 listCTHD = null;
                 Const.HD = null;
                 _LoadCartCommand(parameter);
