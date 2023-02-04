@@ -353,6 +353,7 @@
 
                             <Button Style="{StaticResource controlButton}"
                                     Tag="{StaticResource plainTextColor1}"
+                                    Margin="5 0 0 0"
                                     Width="25">
                                 <materialDesign:PackIcon Kind="WindowMinimize"
                                                          Width="{Binding Width,ElementName=a}"

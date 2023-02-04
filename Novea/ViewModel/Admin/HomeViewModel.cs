@@ -15,6 +15,7 @@ using LiveCharts.Defaults;
 using Syncfusion.UI.Xaml.Charts;
 using Novea.View.Admin;
 using System.Windows.Documents;
+using System.ComponentModel;
 
 namespace Novea.ViewModel.Admin
 {
@@ -58,7 +59,8 @@ namespace Novea.ViewModel.Admin
         public ICommand LoadSP { get; set; }
         public HomeViewModel()
         {
-            listKH = new ObservableCollection<KHACH>(DataProvider.Ins.DB.KHACHes.Where(kh => kh.HOADONs.Any(hd => hd.MACH == Const.MACH)));
+
+            listKH = new ObservableCollection<KHACH>(DataProvider.Ins.DB.KHACHes.Where(kh => kh.HOADONs.Any(hd => hd.MACH == Const.MACH && hd.DONE == true)));
             listSP = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(sp => sp.MACH == Const.CH.MACH));
             listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(hd => hd.MACH == Const.CH.MACH));
 
@@ -68,7 +70,8 @@ namespace Novea.ViewModel.Admin
             LoadChart = new RelayCommand<HomeView>((p) => true, (p) => LineChart(p));
             LoadSP = new RelayCommand<HomeView>((p) => true, (p) => _LoadSP(p));
         }
-        
+
+
         public void LineChart(HomeView p)
         {
             var query = from a in DataProvider.Ins.DB.CTHDs  

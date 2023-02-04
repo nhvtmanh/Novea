@@ -12,8 +12,7 @@
       xmlns:syncfusion="http://schemas.syncfusion.com/wpf"      
       x:Name="Homewd"
       d:DesignHeight="565" d:DesignWidth="820"
-      DataContext="{StaticResource HomeVM}"
-      Title="HomeView">
+      DataContext="{StaticResource HomeVM}">
 
     <Border CornerRadius="0 0 40 0">
         <Border.Background>
@@ -311,6 +310,7 @@
                                    FontSize="15" HorizontalAlignment="Center" Width="auto" FontWeight="Bold">
                             Khách Hàng Mới
                         </TextBlock>
+                        
                         <ListView x:Name="ListViewBill" ItemsSource="{Binding listKH}"      
                               SelectionMode="Single"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"                      
