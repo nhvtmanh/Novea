@@ -30,6 +30,7 @@ namespace Novea.ViewModel.Admin
         public ICommand Loadwd { get; set; }
         public ICommand MoveWindow { get; set; }
         public ICommand TenDangNhap_Loaded { get; set; }
+        public ICommand Refresh { get; set; }
 
 
         private CUAHANG _User;
@@ -45,6 +46,7 @@ namespace Novea.ViewModel.Admin
 
         public MainViewModel()
         {
+            Refresh = new RelayCommand<MainWindow>((p) => true, (p) => Refreshwd(p));
             Closewd = new RelayCommand<MainWindow>((p) => true, (p) => Close());
             Minimizewd = new RelayCommand<MainWindow>((p) => true, (p) => Minimize(p));
             GetIdTab = new RelayCommand<RadioButton>((p) => true, (p) => Name = p.Uid);
@@ -53,6 +55,11 @@ namespace Novea.ViewModel.Admin
             Loadwd = new RelayCommand<MainWindow>((p) => true, (p) => _Loadwd(p));
             MoveWindow = new RelayCommand<MainWindow>((p) => true, (p) => moveWindow(p));
             TenDangNhap_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadTenAD(p));
+        }
+        void Refreshwd(MainWindow p)
+        {
+            DataProvider.Ins.Refresh();
+            MessageBox.Show("Làm mới dữ liệu thành công!");
         }
         void LogOut(MainWindow p)
         {
