@@ -40,6 +40,7 @@
           <Property Name="NGMH" Type="datetime" />
           <Property Name="TONGTIEN" Type="money" />
           <Property Name="DONE" Type="bit" />
+          <Property Name="FINISHORDERCLIENT" Type="bit" />
           <Property Name="MAKH" Type="varchar" MaxLength="128" />
           <Property Name="MACH" Type="varchar" MaxLength="128" />
         </EntityType>
@@ -232,6 +233,7 @@
           <Property Name="NGMH" Type="DateTime" Precision="3" />
           <Property Name="TONGTIEN" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="DONE" Type="Boolean" />
+          <Property Name="FINISHORDERCLIENT" Type="Boolean" />
           <Property Name="MAKH" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="MACH" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CTHDs" Relationship="QuanLyBanHangNoveaModel.FK__CTHD__SOHD__6754599E" FromRole="HOADON" ToRole="CTHD" />
@@ -372,6 +374,7 @@
               <MappingFragment StoreEntitySet="HOADON">
                 <ScalarProperty Name="MACH" ColumnName="MACH" />
                 <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="FINISHORDERCLIENT" ColumnName="FINISHORDERCLIENT" />
                 <ScalarProperty Name="DONE" ColumnName="DONE" />
                 <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
                 <ScalarProperty Name="NGMH" ColumnName="NGMH" />

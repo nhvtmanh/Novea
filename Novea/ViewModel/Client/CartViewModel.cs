@@ -22,7 +22,6 @@ namespace Novea.ViewModel.Client
 {
     public class CartViewModel : BaseViewModel
     {
-        int tong;
         private ObservableCollection<CTHD> _listCTHD;
         public ObservableCollection<CTHD> listCTHD { get => _listCTHD; set { _listCTHD = value; OnPropertyChanged(); } }
         private string _TongTien;
@@ -45,9 +44,7 @@ namespace Novea.ViewModel.Client
                 listCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(p => p.SOHD == Const.HD.SOHD));
                 HOADON hd_temp = DataProvider.Ins.DB.HOADONs.Where(p => p.SOHD == Const.HD.SOHD).FirstOrDefault();
                 TongTien = hd_temp.TONGTIEN.ToString();
-                MessageBox.Show(Const.HD.SOHD.ToString());
                 parameter.txbTONG.Text = TongTien;
-                MessageBox.Show(TongTien);
             }
         }
         void _DeleteCartCommand(Cart parameter)
@@ -80,7 +77,11 @@ namespace Novea.ViewModel.Client
         {
             MessageBoxResult h = System.Windows.MessageBox.Show("Bạn xác nhận mua hàng ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             if (h == MessageBoxResult.Yes)
-            {                
+            {
+                var uRow = DataProvider.Ins.DB.HOADONs.Where(w => w.SOHD == Const.HD.SOHD).FirstOrDefault();
+                uRow.FINISHORDERCLIENT = true;
+                DataProvider.Ins.DB.SaveChanges();
+
                 listCTHD = null;
                 Const.HD = null;
                 _LoadCartCommand(parameter);

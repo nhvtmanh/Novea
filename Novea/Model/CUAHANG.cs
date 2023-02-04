@@ -29,7 +29,7 @@ namespace Novea.Model
         public string SDT { get; set; }
         public string EMAIL { get; set; }
         public DateTime NGDK { get; set; }
-        public Nullable<decimal> DOANHTHU { get; set; }
+        public decimal DOANHTHU { get; set; }
         public byte[] AVATAR { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

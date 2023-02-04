@@ -88,6 +88,7 @@ namespace Novea.ViewModel.Client
                 hd.NGMH = DateTime.Now;
                 hd.TONGTIEN = 0;
                 hd.DONE = false;
+                hd.FINISHORDERCLIENT = false;
                 hd.MAKH = Const.KH.MAKH;
                 hd.MACH = Const.CH.MACH;
                 Const.HD = hd;
@@ -122,6 +123,7 @@ namespace Novea.ViewModel.Client
                     hd.NGMH = DateTime.Now;
                     hd.TONGTIEN = 0;
                     hd.DONE = false;
+                    hd.FINISHORDERCLIENT = false;
                     hd.MAKH = Const.KH.MAKH;
                     hd.MACH = Const.CH.MACH;
                     Const.HD = hd;
