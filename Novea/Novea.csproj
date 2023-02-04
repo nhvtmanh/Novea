@@ -164,6 +164,7 @@
     <Compile Include="ViewModel\Client\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModel\Client\GuestViewModel.cs" />
     <Compile Include="ViewModel\Admin\HomeViewModel.cs" />
+    <Compile Include="ViewModel\Client\OrderHistoryViewModel.cs" />
     <Compile Include="ViewModel\Client\PersonInfoViewModel.cs" />
     <Compile Include="ViewModel\Client\ProductDetailViewModel.cs" />
     <Compile Include="ViewModel\Client\SettingViewModel.cs" />

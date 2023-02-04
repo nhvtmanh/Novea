@@ -4,10 +4,18 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       xmlns:local="clr-namespace:Novea.View.Client"
       mc:Ignorable="d" 
       d:DesignHeight="565" d:DesignWidth="820"
-      Title="OrderHistory">
+      DataContext="{StaticResource OrderHistoryVM}"
+      x:Name="OrderHistorywd">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadOrderHistoryCommand}"
+                                   CommandParameter="{Binding ElementName=OrderHistorywd}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Border CornerRadius="0 0 40 0"
             Background="Transparent">
         <Grid>
@@ -15,6 +23,7 @@
                 <RowDefinition Height="72"/>
                 <RowDefinition Height="73"/>
                 <RowDefinition/>
+                <RowDefinition Height="75"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <StackPanel Orientation="Horizontal" Margin="28 11 11 0">
@@ -46,7 +55,7 @@
                         <ComboBoxItem
                             Content="Giảm dần"/>
                     </ComboBox>
-                    
+
                     <StackPanel Orientation="Horizontal"
                                 Margin="124 0 0 0">
                         <materialDesign:ColorZone Mode="Standard"                                               
@@ -76,7 +85,7 @@
                                          BorderThickness="0"                                                  
                                          MinWidth="200"                                                  
                                          VerticalAlignment="Center">
-                                    
+
                                 </TextBox>
                                 <Button Style="{StaticResource MaterialDesignToolButton}"                                                    
                                         Grid.Column="2">
@@ -131,9 +140,27 @@
                     </Border>
 
                     <ListView>
-                        
+
                     </ListView>
                 </StackPanel>
+            </Grid>
+            <Grid Grid.Row="3">
+                <TextBlock Margin="95,22,375,21"
+                           Width="350"
+                           Height="32"
+                           Foreground="SandyBrown"
+                           Text="TỔNG TIỀN ĐÃ THANH TOÁN:"
+                           FontFamily="{StaticResource Custom}"
+                           FontSize="26"/>
+                <TextBlock x:Name="txbTONGTIEN"
+                           Width="200"
+                           Height="32"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Foreground="SandyBrown"
+                           Text="{Binding TongTien, StringFormat={}{0:#,###} VNĐ}"
+                           FontFamily="{StaticResource Custom}"
+                           FontSize="26" Margin="450,0,0,0"/>
             </Grid>
         </Grid>
     </Border>

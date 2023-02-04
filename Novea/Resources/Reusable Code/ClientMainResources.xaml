@@ -9,4 +9,5 @@
     <viewmodel:PersonInfoViewModel x:Key="PersonInfoVM"></viewmodel:PersonInfoViewModel>
     <viewmodel:ChangePasswordViewModel x:Key="ChangePasswordVM"></viewmodel:ChangePasswordViewModel>
     <viewmodel:CartViewModel x:Key="CartVM"></viewmodel:CartViewModel>
+    <viewmodel:OrderHistoryViewModel x:Key="OrderHistoryVM"></viewmodel:OrderHistoryViewModel>
 </ResourceDictionary>
