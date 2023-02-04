@@ -52,14 +52,14 @@ namespace Novea.ViewModel.Admin
             LoadCsCommand = new RelayCommand<ManagerView>((p) => true, (p) => _LoadCsCommand(p));
             SortCommand = new RelayCommand<ManagerView>((p) => { return p == null ? false : true; }, (p) => _SortCommand(p));
             DetailPdCommand = new RelayCommand<ManagerView>((p) => { return p.ListViewBill.SelectedItem == null ? false : true; }, (p) => _DetailPd(p));
-            listHD = new ObservableCollection<HOADON>(listHD1.GroupBy(p => p.SOHD).Select(grp => grp.FirstOrDefault()).Where(p=>p.MACH==Const.MACH));
+            listHD = new ObservableCollection<HOADON>(listHD1.GroupBy(p => p.SOHD).Select(grp => grp.FirstOrDefault()).Where(p=>p.MACH==Const.MACH && p.FINISHORDERCLIENT == true && p.DONE == true));
             if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
                 return;
         }
         void _LoadCsCommand(ManagerView parameter)
         {            
             listHD1 = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
-            listHD = new ObservableCollection<HOADON>(listHD1.GroupBy(p => p.SOHD).Select(grp => grp.FirstOrDefault()).Where(p => p.MACH == Const.MACH));
+            listHD = new ObservableCollection<HOADON>(listHD1.GroupBy(p => p.SOHD).Select(grp => grp.FirstOrDefault()).Where(p => p.MACH == Const.MACH && p.FINISHORDERCLIENT == true && p.DONE == true));
             parameter.cbxChon.SelectedIndex = 0;
             parameter.ListViewBill.Items.SortDescriptions.Add(new SortDescription("TONGTIEN", ListSortDirection.Ascending));
         }

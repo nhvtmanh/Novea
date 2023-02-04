@@ -18,9 +18,9 @@ namespace Novea.ViewModel.Admin
     {
         private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         private ObservableCollection<SANPHAM> _listSP;
-        public ObservableCollection<SANPHAM> listSP { get => _listSP; set { _listSP = value; /*OnPropertyChanged();*/ } }
+        public ObservableCollection<SANPHAM> listSP { get => _listSP; set { _listSP = value;} }
         private ObservableCollection<SANPHAM> _listSP_temp;
-        public ObservableCollection<SANPHAM> listSP_temp { get => _listSP_temp; set { _listSP_temp = value; /*OnPropertyChanged();*/ } }
+        public ObservableCollection<SANPHAM> listSP_temp { get => _listSP_temp; set { _listSP_temp = value;} }
         public ICommand SearchCommand { get; set; }
         public ICommand DetailPdCommand { get; set; }
         public ICommand AddPdPdCommand { get; set; }

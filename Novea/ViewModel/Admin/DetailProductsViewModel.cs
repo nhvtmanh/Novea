@@ -21,7 +21,8 @@ namespace Novea.ViewModel.Admin
         public ICommand Closewd { get; set; }
         public ICommand MoveWindow { get; set; }
         public ICommand UpdateProduct { get; set; }
-        public ICommand ChangeAvailProduct { get; set; } 
+        public ICommand SetAvailProduct { get; set; }
+        public ICommand SetUnAvailProduct { get; set; }
         public ICommand GetMaSP { get; set; }
         private string MaSP_Now;
         public ICommand Loadwd { get; set; }
@@ -34,10 +35,8 @@ namespace Novea.ViewModel.Admin
             get { return selectedImage; }
             set { selectedImage = value; OnPropertyChanged(); }
         }
-        //private SANPHAM _Product;
-        //public SANPHAM Product { get => _Product; set { _Product = value; OnPropertyChanged(); } }
-        private bool _IsChecked;
-        public bool IsChecked { get { return _IsChecked; } set { _IsChecked = value; OnPropertyChanged(); } }
+        private string _Available;
+        public string Available { get { return _Available; } set { _Available = value; OnPropertyChanged(); } }
         public DetailProductsViewModel()
         {
             Closewd = new RelayCommand<DetailProducts>((p) => true, (p) => Close(p));
@@ -46,7 +45,8 @@ namespace Novea.ViewModel.Admin
             UpdateProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _UpdateProduct(p));
             Loadwd = new RelayCommand<DetailProducts>((p) => true, (p) => _Loadwd(p));
             DeleteProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _DeleteProduct(p));
-            ChangeAvailProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _ChangeAvailProduct(p));
+            SetAvailProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _SetAvailProduct(p));
+            SetUnAvailProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _SetUnAvailProduct(p));
             UpdateImageCommand = new RelayCommand<ImageBrush>((p) => true, (p) => UpdateImage());
         }
 
@@ -68,8 +68,6 @@ namespace Novea.ViewModel.Admin
 
         void _Loadwd(DetailProducts paramater)
         {
-            //GetMaSP = new RelayCommand<DetailProducts>((p) => true, (p) => _GetMaSP(p));
-            //Product = DataProvider.Ins.DB.SANPHAMs.Where(p => p.MASP == MaSP_Now).FirstOrDefault();
             SANPHAM temp = DataProvider.Ins.DB.SANPHAMs.Where(p => p.MASP == MaSP_Now).FirstOrDefault();
             imageData = temp.HINHSP;
             BitmapImage bitmapImage = new BitmapImage();
@@ -77,33 +75,36 @@ namespace Novea.ViewModel.Admin
             bitmapImage.StreamSource = new MemoryStream(imageData);
             bitmapImage.EndInit();
             paramater.HinhAnh.ImageSource = bitmapImage;
-            IsChecked = true;
             paramater.TenSP.IsEnabled = true;
             paramater.Mota.IsEnabled = true;
             paramater.GiaSP.IsEnabled = true;
             paramater.LoaiSP.IsEnabled = true;
             paramater.DVT.IsEnabled = true;
             paramater.Size.IsEnabled = true;
-        }
-        void _ChangeAvailProduct(DetailProducts parameter)
-        {
-            
-            if(parameter.Avail.IsChecked.Value == true)
+            if(temp.AVAILABLE == false)
             {
-                foreach (SANPHAM sp in DataProvider.Ins.DB.SANPHAMs.Where(pa => (pa.MASP == MaSP_Now)))
-                {
-                    sp.AVAILABLE = true;
-                }
-                DataProvider.Ins.DB.SaveChanges();
+                paramater.txbAvail.Text = "UNAVAILABLE";
             }
             else
             {
-                foreach (SANPHAM sp in DataProvider.Ins.DB.SANPHAMs.Where(pa => (pa.MASP == MaSP_Now)))
-                {
-                    sp.AVAILABLE = false;
-                }
-                DataProvider.Ins.DB.SaveChanges();
+                paramater.txbAvail.Text = "AVAILABLE";
             }
+        }
+        void _SetAvailProduct(DetailProducts parameter)
+        {
+            var uRow = DataProvider.Ins.DB.SANPHAMs.Where(p => p.MASP == MaSP_Now).FirstOrDefault();
+            uRow.AVAILABLE = true;
+            DataProvider.Ins.DB.SaveChanges();
+
+            parameter.txbAvail.Text = "AVAILABLE";
+        }
+        void _SetUnAvailProduct(DetailProducts parameter)
+        {
+            var uRow = DataProvider.Ins.DB.SANPHAMs.Where(p => p.MASP == MaSP_Now).FirstOrDefault();
+            uRow.AVAILABLE = false;
+            DataProvider.Ins.DB.SaveChanges();
+
+            parameter.txbAvail.Text = "UNAVAILABLE";
         }
         void _DeleteProduct(DetailProducts parameter)
         {
@@ -118,6 +119,7 @@ namespace Novea.ViewModel.Admin
                     MessageBox.Show("Xóa sản phẩm thành công !", "THÔNG BÁO");
                 }                              
             }
+            parameter.Close();
         }
         void moveWindow(DetailProducts p)
         {
@@ -136,13 +138,13 @@ namespace Novea.ViewModel.Admin
             MessageBoxResult h = System.Windows.MessageBox.Show("Bạn muốn cập nhật sản phẩm ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
             if (h == MessageBoxResult.Yes)
             {
-                if (string.IsNullOrEmpty(p.TenSP.Text) || string.IsNullOrEmpty(p.Mota.Text) )
+                if (string.IsNullOrEmpty(p.TenSP.Text))
                 {
                     MessageBox.Show("Thông tin chưa đầy đủ !", "THÔNG BÁO");
                 }
                 else
                 {
-                    foreach (SANPHAM a in DataProvider.Ins.DB.SANPHAMs.Where(pa => (pa.MASP == MaSP_Now && pa.AVAILABLE != false)))
+                    foreach (SANPHAM a in DataProvider.Ins.DB.SANPHAMs.Where(pa => (pa.MASP == MaSP_Now)))
                     {
                         a.TENSP = p.TenSP.Text;
                         a.MOTA = p.Mota.Text;
@@ -152,6 +154,7 @@ namespace Novea.ViewModel.Admin
                     MessageBox.Show("Cập nhật sản phẩm thành công !", "THÔNG BÁO");
                 }
             }
+            p.Close();
         }
     }
 }

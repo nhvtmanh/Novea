@@ -22,13 +22,29 @@ namespace Novea.ViewModel.Admin
         public ICommand MoveWindow { get; set; }
         public ICommand Loadwd { get; set; }
         public ICommand FinishOrderCommand { get; set; }
+        private string _TongTien;
+        public string TongTien { get => _TongTien; set { _TongTien = value; OnPropertyChanged(); } }
         public DetailOrdersViewModel()
         {
             GetSoHD = new RelayCommand<DetailOrders>((p) => true, (p) => _GetSoHD(p));
             Closewd = new RelayCommand<DetailOrders>((p) => true, (p) => Close(p));
             MoveWindow = new RelayCommand<DetailOrders>((p) => true, (p) => moveWindow(p));
             Loadwd = new RelayCommand<DetailOrders>((p) => true, (p) => _Loadwd(p));
+            FinishOrderCommand = new RelayCommand<DetailOrders>((p) => true, (p) => _FinishOrderCommand(p));
         }
+        void _FinishOrderCommand(DetailOrders p)
+        {
+            MessageBoxResult h = System.Windows.MessageBox.Show("Bạn xác nhận hoàn thành đơn hàng này ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (h == MessageBoxResult.Yes)
+            {
+                var uRow = DataProvider.Ins.DB.HOADONs.Where(w => w.SOHD == SoHD_Now).FirstOrDefault();
+                uRow.DONE = true;
+                DataProvider.Ins.DB.SaveChanges();
+
+                p.Close();
+            }
+        }
+
         void _GetSoHD(DetailOrders p)
         {
             SoHD_Now = Const.HD.SOHD;
@@ -36,7 +52,10 @@ namespace Novea.ViewModel.Admin
 
         void _Loadwd(DetailOrders p)
         {
+            DataProvider.Ins.Refresh();
             listCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(pa => pa.SOHD == SoHD_Now));
+            HOADON hd_temp = DataProvider.Ins.DB.HOADONs.Where(pa => pa.SOHD == SoHD_Now).FirstOrDefault();
+            TongTien = hd_temp.TONGTIEN.ToString();
         }
         void moveWindow(DetailOrders p)
         {

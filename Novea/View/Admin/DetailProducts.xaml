@@ -279,33 +279,32 @@
                                     materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"/>
                             </Border>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
-                            <TextBlock Foreground="{StaticResource plainTextColor3}"
-                                       VerticalAlignment="Center"
-                                       FontSize="13"
-                                    Margin="8,0,0,0"
-                                    Text="AVAILABLE"
-                                    FontFamily="{StaticResource Custom}"/>
-                            <ToggleButton x:Name="Avail"
-                                          IsChecked="{Binding IsChecked, Mode=TwoWay}"
-                                          HorizontalAlignment="Right" Margin="300 0 10 0"  
-                                          Style="{StaticResource MaterialDesignSwitchToggleButton}"  
-                                          ToolTip="MaterialDesignSwitchToggleButton with Custom Track Background">
-                                <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
-                                    <SolidColorBrush    
-                                        Color="{StaticResource Primary900Foreground}" />
-                                </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
-                                <materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
-                                    <SolidColorBrush     
-                                        Color="{StaticResource Primary900Foreground}" />
-                                </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                        <StackPanel Orientation="Horizontal" Margin="0 5 0 0" Height="auto">
+                            <TextBlock  x:Name="txbAvail"
+                                        Foreground="{StaticResource plainTextColor3}"
+                                        VerticalAlignment="Center"
+                                        FontSize="13"
+                                        Margin="8,-3,0,0"
+                                        Text="{Binding Available}"
+                                        FontFamily="{StaticResource Custom}"/>
+                            <Button x:Name="btnAvail" Background="Transparent" BorderBrush="{StaticResource color1}" Margin="210,-5,0,0" Width="105" FontSize="14" Height="22">
+                                <TextBlock Margin="0,-3,0,0" Foreground="{StaticResource color1}">AVAILABLE</TextBlock>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding ChangeAvailProduct}"
+                                        <i:InvokeCommandAction Command="{Binding SetAvailProduct}"
                                                        CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                            </ToggleButton>
+                            </Button>
+                            <Button x:Name="btnUnAvail" Background="Transparent" BorderBrush="{StaticResource color1}" Margin="2,-5,0,0" Width="105" FontSize="14" Height="22">
+                                <TextBlock Margin="0,-3,0,0" Foreground="{StaticResource color1}">UNAVAILABLE</TextBlock>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding SetUnAvailProduct}"
+                                                       CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
                         </StackPanel>
                         <Border Grid.Column="1" Grid.Row="1"/>
                     </StackPanel>
