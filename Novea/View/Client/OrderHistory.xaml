@@ -120,7 +120,7 @@
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            FontFamily="{StaticResource Custom}"
-                                           FontSize="15"
+                                           FontSize="20"
                                            Foreground="{StaticResource plainTextColor2}"/>
                             </Grid>
                             <Grid Grid.Column="1">
@@ -128,7 +128,7 @@
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            FontFamily="{StaticResource Custom}"
-                                           FontSize="15"
+                                           FontSize="20"
                                            Foreground="{StaticResource plainTextColor2}"/>
                             </Grid>
                             <Grid Grid.Column="2">
@@ -136,7 +136,7 @@
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            FontFamily="{StaticResource Custom}"
-                                           FontSize="15"
+                                           FontSize="20"
                                            Foreground="{StaticResource plainTextColor2}"/>
                             </Grid>
                             <Grid Grid.Column="3">
@@ -144,7 +144,7 @@
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            FontFamily="{StaticResource Custom}"
-                                           FontSize="15"
+                                           FontSize="20"
                                            Foreground="{StaticResource plainTextColor2}"/>
                             </Grid>
                         </Grid>
@@ -153,15 +153,14 @@
                     <ListView ItemsSource="{Binding ListHD}"
                               Height="300"
                               Width="680"
-                              IsHitTestVisible="False"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                               ScrollViewer.VerticalScrollBarVisibility="Hidden" 
                               d:ItemsSource="{d:SampleData ItemCount=5}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Border Width="680"                       
+                                <Border Width="650"                       
                                         Height="40"                
-                                        Margin="0 10 0 0"
+                                        Margin="8 10 0 0"
                                         CornerRadius="10">
                                     <Border.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -180,16 +179,16 @@
                                             <TextBlock  HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         FontFamily="{StaticResource Custom}"
-                                                        FontSize="12"
+                                                        FontSize="18"
                                                         Width="auto"
-                                                        Margin="0,0,0,0"
+                                                        Margin="80,0,0,0"
                                                         Text="{Binding SOHD}"/>
                                         </Grid>
                                         <Grid Grid.Column="1" Margin="10,0,0,0">
                                             <TextBlock  HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         FontFamily="{StaticResource Custom}"
-                                                        FontSize="12"
+                                                        FontSize="18"
                                                         Width="auto"
                                                         Text="{Binding TONGTIEN, StringFormat={}{0:#,###} VNĐ}"/>
                                         </Grid>
@@ -197,17 +196,19 @@
                                             <TextBlock  HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         FontFamily="{StaticResource Custom}"
-                                                        FontSize="12"
+                                                        FontSize="18"
                                                         Width="auto"
-                                                        Text="{Binding NGMH}"/>
+                                                        Margin="-40,0,0,0"
+                                                        Text="{Binding NGMH, StringFormat={}{0:d/M/yyyy}}"/>
                                         </Grid>
                                         <Grid Grid.Column="3" Margin="16,0,0,0">
                                             <TextBlock  HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         FontFamily="{StaticResource Custom}"
-                                                        FontSize="12"
+                                                        FontSize="18"
                                                         Width="auto"
-                                                        Text="{Binding DONE, Converter={x:Static local:OrderHistoryViewModel.status}}"/>
+                                                        Margin="-50,0,0,0"
+                                                        Text="{Binding DONE, Converter={x:Static local:OrderHistoryViewModel.status}}"/>                                           
                                         </Grid>
                                     </Grid>
                                 </Border>
@@ -223,7 +224,7 @@
                 
             </Grid>
             <Grid Grid.Row="3">
-                <TextBlock Margin="0,22,375,21"
+                <TextBlock Margin="80,22,375,21"
                            Width="350"
                            Height="32"
                            Foreground="SandyBrown"
@@ -238,7 +239,7 @@
                            Foreground="SandyBrown"
                            Text="{Binding TongTien, StringFormat={}{0:#,###} VNĐ}"
                            FontFamily="{StaticResource Custom}"
-                           FontSize="26" Margin="400,0,0,0"/>
+                           FontSize="26" Margin="442,0,0,0"/>
             </Grid>
         </Grid>
     </Border>
