@@ -24,8 +24,8 @@ namespace Novea.ViewModel.Client
     {
         private ObservableCollection<CTHD> _listCTHD;
         public ObservableCollection<CTHD> listCTHD { get => _listCTHD; set { _listCTHD = value; OnPropertyChanged(); } }
-        private string _TongTien;
-        public string TongTien { get => _TongTien; set { _TongTien = value; OnPropertyChanged(); } }
+        private int _TongTien;
+        public int TongTien { get => _TongTien; set { _TongTien = value; OnPropertyChanged(); } }
         public ICommand LoadCartCommand { get; set; }
         public ICommand DeleteCartCommand { get; set; }
         public ICommand AcceptCartCommand { get; set; }
@@ -37,14 +37,12 @@ namespace Novea.ViewModel.Client
         }
         void _LoadCartCommand(Cart parameter)
         {
-            parameter.txbTONG.Text = "0 VNĐ";
             if (Const.HD != null)
             {
                 DataProvider.Ins.Refresh();
                 listCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(p => p.SOHD == Const.HD.SOHD));
                 HOADON hd_temp = DataProvider.Ins.DB.HOADONs.Where(p => p.SOHD == Const.HD.SOHD).FirstOrDefault();
-                TongTien = hd_temp.TONGTIEN.ToString();
-                parameter.txbTONG.Text = TongTien;
+                TongTien = (int)hd_temp.TONGTIEN;
             }
         }
         void _DeleteCartCommand(Cart parameter)

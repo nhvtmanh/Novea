@@ -52,67 +52,64 @@
                         Padding="5">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="60"/>
-                                <ColumnDefinition Width="120"/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="250"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="110"/>
                             </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0" Grid.ColumnSpan="2" Margin="80,0,0,0">
-                                <TextBlock
-                                Text="SẢN PHẨM"
-                                                             Foreground="{StaticResource plainTextColor2}"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Bottom"
-                                FontFamily="{StaticResource Custom}"
-                                FontSize="15" Margin="0,0,0,6"
-                                />
+                            <Grid Grid.Column="0">
+                                <TextBlock Text="SẢN PHẨM"
+                                           Foreground="{StaticResource plainTextColor2}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource Custom}"
+                                           FontSize="20"/>
                             </Grid>
-                            <Grid Grid.Column="1" Grid.ColumnSpan="2" Margin="15,0,0,0">
+                            <Grid Grid.Column="1">
                                 <TextBlock Foreground="{StaticResource plainTextColor2}"
-                                HorizontalAlignment="Left"
-                                Text="SIZE"
-                                VerticalAlignment="Center"
-                                FontFamily="{StaticResource Custom}"
-                                FontSize="15" Margin="0,0,0,0"
-                                />
+                                           HorizontalAlignment="Center"
+                                           Text="SIZE"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource Custom}"
+                                           FontSize="20"/>
                             </Grid>
-                            <Grid Grid.Column="2" Grid.ColumnSpan="2" Margin="20,0,0,0">
+                            <Grid Grid.Column="2">
                                 <TextBlock Foreground="{StaticResource plainTextColor2}"
-                                HorizontalAlignment="Left"
-                                Text="SỐ LƯỢNG"
-                                VerticalAlignment="Center"
-                                FontFamily="{StaticResource Custom}"
-                                FontSize="15" Margin="0,0,0,0"
-                                />
+                                           HorizontalAlignment="Center"
+                                           Text="SL"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource Custom}"
+                                           Margin="-50,0,0,0"
+                                           FontSize="20"/>
                             </Grid>
-                            <Grid Grid.Column="3" Grid.ColumnSpan="2" Margin="18,0,0,0">
-                                <TextBlock Text=" %ĐÁ"                                    
+                            <Grid Grid.Column="3">
+                                <TextBlock Text="%ĐÁ"                                    
                                            Foreground="{StaticResource plainTextColor2}"                                    
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                FontFamily="{StaticResource Custom}"
-                                FontSize="15" Margin="0,0,0,0" Width="auto"
-                                />
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource Custom}"
+                                           FontSize="20" Width="auto"
+                                           Margin="-100,0,0,0"/>
                             </Grid>
-                            <Grid Grid.Column="4" Grid.ColumnSpan="2" Margin="5,0,0,0">
+                            <Grid Grid.Column="4">
                                 <TextBlock Text="%ĐƯỜNG"                                    
                                            Foreground="{StaticResource plainTextColor2}"                                    
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                FontFamily="{StaticResource Custom}"
-                                FontSize="15" Margin="0,0,0,0" Width="auto"
-                                />
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource Custom}"
+                                           FontSize="20" Width="auto"
+                                           Margin="-80,0,0,0"/>
                             </Grid>
-                            <Grid Grid.Column="5" Margin="36,0,0,0">
+                            <Grid Grid.Column="5">
                                 <TextBlock Foreground="{StaticResource plainTextColor2}"                                    
-                                Text="TRỊ GIÁ"
-                                VerticalAlignment="Center"
-                                FontFamily="{StaticResource Custom}"
-                                HorizontalAlignment="Left"
-                                FontSize="15" Margin="0,0,0,0"
-                                />
+                                           Text="TRỊ GIÁ"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource Custom}"
+                                           HorizontalAlignment="Center"
+                                           FontSize="20"
+                                           Margin="-50,0,0,0"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -137,67 +134,70 @@
                                     </Border.Background>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition Width="60"/>
-                                            <ColumnDefinition Width="120"/>
-                                            <ColumnDefinition Width="80"/>
-                                            <ColumnDefinition Width="80"/>
-                                            <ColumnDefinition Width="120"/>
+                                            <ColumnDefinition Width="250"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="100"/>
                                         </Grid.ColumnDefinitions>
-                                        <Grid Grid.Column="0" Margin="-80,0,0,0">
+                                        <Grid Grid.Column="0">
 
                                             <TextBlock  HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         FontFamily="{StaticResource Custom}"
-                                                        FontSize="12"
+                                                        FontSize="18"
                                                         Width="auto"
-                                                        Margin="0,0,0,0"
                                                         Text="{Binding SANPHAM.TENSP}"/>
                                         </Grid>
-                                        <Grid Grid.Column="1" Margin="10,0,0,0">
+                                        <Grid Grid.Column="1">
 
                                             <TextBlock  HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         FontFamily="{StaticResource Custom}"
-                                                        FontSize="12"
+                                                        FontSize="18"
                                                         Width="auto"
+                                                        Margin="-10,0,0,0"
                                                         Text="{Binding SANPHAM.SIZE}"/>
                                         </Grid>
-                                        <Grid Grid.Column="2" Margin="6,0,0,0">
+                                        <Grid Grid.Column="2">
 
                                             <TextBlock  HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         FontFamily="{StaticResource Custom}"
-                                                        FontSize="12"
+                                                        FontSize="18"
                                                         Width="auto"
+                                                        Margin="-60,0,0,0"
                                                         Text="{Binding SOLUONG}"/>
                                         </Grid>
-                                        <Grid Grid.Column="3" Margin="16,0,0,0">
+                                        <Grid Grid.Column="3">
 
                                             <TextBlock  HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         FontFamily="{StaticResource Custom}"
-                                                        FontSize="12"
+                                                        FontSize="18"
                                                         Width="auto"
+                                                        Margin="-100,0,0,0"
                                                         Text="{Binding LuongDa}"/>
                                         </Grid>
-                                        <Grid Grid.Column="4" Margin="16,0,0,0">
+                                        <Grid Grid.Column="4">
 
                                             <TextBlock  HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         FontFamily="{StaticResource Custom}"
-                                                        FontSize="12"
+                                                        FontSize="18"
                                                         Width="auto"
+                                                        Margin="-90,0,0,0"
                                                         Text="{Binding LuongDuong}"/>
                                         </Grid>
                                         <Grid Grid.Column="5" >
-
                                             <TextBlock  HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         Width="auto"                             
                                                         FontFamily="{StaticResource Custom}"
-                                                        FontSize="12"
-                                                        Text="{Binding TRIGIA, StringFormat=\{0:#\,###\} VNĐ}"/>
+                                                        FontSize="18"
+                                                        Margin="-40,0,0,0"
+                                                        Text="{Binding TRIGIA, StringFormat={}{0:#,###} VNĐ}"/>
                                         </Grid>
 
                                     </Grid>
@@ -218,7 +218,7 @@
 
             <Grid Grid.Row="2" >
 
-                <TextBlock Margin="35,15,0,0"
+                <TextBlock Margin="60,15,0,0"
                                Width="150"
                                Height="32"
                                VerticalAlignment="Top"
@@ -228,13 +228,13 @@
                             FontFamily="{StaticResource Custom}"
                             FontSize="26"/>
                 <TextBlock x:Name="txbTONG"
-                            Margin="182,15,0,0"
+                            Margin="210,15,0,0"
                             Width="180"
                             Height="32"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Left"
                             Foreground="SandyBrown"
-                            Text="{Binding TongTien, StringFormat=\{0:#\,###\} VNĐ}"
+                            Text="{Binding TongTien, StringFormat={}{0:#,###} VNĐ}"
                             FontFamily="{StaticResource Custom}"
                             FontSize="26"/>
                 <Button BorderThickness="1"     
