@@ -25,8 +25,8 @@ namespace Novea.ViewModel.Client
         public CTHD Cthd { get => _Cthd; set { _Cthd = value; OnPropertyChanged(); } }
         private string _SL;
         public string SL { get => _SL; set { _SL = value; OnPropertyChanged(); } }
-        private string _Trigia;
-        public string Trigia { get => _Trigia; set { _Trigia = value; OnPropertyChanged(); } }
+        private int _Trigia;
+        public int Trigia { get => _Trigia; set { _Trigia = value; OnPropertyChanged(); } }
         private BitmapImage image;
         public BitmapImage Image { get => image; set { image = value; OnPropertyChanged(); } }  
         public ICommand CloseProductDetailwdCommand { get; set; }
@@ -45,11 +45,11 @@ namespace Novea.ViewModel.Client
             SL = parameter.txbSL.Text;
             if(SL == "")
             {
-                Trigia = "0";
+                Trigia = 0;
             }
             else
             {
-                Trigia = (Int32.Parse(SL) * Decimal.ToInt32(Const.SP_temp.DONGIA)).ToString();
+                Trigia = (Int32.Parse(SL) * Decimal.ToInt32(Const.SP_temp.DONGIA));
             }
         }
         void _Loadwd(ProductDetail parameter)

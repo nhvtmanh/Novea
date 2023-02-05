@@ -232,15 +232,28 @@
                             </DockPanel>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <Button Background="BlueViolet" 
-                                    BorderBrush="{StaticResource color1}"
-                                    Foreground="{StaticResource color1}"
+                            <Button Foreground="{StaticResource plainTextColor2}"
+                                    BorderThickness="0"
                                     FontSize="20"
+                                    FontFamily="{StaticResource Custom}"
                                     Width="210"
                                     Height="50"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Content="Thêm vào giỏ hàng">  
+                                    Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                                    Content="Thêm vào giỏ hàng">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
+                                        <GradientStop Color="Yellow" Offset="0"/>
+                                        <GradientStop Color="Orange" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                                <Button.Effect>
+                                    <DropShadowEffect ShadowDepth="3"
+                                              Color="Orange"
+                                              Opacity="0.5"
+                                              BlurRadius="5"/>
+                                </Button.Effect>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding AddToCartCommand}"
