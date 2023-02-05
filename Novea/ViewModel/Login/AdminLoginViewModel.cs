@@ -61,7 +61,6 @@ namespace Novea.ViewModel.Login
                     MainWindow mainWindow = new MainWindow();
                     mainWindow.Show();
                     Username = "";
-                    //p.Hide();
                 }
                 else
                 {

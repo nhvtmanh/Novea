@@ -62,7 +62,6 @@ namespace Novea.ViewModel.Login
                     Guest guest = new Guest();
                     guest.Show();
                     Username = "";
-                    //p.Hide();
                 }
                 else
                 {
