@@ -10,6 +10,7 @@
       d:DesignHeight="565" d:DesignWidth="820"
       DataContext="{StaticResource OrderHistoryVM}"
       x:Name="OrderHistorywd">
+    
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadOrderHistoryCommand}"
@@ -99,13 +100,13 @@
 
                 </StackPanel>
             </Grid>
+            
             <Grid Grid.Row="2">
                 <StackPanel>
-                    <Border Margin="-33,0,0,0"
-                            Width="600"
-                            Height="40"
-                            CornerRadius="10"
-                            Background="{StaticResource color1}">
+                    <Border Width="600"                            
+                        Background="{StaticResource color1}"
+                        Height="40"                            
+                        CornerRadius="10">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -139,20 +140,23 @@
                         </Grid>
                     </Border>
 
-                    <ListView x:Name="ListViewHD" ItemsSource="{Binding ListHD}"
+
+                    <ListView x:Name="ListViewHD" ItemsSource="{Binding ListHD}"                    
+                          Height="305"                                        
+                          Width="650"
                           SelectionMode="Single"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="369" d:ItemsSource="{d:SampleData ItemCount=5}">
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden" d:ItemsSource="{d:SampleData ItemCount=5}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Border Width="560"                       
                                         Height="40"   
-                                        Margin="105 10 0 0"
+                                        Margin="35 10 0 0"
                                         CornerRadius="15">
                                     <Border.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                             <GradientStop Color="White" Offset="1"/>
-                                            <GradientStop Color="pink" Offset="0"/>
+                                            <GradientStop Color="Pink" Offset="0"/>
                                         </LinearGradientBrush>
                                     </Border.Background>
                                     <Grid>
@@ -167,8 +171,7 @@
                                                    HorizontalAlignment="Center"                                            
                                                    VerticalAlignment="Center"                                                                                          
                                                    FontFamily="{StaticResource Custom}"                                            
-                                                   FontSize="12"
-                                            />
+                                                   FontSize="12"/>
                                         </Grid>
 
                                         <Grid Grid.Column="1" >
@@ -178,8 +181,7 @@
                                                     VerticalAlignment="Center"
                                                     MaxWidth="150"
                                                     FontFamily="{StaticResource Custom}"
-                                                    FontSize="12"
-                                                />
+                                                    FontSize="12"/>
                                         </Grid>
 
 
@@ -189,11 +191,8 @@
                                                     HorizontalAlignment="Left"
                                                     VerticalAlignment="Center"
                                                     FontFamily="{StaticResource Custom}"
-                                                    FontSize="12"
-                                                />
+                                                    FontSize="12"/>
                                         </Grid>
-
-                                        
                                     </Grid>
                                 </Border>
                             </DataTemplate>
@@ -205,6 +204,7 @@
                         </ListView.ItemsPanel>
                     </ListView>
                 </StackPanel>
+                
             </Grid>
             <Grid Grid.Row="3">
                 <TextBlock Margin="0,22,375,21"
