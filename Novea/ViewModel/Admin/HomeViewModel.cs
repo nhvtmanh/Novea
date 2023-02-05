@@ -16,6 +16,8 @@ using Syncfusion.UI.Xaml.Charts;
 using Novea.View.Admin;
 using System.Windows.Documents;
 using System.ComponentModel;
+using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace Novea.ViewModel.Admin
 {
@@ -32,6 +34,7 @@ namespace Novea.ViewModel.Admin
     }
     class HomeViewModel : BaseViewModel
     {
+        public ICommand Loadwd { get; set; }
 
         private string _DoanhThu;
         public string DoanhThu { get => _DoanhThu; set { _DoanhThu = value; OnPropertyChanged(); } }
@@ -59,10 +62,9 @@ namespace Novea.ViewModel.Admin
         public ICommand LoadSP { get; set; }
         public HomeViewModel()
         {
+            Loadwd = new RelayCommand<HomeView>((p) => true, (p) => _Loadwd(p));
 
-            listKH = new ObservableCollection<KHACH>(DataProvider.Ins.DB.KHACHes.Where(kh => kh.HOADONs.Any(hd => hd.MACH == Const.MACH && hd.DONE == true)));
-            listSP = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(sp => sp.MACH == Const.CH.MACH));
-            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(hd => hd.MACH == Const.CH.MACH));
+            
 
             LoadDoanhThu = new RelayCommand<HomeView>((p) => true, (p) => LoadDT(p));
             LoadDon = new RelayCommand<HomeView>((p) => true, (p) => SoDon(p));
@@ -71,12 +73,17 @@ namespace Novea.ViewModel.Admin
             LoadSP = new RelayCommand<HomeView>((p) => true, (p) => _LoadSP(p));
         }
 
-
+        void _Loadwd(HomeView p)
+        {
+            listKH = new ObservableCollection<KHACH>(DataProvider.Ins.DB.KHACHes.Where(kh => kh.HOADONs.Any(hd => hd.MACH == Const.MACH && hd.DONE == true && hd.FINISHORDERCLIENT == true)));
+            listSP = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(sp => sp.MACH == Const.CH.MACH));
+            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(hd => hd.MACH == Const.CH.MACH && hd.FINISHORDERCLIENT == true && hd.DONE == true && hd.FINISHORDERCLIENT == true));
+        }
         public void LineChart(HomeView p)
         {
             var query = from a in DataProvider.Ins.DB.CTHDs  
                         join b in DataProvider.Ins.DB.HOADONs on a.SOHD equals b.SOHD
-                        where a.SOHD == b.SOHD
+                        where b.MACH == Const.MACH
 
                         select new HomeViewModel()
                         {
