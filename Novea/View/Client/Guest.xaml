@@ -231,10 +231,10 @@
                                     Orientation="Horizontal"
                                     FlowDirection="RightToLeft"
                                     Background="Transparent"
-                                    Margin="0,0,35,0">
+                                    Margin="-205,0,22,0">
                             <Button Style="{StaticResource controlButton}"
                                     Tag="{StaticResource plainTextColor1}"
-                                    Width="35"
+                                    Width="25"
                                     x:Name="clostBt">
                                 <materialDesign:PackIcon Kind="CloseThick" 
                                                          Width="{Binding Width, ElementName=clostBt}" 
@@ -249,7 +249,25 @@
                             </Button>
                             <Button Style="{StaticResource controlButton}"
                                     Tag="{StaticResource plainTextColor1}"
-                                    Width="35">
+                                    Margin="5 0 0 0"
+                                    Width="25">
+                                <materialDesign:PackIcon Kind="Refresh"
+                                                         Width="{Binding Width,ElementName=clostBt}"
+                                                         Height="{Binding Width,ElementName=clostBt}">
+
+                                </materialDesign:PackIcon>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding Refresh}"                                    
+                                                                    CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+
+                            </Button>
+                            <Button Style="{StaticResource controlButton}"
+                                    Tag="{StaticResource plainTextColor1}"
+                                    Margin="5 0 0 0"                                    
+                                    Width="25">
                                 <materialDesign:PackIcon Kind="WindowMinimize" 
                                                          Width="{Binding Width, ElementName=clostBt}"
                                                          Height="{Binding Width, ElementName=clostBt}">
