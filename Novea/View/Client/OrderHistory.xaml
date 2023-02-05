@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-      xmlns:local="clr-namespace:Novea.View.Client"
+      xmlns:local="clr-namespace:Novea.ViewModel.Client"
       mc:Ignorable="d" 
       d:DesignHeight="565" d:DesignWidth="820"
       DataContext="{StaticResource OrderHistoryVM}"
@@ -101,13 +101,14 @@
             </Grid>
             <Grid Grid.Row="2">
                 <StackPanel>
-                    <Border Margin="-33,0,0,0"
-                            Width="600"
+                    <Border Width="650"
                             Height="40"
+                            HorizontalAlignment="Center"
                             CornerRadius="10"
                             Background="{StaticResource color1}">
                         <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -136,11 +137,85 @@
                                            FontSize="15"
                                            Foreground="{StaticResource plainTextColor2}"/>
                             </Grid>
+                            <Grid Grid.Column="3">
+                                <TextBlock Text="TRẠNG THÁI"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontFamily="{StaticResource Custom}"
+                                           FontSize="15"
+                                           Foreground="{StaticResource plainTextColor2}"/>
+                            </Grid>
                         </Grid>
                     </Border>
 
-                    <ListView>
-
+                    <ListView ItemsSource="{Binding ListHD}"
+                              Height="300"
+                              Width="680"
+                              IsHitTestVisible="False"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                              ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                              d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Width="680"                       
+                                        Height="40"                
+                                        Margin="0 10 0 0"
+                                        CornerRadius="10">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White" Offset="1"/>
+                                            <GradientStop Color="Pink" Offset="0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="180"/>
+                                            <ColumnDefinition Width="180"/>
+                                            <ColumnDefinition Width="150"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0" Margin="-80,0,0,0">
+                                            <TextBlock  HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        FontFamily="{StaticResource Custom}"
+                                                        FontSize="12"
+                                                        Width="auto"
+                                                        Margin="0,0,0,0"
+                                                        Text="{Binding SOHD}"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1" Margin="10,0,0,0">
+                                            <TextBlock  HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        FontFamily="{StaticResource Custom}"
+                                                        FontSize="12"
+                                                        Width="auto"
+                                                        Text="{Binding TONGTIEN, StringFormat={}{0:#,###} VNĐ}"/>
+                                        </Grid>
+                                        <Grid Grid.Column="2" Margin="6,0,0,0">
+                                            <TextBlock  HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        FontFamily="{StaticResource Custom}"
+                                                        FontSize="12"
+                                                        Width="auto"
+                                                        Text="{Binding NGMH}"/>
+                                        </Grid>
+                                        <Grid Grid.Column="3" Margin="16,0,0,0">
+                                            <TextBlock  HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        FontFamily="{StaticResource Custom}"
+                                                        FontSize="12"
+                                                        Width="auto"
+                                                        Text="{Binding DONE, Converter={x:Static local:OrderHistoryViewModel.status}}"/>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
                     </ListView>
                 </StackPanel>
             </Grid>

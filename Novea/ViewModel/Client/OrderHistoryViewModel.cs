@@ -18,6 +18,7 @@ namespace Novea.ViewModel.Client
         private ObservableCollection<HOADON> listHD;
         public ObservableCollection<HOADON> ListHD { get => listHD; set { listHD = value; OnPropertyChanged(); } }
         public ICommand LoadOrderHistoryCommand { get; set; }
+        public static ConvertBooleanToStatus status { get; } = new ConvertBooleanToStatus();
         public OrderHistoryViewModel()
         {
             LoadOrderHistoryCommand = new RelayCommand<OrderHistory>((p) => true, (p) => LoadOrderHistory(p));
@@ -25,8 +26,15 @@ namespace Novea.ViewModel.Client
 
         void LoadOrderHistory(OrderHistory p)
         {
-            TongTien = (int)DataProvider.Ins.DB.HOADONs.Where(h => h.MAKH == Const.KH.MAKH && h.DONE == true).Select(h => h.TONGTIEN).Sum();
-            
+            try
+            {
+                TongTien = (int)DataProvider.Ins.DB.HOADONs.Where(h => h.MAKH == Const.KH.MAKH && h.DONE == true).Select(h => h.TONGTIEN).Sum();
+            }
+            catch 
+            {
+                TongTien = 0;
+            }
+            ListHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(h => h.MAKH == Const.KH.MAKH && h.FINISHORDERCLIENT == true));
         }
     }
 }
