@@ -25,8 +25,9 @@ namespace Novea.ViewModel.Client
 
         void LoadOrderHistory(OrderHistory p)
         {
-            TongTien = (int)DataProvider.Ins.DB.HOADONs.Where(h => h.MAKH == Const.KH.MAKH && h.DONE == true).Select(h => h.TONGTIEN).Sum();
-            
+            DataProvider.Ins.Refresh();
+            ListHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(pa => pa.MACH == Const.KH.MAKH && pa.FINISHORDERCLIENT == true && pa.DONE == true));
+            TongTien = (int)DataProvider.Ins.DB.HOADONs.Where(h => h.MAKH == Const.KH.MAKH && h.DONE == true && h.FINISHORDERCLIENT == true).Select(h => h.TONGTIEN).Sum();         
         }
     }
 }

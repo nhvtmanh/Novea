@@ -37,25 +37,6 @@ namespace Novea.ViewModel.Admin
             parameter.cbxChon.SelectedIndex = 0;
             _SearchCommand(parameter);
         }
-        bool check(string m)
-        {
-            foreach (HOADON temp in DataProvider.Ins.DB.HOADONs)
-            {
-                if (temp.SOHD == m)
-                    return true;
-            }
-            return false;
-        }
-        string rdmaHD()
-        {
-            string maHD;
-            do
-            {
-                Random rand = new Random();
-                maHD = "HD" + rand.Next(0, 10000);
-            } while (check(maHD));
-            return maHD;
-        }
         
         void _SearchCommand(OrdersView paramater)
         {

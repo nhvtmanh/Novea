@@ -139,13 +139,75 @@
                         </Grid>
                     </Border>
 
-                    <ListView>
+                    <ListView x:Name="ListViewHD" ItemsSource="{Binding ListHD}"
+                          SelectionMode="Single"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="369" d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Width="560"                       
+                                        Height="40"   
+                                        Margin="105 10 0 0"
+                                        CornerRadius="15">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="White" Offset="1"/>
+                                            <GradientStop Color="pink" Offset="0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="160"/>
+                                            <ColumnDefinition Width="230"/>
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <TextBlock 
+                                                   Text="{Binding SOHD}"                                             
+                                                   HorizontalAlignment="Center"                                            
+                                                   VerticalAlignment="Center"                                                                                          
+                                                   FontFamily="{StaticResource Custom}"                                            
+                                                   FontSize="12"
+                                            />
+                                        </Grid>
 
+                                        <Grid Grid.Column="1" >
+                                            <TextBlock
+                                                    Text="{Binding TONGTIEN, StringFormat=\{0:#\,###\} VNĐ}"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    MaxWidth="150"
+                                                    FontFamily="{StaticResource Custom}"
+                                                    FontSize="12"
+                                                />
+                                        </Grid>
+
+
+                                        <Grid Grid.Column="2" Margin="50,0,0,0">
+                                            <TextBlock
+                                                    Text="{Binding NGMH, StringFormat=dd/MM/yyyy hh:mm:tt}"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Center"
+                                                    FontFamily="{StaticResource Custom}"
+                                                    FontSize="12"
+                                                />
+                                        </Grid>
+
+                                        
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
                     </ListView>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="3">
-                <TextBlock Margin="95,22,375,21"
+                <TextBlock Margin="0,22,375,21"
                            Width="350"
                            Height="32"
                            Foreground="SandyBrown"
@@ -160,7 +222,7 @@
                            Foreground="SandyBrown"
                            Text="{Binding TongTien, StringFormat={}{0:#,###} VNĐ}"
                            FontFamily="{StaticResource Custom}"
-                           FontSize="26" Margin="450,0,0,0"/>
+                           FontSize="26" Margin="400,0,0,0"/>
             </Grid>
         </Grid>
     </Border>

@@ -16,6 +16,17 @@
         Height="600" 
         Width="700" WindowStartupLocation="CenterScreen">
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding GetSoHD}"
+                                       CommandParameter="{Binding ElementName=DetailBillwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loadwd}"
+                                   CommandParameter="{Binding ElementName=DetailBillwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Border CornerRadius="20">
         <Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
@@ -44,7 +55,7 @@
                             Margin="0,0,10,10"
                         VerticalAlignment="Center">
                     <materialDesign:PackIcon Kind="WindowMinimize"
-                                             Foreground="{StaticResource plainTextColor2}" 
+                                             Foreground="{StaticResource plainTextColor3}" 
                                          Height="24" Width="24" Margin="0,0,8,0">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseLeftButtonDown">
@@ -53,7 +64,7 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </materialDesign:PackIcon>
-                    <materialDesign:PackIcon Kind="CloseThick" Foreground="{StaticResource plainTextColor2}"
+                    <materialDesign:PackIcon Kind="CloseThick" Foreground="{StaticResource plainTextColor3}"
                                          Height="24" Width="24">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseLeftButtonDown">
@@ -85,13 +96,13 @@
                             <TextBlock Foreground="{StaticResource color1}"
                                        VerticalAlignment="Center"
                                     Margin="8,0,55,0"
-                                    Text="MÃ HÓA ĐƠN"
+                                    Text="SỐ HÓA ĐƠN"
                                     FontFamily="{StaticResource Custom}"/>
                         </StackPanel>
                         <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 10" Width="520">
                             <StackPanel Orientation="Horizontal">
                                 <TextBox Foreground="{StaticResource color1}"
-                                    x:Name="MaHD"
+                                    x:Name="SoHD"
                                     HorizontalAlignment="Left"
                                     FontFamily="{StaticResource Custom}"
                                     BorderThickness="0"
@@ -195,7 +206,7 @@
                 </StackPanel>
 
             </Border>
-            <ListView x:Name="ListViewSP" 
+            <ListView x:Name="ListViewSP" ItemsSource="{Binding listCTHD}"
                       Grid.Row="2"                          
                       SelectionMode="Single"                         
                       ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="8,8,8,8"
@@ -223,7 +234,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0">
                                     <TextBlock
-                                                Text="{Binding MaSp}"
+                                                Text="{Binding MASP}"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
                                                 FontFamily="{StaticResource Custom}"
@@ -234,7 +245,7 @@
                                     <TextBlock
                                                 Margin="2,0,0,0"
                                                 HorizontalAlignment="Left"
-                                                Text="{Binding TenSP}"
+                                                Text="{Binding SANPHAM.TENSP}"
                                                 VerticalAlignment="Center"
                                                 FontFamily="{StaticResource Custom}"
                                                 FontSize="12"
@@ -242,7 +253,7 @@
                                 </Grid>
                                 <Grid Grid.Column="2">
                                     <TextBlock
-                                                Text="{Binding Size}"
+                                                Text="{Binding SANPHAM.SIZE}"
                                                 HorizontalAlignment="Left"
                                                 VerticalAlignment="Center"
                                                 FontFamily="{StaticResource Custom}"
@@ -251,7 +262,7 @@
                                 </Grid>
                                 <Grid Grid.Column="3">
                                     <TextBlock
-                                                Text="{Binding SL}"
+                                                Text="{Binding SOLUONG}"
                                                 HorizontalAlignment="Left"
                                                 VerticalAlignment="Center"
                                                 MaxWidth="150"
@@ -261,7 +272,7 @@
                                 </Grid>
                                 <Grid Grid.Column="4">
                                     <TextBlock
-                                                Text="{Binding Tong,StringFormat={}{0:#,###} VNĐ}"
+                                                Text="{Binding TRIGIA,StringFormat={}{0:#,###} VNĐ}"
                                                 HorizontalAlignment="Left"
                                                 VerticalAlignment="Center"
                                                 MaxWidth="150"
