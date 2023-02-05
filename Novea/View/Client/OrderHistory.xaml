@@ -10,6 +10,7 @@
       d:DesignHeight="565" d:DesignWidth="820"
       DataContext="{StaticResource OrderHistoryVM}"
       x:Name="OrderHistorywd">
+    
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadOrderHistoryCommand}"
@@ -99,6 +100,7 @@
 
                 </StackPanel>
             </Grid>
+            
             <Grid Grid.Row="2">
                 <StackPanel>
                     <Border Width="650"
@@ -218,9 +220,10 @@
                         </ListView.ItemsPanel>
                     </ListView>
                 </StackPanel>
+                
             </Grid>
             <Grid Grid.Row="3">
-                <TextBlock Margin="95,22,375,21"
+                <TextBlock Margin="0,22,375,21"
                            Width="350"
                            Height="32"
                            Foreground="SandyBrown"
@@ -235,7 +238,7 @@
                            Foreground="SandyBrown"
                            Text="{Binding TongTien, StringFormat={}{0:#,###} VNĐ}"
                            FontFamily="{StaticResource Custom}"
-                           FontSize="26" Margin="450,0,0,0"/>
+                           FontSize="26" Margin="400,0,0,0"/>
             </Grid>
         </Grid>
     </Border>

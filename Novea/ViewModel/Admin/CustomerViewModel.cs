@@ -23,17 +23,16 @@ namespace Novea.ViewModel.Admin
 
         public ICommand SortCommand { get; set; }
         public ICommand SearchCommand { get; set; }
-        public ICommand Detail { get; set; }
         public ICommand AddCsCommand { get; set; }
-        public ICommand LoadCsCommand { get; set; }
+        public ICommand LoadCommand { get; set; }
 
         public CustomerViewModel()
         {
             SearchCommand = new RelayCommand<CustomerView>((p) => { return p == null ? false : true; }, (p) => _SearchCommand(p));
-            LoadCsCommand = new RelayCommand<CustomerView>((p) => true, (p) => _LoadCsCommand(p));
+            LoadCommand = new RelayCommand<CustomerView>((p) => true, (p) => _LoadCommand(p));
             SortCommand = new RelayCommand<CustomerView>((p) => { return p == null ? false : true; }, (p) => _SortCommand(p));
         }
-        void _LoadCsCommand(CustomerView parameter)
+        void _LoadCommand(CustomerView parameter)
         {
             listKH1 = new ObservableCollection<KHACH>(DataProvider.Ins.DB.KHACHes);
             listKH = new ObservableCollection<KHACH>(listKH1.GroupBy(p => p.HOTEN).Select(grp => grp.FirstOrDefault()).Where(kh => kh.HOADONs.Any(hd => hd.MACH == Const.MACH && hd.DONE == true)));

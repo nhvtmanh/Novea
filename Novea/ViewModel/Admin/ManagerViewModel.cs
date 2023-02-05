@@ -10,28 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
 namespace Novea.ViewModel.Admin
-{
-    public class HienThiHoaDon
-    {
-        public string MaSP { get; set; }
-        public string TenSP { get; set; }
-        public Nullable<int> SL { get; set; }
-        public Nullable<decimal> TriGia { get; set; }
-        public string LuongDuong { get; set; }
-        public int Tong { get; set; }
-        public string Size { get; set; }
-        public string LuongDa { get; set; }
-        public HienThiHoaDon(string MaSp = "", string TenSP = "", string Size = "", Nullable<decimal> TriGia = 0, Nullable<int> SL = 0, int Tong = 0, string LuongDuong = "", string LuongDa = "")
-        {
-            this.MaSP = MaSp;
-            this.TenSP = TenSP;
-            this.SL = SL;
-            this.Size = Size;
-            this.TriGia = TriGia;
-            this.LuongDuong = LuongDuong;
-            this.LuongDa = LuongDa;
-        }
-    }
+{    
     public class ManagerViewModel : BaseViewModel
     {
         private ObservableCollection<HOADON> _listHD;
@@ -41,7 +20,6 @@ namespace Novea.ViewModel.Admin
         public ObservableCollection<HOADON> listHD1 { get => _listHD1; set { _listHD1 = value; OnPropertyChanged(); } }
         public ICommand SearchCommand { get; set; }
         public ICommand DetailPdCommand { get; set; }
-        public ICommand AddPdPdCommand { get; set; }
         public ICommand LoadCsCommand { get; set; }
         public ICommand SortCommand { get; set; }
 
@@ -92,7 +70,7 @@ namespace Novea.ViewModel.Admin
                 }
                 else
                 {
-                    MessageBox.Show("Không tìm thấy mã hóa đơn");
+                    MessageBox.Show("Không tìm thấy số hóa đơn");
                 }
             }
         }
@@ -101,50 +79,17 @@ namespace Novea.ViewModel.Admin
         {
             DetailBill detailBill = new DetailBill();
             HOADON temp = (HOADON)paramater.ListViewBill.SelectedItem;
-            detailBill.MaHD.Text = temp.SOHD.ToString();
+            detailBill.SoHD.Text = temp.SOHD;
             detailBill.GIA.Text = string.Format("{0:0,0}", temp.TONGTIEN) + " VNĐ";
             detailBill.NGMH.Text = temp.NGMH.ToString();
             detailBill.MAKH.Text = temp.MAKH;
             detailBill.MACCH.Text = temp.MACH;
-
-            List<HienThiHoaDon> list = new List<HienThiHoaDon>();
-            foreach (CTHD a in temp.CTHDs)
-            {
-                list.Add(new HienThiHoaDon(a.MASP, a.SANPHAM.TENSP, a.SANPHAM.SIZE, a.SANPHAM.DONGIA, a.SOLUONG, (int)a.TRIGIA, a.LuongDuong, a.LuongDa));
-            }
-            detailBill.ListViewSP.ItemsSource = list;
-            detailBill.ShowDialog();
-            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(p => p.MACH == Const.MACH));
-            paramater.ListViewBill.SelectedItem = null;
-        }
-
-
-        void _Filter(ManagerView parameter)
-        {
-            var SortProperty = parameter.cbxChon.Text;
             
-
-            switch (parameter.cbxChon.SelectedIndex.ToString())
-            {
-                case "0":
-                    {
-                        listHD = new ObservableCollection<HOADON>(listHD1.GroupBy(p => p.SOHD).Select(grp => grp.FirstOrDefault()));
-                        parameter.ListViewBill.ItemsSource = listHD;
-                        break;
-                    }
-                case "1":
-                    {
-                        listHD = new ObservableCollection<HOADON>(listHD1.GroupBy(p => p.SOHD).Select(grp => grp.FirstOrDefault())/*.Where(p => p.SOHD)*/);
-                        parameter.ListViewBill.ItemsSource = listHD;
-                        break;
-                    }
-                case "2":
-                    {
-                        listHD = new ObservableCollection<HOADON>(listHD1.GroupBy(p => p.SOHD).Select(grp => grp.FirstOrDefault())/*.Where(p => p.SOHD == "1")*/);
-                        parameter.ListViewBill.ItemsSource = listHD;
-                        break;
-                    }                
-            }
+            detailBill.ShowDialog();
+            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(p => p.MACH == Const.MACH && p.FINISHORDERCLIENT == true && p.DONE == true));
+            paramater.ListViewBill.SelectedItem = null;
+            paramater.ListViewBill.ItemsSource = listHD;
+            _SearchCommand(paramater);
         }
     }
 }
