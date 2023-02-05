@@ -12,7 +12,7 @@
       x:Name="customerwd">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadCsCommand}"                                                       
+            <i:InvokeCommandAction Command="{Binding LoadCommand}"                                                       
                                    CommandParameter="{Binding ElementName=customerwd}"></i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
@@ -232,12 +232,6 @@
                                 <WrapPanel Orientation="Vertical"/>
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction     Command="{Binding Detail}"
-                                                           CommandParameter="{Binding ElementName=customerwd}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
                     </ListView>
 
                 </StackPanel>
