@@ -35,7 +35,6 @@ namespace Novea.ViewModel.Client
         public GuestViewModel()
         {
             Refresh = new RelayCommand<MainWindow>((p) => true, (p) => Refreshwd(p));
-
             SwitchTabCommand = new RelayCommand<Guest>((p) => true, (p) => SwitchTab(p));
             GetIdTab = new RelayCommand<RadioButton>((p) => true, (p) => name = p.Uid);
             LogOutCommand = new RelayCommand<Guest>((p) => { return true; }, (p) => LogOut(p));
@@ -44,6 +43,7 @@ namespace Novea.ViewModel.Client
             LoadGuestwdCommand = new RelayCommand<Guest>((p) => true, (p) => LoadGuestwd(p));
             MoveWindowCommand = new RelayCommand<Guest>((p) => true, (p) => MoveWindow(p));
         }
+
         void Refreshwd(MainWindow p)
         {
             DataProvider.Ins.Refresh();
