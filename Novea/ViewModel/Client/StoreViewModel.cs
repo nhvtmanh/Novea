@@ -1,5 +1,6 @@
 ﻿using Novea.Model;
 using Novea.View;
+using Novea.View.Admin;
 using Novea.View.Client;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace Novea.ViewModel.Client
         }
         public ICommand LoadStoreCommand { get; set; }
         public ICommand StoreDetailCommand { get; set; }
+        public ICommand SearchCommand { get; set; }
         public StoreViewModel()
         {
             Const.CH = null;
@@ -38,7 +40,36 @@ namespace Novea.ViewModel.Client
             ListStore = new ObservableCollection<CUAHANG>(ListStore1.GroupBy(p => p.TENCH).Select(grp => grp.FirstOrDefault()));            
             LoadStoreCommand = new RelayCommand<Home>((p) => true, (p) => loadStore(p));
             StoreDetailCommand = new RelayCommand<Home>((p) => { return p.ListViewStore.SelectedItem == null ? false : true; }, (p) => DisplayStoreDetail(p));
+            SearchCommand = new RelayCommand<Home>((p) => { return p == null ? false : true; }, (p) => Search(p));
         }
+
+        void Search(Home parameter)
+        {
+            ObservableCollection<CUAHANG> temp = new ObservableCollection<CUAHANG>();
+            if (parameter.txbSearch.Text == "")
+            {
+                parameter.ListViewStore.ItemsSource = ListStore;
+            }
+            else
+            {
+                foreach (CUAHANG c in ListStore)
+                {
+                    if (c.TENCH.ToLower().Contains(parameter.txbSearch.Text.ToLower()))
+                    {
+                        temp.Add(c);
+                    }
+                }
+                if (temp != null)
+                {
+                    parameter.ListViewStore.ItemsSource = temp;
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy cửa hàng");
+                }
+            }
+        }
+
         void loadStore(Home parameter)
         {
             DataProvider.Ins.Refresh();
