@@ -21,6 +21,7 @@ namespace Novea.ViewModel.Admin
     public class AddProductsViewModel : BaseViewModel
     {
         private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
+        public ICommand MoveWindow { get; set; }
         public ICommand AddImage { get; set; }
         private byte[] imageData;
         private BitmapImage selectedImage;
@@ -37,13 +38,13 @@ namespace Novea.ViewModel.Admin
         {
             AddImage = new RelayCommand<Image>((p) => true, (p) => _AddImage());
             AddProduct = new RelayCommand<AddProducts>((p) => true, (p) => _AddProduct(p));
-            Loadwd = new RelayCommand<AddProducts>((p) => true, (p) => _Loadwd(p));
+            MoveWindow = new RelayCommand<AddProducts>((p) => true, (p) => moveWindow(p));
             Closewd = new RelayCommand<AddProducts>((p) => true, (p) => Close(p));
             Minimizewd = new RelayCommand<AddProducts>((p) => true, (p) => Minimize(p));
         }
-        void _Loadwd(AddProducts paramater)
+        void moveWindow(AddProducts p)
         {
-            
+            p.DragMove();
         }
         void _AddImage()
         {
