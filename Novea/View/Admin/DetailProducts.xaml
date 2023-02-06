@@ -124,8 +124,8 @@
                                 Text="THÔNG TIN SẢN PHẨM"
                                 FontFamily="{StaticResource Custom}"
                                 HorizontalAlignment="Center"/>
-                        
-                        
+
+
                         <StackPanel Orientation="Horizontal">
                             <StackPanel Orientation="Vertical" Width="218" HorizontalAlignment="Left">
                                 <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
@@ -286,30 +286,34 @@
                                         VerticalAlignment="Center"
                                         FontSize="13"
                                         Width="120"
-                                        Margin="8,-3,0,0"
                                         Text="{Binding Available}"
-                                        FontFamily="{StaticResource Custom}"/>
-                            
-                                <Button x:Name="btnAvail" Background="Transparent" BorderBrush="{StaticResource color1}" Margin="103 0 10 0" Width="105" Height="22" FontSize="14">
-                                    <TextBlock Margin="0,-3,0,0" Foreground="{StaticResource color1}">AVAILABLE</TextBlock>
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding SetAvailProduct}"
+                                        FontFamily="{StaticResource Custom}" Height="22"/>
+
+                            <Button x:Name="btnAvail" Background="Transparent" BorderBrush="{StaticResource color1}" Margin="90 0 10 0" Width="105" Height="22" FontSize="14">
+                                <TextBlock Margin="0,-3,0,0" Foreground="{StaticResource color1}">AVAILABLE</TextBlock>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding SetAvailProduct}"
                                                        CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                                <Button x:Name="btnUnAvail" Background="Transparent" BorderBrush="{StaticResource color1}"   Width="108" FontSize="14" Height="22">
-                                    <TextBlock Margin="0,-3,0,0" Foreground="{StaticResource color1}">UNAVAILABLE</TextBlock>
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click">
-                                            <i:InvokeCommandAction Command="{Binding SetUnAvailProduct}"
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button x:Name="btnUnAvail"
+                                    Background="Transparent"
+                                    BorderBrush="{StaticResource color1}"   
+                                    Width="122" Height="22">
+                                <TextBlock Foreground="{StaticResource color1}" 
+                                           Text="UNAVAILABLE" Margin="0 -3 0 -2"
+                                           Width="auto" Height="20"/>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding SetUnAvailProduct}"
                                                        CommandParameter="{Binding ElementName=DetailProductwd}"></i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Button>
-                            
-                            
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+
                         </StackPanel>
                         <Border Grid.Column="1" Grid.Row="1"/>
                     </StackPanel>

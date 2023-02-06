@@ -81,16 +81,16 @@ namespace Novea.ViewModel.Admin
         }
         public void LineChart(HomeView p)
         {
-            var query = from a in DataProvider.Ins.DB.CTHDs  
-                        join b in DataProvider.Ins.DB.HOADONs on a.SOHD equals b.SOHD
+            var query = from a in DataProvider.Ins.DB.CTHDs
+                        join b in DataProvider.Ins.DB.HOADONs
+                        on a.SOHD equals b.SOHD
                         where b.MACH == Const.MACH
-
-                        select new HomeViewModel()
-                        {
-                            Ngay = (System.DateTime)b.NGMH,
-                            SL = (int)a.SOLUONG,
-                            SanPham = a.MASP
-                        };
+            select new HomeViewModel()                       
+            {                        
+                Ngay = (System.DateTime)b.NGMH,                        
+                SL = (int)a.SOLUONG,                        
+                SanPham = a.MASP                       
+            };
             Data = new List<KetQuaHienThiList>();           
             for (int h = 0; h < 24; h++)
             {
@@ -103,7 +103,6 @@ namespace Novea.ViewModel.Admin
                 Data.Add(KetQuaHienThiList);
             }
             p.Chart.ItemsSource = Data;
-
         }
 
         void _LoadSP(HomeView p)
