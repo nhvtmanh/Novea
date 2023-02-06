@@ -96,6 +96,7 @@ namespace Novea.ViewModel.Client
                 DataProvider.Ins.DB.SaveChanges();
 
                 productDetail.ShowDialog();
+                paramater.ListViewProduct.SelectedItem = null;
             }
             else
             {
@@ -134,6 +135,7 @@ namespace Novea.ViewModel.Client
                         DataProvider.Ins.DB.SaveChanges();
 
                         productDetail.ShowDialog();
+                        paramater.ListViewProduct.SelectedItem = null;
                     }                       
                 }
                 else
@@ -147,6 +149,7 @@ namespace Novea.ViewModel.Client
                     {
                         productDetail.txbSOHD.Text = Const.HD.SOHD;
                         productDetail.ShowDialog();
+                        paramater.ListViewProduct.SelectedItem = null;
                     }                    
                 }
             }

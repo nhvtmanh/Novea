@@ -43,6 +43,7 @@ namespace Novea.ViewModel.Admin
         public ICommand ChangePass { get; set; }
         public ShopInfoSettingViewModel()
         {
+            imageData = Const.CH.AVATAR;
             Loadwd = new RelayCommand<ShopInfoSetting>((p) => true, (p) => _Loadwd(p));
             AddImage = new RelayCommand<ImageBrush>((p) => true, (p) => _AddImage());
             UpdateInfo = new RelayCommand<ShopInfoSetting>((p) => true, (p) => _UdpateInfo(p));
