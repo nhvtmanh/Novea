@@ -68,6 +68,7 @@ namespace Novea.ViewModel.Client
                 }
                 listCTHD = null;
                 Const.HD = null;
+                TongTien = 0;
                 _LoadCartCommand(parameter);
             }  
         }
@@ -82,6 +83,7 @@ namespace Novea.ViewModel.Client
 
                 listCTHD = null;
                 Const.HD = null;
+                TongTien = 0;
                 _LoadCartCommand(parameter);
             }   
         }

@@ -234,7 +234,7 @@
                             VerticalAlignment="Top"
                             HorizontalAlignment="Left"
                             Foreground="SandyBrown"
-                            Text="{Binding TongTien, StringFormat={}{0:#,###} VNĐ}"
+                            Text="{Binding TongTien, StringFormat={}{0:#,##0} VNĐ}"
                             FontFamily="{StaticResource Custom}"
                             FontSize="26"/>
                 <Button BorderThickness="1"     

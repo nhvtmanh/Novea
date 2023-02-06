@@ -36,6 +36,7 @@ namespace Novea.ViewModel.Client
             {
                 TongTien = 0;
             }
+            DataProvider.Ins.Refresh();
             ListHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(h => h.MAKH == Const.KH.MAKH && h.FINISHORDERCLIENT == true));
         }
     }

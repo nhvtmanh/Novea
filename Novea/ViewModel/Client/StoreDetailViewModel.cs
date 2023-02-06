@@ -36,7 +36,7 @@ namespace Novea.ViewModel.Client
             BackToHomeCommand = new RelayCommand<StoreDetail>((p) => true, (p) => BackToHome());
         }
 
-    void BackToHome()
+        void BackToHome()
         {
             Guest.Instance.Main.NavigationService.GoBack();
             Const.CH = null;

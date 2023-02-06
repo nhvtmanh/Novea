@@ -237,7 +237,7 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
                            Foreground="SandyBrown"
-                           Text="{Binding TongTien, StringFormat={}{0:#,###} VNĐ}"
+                           Text="{Binding TongTien, StringFormat={}{0:#,##0} VNĐ}"
                            FontFamily="{StaticResource Custom}"
                            FontSize="26" Margin="442,0,0,0"/>
             </Grid>
