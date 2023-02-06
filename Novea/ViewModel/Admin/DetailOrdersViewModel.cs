@@ -22,8 +22,8 @@ namespace Novea.ViewModel.Admin
         public ICommand MoveWindow { get; set; }
         public ICommand Loadwd { get; set; }
         public ICommand FinishOrderCommand { get; set; }
-        private string _TongTien;
-        public string TongTien { get => _TongTien; set { _TongTien = value; OnPropertyChanged(); } }
+        private int _TongTien;
+        public int TongTien { get => _TongTien; set { _TongTien = value; OnPropertyChanged(); } }
         public DetailOrdersViewModel()
         {
             GetSoHD = new RelayCommand<DetailOrders>((p) => true, (p) => _GetSoHD(p));
@@ -55,7 +55,7 @@ namespace Novea.ViewModel.Admin
             DataProvider.Ins.Refresh();
             listCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(pa => pa.SOHD == SoHD_Now));
             HOADON hd_temp = DataProvider.Ins.DB.HOADONs.Where(pa => pa.SOHD == SoHD_Now).FirstOrDefault();
-            TongTien = hd_temp.TONGTIEN.ToString();
+            TongTien = (int)hd_temp.TONGTIEN;
         }
         void moveWindow(DetailOrders p)
         {

@@ -101,41 +101,53 @@ namespace Novea.ViewModel.Client
             {
                 if (Const.HD.MACH != Const.CH.MACH)
                 {
-                    var itemToRemove = DataProvider.Ins.DB.HOADONs.SingleOrDefault(pa => (pa.SOHD == Const.HD.SOHD));
-
-                    ObservableCollection<CTHD> ListCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(p => p.SOHD == itemToRemove.SOHD));
-
-                    if (itemToRemove != null)
+                    MessageBoxResult h = System.Windows.MessageBox.Show("Bạn có muốn hủy giỏ hàng hiện tại ?", "THÔNG BÁO", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                    if (h == MessageBoxResult.Yes)
                     {
-                        if (ListCTHD != null)
-                        {
-                            for (int i = 0; i < ListCTHD.Count; i++)
-                            {
-                                DataProvider.Ins.DB.CTHDs.Remove(ListCTHD[i]);
-                            }
-                        }
-                        DataProvider.Ins.DB.HOADONs.Remove(itemToRemove);
-                        DataProvider.Ins.DB.SaveChanges();
-                    }
-                    HOADON hd = new HOADON();
-                    hd.SOHD = rdSOHD();
-                    hd.NGMH = DateTime.Now;
-                    hd.TONGTIEN = 0;
-                    hd.DONE = false;
-                    hd.FINISHORDERCLIENT = false;
-                    hd.MAKH = Const.KH.MAKH;
-                    hd.MACH = Const.CH.MACH;
-                    Const.HD = hd;
-                    productDetail.txbSOHD.Text = Const.HD.SOHD;
-                    DataProvider.Ins.DB.HOADONs.Add(hd);
-                    DataProvider.Ins.DB.SaveChanges();
+                        var itemToRemove = DataProvider.Ins.DB.HOADONs.SingleOrDefault(pa => (pa.SOHD == Const.HD.SOHD));
 
-                    productDetail.ShowDialog();
+                        ObservableCollection<CTHD> ListCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(p => p.SOHD == itemToRemove.SOHD));
+
+                        if (itemToRemove != null)
+                        {
+                            if (ListCTHD != null)
+                            {
+                                for (int i = 0; i < ListCTHD.Count; i++)
+                                {
+                                    DataProvider.Ins.DB.CTHDs.Remove(ListCTHD[i]);
+                                }
+                            }
+                            DataProvider.Ins.DB.HOADONs.Remove(itemToRemove);
+                            DataProvider.Ins.DB.SaveChanges();
+                        }
+                        HOADON hd = new HOADON();
+                        hd.SOHD = rdSOHD();
+                        hd.NGMH = DateTime.Now;
+                        hd.TONGTIEN = 0;
+                        hd.DONE = false;
+                        hd.FINISHORDERCLIENT = false;
+                        hd.MAKH = Const.KH.MAKH;
+                        hd.MACH = Const.CH.MACH;
+                        Const.HD = hd;
+                        productDetail.txbSOHD.Text = Const.HD.SOHD;
+                        DataProvider.Ins.DB.HOADONs.Add(hd);
+                        DataProvider.Ins.DB.SaveChanges();
+
+                        productDetail.ShowDialog();
+                    }                       
                 }
                 else
                 {
-                    productDetail.txbSOHD.Text = Const.HD.SOHD;
-                    productDetail.ShowDialog();
+                    var CountSPExist = DataProvider.Ins.DB.CTHDs.Where(p => p.SOHD == Const.HD.SOHD && p.MASP == Const.SP_temp.MASP).Count();
+                    if(CountSPExist > 0)
+                    {
+                        MessageBox.Show("Bạn đã thêm sản phẩm này vào giỏ hàng.");
+                    }
+                    else
+                    {
+                        productDetail.txbSOHD.Text = Const.HD.SOHD;
+                        productDetail.ShowDialog();
+                    }                    
                 }
             }
         }
