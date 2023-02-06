@@ -112,7 +112,8 @@
                                            FontSize="30"
                                            Height="35"
                                            Margin="10,-120,0,0"
-                                           Text="SOHD"/>
+                                           Text="SOHD"
+                                           x:Name="txSOHD"/>
                                 <TextBlock FontFamily="{StaticResource Custom1}"
                                          Background="{StaticResource plainTextColor3}"
                                          FontSize="25"

@@ -49,16 +49,42 @@
                               materialDesign:HintAssist.Hint="Sắp xếp theo"            
                               materialDesign:HintAssist.Foreground="#000"
                               Background="{StaticResource plainTextColor3}"
-                              Width="253" Height="46"
-                              Margin="30 0 0 0">
-                        <ComboBoxItem                     
-                            Content="Tăng dần"/>
-                        <ComboBoxItem
-                            Content="Giảm dần"/>
+                              Width="200" Height="46"
+                              Margin="30 0 0 0"
+                              x:Name="cbbOrder">
+                        <ComboBoxItem Content="Không"/>
+                        <ComboBoxItem Content="Tổng tiền tăng dần"/>
+                        <ComboBoxItem Content="Tổng tiền giảm dần"/>
+                        <ComboBoxItem Content="Ngày mua hàng tăng dần"/>
+                        <ComboBoxItem Content="Ngày mua hàng giảm dần"/>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding OrderCommand}"
+                                                       CommandParameter="{Binding ElementName=OrderHistorywd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ComboBox>
-
+                    <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"                         
+                              Padding="5"
+                              Foreground="{StaticResource plainTextColor2}"
+                              materialDesign:HintAssist.Hint="Lọc theo Trạng thái"            
+                              materialDesign:HintAssist.Foreground="#000"
+                              Background="{StaticResource plainTextColor3}"
+                              Width="150" Height="46"
+                              Margin="20 0 0 0"
+                              x:Name="cbbFilter">
+                        <ComboBoxItem Content="Không"/>
+                        <ComboBoxItem Content="Đang giao"/>
+                        <ComboBoxItem Content="Đã nhận"/>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding FilterCommand}"
+                                                       CommandParameter="{Binding ElementName=OrderHistorywd}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
                     <StackPanel Orientation="Horizontal"
-                                Margin="124 0 0 0">
+                                Margin="20 0 0 0">
                         <materialDesign:ColorZone Mode="Standard"                                               
                                                   Padding="8 4 8 4"                                               
                                                   CornerRadius="2"                                                
@@ -66,7 +92,7 @@
                                                   Background="{StaticResource plainTextColor3}"
                                                   materialDesign:ElevationAssist.Elevation="Dp2"
                                                   VerticalAlignment="Center">
-                            <Grid Width="372">
+                            <Grid Width="350">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
@@ -81,12 +107,17 @@
                                          Grid.Column="1"                                                  
                                          Margin="8 0 0 0"
                                          Foreground="{StaticResource plainTextColor2}"
-                                         materialDesign:HintAssist.Hint="Tìm mã"                                                
+                                         materialDesign:HintAssist.Hint="Tìm số hóa đơn"                                                
                                          materialDesign:TextFieldAssist.DecorationVisibility="Hidden"                                                 
                                          BorderThickness="0"                                                  
                                          MinWidth="200"                                                  
                                          VerticalAlignment="Center">
-
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="TextChanged">
+                                            <i:InvokeCommandAction Command="{Binding SearchCommand}"
+                                                       CommandParameter="{Binding ElementName=OrderHistorywd}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                 </TextBox>
                                 <Button Style="{StaticResource MaterialDesignToolButton}"                                                    
                                         Grid.Column="2">
@@ -155,7 +186,8 @@
                               Width="680"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                               ScrollViewer.VerticalScrollBarVisibility="Hidden" 
-                              d:ItemsSource="{d:SampleData ItemCount=5}">
+                              d:ItemsSource="{d:SampleData ItemCount=5}"
+                              x:Name="ListViewHD">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Border Width="650"                       

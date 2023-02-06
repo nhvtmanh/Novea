@@ -42,23 +42,11 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
-                <StackPanel Orientation="Horizontal" Margin="0,0,14,0">
-                    <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
-                              Padding="5"
-                              Foreground="{StaticResource plainTextColor2}"
-                              materialDesign:HintAssist.Hint="Sắp xếp theo"            
-                              materialDesign:HintAssist.Foreground="#000"
-                              Background="{StaticResource plainTextColor3}"
-                              Width="253" Height="46"
-                              Margin="30 0 0 0">
-                        <ComboBoxItem                     
-                            Content="Tăng dần"/>
-                        <ComboBoxItem
-                            Content="Giảm dần"/>
-                    </ComboBox>
-
+                <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Horizontal"
-                                Margin="124 0 0 0">
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="220 0 0 0">
                         <materialDesign:ColorZone Mode="Standard"                                               
                                                   Padding="8 4 8 4"                                               
                                                   CornerRadius="2"                                                
@@ -86,7 +74,12 @@
                                          BorderThickness="0"                                                  
                                          MinWidth="200"                                                  
                                          VerticalAlignment="Center">
-
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="TextChanged">
+                                            <i:InvokeCommandAction Command="{Binding SearchCommand}"
+                                                                   CommandParameter="{Binding ElementName=Storewd}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                 </TextBox>
                                 <Button Style="{StaticResource MaterialDesignToolButton}"                                                    
                                         Grid.Column="2">
