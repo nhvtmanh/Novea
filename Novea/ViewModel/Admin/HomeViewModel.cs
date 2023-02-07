@@ -77,7 +77,7 @@ namespace Novea.ViewModel.Admin
         {
             listKH = new ObservableCollection<KHACH>(DataProvider.Ins.DB.KHACHes.Where(kh => kh.HOADONs.Any(hd => hd.MACH == Const.MACH && hd.DONE == true && hd.FINISHORDERCLIENT == true)));
             listSP = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(sp => sp.MACH == Const.CH.MACH));
-            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(hd => hd.MACH == Const.CH.MACH && hd.FINISHORDERCLIENT == true && hd.DONE == true && hd.FINISHORDERCLIENT == true));
+            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(hd => hd.MACH == Const.CH.MACH && hd.FINISHORDERCLIENT == true && hd.DONE == false));
         }
         public void LineChart(HomeView p)
         {

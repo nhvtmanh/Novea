@@ -5,6 +5,7 @@ using Novea.View.Login;
 using Novea.ViewModel.Login;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -18,10 +19,12 @@ using System.Xml.Linq;
 
 namespace Novea.ViewModel.Admin
 {
+
     public class MainViewModel : BaseViewModel
     {
-        public ICommand CloseLG { get; set; }
-        
+        private ObservableCollection<HOADON> _listHD;
+        public ObservableCollection<HOADON> listHD { get => _listHD; set { SetProperty(ref _listHD, value); } }
+        public ICommand CloseLG { get; set; }        
         public ICommand Closewd { get; set; }
         public ICommand Minimizewd { get; set; }
         public ICommand GetIdTab { get; set; }
@@ -55,6 +58,16 @@ namespace Novea.ViewModel.Admin
             Loadwd = new RelayCommand<MainWindow>((p) => true, (p) => _Loadwd(p));
             MoveWindow = new RelayCommand<MainWindow>((p) => true, (p) => moveWindow(p));
             TenDangNhap_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadTenAD(p));
+        }
+        void LoadData()
+        {
+            DataProvider.Ins.Refresh();
+            listHD = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs.Where(hd => hd.MACH == Const.CH.MACH && hd.FINISHORDERCLIENT == true && hd.DONE == false));
+            listHD.CollectionChanged += (sender, args) =>
+            {
+                MessageBox.Show("Bạn vừa nhận được một đơn hàng mới!");
+                MessageBox.Show("hello");
+            };
         }
         void Refreshwd(MainWindow p)
         {
@@ -124,7 +137,7 @@ namespace Novea.ViewModel.Admin
             p.WindowState = WindowState.Minimized;
         }
         void _Loadwd(MainWindow p)
-        {
+        {            
             if (Const.IsLogin)
             {
                 string a = Const.TenDangNhap;
@@ -139,6 +152,7 @@ namespace Novea.ViewModel.Admin
                 Ava = bitmapImage;
                 LoadTenAD(p);
             }
+            LoadData();
         }
         public void LoadTenAD(MainWindow p)
         {

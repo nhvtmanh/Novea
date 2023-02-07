@@ -97,6 +97,14 @@ Chúng tôi sẽ sử dụng Figma và Canva để thiết kế giao diện ngư
 
 ## 👊 III. Tác giả
 
+* [Nguyễn Hải Minh – Trưởng nhóm]()
+  * Vai trò: Team Leader, Database Design, Frontend Developer, Backend Developer
+* [Vũ Đức Minh]()
+  * Vai trò: Frontend Developer, BackEnd Developer, Designer
+* [Nguyễn Hoàng Văn Tiến Mạnh]()
+  * Vai trò: Frontend Developer, Backend Developer
+* [Đào Thiên Lương]()
+  * Vai trò: Frontend Developer
 <!-- NGƯỜI HƯỚNG DẪN -->
 <div id="Nguoihuongdan"></div>
 
@@ -110,7 +118,7 @@ Chúng tôi sẽ sử dụng Figma và Canva để thiết kế giao diện ngư
 
 ## ✍️ V. Tổng kết
 
-Cảm ơn bạn đã quan tâm!
+Cảm ơn bạn đã đọc!
 
 ---
 
