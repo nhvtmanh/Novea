@@ -3,18 +3,13 @@ using Novea.Model;
 using Novea.View;
 using Novea.View.Client;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Xamarin.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Novea.ViewModel.Client
 {
@@ -104,7 +99,7 @@ namespace Novea.ViewModel.Client
             bitmapImage.StreamSource = new MemoryStream(Const.KH.AVATAR);
             bitmapImage.EndInit();
             Guest.Instance.image.ImageSource = bitmapImage;
-            Guest.Instance.tbHoten.Text = Const.KH.HOTEN;
+            Guest.Instance.tbHoten.Text = string.Join(" ", Const.KH.HOTEN.Split().Reverse().Take(2).Reverse());
         }
 
         void UpdateAvatar()
