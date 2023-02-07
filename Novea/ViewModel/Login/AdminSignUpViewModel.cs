@@ -163,6 +163,7 @@ namespace Novea.ViewModel.Login
                 parameter.SDT.Clear();
                 parameter.DCCH.Clear();
                 parameter.Mail.Clear();
+                parameter.Close();
             }
         }
     }
