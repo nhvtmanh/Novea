@@ -43,13 +43,21 @@ namespace Novea.ViewModel.Client
         void _UpdateSLCommand(ProductDetail parameter)
         {
             SL = parameter.txbSL.Text;
+
             if(SL == "")
             {
                 Trigia = 0;
             }
             else
             {
-                Trigia = (Int32.Parse(SL) * Decimal.ToInt32(Const.SP_temp.DONGIA));
+                if(Int32.Parse(SL) > 1000 || Int32.Parse(SL) <= 0)
+                {
+                    MessageBox.Show("Số lượng có thể đặt từ 1 đến 1000");
+                }
+                else
+                {
+                    Trigia = (Int32.Parse(SL) * Decimal.ToInt32(Const.SP_temp.DONGIA));
+                }
             }
         }
         void _Loadwd(ProductDetail parameter)
