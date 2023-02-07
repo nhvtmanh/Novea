@@ -27,7 +27,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Border>
-                    <Image Source="/Resources/Images/cheems.jpeg"
+                    <Image Source="{Binding StoreImage}"
                            Stretch="UniformToFill"/>
                 </Border>
                 <Button Style="{StaticResource controlButton}"

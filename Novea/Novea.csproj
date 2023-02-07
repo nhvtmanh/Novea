@@ -492,6 +492,9 @@
       <DependentUpon>QuanLyBanHangNovea.edmx</DependentUpon>
       <LastGenOutput>QuanLyBanHangNovea.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\storewallpaper3.jpg" />
+    <Resource Include="Resources\Images\storewallpaper2.jpg" />
+    <Resource Include="Resources\Images\storewallpaper1.jpg" />
     <Resource Include="Resources\ImgProduct\c259a2da07bd5b312d8364c6ac0f5ebb.jpg" />
     <Resource Include="Resources\ImgProduct\SP7428.png" />
     <Resource Include="Resources\ImgProduct\SP959.png" />

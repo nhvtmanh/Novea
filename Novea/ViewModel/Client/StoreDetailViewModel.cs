@@ -19,11 +19,12 @@ namespace Novea.ViewModel.Client
 {
     public class StoreDetailViewModel : BaseViewModel
     {
-        private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         private ObservableCollection<SANPHAM> listProduct;
         public ObservableCollection<SANPHAM> ListProduct { get => listProduct; set { listProduct = value; OnPropertyChanged(); } }
         private ObservableCollection<SANPHAM> listProductTemp;
         public ObservableCollection<SANPHAM> ListProductTemp { get => listProductTemp; set { listProductTemp = value; OnPropertyChanged(); } }
+        private string storeImage;
+        public string StoreImage { get => storeImage; set { storeImage = value; OnPropertyChanged(); } }
         public ICommand DetailPdCommand { get; set; }
         public ICommand LoadDetailStoreCommand { get; set; }
         public ICommand BackToHomeCommand { get; set; }
@@ -48,6 +49,8 @@ namespace Novea.ViewModel.Client
             ListProduct = new ObservableCollection<SANPHAM>(ListProductTemp.GroupBy(p => p.TENSP).Select(grp => grp.FirstOrDefault()));
             parameter.tbTENCH.Text = Const.CH.TENCH;
             parameter.tbDIADIEM.Text = Const.CH.DIADIEM;
+            Random random = new Random();
+            StoreImage = "/Resources/Images/storewallpaper" + random.Next(1, 4) + ".jpg";
         }
 
         bool checkSOHD(string m)
