@@ -40,11 +40,11 @@
                                          Height="32"
                                          VerticalAlignment="Center"/>
                     <TextBlock Text="KHÁCH HÀNG"
+                               FontFamily="Segoe UI Bold"
                    Foreground="#fff8f0"
                    FontSize="30"
                    FontWeight="Medium"
-                   VerticalAlignment="Center"
-                           FontFamily="{StaticResource Custom1}"/>
+                   VerticalAlignment="Center"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">

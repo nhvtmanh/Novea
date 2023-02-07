@@ -78,10 +78,11 @@
 
             <TextBlock Foreground="{StaticResource color1}"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
+                               FontFamily="Segoe UI Bold"
+                       VerticalAlignment="Center" 
                                    FontSize="15"
                                 Text="CHI TIẾT HÓA ĐƠN"
-                                FontFamily="{StaticResource Custom}" Height="18" Width="128"/>
+                       Height="18" Width="139"/>
 
             <Border Padding="10"
                     CornerRadius="15"

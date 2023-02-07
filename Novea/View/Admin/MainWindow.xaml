@@ -81,18 +81,18 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Margin="0 0 0 0">
-                        <materialDesign:PackIcon Kind="W3c" 
+                        <materialDesign:PackIcon Kind="W3c"  FontFamily="san serif"
                                              Foreground="{StaticResource plainTextColor2}"                                                
                                              Margin="0 0 3 3"                                                    
                                              Height="36"                                                                                                                            Width="30"                                                                               
                                              VerticalAlignment="Center">
                         </materialDesign:PackIcon>
                         <TextBlock Text="NOVEA"                              
-                               FontSize="30"                                              
+                               FontSize="30"         
+                                   FontFamily="Mónterat"
                                FontWeight="Medium"                                   
-                               Style="{StaticResource NameApp}" 
                                Height="33"
-                               Foreground="{StaticResource plainTextColor2}"/>
+                               Foreground="{StaticResource plainTextColor2}" Width="104"/>
                     </StackPanel>
                 </Border>
 
@@ -127,6 +127,7 @@
 
                         <!--Menu Titles-->
                         <TextBlock     x:Name="TenDangNhap"
+                                       FontFamily="Segoe UI"
                                        Margin="10 5 0 0"
                                        Text="VŨ ĐỨC MINH" 
                                        Foreground="#fff8f0" 
@@ -149,7 +150,7 @@
                                        FontSize="14"                                 
                                        FontWeight="SemiBold"                                 
                                        DockPanel.Dock="Top"                                  
-                                       TextAlignment="Center" Width="178">
+                                       TextAlignment="Center" Width="178" FontFamily="Montserrat">
                         </TextBlock>
 
                         <Separator Margin="13" 
@@ -197,7 +198,7 @@
                                 </i:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Cart" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="ĐƠN HÀNG" Style="{StaticResource menuButtonText}"/>
+                                    <TextBlock  FontFamily="Segoe UI" Text="ĐƠN HÀNG" Style="{StaticResource menuButtonText}"/>
                                 </StackPanel>
                             </RadioButton>
 
@@ -217,7 +218,7 @@
                                 </i:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Drink" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="SẢN PHẨM" Style="{StaticResource menuButtonText}"/>
+                                    <TextBlock FontFamily="Segoe UI" Text="SẢN PHẨM" Style="{StaticResource menuButtonText}"/>
                                 </StackPanel>
                             </RadioButton>
 
@@ -237,7 +238,7 @@
                                 </i:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="AccountMultiple" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="KHÁCH HÀNG" Style="{StaticResource menuButtonText}"/>
+                                    <TextBlock FontFamily="Segoe UI" Text="KHÁCH HÀNG" Style="{StaticResource menuButtonText}"/>
                                 </StackPanel>
                             </RadioButton>
 
@@ -257,7 +258,7 @@
                                 </i:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="FaceAgent" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="QUẢN LÝ" Style="{StaticResource menuButtonText}"/>
+                                    <TextBlock FontFamily="Segoe UI" Text="QUẢN LÝ" Style="{StaticResource menuButtonText}"/>
                                 </StackPanel>
                             </RadioButton>
 
@@ -279,7 +280,8 @@
                                     <materialDesign:PackIcon Kind="Cog" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="CÀI ĐẶT"
                                                Style="{StaticResource menuButtonText}"
-                                               Margin="0 0 16 0"/>
+                                               Margin="0 0 16 0"
+                                               FontFamily="Segoe UI"/>
                                 </StackPanel>
                             </RadioButton>
 
@@ -295,7 +297,7 @@
                                 </i:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="ĐĂNG XUẤT" Style="{StaticResource menuButtonText}"/>
+                                    <TextBlock FontFamily="Segoe UI" Text="ĐĂNG XUẤT" Style="{StaticResource menuButtonText}"/>
                                 </StackPanel>
                             </RadioButton>
 

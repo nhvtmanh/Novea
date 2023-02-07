@@ -38,7 +38,7 @@
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Cart" 
                                          Foreground="#FFCF99"
-                                         Margin="25 0 10 7"
+                                         Margin="25 0 10 0"
                                          Width="30"
                                          Height="32"
                                          VerticalAlignment="Center"/>
@@ -46,8 +46,8 @@
                    Foreground="#fff8f0"
                    FontSize="30"
                    FontWeight="Medium"
-                   VerticalAlignment="Center"
-                           FontFamily="{StaticResource Custom1}"/>
+                   VerticalAlignment="Center"                               FontFamily="Segoe UI Bold"
+/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">

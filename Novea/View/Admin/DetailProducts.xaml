@@ -68,10 +68,10 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                <TextBlock
+                <TextBlock 
                     Text="CHI TIẾT SẢN PHẨM"
                     Foreground="{StaticResource color1}"
-                    FontFamily="{StaticResource Custom}"
+                               FontFamily="Segoe UI Bold"
                     FontSize="30"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
