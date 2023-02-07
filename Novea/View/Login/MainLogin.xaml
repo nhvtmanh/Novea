@@ -114,7 +114,6 @@
                 <TextBlock x:Name="abc" 
                                TextWrapping="Wrap" 
                                Foreground="{StaticResource plainTextColor3}" 
-                               Width="302" 
                                Text="Chào mừng trở lại với Novea" 
                                HorizontalAlignment="Center" 
                                TextAlignment="Center" 

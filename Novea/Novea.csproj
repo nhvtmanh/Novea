@@ -429,7 +429,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EntityDeploy Include="Model\QuanLyBanHangNovea.edmx">
@@ -444,6 +444,15 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\Montserrat-Light.ttf" />
+    <None Include="Resources\Montserrat-Regular.ttf" />
+    <None Include="Resources\OpenSans-Italic-VariableFont_wdth,wght.ttf" />
+    <None Include="Resources\OpenSans-Light.ttf" />
+    <None Include="Resources\OpenSans-VariableFont_wdth,wght.ttf" />
+    <Resource Include="Resources\Font\Montserrat-Light.ttf" />
+    <Resource Include="Resources\Font\Montserrat-Regular.ttf" />
+    <Resource Include="Resources\Font\OpenSans-Light.ttf" />
+    <Resource Include="Resources\Font\OpenSans-Regular.ttf" />
     <Resource Include="Resources\Font\Nunito-ExtraBold.ttf" />
     <Resource Include="Resources\Font\NunitoBold.ttf" />
     <Resource Include="Resources\Font\NunitoRegular.ttf" />

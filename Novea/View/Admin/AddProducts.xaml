@@ -98,14 +98,12 @@
                                 Orientation="Vertical"
                                 Margin="10,20,5,10"
                                 >
-                        <TextBlock
+                        <TextBlock FontFamily="Segoe UI"
                             Margin="-15,0,0,20"
                             HorizontalAlignment="Center"
                             Text="SẢN PHẨM MỚI"
                             FontSize="24"
-                            Foreground="{StaticResource color1}"
-                            FontFamily="{StaticResource Custom}"
-                            />
+                            Foreground="{StaticResource color1}"/>
                         <StackPanel Orientation="Horizontal">
                             <StackPanel Orientation="Vertical" Width="249">
                                 <TextBlock Foreground="{StaticResource plainTextColor3}"
