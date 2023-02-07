@@ -56,11 +56,24 @@ namespace Novea.ViewModel.Login
                 var accCountCH = DataProvider.Ins.DB.CUAHANGs.Where(x => x.TAIKHOAN == Username && x.MATKHAU == PassEncode).Count();
                 if (accCountCH > 0)
                 {
-                    Const.IsLogin = true;
-                    Const.TenDangNhap = Username;
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
-                    Username = "";
+                    if (p.Remember.IsChecked == true)
+                    {
+                        Const.IsLogin = true;
+                        Const.TenDangNhap = Username;
+
+                        Properties.Settings.Default.Save();
+
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Show();
+                    }
+                    else
+                    {
+                        Const.IsLogin = true;
+                        Const.TenDangNhap = Username;
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Show();
+                        Username = "";
+                    }                       
                 }
                 else
                 {

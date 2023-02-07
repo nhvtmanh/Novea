@@ -44,9 +44,6 @@ namespace Novea.ViewModel.Admin
 
         public string Name;
 
-
-
-
         public MainViewModel()
         {
             Refresh = new RelayCommand<MainWindow>((p) => true, (p) => Refreshwd(p));

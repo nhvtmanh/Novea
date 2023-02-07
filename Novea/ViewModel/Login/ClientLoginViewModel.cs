@@ -56,12 +56,26 @@ namespace Novea.ViewModel.Login
                 KHACH accCountKHACH = DataProvider.Ins.DB.KHACHes.Where(x => x.TAIKHOAN == Username && x.MATKHAU == PassEncode).FirstOrDefault();
                 if (accCountKHACH != null)
                 {
-                    Const.IsLogin = true;
-                    Const.TenDangNhap = Username;
-                    Const.KH = accCountKHACH;
-                    Guest guest = new Guest();
-                    guest.Show();
-                    Username = "";
+                    if(p.Remember.IsChecked == true)
+                    {
+                        Const.IsLogin = true;
+                        Const.TenDangNhap = Username;
+                        Const.KH = accCountKHACH;
+
+                        Properties.Settings.Default.Save();
+
+                        Guest guest = new Guest();
+                        guest.Show();
+                    }
+                    else
+                    {
+                        Const.IsLogin = true;
+                        Const.TenDangNhap = Username;
+                        Const.KH = accCountKHACH;
+                        Guest guest = new Guest();
+                        guest.Show();
+                        Username = "";
+                    }
                 }
                 else
                 {
