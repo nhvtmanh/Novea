@@ -96,59 +96,131 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="200"/>
-                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="280"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" Visibility="Hidden">
                                 <TextBlock FontFamily="{StaticResource Custom1}"
                                            Foreground="{StaticResource color1}"
                                            FontSize="30"
                                            Height="35"
                                            Margin="10,-120,0,0"
-                                           Text="SOHD"/>
+                                           Text="SOHD"
+                                           Visibility="Hidden"/>
                                 <TextBlock FontFamily="{StaticResource Custom1}"
-                                         Background="{StaticResource plainTextColor3}"
-                                         FontSize="25"
-                                         Width="140" Height="40"
-                                         Margin="10,-118,0,0"
-                                         Text=""
-                                         
-                                           x:Name="txbSOHD">
+                                           Background="{StaticResource plainTextColor3}"
+                                           FontSize="25"
+                                           Width="140" Height="40"
+                                           Margin="10,-118,0,0"
+                                           Text=""
+                                           x:Name="txbSOHD"
+                                           Visibility="Hidden">
                                 </TextBlock>
                             </StackPanel>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="0,30,0,0">
                                 <TextBlock FontFamily="{StaticResource Custom1}"
                                            Foreground="{StaticResource color1}"
                                            FontSize="30"
                                            Height="35"
                                            Width="35"
-                                           Margin="-160,22,0,0"
+                                           Margin="-115,0,0,0"
                                            Text="SL"/>
-                                <TextBox FontFamily="{StaticResource Custom1}"
-                                         Background="{StaticResource plainTextColor3}"
-                                         FontSize="25"
-                                         Width="70" Height="40"
-                                         Margin="-35,-35,0,0"
-                                         Text="{Binding SL}"
-                                         x:Name="txbSL">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="TextChanged">
-                                            <i:InvokeCommandAction Command="{Binding UpdateSLCommand}"
+                                <Border CornerRadius="10"
+                                        BorderThickness="2"
+                                        BorderBrush="gray"
+                                        Width="150"
+                                        Height="40"
+                                        HorizontalAlignment="Center">
+                                    <TextBox FontFamily="{StaticResource Custom1}"
+                                             Foreground="{StaticResource plainTextColor3}"
+                                             FontSize="20"
+                                             Text="{Binding SL}"
+                                             x:Name="txbSL"
+                                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                             materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
+                                             materialDesign:HintAssist.Hint="Nhập số lượng"
+                                             materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"
+                                             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource color1}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding UpdateSLCommand}"
                                                        CommandParameter="{Binding ElementName=ProductDetailwd}"></i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </TextBox>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+                                </Border>
                             </StackPanel>
-                        </Grid>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontFamily="{StaticResource Custom1}"
+                                           Foreground="{StaticResource color1}"
+                                           FontSize="30"
+                                           Height="35"
+                                           Width="130"
+                                           Margin="-20,0,0,0"
+                                           Text="Lượng đá"/>
+                                <Border BorderBrush="Gray"
+                                        BorderThickness="2"
+                                        Height="40"
+                                        Width="150"
+                                        CornerRadius="10">
+                                    <ComboBox Padding="1"
+                                              Foreground="{StaticResource plainTextColor3}"
+                                              FontSize="20"
+                                              FontFamily="{StaticResource Custom}"
+                                              Margin="0,0,5,0"
+                                              VerticalAlignment="Top"
+                                              Height="35"
+                                              SelectedIndex="0"
+                                              BorderThickness="0"
+                                              materialDesign:TextFieldAssist.TextBoxViewMargin="10,5,0,0"
+                                              materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                              materialDesign:HintAssist.FontFamily="{StaticResource Custom}"
+                                              materialDesign:HintAssist.Foreground="White"
+                                              x:Name="cbbLuongDa">
+                                        <ComboBoxItem Content="100%" Foreground="{StaticResource plainTextColor2}"/>
+                                        <ComboBoxItem Content="70%" Foreground="{StaticResource plainTextColor2}"/>
+                                        <ComboBoxItem Content="30%" Foreground="{StaticResource plainTextColor2}"/>
+                                        <ComboBoxItem Content="0%" Foreground="{StaticResource plainTextColor2}"/>
+                                    </ComboBox>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock FontFamily="{StaticResource Custom1}"
+                                           Foreground="{StaticResource color1}"
+                                           FontSize="30"
+                                           Height="35"
+                                           Width="200"
+                                           Margin="50,0,0,0"
+                                           Text="Lượng đường"/>
+                                <Border BorderBrush="Gray"
+                                        BorderThickness="2"
+                                        Height="40"
+                                        Width="150"
+                                        CornerRadius="10">
+                                    <ComboBox Padding="1"
+                                              Foreground="{StaticResource plainTextColor3}"
+                                              FontSize="20"
+                                              FontFamily="{StaticResource Custom}"
+                                              Height="35"
+                                              SelectedIndex="0"
+                                              BorderThickness="0"
+                                              Margin="0,0,5,0"
+                                              VerticalAlignment="Top"
+                                              materialDesign:TextFieldAssist.TextBoxViewMargin="10,5,0,0"
+                                              materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                              materialDesign:HintAssist.FontFamily="{StaticResource Custom}"
+                                              materialDesign:HintAssist.Foreground="White"
+                                              x:Name="cbbLuongDuong">
+                                        <ComboBoxItem Content="100%" Foreground="{StaticResource plainTextColor2}"/>
+                                        <ComboBoxItem Content="70%" Foreground="{StaticResource plainTextColor2}"/>
+                                        <ComboBoxItem Content="30%" Foreground="{StaticResource plainTextColor2}"/>
+                                        <ComboBoxItem Content="0%" Foreground="{StaticResource plainTextColor2}"/>
+                                    </ComboBox>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -156,104 +228,51 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
-                            <StackPanel>
-                                <TextBlock FontFamily="{StaticResource Custom1}"
-                                           Foreground="{StaticResource color1}"
-                                           FontSize="30"
-                                           Height="35"
-                                           Width="130"
-                                           Margin="10,15,85,0"
-                                           Text="Lượng đá"/>
-                                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
-                                          Padding="5"
-                                          Foreground="{StaticResource plainTextColor2}"
-                                          Background="{StaticResource plainTextColor3}"
-                                          FontSize="20"
-                                          Width="100" Height="55"
-                                          Margin="-80,10,0,0"
-                                          SelectedIndex="0"
-                                          x:Name="cbbLuongDa">
-                                    <ComboBoxItem Content="100%"/>
-                                    <ComboBoxItem Content="70%"/>
-                                    <ComboBoxItem Content="30%"/>
-                                    <ComboBoxItem Content="0%"/>
-                                </ComboBox>
-                            </StackPanel>
+                            
                         </Grid>
                         <Grid Grid.Column="1">
-                            <StackPanel>
-                                <TextBlock FontFamily="{StaticResource Custom1}"
-                                           Foreground="{StaticResource color1}"
-                                           FontSize="30"
-                                           Height="35"
-                                           Width="200"
-                                           Margin="0,15,0,0"
-                                           Text="Lượng đường"/>
-                                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
-                                          Padding="5"
-                                          Foreground="{StaticResource plainTextColor2}"
-                                          Background="{StaticResource plainTextColor3}"
-                                          FontSize="20"
-                                          Width="100" Height="55"
-                                          Margin="-80,10,0,0"
-                                          SelectedIndex="0"
-                                          x:Name="cbbLuongDuong">
-                                    <ComboBoxItem Content="100%"/>
-                                    <ComboBoxItem Content="70%"/>
-                                    <ComboBoxItem Content="30%"/>
-                                    <ComboBoxItem Content="0%"/>
-                                </ComboBox>
-                            </StackPanel>
+                            
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <DockPanel Margin="20,5,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <StackPanel Orientation="Horizontal">
                                 <TextBlock FontFamily="{StaticResource Custom1}"
-                                           FontSize="20"
-                                           Height="25"
+                                           FontSize="30"
+                                           Height="30"
                                            Foreground="{StaticResource plainTextColor3}"
                                            HorizontalAlignment="Center"
-                                           DockPanel.Dock="Top"
-                                           Text="Thành tiền"/>
+                                           Margin="20,0,0,0"
+                                           Text="Thành tiền:"/>
                                 <TextBlock FontFamily="{StaticResource Custom1}"
-                                           FontSize="20"
-                                           Height="25"
+                                           FontSize="30"
+                                           Height="30"
                                            Foreground="{StaticResource plainTextColor3}"
                                            HorizontalAlignment="Center"
-                                           DockPanel.Dock="Top"
+                                           Margin="5,0,0,0"
                                            Text="{Binding Trigia,StringFormat={}{0:#,###} VNĐ}"
                                            x:Name="tXbTongTien">
                                 </TextBlock> 
-                            </DockPanel>
+                            </StackPanel>
                         </Grid>
-                        <Grid Grid.Column="1">
-                            <Button Foreground="{StaticResource plainTextColor2}"
-                                    BorderThickness="0"
+                        <Grid Grid.Row="1">
+                            <Button Foreground="{StaticResource color1}"
+                                    Background="Transparent"
+                                    BorderThickness="1"
+                                    BorderBrush="{StaticResource color1}"
                                     FontSize="20"
                                     FontFamily="{StaticResource Custom}"
                                     Width="210"
                                     Height="50"
                                     HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Margin="0,30,0,0"
                                     Style="{StaticResource MaterialDesignFlatMidBgButton}"
                                     Content="Thêm vào giỏ hàng">
-                                <Button.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0,0.5">
-                                        <GradientStop Color="Yellow" Offset="0"/>
-                                        <GradientStop Color="Orange" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Button.Background>
-                                <Button.Effect>
-                                    <DropShadowEffect ShadowDepth="3"
-                                              Color="Orange"
-                                              Opacity="0.5"
-                                              BlurRadius="5"/>
-                                </Button.Effect>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding AddToCartCommand}"
