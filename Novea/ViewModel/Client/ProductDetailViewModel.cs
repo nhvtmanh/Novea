@@ -72,8 +72,6 @@ namespace Novea.ViewModel.Client
             CT.LuongDuong = "0";
 
             Cthd = CT;
-            parameter.txbSOHD.Visibility = Visibility.Hidden;
-            parameter.txSOHD.Visibility = Visibility.Hidden;
 
             parameter.txbSL.Text = "1";
             _UpdateSLCommand(parameter); 
