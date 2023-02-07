@@ -58,6 +58,12 @@
                             Margin="0 -50 0 0"
                             Background="{StaticResource plainTextColor3}"
                             CornerRadius="20">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="5"
+                                          Color="Orange"
+                                          Opacity="0.5"
+                                          BlurRadius="10"/>
+                        </Border.Effect>
                         <DockPanel>
                             <TextBlock FontFamily="{StaticResource Custom1}"
                                        FontSize="30"

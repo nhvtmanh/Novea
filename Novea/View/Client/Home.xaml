@@ -98,7 +98,8 @@
                           ItemsSource="{Binding ListStore}"
                           SelectionMode="Single"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          ScrollViewer.VerticalScrollBarVisibility="Hidden" d:ItemsSource="{d:SampleData ItemCount=5}">
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                          d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border Margin="20"
