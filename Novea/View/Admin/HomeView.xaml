@@ -191,10 +191,10 @@
                                        Width="auto"
                                        x:Name="totalrevenue"
                                        TextWrapping="Wrap"
-                                   FontSize="26"
+                                   FontSize="25"
                                    Foreground="{StaticResource plainTextColor2}"
                                    HorizontalAlignment="Left"
-                                   Margin="20 35 10 0">
+                                   Margin="18 35 10 0">
                                 <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Loaded">
                                     <i:InvokeCommandAction Command="{Binding LoadDoanhThu}"
