@@ -98,13 +98,15 @@
                           ItemsSource="{Binding ListStore}"
                           SelectionMode="Single"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                          d:ItemsSource="{d:SampleData ItemCount=3}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border Margin="20"
-                                    Width="770"
+                                    Width="750"
                                     Height="150"
-                                    Background="{StaticResource plainTextColor3}">
+                                    Background="{StaticResource plainTextColor3}"
+                                    CornerRadius="75,75,75,75">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="150"/>
