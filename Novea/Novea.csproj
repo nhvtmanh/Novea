@@ -37,6 +37,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>store_icon-icons.com_54371.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -482,6 +485,8 @@
     <Resource Include="Resources\Images\cart.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="store_icon-icons.com_54371.ico" />
+    <Resource Include="artboard_15_9wX_icon.ico" />
     <Content Include="Model\QuanLyBanHangNovea.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>QuanLyBanHangNovea.Context.cs</LastGenOutput>
@@ -492,6 +497,7 @@
       <DependentUpon>QuanLyBanHangNovea.edmx</DependentUpon>
       <LastGenOutput>QuanLyBanHangNovea.cs</LastGenOutput>
     </Content>
+    <Resource Include="store.ico" />
     <Resource Include="Resources\Images\storewallpaper3.jpg" />
     <Resource Include="Resources\Images\storewallpaper2.jpg" />
     <Resource Include="Resources\Images\storewallpaper1.jpg" />
