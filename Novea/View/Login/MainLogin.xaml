@@ -150,7 +150,7 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                         <Grid Width="auto" Height="auto">
-                            <Rectangle Fill="#FD8A87"
+                            <Rectangle Fill="#FD8A87" Cursor="Hand"
                                HorizontalAlignment="Center"
                                Height="130"  Width="128"
                                RadiusY="14.5" RadiusX="14.5"

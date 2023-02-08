@@ -121,7 +121,7 @@
 
 
                     <StackPanel Orientation="Horizontal"
-                                Margin="20 0 0 0">
+                                Margin="70 0 0 0">
                         <materialDesign:ColorZone Mode="Standard"                                               
                                               Padding="8 4 8 4"                                               
                                               CornerRadius="2"                                                
@@ -145,7 +145,7 @@
                                          Foreground="{StaticResource plainTextColor2}"
                                      Grid.Column="1"                                                  
                                      Margin="8 0 0 0"                                                 
-                                     materialDesign:HintAssist.Hint="Tìm mã sản phẩm"                                                
+                                     materialDesign:HintAssist.Hint="Tìm tên sản phẩm"                                                
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"                                                 
                                      BorderThickness="0"                                                  
                                      MinWidth="200"                                                  
@@ -161,11 +161,7 @@
                                 </TextBox>
                                 <Button Style="{StaticResource MaterialDesignToolButton}"                                                               
                                         Foreground="{StaticResource plainTextColor2}"                                        
-                                        Grid.Column="2">
-                                    <materialDesign:PackIcon Kind="Microphone"                                                     
-                                                         Opacity=".56"                                                   
-                                                         Margin="8 0 0 0" />
-                                </Button>
+                                        Grid.Column="2"/>
                             </Grid>
                         </materialDesign:ColorZone>
 
@@ -220,28 +216,38 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border     Margin="10"
-                                        Height="210"
-                                        Background="White"
+                                        Height="222"
                                         Width="150"                      
                                         CornerRadius="10">
                                 <StackPanel>
-                                    <Image          HorizontalAlignment="Center"
+                                    <Border Height="155"  CornerRadius="10"
+                                                Width="150">
+                                        <Rectangle>
+                                            <Rectangle.Fill>
+                                                <ImageBrush Stretch="UniformToFill" AlignmentX="Center" AlignmentY="Center" ImageSource="{Binding HINHSP}"/>
+                                            </Rectangle.Fill>
+                                        </Rectangle>
+                                    </Border>
+                                    <!--<Image          HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"
                                                     Source="{Binding HINHSP}" 
                                                     Height="154" 
                                                     Width="140"
                                                     Margin="0,10,0,0"
-                                                    />
+                                                    />-->
 
-                                    <TextBlock      HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    FontFamily="{StaticResource Custom}"
-                                                    FontSize="14"
+                                    <TextBlock      HorizontalAlignment="Left"
+                                                    Foreground="{StaticResource color1}"
+                                                    FontWeight="DemiBold"
+                                                    TextWrapping="Wrap"
+                                                    FontFamily="Calibri"
+                                                    FontSize="18"
                                                     Width="auto"
+                                                    Margin="0 10 0 0"
                                                     Text="{Binding TENSP}"/>
 
-                                    <TextBlock      HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
+                                    <TextBlock      HorizontalAlignment="Left"
+                                                    Foreground="{StaticResource plainTextColor3}"
                                                     Width="auto"                                                   
                                                     FontFamily="{StaticResource Custom}"
                                                     FontSize="14"

@@ -14,9 +14,6 @@
         Background="Transparent"
         AllowsTransparency="True"
         DataContext="{StaticResource AddProductVM}">
-
-
-
     <Border CornerRadius="15"      
             BorderThickness="3">
         <Border.Background>
@@ -45,7 +42,7 @@
                         VerticalAlignment="Top"
                         Background="Transparent"
                         Style="{StaticResource MaterialDesignFlatMidBgButton}"
-                        Content="Thêm hình sản phẩm" FontFamily="{StaticResource Custom}"
+                        Content="Thêm hình sản phẩm"
                         BorderBrush="{StaticResource color1}"
                         BorderThickness="1"
                         Width="181" Height="40"  Foreground="{StaticResource color1}" Margin="0,342,0,0">
@@ -73,8 +70,7 @@
                                 Orientation="Horizontal" 
                                 HorizontalAlignment="Right" 
                                 VerticalAlignment="Center"
-                                Margin="0,0,10,0"
-                                >
+                                Margin="0,0,10,0">
                         <materialDesign:PackIcon Kind="WindowMinimize" Foreground="Gray" Height="24" Width="24" Margin="0,0,8,0">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseLeftButtonDown">
@@ -83,7 +79,7 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </materialDesign:PackIcon>
-                        <materialDesign:PackIcon Kind="CloseThick" Foreground="gray" Height="24" Width="24">
+                        <materialDesign:PackIcon  Kind="CloseThick" Foreground="gray" Height="24" Width="24">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseLeftButtonDown">
                                     <i:InvokeCommandAction Command="{Binding Closewd}"
@@ -98,7 +94,7 @@
                                 Orientation="Vertical"
                                 Margin="10,20,5,10"
                                 >
-                        <TextBlock FontFamily="Segoe UI"
+                        <TextBlock FontFamily="Segoe UI Bold"
                             Margin="-15,0,0,20"
                             HorizontalAlignment="Center"
                             Text="SẢN PHẨM MỚI"
@@ -109,7 +105,7 @@
                                 <TextBlock Foreground="{StaticResource plainTextColor3}"
                                     Margin="8,0,0,0"
                                     Text="MÃ SẢN PHẨM"
-                                    FontFamily="{StaticResource Custom}" Width="150" HorizontalAlignment="Right"
+                                     Width="150" HorizontalAlignment="Right"
                                 />
                                 <Border
                                 CornerRadius="10"
@@ -123,7 +119,6 @@
                                     Width="150"
                                     IsEnabled="False"
                                     BorderThickness="0"
-                                    FontFamily="{StaticResource Custom}"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
                                     materialDesign:HintAssist.Hint="THÊM MÃ SẢN PHẨM"
@@ -138,13 +133,13 @@
                                 <TextBlock Foreground="{StaticResource plainTextColor3}"
                                     Margin="4,0,0,0"
                                     Text="TÊN SẢN PHẨM"
-                                    FontFamily="{StaticResource Custom}" HorizontalAlignment="Left"
+                                     HorizontalAlignment="Left"
                                 />
                                 <TextBox Foreground="{StaticResource plainTextColor3}" 
                                     Height="30"
                                 BorderBrush="gray"
                                     x:Name="TenSp"
-                                    FontFamily="{StaticResource Custom}"
+                                    
                                     HorizontalAlignment="Left"
                                     Width="150"
                                     BorderThickness="2"
@@ -163,7 +158,7 @@
                                 <TextBlock Foreground="{StaticResource plainTextColor3}"
                                     Margin="8,0,0,0"
                                     Text="GIÁ SẢN PHẨM"
-                                    FontFamily="{StaticResource Custom}" Width="150" HorizontalAlignment="Right"
+                                     Width="150" HorizontalAlignment="Right"
                                 />
                                 <TextBox Foreground="{StaticResource plainTextColor3}"
                                 BorderBrush="gray"
@@ -171,7 +166,7 @@
                                     x:Name="GiaSp"
                                     HorizontalAlignment="Right"
                                     Width="154"
-                                    FontFamily="{StaticResource Custom}"
+                                    
                                     BorderThickness="2"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
@@ -186,7 +181,7 @@
                                 <TextBlock Foreground="{StaticResource plainTextColor3}"
                                     Margin="8,0,0,0"
                                     Text="LOẠI SẢN PHẨM"
-                                    FontFamily="{StaticResource Custom}"
+                                    
                                 />
                                 <Border
                                 BorderBrush="Gray"
@@ -201,9 +196,8 @@
                                     materialDesign:TextFieldAssist.TextBoxViewMargin="4,-15,0,0"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     BorderThickness="0"
-                                    materialDesign:HintAssist.FontFamily="{StaticResource Custom}"
                                     materialDesign:HintAssist.Foreground="White"
-                                    FontFamily="{StaticResource Custom}"
+                                    
                                     Height="30"
                                     FontSize="12" Margin="0,0,8,0" VerticalAlignment="Top">
                                         <ComboBoxItem                     
@@ -229,7 +223,7 @@
                                 <TextBlock Foreground="{StaticResource plainTextColor3}"
                                     Margin="8,0,0,0"
                                     Text="ĐƠN VỊ TÍNH"
-                                    FontFamily="{StaticResource Custom}" Width="150" HorizontalAlignment="Right"
+                                     Width="150" HorizontalAlignment="Right"
                                 />
                                 <TextBox Foreground="{StaticResource plainTextColor3}"
                                 BorderBrush="gray"
@@ -237,7 +231,7 @@
                                     x:Name="DvSp"
                                     HorizontalAlignment="Right"
                                     Width="154"
-                                    FontFamily="{StaticResource Custom}"
+                                    
                                     BorderThickness="2"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
@@ -252,7 +246,7 @@
                                 <TextBlock Foreground="{StaticResource plainTextColor3}"
                                     Margin="8,0,0,0"
                                     Text="KÍCH CỠ"
-                                    FontFamily="{StaticResource Custom}"
+                                    
                                 />
                                 <Border
                                 BorderBrush="Gray"
@@ -267,9 +261,8 @@
                                     materialDesign:TextFieldAssist.TextBoxViewMargin="4,-15,0,0"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     BorderThickness="0"
-                                    materialDesign:HintAssist.FontFamily="{StaticResource Custom}"
                                     materialDesign:HintAssist.Foreground="White"
-                                    FontFamily="{StaticResource Custom}"
+                                    
                                               Height="30"
                                     FontSize="12" Margin="0,0,8,0">
                                         <ComboBoxItem Content="S"/>
@@ -282,12 +275,12 @@
                         <TextBlock Foreground="{StaticResource plainTextColor3}"
                                     Margin="0,10,0,0"
                                     Text="THÔNG TIN SẢN PHẨM"
-                                    FontFamily="{StaticResource Custom}" HorizontalAlignment="Center" Width="309"
+                                     HorizontalAlignment="Center" Width="309"
                                 />
                         <TextBox Foreground="{StaticResource plainTextColor3}"
                                 BorderBrush="gray"
                                     x:Name="MotaSp"
-                                    FontFamily="{StaticResource Custom}"
+                                    
                                     HorizontalAlignment="Center"
                                     Width="319"
                                     Height="50"

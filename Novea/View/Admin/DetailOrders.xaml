@@ -86,10 +86,10 @@
                                    Width="170"
                                    Height="40"
                                    Margin="20,0,0,0"
-                                   Foreground="{StaticResource plainTextColor3}"
+                           Foreground="{StaticResource color1}"
                                    HorizontalAlignment="Left"
                                    DockPanel.Dock="Left"
-                                   Text="Khách hàng"/>
+                                   Text="Khách hàng:"/>
                         <TextBlock x:Name="TenKH"
                                    FontFamily="{StaticResource Custom1}"
                                    FontSize="30"
@@ -105,12 +105,12 @@
                         <TextBlock FontFamily="{StaticResource Custom1}"
                                    FontSize="30"
                                    Width="170"
+                           Foreground="{StaticResource color1}"
                                    Height="40"
                                    Margin="20,0,0,0"
-                                   Foreground="{StaticResource plainTextColor3}"
                                    HorizontalAlignment="Left"
                                    DockPanel.Dock="Left"
-                                   Text="Địa chỉ"/>
+                                   Text="Địa chỉ:"/>
                         <TextBlock x:Name="DCKH"
                                    FontFamily="{StaticResource Custom1}"
                                    FontSize="30"
@@ -233,7 +233,7 @@
                         <TextBlock FontFamily="{StaticResource Custom1}"
                                    FontSize="30"
                                    Height="37"
-                                   Foreground="{StaticResource plainTextColor3}"
+                           Foreground="{StaticResource color1}"
                                    DockPanel.Dock="Top"
                                    Text="Tổng cộng: "/>
                         <TextBlock FontFamily="{StaticResource Custom1}"
