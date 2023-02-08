@@ -71,22 +71,41 @@
                                 HorizontalAlignment="Right" 
                                 VerticalAlignment="Center"
                                 Margin="0,0,10,0">
-                        <materialDesign:PackIcon Kind="WindowMinimize" Foreground="Gray" Height="24" Width="24" Margin="0,0,8,0">
+                        <Button Style="{StaticResource controlButton}"
+                                    Tag="{StaticResource plainTextColor1}"
+                                    Margin="5 0 0 0"
+                                    Width="25">
+                            <materialDesign:PackIcon Kind="WindowMinimize"
+                                                         Width="{Binding Width,ElementName=a}"
+                                                         Height="{Binding Width,ElementName=a}">
+
+                            </materialDesign:PackIcon>
                             <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="MouseLeftButtonDown">
-                                    <i:InvokeCommandAction Command="{Binding Minimizewd}"
-                                                       CommandParameter="{Binding ElementName=AddProductwd}"></i:InvokeCommandAction>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding Minimizewd}"                                    
+                                                                    CommandParameter="{Binding ElementName=AddProductwd}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
-                        </materialDesign:PackIcon>
-                        <materialDesign:PackIcon  Kind="CloseThick" Foreground="gray" Height="24" Width="24">
+
+                        </Button>
+
+                        <Button Style="{StaticResource controlButton}"
+                                    Tag="{StaticResource plainTextColor1}"
+                                    Width="25"
+                                    x:Name="a">
+                            <materialDesign:PackIcon Kind="CloseThick"
+                                                         Width="{Binding Width,ElementName=a}"
+                                                         Height="{Binding Width,ElementName=a}">
+
+                            </materialDesign:PackIcon>
                             <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="MouseLeftButtonDown">
-                                    <i:InvokeCommandAction Command="{Binding Closewd}"
-                                                       CommandParameter="{Binding ElementName=AddProductwd}"></i:InvokeCommandAction>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding Closewd}"                                               
+                                                                    CommandParameter="{Binding ElementName=AddProductwd}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
-                        </materialDesign:PackIcon>
+
+                        </Button>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="1">
