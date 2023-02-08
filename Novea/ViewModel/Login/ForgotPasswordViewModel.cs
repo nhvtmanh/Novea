@@ -65,7 +65,7 @@ namespace Novea.ViewModel
                 smtp.Credentials = new NetworkCredential("noveamanagement@gmail.com", "meilideshenhua");
                 smtp.Send(message);
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Vui lòng cho phép 'quyền truy cập ứng dụng kém an toàn' của gmail");
                 return;
