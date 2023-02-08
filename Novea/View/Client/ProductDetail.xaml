@@ -251,7 +251,7 @@
                                            HorizontalAlignment="Center"
                                            Text="Thành tiền:"/>
                                 <TextBlock FontFamily="{StaticResource Custom1}"
-                                           Margin="60 0 0 0"
+                                           Margin="10 0 0 0"
                                            FontSize="30"
                                            Height="30"
                                            Foreground="{StaticResource plainTextColor3}"
