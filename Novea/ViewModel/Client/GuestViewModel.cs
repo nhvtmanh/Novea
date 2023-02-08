@@ -1,19 +1,12 @@
 ﻿using Novea.View;
-using Novea.View.Client;
-using Novea.ViewModel.Login;
 using Novea.View.Login;
 using Novea.Model;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.IO;
-using System.Security.Policy;
 
 namespace Novea.ViewModel.Client
 {

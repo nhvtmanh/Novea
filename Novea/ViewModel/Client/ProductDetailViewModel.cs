@@ -1,22 +1,14 @@
 ﻿using Novea.View.Client;
 using Novea.Model;
-using Novea.View;
-using Novea.View.Admin;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Controls;
-using System.Xml.Linq;
 using System.Windows.Media.Imaging;
 using System.IO;
 
 namespace Novea.ViewModel.Client
-{   
+{
     public class ProductDetailViewModel : BaseViewModel
     {
         private HOADON _HoaDon;
