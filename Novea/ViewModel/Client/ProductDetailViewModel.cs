@@ -50,9 +50,13 @@ namespace Novea.ViewModel.Client
             }
             else
             {
-                if(Int32.Parse(SL) > 1000 || Int32.Parse(SL) <= 0)
+                if (Int32.TryParse(SL, out int temp) == false)
                 {
-                    MessageBox.Show("Số lượng có thể đặt từ 1 đến 1000");
+                    MessageBox.Show("Số lượng chỉ có thể nhập số");
+                }
+                else if (Int32.Parse(SL) > 1000 || Int32.Parse(SL) <= 0)
+                {
+                    MessageBox.Show("Số lượng chỉ có thể đặt từ 1 đến 1000");
                 }
                 else
                 {

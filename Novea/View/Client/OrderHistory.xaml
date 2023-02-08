@@ -35,7 +35,7 @@
                     <TextBlock Text="LỊCH SỬ ĐẶT HÀNG" 
                                Foreground="#fff8f0" 
                                FontSize="35"
-                               FontFamily="{StaticResource Custom1}"
+                               FontFamily="Segoe UI Bold"
                                Margin="10 0 0 0"
                                VerticalAlignment="Center"
                                FontWeight="Medium"/>
