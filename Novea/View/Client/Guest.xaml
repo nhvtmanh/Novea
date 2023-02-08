@@ -21,7 +21,7 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <Border CornerRadius="40" BorderThickness="1">
+    <Border CornerRadius="30" BorderThickness="1">
 
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
@@ -72,17 +72,18 @@
                             VerticalAlignment="Center"
                             Margin="0 0 0 0">
                         <materialDesign:PackIcon Kind="W3c" 
+                                                 FontFamily="san serif"
                                              Foreground="{StaticResource plainTextColor2}"                                                
                                              Margin="0 0 3 3"                                                    
                                              Height="36"                                                                                                                            Width="30"                                                                               
                                              VerticalAlignment="Center">
                         </materialDesign:PackIcon>
                         <TextBlock Text="NOVEA"                              
-                               FontSize="30"                                              
-                               FontWeight="Medium"                                   
-                               Style="{StaticResource NameApp}" 
-                               Height="33"
-                               Foreground="{StaticResource plainTextColor2}"/>
+                                   FontSize="30"         
+                                   FontFamily="Mónterat"
+                                   FontWeight="Medium"                                   
+                                   Height="33"
+                                   Foreground="{StaticResource plainTextColor2}" Width="104"/>
                     </StackPanel>
                 </Border>
                 <Border Grid.Row="1" 
@@ -98,7 +99,7 @@
                                 Height="80"                                
                                 CornerRadius="100" 
                                 DockPanel.Dock="Top" 
-                                HorizontalAlignment="Center" 
+                                HorizontalAlignment="Center"
                                 Margin="40 -20 35 0">
                             <Ellipse>
                                 <Ellipse.Fill>
@@ -111,10 +112,12 @@
                             x:Name="tbHoten"
                             Text="{Binding Hoten}" 
                             Foreground="#fff8f0" 
-                            FontSize="21" 
+                            FontSize="22" 
+                            FontFamily="Segoe UI"
                             FontWeight="SemiBold" 
                             DockPanel.Dock="Top" 
                             Margin="5" 
+                            TextWrapping="Wrap"
                             TextAlignment="Center">
                         </TextBlock>
                             
@@ -122,6 +125,7 @@
                             Text="Khách hàng" 
                             Foreground="#fff8f0" 
                             FontSize="14" 
+                            FontFamily="Montserrat"
                             FontWeight="SemiBold" 
                             DockPanel.Dock="Top" 
                             TextAlignment="Center"/>
@@ -148,7 +152,9 @@
                                 </i:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Home" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="TRANG CHỦ" Style="{StaticResource menuButtonText}"/>
+                                    <TextBlock Text="TRANG CHỦ" 
+                                               Style="{StaticResource menuButtonText}"
+                                               FontFamily="Segoe UI"/>
                                 </StackPanel>
                             </RadioButton>
 
@@ -169,7 +175,9 @@
                                 </i:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Cart" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="GIỎ HÀNG" Style="{StaticResource menuButtonText}"/>
+                                    <TextBlock Text="GIỎ HÀNG" 
+                                               Style="{StaticResource menuButtonText}"
+                                               FontFamily="Segoe UI"/>
                                 </StackPanel>
                             </RadioButton>
 
@@ -190,7 +198,9 @@
                                 </i:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="History" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="LỊCH SỬ ĐẶT HÀNG" Style="{StaticResource menuButtonText}"/>
+                                    <TextBlock Text="LỊCH SỬ ĐẶT HÀNG" 
+                                               Style="{StaticResource menuButtonText}"
+                                               FontFamily="Segoe UI"/>
                                 </StackPanel>
                             </RadioButton>
 
@@ -211,7 +221,9 @@
                                 </i:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Settings" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="CÀI ĐẶT" Style="{StaticResource menuButtonText}"/>
+                                    <TextBlock Text="CÀI ĐẶT" 
+                                               Style="{StaticResource menuButtonText}"
+                                               FontFamily="Segoe UI"/>
                                 </StackPanel>
                             </RadioButton>
 
@@ -228,7 +240,9 @@
                                 </i:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="ĐĂNG XUẤT" Style="{StaticResource menuButtonText}"/>
+                                    <TextBlock Text="ĐĂNG XUẤT" 
+                                               Style="{StaticResource menuButtonText}"
+                                               FontFamily="Segoe UI"/>
                                 </StackPanel>
                             </RadioButton>
 

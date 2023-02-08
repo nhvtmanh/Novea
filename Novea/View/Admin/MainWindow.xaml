@@ -111,14 +111,13 @@
 
                         <Border Width="80" 
                                 Height="80" 
-                                Padding="3" 
-                                Background="White" 
+                                Padding="3"
                                 CornerRadius="100" 
                                 DockPanel.Dock="Top" 
                                 HorizontalAlignment="Center"      
                                 VerticalAlignment="Center"
-                                Margin="0 -25 25 0">
-                            <Ellipse Margin="0,0,-3,-3">
+                                Margin="30 -20 25 0">
+                            <Ellipse>
                                 <Ellipse.Fill>
                                     <ImageBrush ImageSource="{Binding Ava}"/>
                                 </Ellipse.Fill>
@@ -128,7 +127,7 @@
                         <!--Menu Titles-->
                         <TextBlock     x:Name="TenDangNhap"
                                        FontFamily="Segoe UI"
-                                       Margin="10 5 0 0"
+                                       Margin="5"
                                        Text="VŨ ĐỨC MINH" 
                                        Foreground="#fff8f0" 
                                        TextWrapping="Wrap"

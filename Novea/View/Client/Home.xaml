@@ -35,7 +35,7 @@
                     <TextBlock Text="DANH SÁCH CỬA HÀNG" 
                                Foreground="#fff8f0" 
                                FontSize="35"
-                               FontFamily="{StaticResource Custom1}"
+                               FontFamily="Segoe UI Bold"
                                Margin="10 0 0 0"
                                VerticalAlignment="Center"
                                FontWeight="Medium"/>
@@ -121,7 +121,7 @@
                                     </Grid>
                                     <Grid Grid.Column="1">
                                         <DockPanel>
-                                            <TextBlock FontFamily="{StaticResource Custom1}"
+                                            <TextBlock FontFamily="Segoe UI Bold"
                                                        FontSize="30"
                                                        Foreground="{StaticResource color1}"
                                                        HorizontalAlignment="Left"
@@ -129,8 +129,9 @@
                                                        DockPanel.Dock="Top"
                                                        Margin="25"
                                                        Text="{Binding TENCH}"/>
-                                            <TextBlock FontFamily="{StaticResource Custom1}"
+                                            <TextBlock FontFamily="Segoe UI"
                                                        FontSize="20"
+                                                       FontWeight="SemiBold"
                                                        Foreground="{StaticResource plainTextColor3}"
                                                        HorizontalAlignment="Left"
                                                        VerticalAlignment="Center"

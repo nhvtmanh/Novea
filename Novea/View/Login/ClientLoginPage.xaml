@@ -47,7 +47,7 @@
             <Grid Height="auto">
                 <CheckBox x:Name="Remember" 
                            Cursor="Hand"                          
-                          Content="Nhớ tên tài khoản" Margin="50,10,0,21" Foreground="{StaticResource ResourceKey=plainTextColor2}"/>
+                          Content="Nhớ tên tài khoản" Margin="127,10,0,21" Foreground="{StaticResource ResourceKey=plainTextColor2}"/>
             </Grid>
             <Button IsDefault="True"
                                 Content="ĐĂNG NHẬP"

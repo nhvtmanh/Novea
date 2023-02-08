@@ -31,7 +31,7 @@
                            FontWeight="Medium"
                            VerticalAlignment="Center"
                            Margin="10,0,0,0"
-                           FontFamily="{StaticResource Custom1}"/>
+                           FontFamily="Segoe UI Bold"/>
             </StackPanel>
            
             <Border Grid.Row="1">
