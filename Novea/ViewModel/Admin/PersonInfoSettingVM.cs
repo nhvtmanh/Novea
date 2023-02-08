@@ -59,7 +59,10 @@ namespace Novea.ViewModel.Admin
                     User.MATKHAU = MD5Hash(Base64Encode(Password));
                     DataProvider.Ins.DB.SaveChanges();
                     MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo");
-                }
+                    p.oldpass.Clear();
+                    p.newpass.Clear();
+                    p.passagain.Clear();
+            }
         }
         public static string Base64Encode(string plainText)
         {

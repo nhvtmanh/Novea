@@ -132,7 +132,7 @@
                                        Foreground="#fff8f0" 
                                        TextWrapping="Wrap"
                                        FontSize="22" 
-                                       FontWeight="SemiBold" 
+                                       FontWeight="Bold" 
                                        DockPanel.Dock="Top" 
                                        TextAlignment="Center" Width="auto">
 
@@ -144,18 +144,17 @@
                             </i:Interaction.Triggers>/>
                         </TextBlock>
 
-                        <TextBlock     Text="Quản Trị Viên"  
+                        <TextBlock     Text="Chủ Cửa Hàng"  
                                        Foreground="#fff8f0"                                 
-                                       FontSize="14"                                 
-                                       FontWeight="SemiBold"                                 
+                                       FontSize="18"                                 
                                        DockPanel.Dock="Top"                                  
-                                       TextAlignment="Center" Width="178" FontFamily="Montserrat">
+                                       TextAlignment="Center" Width="178" FontFamily="Calibri">
                         </TextBlock>
 
                         <Separator Margin="13" 
                                    Background="{StaticResource color1}" 
                                    DockPanel.Dock="Top" 
-                                   Height="1"/>
+                                   Height="2"/>
 
                         <StackPanel>
 
