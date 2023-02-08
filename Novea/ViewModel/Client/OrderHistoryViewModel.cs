@@ -1,13 +1,7 @@
 ﻿using Novea.Model;
 using Novea.View.Client;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace Novea.ViewModel.Client
