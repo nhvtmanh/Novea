@@ -111,7 +111,7 @@ namespace Novea.ViewModel.Login
         }
         void _ForgetPassCommand(ClientLoginPage parameter)
         {
-            ForgotPassword forgetPassView = new ForgotPassword();
+            ForgotPassClient forgetPassView = new ForgotPassClient();
             forgetPassView.ShowDialog();
         }
     }

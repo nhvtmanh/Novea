@@ -66,7 +66,7 @@ namespace Novea.ViewModel
             }
             DataProvider.Ins.DB.SaveChanges();
             MessageBox.Show("Đã gửi mật khẩu vào Email đăng ký !", "Thông báo");
-
+            parameter.Close();
         }
     }
 }

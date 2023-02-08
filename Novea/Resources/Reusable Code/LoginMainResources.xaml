@@ -13,4 +13,5 @@
     <viewmodel1:ClientLoginViewModel x:Key="ClientLoginVM"></viewmodel1:ClientLoginViewModel>
     <viewmodel1:ClientSignUpViewModel x:Key="ClientSignUpVM"></viewmodel1:ClientSignUpViewModel>
     <viewmodel:ForgotPasswordViewModel x:Key="ForgotPassVM"></viewmodel:ForgotPasswordViewModel>
+    <viewmodel1:ForgotPassClientVM x:Key="ForgotPassClVM"></viewmodel1:ForgotPassClientVM>
 </ResourceDictionary>

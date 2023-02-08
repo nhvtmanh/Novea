@@ -9,24 +9,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
+using Novea.View.Login;
 
 namespace Novea.ViewModel.Login
 {
-    public class ForgotPassClientVM
+    public class ForgotPassClientVM : BaseViewModel
     {
         public ICommand Closewd { get; set; }
         public ICommand SendPass { get; set; }
         public ForgotPassClientVM()
         {
-            Closewd = new RelayCommand<ForgotPassword>((p) => true, (p) => Close(p));
-            SendPass = new RelayCommand<ForgotPassword>((p) => true, (p) => _SendPass(p));
+            Closewd = new RelayCommand<ForgotPassClient>((p) => true, (p) => Close(p));
+            SendPass = new RelayCommand<ForgotPassClient>((p) => true, (p) => _SendPass(p));
         }
 
-        void Close(ForgotPassword p)
+        void Close(ForgotPassClient p)
         {
             p.Close();
         }
-        void _SendPass(ForgotPassword parameter)
+        void _SendPass(ForgotPassClient parameter)
         {
             int dem = DataProvider.Ins.DB.KHACHes.Where(p => p.EMAIL == parameter.email.Text).Count();
             if (dem == 0)
@@ -63,7 +64,7 @@ namespace Novea.ViewModel.Login
             }
             DataProvider.Ins.DB.SaveChanges();
             MessageBox.Show("Đã gửi mật khẩu vào Email đăng ký !", "Thông báo");
-
+            parameter.Close();
         }
     }
 }

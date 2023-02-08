@@ -21,7 +21,7 @@
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        DataContext="{StaticResource ForgetPassVM}">
+        DataContext="{StaticResource ForgotPassClVM}">
     <Border CornerRadius="12" Background="MidnightBlue">
 
         <StackPanel Grid.Column="0" HorizontalAlignment="Center" Width="600" Height="375" VerticalAlignment="Bottom">
