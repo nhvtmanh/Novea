@@ -444,11 +444,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\Montserrat-Light.ttf" />
-    <None Include="Resources\Montserrat-Regular.ttf" />
-    <None Include="Resources\OpenSans-Italic-VariableFont_wdth,wght.ttf" />
-    <None Include="Resources\OpenSans-Light.ttf" />
-    <None Include="Resources\OpenSans-VariableFont_wdth,wght.ttf" />
     <Resource Include="Resources\Font\Montserrat-Light.ttf" />
     <Resource Include="Resources\Font\Montserrat-Regular.ttf" />
     <Resource Include="Resources\Font\OpenSans-Light.ttf" />
