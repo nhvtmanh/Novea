@@ -178,6 +178,7 @@
     <Compile Include="ViewModel\Login\AdminSignUpViewModel.cs" />
     <Compile Include="ViewModel\Login\ClientLoginViewModel.cs" />
     <Compile Include="ViewModel\Login\ClientSignUpViewModel.cs" />
+    <Compile Include="ViewModel\Login\ForgotPassClientVM.cs" />
     <Compile Include="ViewModel\Login\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModel\Login\LoginViewModel.cs" />
     <Compile Include="ViewModel\Login\MainLoginViewModel.cs" />
@@ -246,6 +247,9 @@
     </Compile>
     <Compile Include="View\Login\ClientSignUp.xaml.cs">
       <DependentUpon>ClientSignUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\ForgotPassClient.xaml.cs">
+      <DependentUpon>ForgotPassClient.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Login\ForgotPassword.xaml.cs">
       <DependentUpon>ForgotPassword.xaml</DependentUpon>
@@ -366,6 +370,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Login\ClientSignUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Login\ForgotPassClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

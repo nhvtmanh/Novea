@@ -1,11 +1,11 @@
-﻿<Window x:Class="Novea.View.ForgotPassword"
+﻿<Window x:Class="Novea.View.Login.ForgotPassClient"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Novea.View"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:Novea.View.Login"
+         mc:Ignorable="d"
         Height="375" Width="600"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:x1="http://schemas.microsoft.com/expression/2010/interactivity"
@@ -17,12 +17,11 @@
         AllowsTransparency="True"
         WindowStyle="None"
         ResizeMode="NoResize"
-        x:Name="forgotpasswd"        
+        x:Name="forgotpasswdclient"        
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         FontFamily="{DynamicResource MaterialDesignFont}"
         DataContext="{StaticResource ForgetPassVM}">
-
     <Border CornerRadius="12" Background="MidnightBlue">
 
         <StackPanel Grid.Column="0" HorizontalAlignment="Center" Width="600" Height="375" VerticalAlignment="Bottom">
@@ -41,7 +40,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding Closewd}"                                               
-                                                                    CommandParameter="{Binding ElementName=forgotpasswd}"></i:InvokeCommandAction>
+                                                                    CommandParameter="{Binding ElementName=forgotpasswdclient}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
 
@@ -81,7 +80,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding SendPass}"
-                                                       CommandParameter="{Binding ElementName=forgotpasswd}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=forgotpasswdclient}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>

@@ -1,25 +1,22 @@
 ﻿using Novea.Model;
 using Novea.View;
-using Novea.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
-using System.Xml.Linq;
+using System.Windows;
 
-namespace Novea.ViewModel
+namespace Novea.ViewModel.Login
 {
-    public class ForgotPasswordViewModel
+    public class ForgotPassClientVM
     {
         public ICommand Closewd { get; set; }
         public ICommand SendPass { get; set; }
-        public ForgotPasswordViewModel()
+        public ForgotPassClientVM()
         {
             Closewd = new RelayCommand<ForgotPassword>((p) => true, (p) => Close(p));
             SendPass = new RelayCommand<ForgotPassword>((p) => true, (p) => _SendPass(p));
@@ -31,7 +28,7 @@ namespace Novea.ViewModel
         }
         void _SendPass(ForgotPassword parameter)
         {
-            int dem = DataProvider.Ins.DB.CUAHANGs.Where(p => p.EMAIL == parameter.email.Text).Count();
+            int dem = DataProvider.Ins.DB.KHACHes.Where(p => p.EMAIL == parameter.email.Text).Count();
             if (dem == 0)
             {
                 MessageBox.Show("Email này chưa được đăng ký !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -39,7 +36,7 @@ namespace Novea.ViewModel
             }
             Random rand = new Random();
             string newpass = rand.Next(100000, 999999).ToString();
-            foreach (CUAHANG temp in DataProvider.Ins.DB.CUAHANGs)
+            foreach (KHACH temp in DataProvider.Ins.DB.KHACHes)
             {
                 if (temp.EMAIL == parameter.email.Text)
                 {
@@ -55,7 +52,7 @@ namespace Novea.ViewModel
                 MailMessage message = new MailMessage("21522348@gm.uit.edu.vn", parameter.email.Text, "Lấy lại mật khẩu đã quên", body);
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                 smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false; 
+                smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new NetworkCredential("21522348@gm.uit.edu.vn", "dkzbzuuhavdm");
                 smtp.Send(message);
             }
