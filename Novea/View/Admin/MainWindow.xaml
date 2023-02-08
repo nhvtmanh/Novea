@@ -331,7 +331,7 @@
                                 Orientation="Horizontal"
                                 FlowDirection="RightToLeft"
                                 Background="Transparent"
-                                Margin="-205,0,22,0">
+                                Margin="-205,0,27,0">
 
                             <Button Style="{StaticResource controlButton}"
                                     Tag="{StaticResource plainTextColor1}"
