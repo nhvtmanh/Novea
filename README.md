@@ -16,7 +16,7 @@ Phần mềm đặt đồ uống giúp người dùng có thể đặt các lo�
 >
 > [3. Người dùng](#Doituongsudung)
 >
-> [4. Mục tiêu](#Muctieu)
+> [4. Hướng dẫn cài đặt](#Huongdancaidat)
 >
 > [5. Tính năng](#Tinhnang)
 
@@ -51,28 +51,33 @@ Chúng tôi sẽ sử dụng Figma và Canva để thiết kế giao diện ngư
 <div id="Congnghe"></div>
 
 ### 📜  2. Công nghệ
-* Hệ thống: WPF - Mô hình MVVM
-* IDE: Visual Studio 2022 (C#/.Net)
-* Database: SQL Server
-* Công cụ quản lý: Git, GitHub
-* Entity Framework
-* Hosting: Azure
+  * Hệ thống: WPF - Mô hình MVVM
+  * IDE: Visual Studio 2022 (C#/.Net)
+  * Database: SQL Server
+  * Công cụ quản lý: Git, GitHub
+  * Entity Framework
+  * Hosting: Azure
 
 <div id="Doituongsudung"></div>
 
 ### 📌 3. Đối tượng sử dụng
+  * Chủ cửa hàng (Admin)
+  * Khách hàng   (Client)
 
 
+<div id="Huongdancaidat"></div>
 
-<div id="Muctieu"></div>
+### 💣 4. Hướng dẫn cài đặt
 
-### 💣 4. Mục tiêu
+ * <strong>Bước 1: </strong> Cài đặt phần mềm visual studio
+  
 
- * <strong>Mục tiêu</strong>
+
+ * <strong>Bước 2: </strong> Cài đặt extension: Chọn Extensions -> Manage Extensions -> Search và download các extensions sau: 
+   * WPF Extensions - Syncfusion
  
-
-
- * <strong>Yêu cầu ứng dụng</strong>
+ 
+ * <strong>Bước 3: </strong> Run project hoặc bấm F5
 
 
 
