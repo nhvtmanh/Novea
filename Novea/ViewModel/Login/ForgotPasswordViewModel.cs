@@ -31,7 +31,7 @@ namespace Novea.ViewModel
         }
         void _SendPass(ForgotPassword parameter)
         {
-            int dem = DataProvider.Ins.DB.CUAHANGs.Where(p => p.EMAIL == parameter.email.Text).Count();
+            int dem = DataProvider.Ins.DB.CUAHANGs.Where(p => p.EMAIL == parameter.email.Text).Count() + DataProvider.Ins.DB.KHACHes.Where(p => p.EMAIL == parameter.email.Text).Count(); ;
             if (dem == 0)
             {
                 MessageBox.Show("Email này chưa được đăng ký !", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
