@@ -34,7 +34,15 @@ namespace Novea.ViewModel.Client
             }
             else
             {
-                Const.KH.MATKHAU = MD5Hash(Base64Encode(p.pbNEWPASS.Password));
+                foreach (KHACH k in DataProvider.Ins.DB.KHACHes)
+                {
+                    if (k.MAKH == Const.KH.MAKH)
+                    {
+                        k.MATKHAU = MD5Hash(Base64Encode(p.pbNEWPASS.Password));
+                        Const.KH.MATKHAU = k.MATKHAU;
+                        break;
+                    }
+                }
                 DataProvider.Ins.DB.SaveChanges();
                 MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo");
                 p.pbOLDPASS.Clear();

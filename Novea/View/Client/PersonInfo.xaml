@@ -83,7 +83,14 @@
                     <Grid Grid.Column="1">
                         <StackPanel Margin="20,20,0,0">
                             <StackPanel Orientation="Horizontal">
-                                <TextBox Background="{StaticResource plainTextColor3}"
+                                <Border>
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="5"
+                                                          Color="Orange"
+                                                          Opacity="0.5"
+                                                          BlurRadius="10"/>
+                                    </Border.Effect>
+                                    <TextBox Background="{StaticResource plainTextColor3}"
                                          Foreground="{StaticResource plainTextColor2}" 
                                          Margin="0,10,0,0"
                                          materialDesign:HintAssist.Foreground="Black"
@@ -92,27 +99,45 @@
                                          MaxWidth="400"
                                          Style="{StaticResource MaterialDesignFilledTextBox}"
                                          FontFamily="{StaticResource Custom}"
+                                         FontWeight="Bold"
                                          VerticalAlignment="Top"
                                          AcceptsReturn="True"
                                          TextWrapping="Wrap"
                                          materialDesign:HintAssist.Hint="Tên đăng nhập" 
                                          x:Name="tbTENDANGNHAP"/>
-                                <ComboBox Background="{StaticResource plainTextColor3}"
+                                </Border>
+                                <Border>
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="5"
+                                                          Color="Orange"
+                                                          Opacity="0.5"
+                                                          BlurRadius="10"/>
+                                    </Border.Effect>
+                                    <ComboBox Background="{StaticResource plainTextColor3}"
                                           Foreground="{StaticResource plainTextColor2}" 
-                                          Margin="20,10,0,0"
-                                          Width="90" Height="45"
+                                          Margin="10,10,0,0"
+                                          Width="100" Height="45"
                                           FontFamily="{StaticResource Custom}"
+                                          FontWeight="Bold"
                                           Style="{StaticResource MaterialDesignFilledComboBox}"
                                           materialDesign:HintAssist.Foreground="Black"
                                           materialDesign:TextFieldAssist.UnderlineBrush="#6C63FF"
                                           materialDesign:HintAssist.Hint="Giới tính"
                                           x:Name="cbbGIOITINH">
-                                    <ComboBoxItem Content="Nam"/>
-                                    <ComboBoxItem Content="Nữ"/>
-                                </ComboBox>
+                                        <ComboBoxItem Content="Nam"/>
+                                        <ComboBoxItem Content="Nữ"/>
+                                    </ComboBox>
+                                </Border>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBox Background="{StaticResource plainTextColor3}"
+                                <Border>
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="5"
+                                                          Color="Orange"
+                                                          Opacity="0.5"
+                                                          BlurRadius="10"/>
+                                    </Border.Effect>
+                                    <TextBox Background="{StaticResource plainTextColor3}"
                                          Foreground="{StaticResource plainTextColor2}" 
                                          Margin="0,20,0,0"
                                          materialDesign:HintAssist.Foreground="Black"
@@ -121,14 +146,23 @@
                                          MaxWidth="400"
                                          Style="{StaticResource MaterialDesignFilledTextBox}"
                                          FontFamily="{StaticResource Custom}"
+                                         FontWeight="Bold"
                                          VerticalAlignment="Top"
                                          AcceptsReturn="True"
                                          TextWrapping="Wrap"
                                          materialDesign:HintAssist.Hint="Họ tên" 
                                          x:Name="tbHOTEN"/>
+                                </Border>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <DatePicker Background="{StaticResource plainTextColor3}"
+                                <Border>
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="5"
+                                                          Color="Orange"
+                                                          Opacity="0.5"
+                                                          BlurRadius="10"/>
+                                    </Border.Effect>
+                                    <DatePicker Background="{StaticResource plainTextColor3}"
                                             Foreground="{StaticResource plainTextColor2}" 
                                             materialDesign:HintAssist.Foreground="Black"
                                             materialDesign:TextFieldAssist.UnderlineBrush="#6C63FF"                                
@@ -136,17 +170,27 @@
                                             Width="190"
                                             HorizontalAlignment="Left"
                                             FontFamily="{StaticResource Custom}"
+                                            FontWeight="Bold"
                                             Focusable="False"
                                             materialDesign:HintAssist.Hint="Ngày sinh" 
                                             Style="{StaticResource MaterialDesignFilledDatePicker}"
                                             x:Name="NS">
-                                </DatePicker>
-                                <TextBox Background="{StaticResource plainTextColor3}"
+                                    </DatePicker>
+                                </Border>
+                                <Border>
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="5"
+                                                          Color="Orange"
+                                                          Opacity="0.5"
+                                                          BlurRadius="10"/>
+                                    </Border.Effect>
+                                    <TextBox Background="{StaticResource plainTextColor3}"
                                          Foreground="{StaticResource plainTextColor2}" 
-                                         Margin="20,20,0,0"  
-                                         Width="190"
+                                         Margin="10,20,0,0"  
+                                         Width="200"
                                          Style="{StaticResource MaterialDesignFilledTextBox}"
                                          FontFamily="{StaticResource Custom}"
+                                         FontWeight="Bold"
                                          materialDesign:HintAssist.Foreground="Black"
                                          materialDesign:TextFieldAssist.UnderlineBrush="#6C63FF"
                                          HorizontalAlignment="Left" 
@@ -155,12 +199,21 @@
                                          TextWrapping="Wrap"
                                          materialDesign:HintAssist.Hint="Số điện thoại"
                                          x:Name="tbSDT"/>
+                                </Border>
                             </StackPanel>
-                            <TextBox Background="{StaticResource plainTextColor3}"
+                            <Border>
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="5"
+                                                          Color="Orange"
+                                                          Opacity="0.5"
+                                                          BlurRadius="10"/>
+                                </Border.Effect>
+                                <TextBox Background="{StaticResource plainTextColor3}"
                                      Foreground="{StaticResource plainTextColor2}" 
                                      Margin="0,20,0,0"
                                      Style="{StaticResource MaterialDesignFilledTextBox}"
                                      FontFamily="{StaticResource Custom}"
+                                     FontWeight="Bold"
                                      Width="400"
                                      MaxWidth="400"
                                      HorizontalAlignment="Left" 
@@ -171,7 +224,15 @@
                                      materialDesign:TextFieldAssist.UnderlineBrush="#6C63FF"
                                      materialDesign:HintAssist.Hint="Email"
                                      x:Name="tbMAIL"/>
-                            <TextBox Background="{StaticResource plainTextColor3}"
+                            </Border>
+                            <Border>
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="5"
+                                                          Color="Orange"
+                                                          Opacity="0.5"
+                                                          BlurRadius="10"/>
+                                </Border.Effect>
+                                <TextBox Background="{StaticResource plainTextColor3}"
                                      Foreground="{StaticResource plainTextColor2}" 
                                      Margin="0,20,0,0"
                                      Style="{StaticResource MaterialDesignFilledTextBox}"
@@ -184,8 +245,10 @@
                                      materialDesign:HintAssist.Foreground="Black"
                                      materialDesign:TextFieldAssist.UnderlineBrush="#6C63FF"
                                      FontFamily="{StaticResource Custom}"
+                                     FontWeight="Bold"
                                      materialDesign:HintAssist.Hint="Địa chỉ" 
                                      x:Name="tbDIACHI"/>
+                            </Border>
                         </StackPanel>
                     </Grid>
                     <Button Grid.Column="1"
