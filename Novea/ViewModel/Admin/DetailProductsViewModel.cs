@@ -47,22 +47,27 @@ namespace Novea.ViewModel.Admin
             DeleteProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _DeleteProduct(p));
             SetAvailProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _SetAvailProduct(p));
             SetUnAvailProduct = new RelayCommand<DetailProducts>((p) => true, (p) => _SetUnAvailProduct(p));
-            UpdateImageCommand = new RelayCommand<ImageBrush>((p) => true, (p) => UpdateImage());
+            UpdateImageCommand = new RelayCommand<DetailProducts>((p) => true, (p) => UpdateImage(p));
         }
 
-        void UpdateImage()
+        void UpdateImage(DetailProducts p)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png";
             if (openFileDialog.ShowDialog() == true)
             {
-                SelectedImage = new BitmapImage(new Uri(openFileDialog.FileName));
+                //SelectedImage = new BitmapImage(new Uri(openFileDialog.FileName));
                 MemoryStream memoryStream = new MemoryStream();
                 using (FileStream fileStream = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
                 {
                     fileStream.CopyTo(memoryStream);
                 }
                 imageData = memoryStream.ToArray();
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = new MemoryStream(imageData);
+                bitmapImage.EndInit();
+                p.HinhAnh.ImageSource = bitmapImage;
             }
         }
 
