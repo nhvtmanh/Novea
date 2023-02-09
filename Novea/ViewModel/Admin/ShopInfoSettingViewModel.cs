@@ -107,6 +107,13 @@ namespace Novea.ViewModel.Admin
             temp.AVATAR = imageData;
             DataProvider.Ins.DB.SaveChanges();
             MessageBox.Show("Cập nhật thành công!", "Thông báo");
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.StreamSource = new MemoryStream(imageData);
+            bitmapImage.EndInit();
+            MainWindow.Instance.image.ImageSource = bitmapImage;
+            MainWindow.Instance.TenDangNhap.Text = string.Join(" ", temp.TENCH.Split().Reverse().Take(2).Reverse());
+
         }
         static string StringGenerator()
         {

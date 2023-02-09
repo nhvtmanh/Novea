@@ -100,7 +100,7 @@
                                     Text="SỐ HÓA ĐƠN"
                                     FontFamily="{StaticResource Custom}"/>
                         </StackPanel>
-                        <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 10" Width="520">
+                        <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 10" Width="510">
                             <StackPanel Orientation="Horizontal">
                                 <TextBox Foreground="{StaticResource color1}"
                                     x:Name="SoHD"
@@ -132,7 +132,7 @@
                                     FontFamily="{StaticResource Custom}"/>
 
                         </StackPanel>
-                        <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 10" Width="521">
+                        <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="-5 0 0 10" Width="510">
                             <StackPanel Orientation="Horizontal">
                                 <TextBox Foreground="{StaticResource plainTextColor3}"
                                     x:Name="NGMH"
@@ -154,7 +154,7 @@
                                     Text="ĐƠN GIÁ"
                                     FontFamily="{StaticResource Custom}"
                                 />
-                        <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 10" Width="521">
+                        <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 10" Width="510">
                             <TextBox Foreground="{StaticResource plainTextColor3}"
                                     x:Name="GIA"
                                     HorizontalAlignment="Left"
@@ -173,7 +173,7 @@
                                     Text="MÃ KHÁCH HÀNG"
                                     FontFamily="{StaticResource Custom}"
                                 />
-                        <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 10" Width="521">
+                        <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="-4 0 0 10" Width="510">
                             <TextBox Foreground="{StaticResource plainTextColor3}"
                                     x:Name="MAKH"
                                     HorizontalAlignment="Left"
@@ -192,7 +192,7 @@
                                     Text="MÃ CHỦ CỬA HÀNG"
                                     FontFamily="{StaticResource Custom}"
                                 />
-                        <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 10" Width="522">
+                        <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="-4 0 0 10" Width="510">
                             <TextBox Foreground="{StaticResource plainTextColor3}"
                                     x:Name="MACCH"
                                     HorizontalAlignment="Left"

@@ -119,7 +119,8 @@
                                 Margin="30 -20 25 0">
                             <Ellipse>
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="{Binding Ava}"/>
+                                    <ImageBrush ImageSource="{Binding Ava}"
+                                                x:Name="image"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>

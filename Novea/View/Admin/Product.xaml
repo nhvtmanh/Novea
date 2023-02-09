@@ -57,7 +57,7 @@
                               Style="{StaticResource MaterialDesignFilledComboBox}"    
                               Padding="5"
                               Foreground="{StaticResource plainTextColor2}" 
-                              materialDesign:TextFieldAssist.TextBoxViewMargin="8,-11,0,0"
+                              materialDesign:TextFieldAssist.TextBoxViewMargin="8,0,0,0"
                               materialDesign:HintAssist.Hint="Bộ lọc"
                               materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                               BorderThickness="0"

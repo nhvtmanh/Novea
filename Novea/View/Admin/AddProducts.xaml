@@ -213,25 +213,25 @@
                             >
                                     <ComboBox Foreground="{StaticResource plainTextColor3}"
                                     x:Name="LoaiSp"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="4,-15,0,0"
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     BorderThickness="0"
                                     materialDesign:HintAssist.Foreground="White"
-                                    
+                                              
                                     Height="30"
                                     FontSize="12" Margin="0,0,8,0" VerticalAlignment="Top">
                                         <ComboBoxItem                     
-                                            Content="Cà phê"/>
+                                            Content="Cà phê" Foreground="{StaticResource plainTextColor2}"/>
                                         <ComboBoxItem
-                                            Content="Trà"/>
+                                            Content="Trà" Foreground="{StaticResource plainTextColor2}"/>
                                         <ComboBoxItem                     
-                                            Content="Trà sữa"/>
+                                            Content="Trà sữa" Foreground="{StaticResource plainTextColor2}"/>
                                         <ComboBoxItem
-                                            Content="Đá xay"/>
+                                            Content="Đá xay" Foreground="{StaticResource plainTextColor2}"/>
                                         <ComboBoxItem                     
-                                            Content="Sinh tố"/>
+                                            Content="Sinh tố" Foreground="{StaticResource plainTextColor2}"/>
                                         <ComboBoxItem
-                                            Content="Sữa chua"/>
+                                            Content="Sữa chua" Foreground="{StaticResource plainTextColor2}"/>
                                     </ComboBox>
                                 </Border>
                             </StackPanel>
@@ -278,16 +278,16 @@
                             >
                                     <ComboBox Foreground="{StaticResource plainTextColor3}"
                                     x:Name="SizeSp"
-                                    materialDesign:TextFieldAssist.TextBoxViewMargin="4,-15,0,0"
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="10,2,0,0"
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     BorderThickness="0"
                                     materialDesign:HintAssist.Foreground="White"
                                     
                                               Height="30"
                                     FontSize="12" Margin="0,0,8,0">
-                                        <ComboBoxItem Content="S"/>
-                                        <ComboBoxItem Content="M"/>
-                                        <ComboBoxItem Content="L"/>
+                                        <ComboBoxItem Content="S" Foreground="{StaticResource plainTextColor2}"/>
+                                        <ComboBoxItem Content="M" Foreground="{StaticResource plainTextColor2}"/>
+                                        <ComboBoxItem Content="L" Foreground="{StaticResource plainTextColor2}"/>
                                     </ComboBox>
                                 </Border>
                             </StackPanel>

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
+using Novea.View;
 
 namespace Novea
 {
@@ -22,9 +23,16 @@ namespace Novea
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static MainWindow instance;
+        public static MainWindow Instance
+        {
+            get { return instance; }
+            set { instance = value; }
+        }
         public MainWindow()
         {
             InitializeComponent();
+            instance = this;
         }        
     }
 }
