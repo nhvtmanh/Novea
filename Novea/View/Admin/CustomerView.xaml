@@ -93,7 +93,7 @@
                                 <TextBox x:Name="txbSearch"
                                      Grid.Column="1"                                                  
                                      Margin="8 0 0 0"                                                 
-                                     materialDesign:HintAssist.Hint="Tìm mã sản phẩm"                                                
+                                     materialDesign:HintAssist.Hint="Tìm tên khách hàng"                                                
                                      materialDesign:TextFieldAssist.DecorationVisibility="Hidden"                                                 
                                      BorderThickness="0"                                                  
                                      MinWidth="200"                                                  
