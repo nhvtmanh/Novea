@@ -63,7 +63,7 @@
                                          Height="24" Width="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                         <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding Minimizewd}"
                                                        CommandParameter="{Binding ElementName=DetailBillwd}"></i:InvokeCommandAction>
                             </i:EventTrigger>
@@ -78,7 +78,7 @@
                                          Height="24" Width="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                         <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding Closewd}"
                                                        CommandParameter="{Binding ElementName=DetailBillwd}"></i:InvokeCommandAction>
                             </i:EventTrigger>
@@ -163,10 +163,10 @@
                         <TextBlock Foreground="{StaticResource color1}"
                                    VerticalAlignment="Center"
                                     Margin="8,0,82,5"
-                                    Text="ĐƠN GIÁ"
+                                    Text="TỔNG TIỀN"
                                     FontFamily="{StaticResource Custom}"
                                 />
-                        <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="0 0 0 10" Width="510">
+                        <Border BorderThickness="2" BorderBrush="Gray" CornerRadius="10" Margin="-13 0 0 10" Width="510">
                             <TextBox Foreground="{StaticResource plainTextColor3}"
                                     x:Name="GIA"
                                     HorizontalAlignment="Left"
