@@ -161,7 +161,7 @@
                                     Margin="0,10,0,0"
                                     materialDesign:HintAssist.Foreground="Black"
                                     materialDesign:TextFieldAssist.UnderlineBrush="#6C63FF"
-                                    Width="290"
+                                    Width="280"
                                     Style="{StaticResource MaterialDesignFilledTextBox}"
                                     VerticalAlignment="Top"
                                     AcceptsReturn="True"
@@ -178,7 +178,7 @@
                                     materialDesign:TextFieldAssist.UnderlineBrush="#6C63FF"
                                     materialDesign:HintAssist.Hint="Giới tính"
                                     Height="45"
-                                    Width="90" >
+                                    Width="100" >
                                     <ComboBoxItem
                                     Content="Nam" />
                                     <ComboBoxItem
