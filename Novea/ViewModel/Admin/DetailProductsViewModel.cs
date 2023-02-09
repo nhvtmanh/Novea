@@ -82,10 +82,10 @@ namespace Novea.ViewModel.Admin
             paramater.HinhAnh.ImageSource = bitmapImage;
             paramater.TenSP.IsEnabled = true;
             paramater.Mota.IsEnabled = true;
-            paramater.GiaSP.IsEnabled = true;
-            paramater.LoaiSP.IsEnabled = true;
-            paramater.DVT.IsEnabled = true;
-            paramater.Size.IsEnabled = true;
+            paramater.GiaSP.IsEnabled = false;
+            paramater.LoaiSP.IsEnabled = false;
+            paramater.DVT.IsEnabled = false;
+            paramater.Size.IsEnabled = false;
             if(temp.AVAILABLE == false)
             {
                 paramater.txbAvail.Text = "UNAVAILABLE";
