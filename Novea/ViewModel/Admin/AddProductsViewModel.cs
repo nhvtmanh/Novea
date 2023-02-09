@@ -20,7 +20,6 @@ namespace Novea.ViewModel.Admin
 {
     public class AddProductsViewModel : BaseViewModel
     {
-        private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         public ICommand MoveWindow { get; set; }
         public ICommand AddImage { get; set; }
         private byte[] imageData;
@@ -124,13 +123,14 @@ namespace Novea.ViewModel.Admin
                         DataProvider.Ins.DB.SANPHAMs.Add(sanpham);
                         DataProvider.Ins.DB.SaveChanges();
                         MessageBox.Show("Thêm sản phẩm mới thành công !", "THÔNG BÁO");
-                        paramater.MaSp.Text = _rdmaSP();
+                        //paramater.MaSp.Text = _rdmaSP();
                         paramater.TenSp.Clear();
                         paramater.LoaiSp.SelectedItem = null;
                         paramater.GiaSp.Clear();
                         paramater.DvSp.Clear();
                         paramater.SizeSp.SelectedItem = null;
                         paramater.MotaSp.Clear();
+                        SelectedImage = null;
                     }
                 }
             }

@@ -35,8 +35,8 @@
                     x:Name="HinhAnh"
                     Source="{Binding SelectedImage}"
                     Height="450"
-                    VerticalAlignment="Center">
-                        
+                    VerticalAlignment="Center"
+                    Margin="20">
                     </Image>
                 </Border>
                 <Button HorizontalAlignment="Center" 

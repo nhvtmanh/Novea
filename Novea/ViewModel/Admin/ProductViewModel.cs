@@ -167,7 +167,7 @@ namespace Novea.ViewModel.Admin
             detailProduct.Size.Text = temp.SIZE;
             detailProduct.Mota.Text = temp.MOTA;
             detailProduct.ShowDialog();
-            listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
+            //listSP_temp = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(p => p.MACH == Const.CH.MACH));
             paramater.ListViewProduct.SelectedItem = null;
             _Filter(paramater);
             _SearchCommand(paramater);
@@ -175,12 +175,10 @@ namespace Novea.ViewModel.Admin
         }
         public bool check(string m)
         {
-            foreach (SANPHAM temp in DataProvider.Ins.DB.SANPHAMs)
-            {
-                if (temp.MASP == m)
-                    return true;
-            }
-            return false;
+            int dem = DataProvider.Ins.DB.SANPHAMs.Where(s => s.MASP == m).Count();
+            if (dem == 0)
+                return false;
+            return true;
         }
         public string rdmaSP()
         {
