@@ -247,13 +247,12 @@
                                     <StackPanel Orientation="Horizontal">
                                         <ComboBox Foreground="{StaticResource plainTextColor3}"
                                         x:Name="Size"
-                                        HorizontalAlignment="Right"
                                         FontFamily="{StaticResource Custom}"
                                         BorderThickness="0"
                                         materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                         materialDesign:TextFieldAssist.TextFieldCornerRadius="10"
                                         IsEnabled="False"
-                                        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0">
+                                        materialDesign:TextFieldAssist.TextBoxViewMargin="10,0,0,0" Width="204">
                                             <ComboBoxItem Foreground="Black" Content="S"/>
                                             <ComboBoxItem Foreground="Black" Content="M"/>
                                             <ComboBoxItem Foreground="Black" Content="L"/>
