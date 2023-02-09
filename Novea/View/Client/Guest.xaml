@@ -10,7 +10,7 @@
         AllowsTransparency="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize"
+        ResizeMode="NoResize" Title="Khách hàng"
         x:Name="Guestwd" Height="600" Width="1024"
         DataContext="{StaticResource GuestVM}">
 

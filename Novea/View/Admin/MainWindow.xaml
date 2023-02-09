@@ -9,6 +9,7 @@
         AllowsTransparency="True"
         WindowStyle="None"
         ResizeMode="NoResize"
+        Title="Chủ cửa hàng"
         x:Name="Mainwd"
         Height="600" Width="1024" WindowStartupLocation="CenterScreen"
         Background="Transparent"        
