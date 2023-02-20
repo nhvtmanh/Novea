@@ -54,7 +54,7 @@ namespace Novea.ViewModel.Login
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("21522348@gm.uit.edu.vn", "dkzbzuuhavdm");
+                smtp.Credentials = new NetworkCredential("21522348@gm.uit.edu.vn", "");
                 smtp.Send(message);
             }
             catch
